@@ -1,0 +1,335 @@
+{
+  "colorSystem": {
+    "version": "1.0.0",
+    "philosophy": "Clean, calm, and purposeful. Every color serves a function.",
+    "defaultMode": "dark",
+    
+    "darkMode": {
+      "backgrounds": {
+        "primary": {
+          "value": "#0a0a0a",
+          "usage": "Main page background",
+          "contrast": "Maximum depth without pure black"
+        },
+        "secondary": {
+          "value": "#141414",
+          "usage": "Section backgrounds, cards",
+          "contrast": "Subtle variation from primary"
+        },
+        "tertiary": {
+          "value": "#1a1a1a",
+          "usage": "Nested components, tags",
+          "contrast": "Third layer of hierarchy"
+        }
+      },
+      
+      "surfaces": {
+        "raised": {
+          "value": "#1f1f1f",
+          "usage": "Header, footer, modals, dropdowns",
+          "description": "Elements elevated above content"
+        },
+        "overlay": {
+          "value": "rgba(255, 255, 255, 0.05)",
+          "usage": "Hover states, focus backgrounds",
+          "description": "Very subtle interaction feedback"
+        }
+      },
+      
+      "borders": {
+        "primary": {
+          "value": "#2a2a2a",
+          "usage": "Main borders, dividers",
+          "contrast": "Visible but not harsh"
+        },
+        "secondary": {
+          "value": "#1f1f1f",
+          "usage": "Subtle separators",
+          "contrast": "Lighter than primary"
+        },
+        "accent": {
+          "value": "#3a3a3a",
+          "usage": "Focused inputs, emphasized borders",
+          "contrast": "Slightly stronger than primary"
+        }
+      },
+      
+      "text": {
+        "primary": {
+          "value": "#e5e5e5",
+          "usage": "Main text, headings",
+          "wcag": "AAA on bg-primary",
+          "contrast": "Comfortable white, not harsh #ffffff"
+        },
+        "secondary": {
+          "value": "#a3a3a3",
+          "usage": "Secondary text, descriptions",
+          "wcag": "AA on bg-primary",
+          "contrast": "Clear hierarchy from primary"
+        },
+        "muted": {
+          "value": "#737373",
+          "usage": "Captions, placeholders, disabled",
+          "wcag": "AA on bg-primary for large text",
+          "contrast": "Subtle but readable"
+        },
+        "inverted": {
+          "value": "#0a0a0a",
+          "usage": "Text on colored buttons",
+          "description": "Matches primary background"
+        }
+      },
+      
+      "accent": {
+        "primary": {
+          "value": "#3b82f6",
+          "usage": "Primary CTA, links on hover, active states",
+          "rule": "ONLY for interactive elements"
+        },
+        "hover": {
+          "value": "#2563eb",
+          "usage": "Hover state for accent elements"
+        },
+        "pressed": {
+          "value": "#1d4ed8",
+          "usage": "Active/pressed state"
+        },
+        "subtle": {
+          "value": "rgba(59, 130, 246, 0.1)",
+          "usage": "Subtle backgrounds for selected items"
+        },
+        "text": {
+          "value": "#60a5fa",
+          "usage": "Accent text in dark mode",
+          "description": "Lighter for better readability"
+        }
+      },
+      
+      "semantic": {
+        "success": {
+          "base": "#10b981",
+          "background": "rgba(16, 185, 129, 0.1)",
+          "border": "rgba(16, 185, 129, 0.3)",
+          "text": "#34d399"
+        },
+        "warning": {
+          "base": "#f59e0b",
+          "background": "rgba(245, 158, 11, 0.1)",
+          "border": "rgba(245, 158, 11, 0.3)",
+          "text": "#fbbf24"
+        },
+        "error": {
+          "base": "#ef4444",
+          "background": "rgba(239, 68, 68, 0.1)",
+          "border": "rgba(239, 68, 68, 0.3)",
+          "text": "#f87171"
+        },
+        "info": {
+          "base": "#3b82f6",
+          "background": "rgba(59, 130, 246, 0.1)",
+          "border": "rgba(59, 130, 246, 0.3)",
+          "text": "#60a5fa"
+        }
+      },
+      
+      "shadows": {
+        "small": "0 1px 2px 0 rgba(0, 0, 0, 0.5)",
+        "medium": "0 4px 6px -1px rgba(0, 0, 0, 0.5)",
+        "large": "0 10px 15px -3px rgba(0, 0, 0, 0.6)",
+        "extraLarge": "0 20px 25px -5px rgba(0, 0, 0, 0.7)"
+      },
+      
+      "focus": {
+        "ring": "0 0 0 3px rgba(59, 130, 246, 0.1)"
+      }
+    },
+    
+    "lightMode": {
+      "backgrounds": {
+        "primary": {
+          "value": "#ffffff",
+          "usage": "Main page background"
+        },
+        "secondary": {
+          "value": "#f5f5f5",
+          "usage": "Section backgrounds, cards"
+        },
+        "tertiary": {
+          "value": "#ebebeb",
+          "usage": "Nested components"
+        }
+      },
+      
+      "surfaces": {
+        "raised": {
+          "value": "#fafafa",
+          "usage": "Header, footer, elevated elements"
+        },
+        "overlay": {
+          "value": "rgba(0, 0, 0, 0.03)",
+          "usage": "Hover, focus backgrounds"
+        }
+      },
+      
+      "borders": {
+        "primary": {
+          "value": "#d4d4d4",
+          "usage": "Main borders"
+        },
+        "secondary": {
+          "value": "#e5e5e5",
+          "usage": "Subtle separators"
+        },
+        "accent": {
+          "value": "#b8b8b8",
+          "usage": "Focused borders"
+        }
+      },
+      
+      "text": {
+        "primary": {
+          "value": "#0a0a0a",
+          "usage": "Main text, headings",
+          "wcag": "AAA"
+        },
+        "secondary": {
+          "value": "#525252",
+          "usage": "Secondary text",
+          "wcag": "AA"
+        },
+        "muted": {
+          "value": "#737373",
+          "usage": "Captions, placeholders"
+        },
+        "inverted": {
+          "value": "#ffffff",
+          "usage": "Text on dark backgrounds"
+        }
+      },
+      
+      "accent": {
+        "primary": {
+          "value": "#3b82f6",
+          "usage": "Interactive elements"
+        },
+        "hover": {
+          "value": "#2563eb",
+          "usage": "Hover state"
+        },
+        "pressed": {
+          "value": "#1d4ed8",
+          "usage": "Pressed state"
+        },
+        "subtle": {
+          "value": "rgba(59, 130, 246, 0.1)",
+          "usage": "Subtle backgrounds"
+        },
+        "text": {
+          "value": "#2563eb",
+          "usage": "Accent text in light mode"
+        }
+      },
+      
+      "semantic": {
+        "success": {
+          "base": "#059669",
+          "background": "rgba(5, 150, 105, 0.1)",
+          "border": "rgba(5, 150, 105, 0.3)",
+          "text": "#047857"
+        },
+        "warning": {
+          "base": "#d97706",
+          "background": "rgba(217, 119, 6, 0.1)",
+          "border": "rgba(217, 119, 6, 0.3)",
+          "text": "#b45309"
+        },
+        "error": {
+          "base": "#dc2626",
+          "background": "rgba(220, 38, 38, 0.1)",
+          "border": "rgba(220, 38, 38, 0.3)",
+          "text": "#b91c1c"
+        },
+        "info": {
+          "base": "#2563eb",
+          "background": "rgba(37, 99, 235, 0.1)",
+          "border": "rgba(37, 99, 235, 0.3)",
+          "text": "#1d4ed8"
+        }
+      },
+      
+      "shadows": {
+        "small": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+        "medium": "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+        "large": "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+        "extraLarge": "0 20px 25px -5px rgba(0, 0, 0, 0.1)"
+      },
+      
+      "focus": {
+        "ring": "0 0 0 3px rgba(59, 130, 246, 0.1)"
+      }
+    },
+    
+    "usageRules": {
+      "accent": {
+        "allowed": [
+          "Primary CTA buttons",
+          "Link hover states",
+          "Active tab indicators",
+          "Focus rings",
+          "Selected item indicators"
+        ],
+        "forbidden": [
+          "Regular headings (H1, H2, H3)",
+          "Paragraph text",
+          "Large background areas",
+          "Decorative purposes"
+        ]
+      },
+      
+      "hierarchy": {
+        "backgrounds": "primary → secondary → tertiary → surface",
+        "text": "primary → secondary → muted",
+        "borders": "primary → secondary → accent (when needed)"
+      },
+      
+      "contrast": {
+        "text-primary-on-bg-primary": "WCAG AAA (7:1+)",
+        "text-secondary-on-bg-primary": "WCAG AA (4.5:1+)",
+        "text-muted-on-bg-primary": "WCAG AA for large text (3:1+)"
+      }
+    },
+    
+    "antiPatterns": {
+      "examples": [
+        {
+          "bad": "Using gradients or neon colors",
+          "reason": "Conflicts with calm, professional aesthetic"
+        },
+        {
+          "bad": "Using accent color for all headings",
+          "reason": "Overuse diminishes its effectiveness"
+        },
+        {
+          "bad": "Using text-muted for important titles",
+          "reason": "Breaks visual hierarchy"
+        },
+        {
+          "bad": "Using pure #000000 black",
+          "reason": "Causes eye strain in dark mode"
+        },
+        {
+          "bad": "Using pure #ffffff white for text",
+          "reason": "Too harsh on dark backgrounds"
+        }
+      ]
+    },
+    
+    "qualityChecklist": [
+      "Does this color serve a clear purpose?",
+      "Does it meet WCAG contrast requirements?",
+      "Does it work in both dark and light modes?",
+      "Is it clearly distinguishable from other colors?",
+      "Does it align with the calm, professional philosophy?"
+    ]
+  }
+}

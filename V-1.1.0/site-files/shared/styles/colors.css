@@ -1,0 +1,140 @@
+/*
+ * Color System - CSS Variables
+ * Professional Portfolio Website
+ * Version: 1.0.0
+ *
+ * Philosophy: Clean, calm, purposeful colors
+ * Default: Dark mode
+ */
+
+:root {
+  /* ============================================
+     DARK MODE (Default)
+     ============================================ */
+
+  /* Background */
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #141414;
+  --color-bg-tertiary: #1a1a1a;
+
+  /* Surface */
+  --color-surface-raised: #1f1f1f;
+  --color-surface-overlay: rgba(255, 255, 255, 0.05);
+
+  /* Border */
+  --color-border-primary: #2a2a2a;
+  --color-border-secondary: #1f1f1f;
+  --color-border-muted: #3a3a3a;
+
+  /* Text */
+  --color-text-primary: #e5e5e5;
+  --color-text-secondary: #a3a3a3;
+  --color-text-muted: #737373;
+  --color-text-inverted: #0a0a0a;
+
+  /* Accent */
+  --color-accent-primary: #3b82f6;
+  --color-accent-hover: #2563eb;
+  --color-accent-pressed: #1d4ed8;
+  --color-accent-subtle: rgba(59, 130, 246, 0.1);
+  --color-accent-text: #60a5fa;
+
+  /* Semantic — Success */
+  --color-success-base: #10b981;
+  --color-success-bg: rgba(16, 185, 129, 0.1);
+  --color-success-border: rgba(16, 185, 129, 0.3);
+  --color-success-text: #34d399;
+
+  /* Semantic — Warning */
+  --color-warning-base: #f59e0b;
+  --color-warning-bg: rgba(245, 158, 11, 0.1);
+  --color-warning-border: rgba(245, 158, 11, 0.3);
+  --color-warning-text: #fbbf24;
+
+  /* Semantic — Error */
+  --color-error-base: #ef4444;
+  --color-error-bg: rgba(239, 68, 68, 0.1);
+  --color-error-border: rgba(239, 68, 68, 0.3);
+  --color-error-text: #f87171;
+
+  /* Semantic — Info */
+  --color-info-base: #3b82f6;
+  --color-info-bg: rgba(59, 130, 246, 0.1);
+  --color-info-border: rgba(59, 130, 246, 0.3);
+  --color-info-text: #60a5fa;
+
+  /* Shadow */
+  --shadow-level-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-level-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --shadow-level-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
+  --shadow-level-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
+
+  /* Focus */
+  --focus-ring-default: 0 0 0 3px var(--color-accent-subtle);
+}
+
+/* ============================================
+   LIGHT MODE
+   ============================================ */
+
+[data-theme="light"] {
+  /* Background */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f5f5f5;
+  --color-bg-tertiary: #ebebeb;
+
+  /* Surface */
+  --color-surface-raised: #fafafa;
+  --color-surface-overlay: rgba(0, 0, 0, 0.03);
+
+  /* Border */
+  --color-border-primary: #d4d4d4;
+  --color-border-secondary: #e5e5e5;
+  --color-border-muted: #b8b8b8;
+
+  /* Text */
+  --color-text-primary: #0a0a0a;
+  --color-text-secondary: #525252;
+  --color-text-muted: #737373;
+  --color-text-inverted: #ffffff;
+
+  /* Accent */
+  --color-accent-primary: #3b82f6;
+  --color-accent-hover: #2563eb;
+  --color-accent-pressed: #1d4ed8;
+  --color-accent-subtle: rgba(59, 130, 246, 0.1);
+  --color-accent-text: #2563eb;
+
+  /* Semantic — Success */
+  --color-success-base: #059669;
+  --color-success-bg: rgba(5, 150, 105, 0.1);
+  --color-success-border: rgba(5, 150, 105, 0.3);
+  --color-success-text: #047857;
+
+  /* Semantic — Warning */
+  --color-warning-base: #d97706;
+  --color-warning-bg: rgba(217, 119, 6, 0.1);
+  --color-warning-border: rgba(217, 119, 6, 0.3);
+  --color-warning-text: #b45309;
+
+  /* Semantic — Error */
+  --color-error-base: #dc2626;
+  --color-error-bg: rgba(220, 38, 38, 0.1);
+  --color-error-border: rgba(220, 38, 38, 0.3);
+  --color-error-text: #b91c1c;
+
+  /* Semantic — Info */
+  --color-info-base: #2563eb;
+  --color-info-bg: rgba(37, 99, 235, 0.1);
+  --color-info-border: rgba(37, 99, 235, 0.3);
+  --color-info-text: #1d4ed8;
+
+  /* Shadow */
+  --shadow-level-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-level-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-level-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-level-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+  /* Focus */
+  --focus-ring-default: 0 0 0 3px var(--color-accent-subtle);
+}
