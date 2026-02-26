@@ -1,4 +1,0 @@
-1. cd /home/amer/amerdev
-2. python3 -m http.server 8800
-3. Open:
-   http://localhost:8800
