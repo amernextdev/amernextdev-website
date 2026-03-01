@@ -11,9 +11,9 @@
 
 ## السياق التقني الذي تعمل فيه
 
-- **تبديل اللغة:** عبر `lang` على الـ `<html>` element
-  - الإنجليزية: `<html lang="en">`
-  - العربية: `<html lang="ar">`
+- **تبديل اللغة:** عبر `data-lang` على الـ `<html>` element
+  - الإنجليزية: `<html data-lang="en">`
+  - العربية: `<html data-lang="ar">`
 - **الخطوط:** ستُحمَّل من ملفات محلية لاحقاً — لم تُحدَّد بعد
 - **الوضع:** Phase 1 — Vanilla CSS فقط، لا frameworks
 
@@ -129,28 +129,28 @@
 
 ```css
 /* Default: English */
-:lang(en) body,
-:lang(en) * {
+[data-lang="en"] body,
+[data-lang="en"] * {
   font-family: var(--font-body-en);
 }
 
-:lang(en) h1,
-:lang(en) h2,
-:lang(en) h3 {
+[data-lang="en"] h1,
+[data-lang="en"] h2,
+[data-lang="en"] h3 {
   font-family: var(--font-heading-en);
 }
 
 /* Arabic */
-:lang(ar) body,
-:lang(ar) * {
+[data-lang="ar"] body,
+[data-lang="ar"] * {
   font-family: var(--font-body-ar);
   direction: rtl;
   text-align: right;
 }
 
-:lang(ar) h1,
-:lang(ar) h2,
-:lang(ar) h3 {
+[data-lang="ar"] h1,
+[data-lang="ar"] h2,
+[data-lang="ar"] h3 {
   font-family: var(--font-heading-ar);
 }
 ```
@@ -203,7 +203,7 @@ p { ... }
 |-------|---------|------------|------|
 
 ### 4. قواعد تغيير اللغة
-شرح موجز (5 نقاط) لكيفية عمل `[lang]` وما يتغير بين EN و AR.
+شرح موجز (5 نقاط) لكيفية عمل `[data-lang]` وما يتغير بين EN و AR.
 
 ### 5. قواعد لا تُخالَف
 5 قواعد مستخلصة من وثيقة الأسلوب تخص الطباعة تحديداً — مع مثال صواب وخطأ لكل قاعدة.
