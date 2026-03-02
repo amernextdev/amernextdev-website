@@ -1,9 +1,0 @@
-1. site.webmanifest
-2. robots.txt
-3. sitemap.xml
-4. _headers
-5. _redirects
-6. security.txt (في مجلد .well-known)
-7. humans.txt
-8. README.md
-9. 404.html
