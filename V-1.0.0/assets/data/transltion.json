@@ -18,10 +18,10 @@
     "more_about_me": "More About Me",
     
     "section_about_title": "About Me",
-    "about_paragraph_1": "I'm Amer, a developer from Egypt focused on transforming ideas into functional digital solutions. My journey began with self-directed learning, and each project deepens my technical expertise and creative vision.",
-    "about_paragraph_2": "I craft responsive, user-centered websites with HTML, CSS, and JavaScript, and build practical applications with Python. My approach balances technical precision with aesthetic clarity.",
-    "about_paragraph_3": "I believe effective digital products start with understanding your goals, then translating them into solutions that deliver measurable results.",
-    
+"about_paragraph_1": "I'm Amer — a developer from Egypt who learned everything on his own. No courses, no classrooms, just a problem, a screen, and the refusal to stop.",
+"about_paragraph_2": "What sets me apart isn't the tools — it's that before any project, I ask first: what really needs to happen here? I see the full picture, not just the task.",
+"about_paragraph_3": "If you're looking for someone who just executes — there are plenty of options. If you're looking for someone who thinks with you and delivers something better than you imagined — let's talk.",
+
     "section_skills_tools_title": "Skills & Tools",
     "skill_html_desc": "Building structured, semantic web foundations",
     "skill_css_desc": "Creating visually harmonious and responsive layouts",
@@ -63,10 +63,10 @@
     "section_projects_title": "Latest Projects",
     "vid": "Watch video",
     "web": "Go",
+      "project-title-smart": "Smart-eng",
+  "project-desc-smart": "An introductory website for a mechanical engineering consultancy targeting industrial clients across 6 sectors. Distinguished by structured service design, a sectoral network, detailed process explanations, and a strong call-to-action framework — elegantly designed with a conversion-focused flow.",
     "project-title-flashe": "Flashe - Educational Flash Drives Platform",
     "project-desc-flashe": "Marketing platform for smart educational flash drives, offering a seamless purchasing experience with premium visual presentation and automatic order/cost calculation.",
-    "project-title-waz3ha": "Waz3ha - Landing Page",
-    "project-desc-waz3ha": "A comprehensive landing page for an upcoming financial app, delivering a seamless user experience with an electronic subscription system and engaging features showcase.",
     "project-title-passforge": "PassForge - Landing Page",
     "project-desc-passforge": "A marketing platform for a smart password generator app, featuring an attractive user interface with subscription system and live showcase of security features.",
 
@@ -118,10 +118,10 @@
     "more_about_me": "المزيد عني",
     
     "section_about_title": "من أنا",
-    "about_paragraph_1": "أنا عامر، مطور من مصر أركز على تحويل الأفكار إلى حلول رقمية عملية. بدأت رحلتي بالتعلم الذاتي، وكل مشروع يعمق خبرتي التقنية ورؤيتي الإبداعية.",
-    "about_paragraph_2": "أصمم مواقع ويب متجاوبة ومرتكزة على المستخدم باستخدام HTML وCSS وJavaScript، وأبني تطبيقات عملية باستخدام Python. منهجي يوازن بين الدقة التقنية والوضوح الجمالي.",
-    "about_paragraph_3": "أعتقد أن المنتجات الرقمية الفعالة تبدأ بفهم أهدافك، ثم ترجمتها إلى حلول تحقق نتائج قابلة للقياس.",
-    
+"about_paragraph_1": "أنا عامر — مطور من مصر تعلمت كل شيء بنفسي. لا كورسات، لا فصول دراسية، فقط مشكلة وشاشة وإصرار على الاستمرار.",
+"about_paragraph_2": "ما يميزني ليس الأدوات — بل أنني قبل أي مشروع، أسأل أولاً: ما الذي يجب أن يحدث فعلاً؟ أرى الصورة كاملة، لا المهمة فقط.",
+"about_paragraph_3": "إن كنت تبحث عمن ينفذ فقط — هناك خيارات كثيرة. إن كنت تبحث عمن يفكر معك ويسلمك ما هو أفضل مما تصورت — فلنتحدث.",
+
     "section_skills_tools_title": "المهارات والأدوات",
     "skill_html_desc": "بناء أسس ويب منظمة وذات دلالة",
     "skill_css_desc": "إنشاء تخطيطات بصرية متناغمة ومتجاوبة",
@@ -163,10 +163,10 @@
     "section_projects_title": "أحدث المشاريع",
     "vid": "شاهد فيديو",
     "web": "الذهاب",
+      "project-title-smart": "Smart-eng",
+  "project-desc-smart": "موقع تعريفي لشركة استشارات هندسية ميكانيكية تستهدف عملاء صناعيين في 6 قطاعات. تتميز بتصميم منظم للخدمات، وشبكة قطاعية، وشرح تفصيلي للعمليات، وهيكل قوي لدعوة المستخدمين لاتخاذ إجراء — مصممة بشكل أنيق وتدفق تحويل مركز.",
     "project-title-flashe": "Flashe - منصة الفلاشات التعليمية", 
     "project-desc-flashe": "منصة تسويقية لفلاشات تعليمية ذكية، تقدم تجربة شراء سلسة مع عرض مرئي متميز وحساب تلقائي للطلبات والتكاليف.",
-    "project-title-waz3ha": "Waz3ha - صفحة الهبوط",
-    "project-desc-waz3ha": "صفحة هبوط متكاملة لتطبيق مالي قادم، تقدم تجربة مستخدم سلسة مع نظام اشتراك إلكتروني وعرض جذاب للميزات.",
     "project-title-passforge": "PassForge - صفحة الهبوط",
     "project-desc-passforge": "منصة تسويقية لتطبيق توليد كلمات مرور ذكي، تقدم واجهة مستخدم جذابة مع نظام اشتراك وعرض حي للميزات الأمنية.",
 
@@ -218,10 +218,9 @@
     "more_about_me": "Mehr über mich",
     
     "section_about_title": "Über mich",
-    "about_paragraph_1": "Ich bin Amer, ein Entwickler aus Ägypten, der sich auf die Transformation von Ideen in funktionale digitale Lösungen konzentriert. Meine Reise begann mit selbstgesteuertem Lernen, und jedes Projekt vertieft meine technische Expertise und kreative Vision.",
-    "about_paragraph_2": "Ich erstelle responsive, benutzerzentrierte Websites mit HTML, CSS und JavaScript und entwickle praktische Anwendungen mit Python. Mein Ansatz vereint technische Präzision mit ästhetischer Klarheit.",
-    "about_paragraph_3": "Ich glaube, dass effektive digitale Produkte mit dem Verständnis Ihrer Ziele beginnen und diese dann in Lösungen umsetzen, die messbare Ergebnisse liefern.",
-    
+"about_paragraph_1": "Ich bin Amer — ein Entwickler aus Ägypten, der alles selbst gelernt hat. Keine Kurse, keine Klassenzimmer, nur ein Problem, ein Bildschirm und die Weigerung aufzuhören.",
+"about_paragraph_2": "Was mich auszeichnet, sind nicht die Werkzeuge — sondern dass ich vor jedem Projekt zuerst frage: Was muss hier wirklich passieren? Ich sehe das gesamte Bild, nicht nur die Aufgabe.",
+"about_paragraph_3": "Wenn Sie jemanden suchen, der nur ausführt — es gibt viele Optionen. Wenn Sie jemanden suchen, der mit Ihnen denkt und etwas liefert, das besser ist als Sie es sich vorgestellt haben — lassen Sie uns reden.",
     "section_skills_tools_title": "Fähigkeiten & Werkzeuge",
     "skill_html_desc": "Strukturierte, semantische Web-Grundlagen aufbauen",
     "skill_css_desc": "Visuell harmonische und responsive Layouts erstellen",
@@ -263,10 +262,10 @@
     "section_projects_title": "Aktuelle Projekte",
     "vid": "Video ansehen",
     "web": "Gehen",
+      "project-title-smart": "Smart-eng",
+  "project-desc-smart": "Eine Präsentationswebsite für ein Beratungsunternehmen im Bereich Maschinenbau, das Industriekunden in 6 Sektoren anspricht. Ausgezeichnet durch strukturiertes Service-Design, ein sektorales Netzwerk, detaillierte Prozesserklärungen und eine starke Handlungsaufforderung — elegant gestaltet mit konversionsorientiertem Aufbau.",
     "project-title-flashe": "Flashe - Plattform für pädagogische Flash-Laufwerke",
     "project-desc-flashe": "Marketing-Plattform für intelligente pädagogische Flash-Laufwerke mit nahtlosem Kaufprozess, ansprechender visueller Präsentation und automatischer Auftrags- und Kostenberechnung.",
-    "project-title-waz3ha": "Waz3ha - Landingpage",
-    "project-desc-waz3ha": "Eine umfassende Landingpage für eine kommende Finanz-App, die eine nahtlose Benutzererfahrung mit einem elektronischen Abonnementsystem und ansprechender Funktionspräsentation bietet.",
     "project-title-passforge": "PassForge - Landingpage",
     "project-desc-passforge": "Eine Marketing-Plattform für eine intelligente Passwort-Generator-App mit ansprechender Benutzeroberfläche, Abonnementsystem und Live-Demonstration der Sicherheitsfunktionen.",
 
@@ -318,10 +317,10 @@
     "more_about_me": "En savoir plus",
     
     "section_about_title": "À propos de moi",
-    "about_paragraph_1": "Je suis Amer, un développeur d'Égypte spécialisé dans la transformation d'idées en solutions digitales fonctionnelles. Mon parcours a commencé par l'apprentissage autonome, et chaque projet approfondit mon expertise technique et ma vision créative.",
-    "about_paragraph_2": "Je conçois des sites web responsifs centrés sur l'utilisateur avec HTML, CSS et JavaScript, et développe des applications pratiques avec Python. Mon approche équilibre précision technique et clarté esthétique.",
-    "about_paragraph_3": "Je crois que les produits digitaux efficaces commencent par comprendre vos objectifs, puis les traduire en solutions qui délivrent des résultats mesurables.",
-    
+"about_paragraph_1": "Je suis Amer — un développeur d'Égypte qui a tout appris par lui-même. Pas de cours, pas de salles de classe, juste un problème, un écran et le refus de s'arrêter.",
+"about_paragraph_2": "Ce qui me distingue, ce ne sont pas les outils — c'est qu'avant tout projet, je pose d'abord la question : que doit-il vraiment se passer ici ? Je vois l'image complète, pas seulement la tâche.",
+"about_paragraph_3": "Si vous cherchez quelqu'un qui exécute simplement — il y a beaucoup d'options. Si vous cherchez quelqu'un qui réfléchit avec vous et livre quelque chose de mieux que ce que vous imaginiez — parlons-en.",
+
     "section_skills_tools_title": "Compétences & Outils",
     "skill_html_desc": "Construire des fondations web structurées et sémantiques",
     "skill_css_desc": "Créer des layouts visuellement harmonieux et responsifs",
@@ -363,10 +362,10 @@
     "section_projects_title": "Projets récents",
     "vid": "Regarder la vidéo",
     "web": "Alle",
+      "project-title-smart": "Smart-eng",
+  "project-desc-smart": "Un site de présentation pour un cabinet de conseil en ingénierie mécanique ciblant des clients industriels dans 6 secteurs. Caractérisé par une conception de services structurée, un réseau sectoriel, des explications détaillées des processus et une architecture d'appel à l'action robuste — conçu avec élégance et un flux orienté conversion.",
     "project-title-flashe": "Flashe - Plateforme de clés USB éducatives",
     "project-desc-flashe": "Plateforme marketing pour clés USB éducatives intelligentes, offrant une expérience d'achat fluide avec présentation visuelle premium et calcul automatique des commandes et coûts.",
-    "project-title-waz3ha": "Waz3ha - Page de Destination",
-    "project-desc-waz3ha": "Une page de destination complète pour une application financière à venir, offrant une expérience utilisateur fluide avec un système d'abonnement électronique et une présentation attrayante des fonctionnalités.",
     "project-title-passforge": "PassForge - Page de Destination",
     "project-desc-passforge": "Une plateforme marketing pour une application intelligente de génération de mots de passe, offrant une interface utilisateur attrayante avec système d'abonnement et démonstration en direct des fonctionnalités de sécurité.",
 
@@ -418,10 +417,10 @@
     "more_about_me": "Más sobre mí",
     
     "section_about_title": "Sobre mí",
-    "about_paragraph_1": "Soy Amer, un desarrollador de Egipto enfocado en transformar ideas en soluciones digitales funcionales. Mi viaje comenzó con aprendizaje autodirigido, y cada proyecto profundiza mi experiencia técnica y visión creativa.",
-    "about_paragraph_2": "Diseño sitios web responsivos centrados en el usuario con HTML, CSS y JavaScript, y construyo aplicaciones prácticas con Python. Mi enfoque equilibra precisión técnica con claridad estética.",
-    "about_paragraph_3": "Creo que los productos digitales efectivos comienzan entendiendo tus objetivos, luego traduciéndolos en soluciones que ofrecen resultados medibles.",
-    
+"about_paragraph_1": "Soy Amer — un desarrollador de Egipto que aprendió todo por su cuenta. Sin cursos, sin aulas, solo un problema, una pantalla y la negativa a rendirse.",
+"about_paragraph_2": "Lo que me distingue no son las herramientas — sino que antes de cualquier proyecto, pregunto primero: ¿qué necesita ocurrir realmente aquí? Veo el panorama completo, no solo la tarea.",
+"about_paragraph_3": "Si buscas a alguien que solo ejecuta — hay muchas opciones. Si buscas a alguien que piense contigo y entregue algo mejor de lo que imaginaste — hablemos.",
+
     "section_skills_tools_title": "Habilidades y Herramientas",
     "skill_html_desc": "Construyendo fundamentos web estructurados y semánticos",
     "skill_css_desc": "Creando diseños visualmente armónicos y responsivos",
@@ -463,11 +462,11 @@
     "section_projects_title": "Proyectos Recientes",
     "vid": "Ver video",
     "web": "Ir",
+      "project-title-smart": "Smart-eng",
+  "project-desc-smart": "Un sitio web de presentación para una consultora de ingeniería mecánica dirigida a clientes industriales en 6 sectores. Destacado por un diseño de servicios estructurado, una red sectorial, explicaciones detalladas de procesos y una sólida arquitectura de llamada a la acción — diseñado con elegancia y un flujo centrado en la conversión.",
     "project-title-flashe": "Flashe - Plataforma de memorias USB educativas",
     "project-desc-flashe": "Plataforma de marketing para memorias USB educativas inteligentes, que ofrece una experiencia de compra fluida con presentación visual premium y cálculo automático de pedidos y costos.",
-    "project-title-waz3ha": "Waz3ha - Página de Destino",
-    "project-desc-waz3ha": "Una página de destino integral para una próxima aplicación financiera, que ofrece una experiencia de usuario fluida con un sistema de suscripción electrónica y una atractiva presentación de características.",
-    "project-title-passforge": "PassForge - Página de Destino",
+     "project-title-passforge": "PassForge - Página de Destino",
     "project-desc-passforge": "Una plataforma de marketing para una aplicación inteligente de generación de contraseñas, que ofrece una interfaz de usuario atractiva con sistema de suscripción y exhibición en vivo de características de seguridad.",
 
     "section_contact_title": "Contáctame",
@@ -518,10 +517,10 @@
     "more_about_me": "Подробнее обо мне",
     
     "section_about_title": "Обо мне",
-    "about_paragraph_1": "Я Амер, разработчик из Египта, специализирующийся на преобразовании идей в функциональные цифровые решения. Мой путь начался с самообучения, и каждый проект углубляет мои технические знания и творческое видение.",
-    "about_paragraph_2": "Я создаю адаптивные, ориентированные на пользователя веб-сайты с помощью HTML, CSS и JavaScript и разрабатываю практические приложения на Python. Мой подход сочетает техническую точность с эстетической ясностью.",
-    "about_paragraph_3": "Я считаю, что эффективные цифровые продукты начинаются с понимания ваших целей, а затем преобразуются в решения, которые приносят измеримые результаты.",
-    
+"about_paragraph_1": "Я Амер — разработчик из Египта, который всему научился самостоятельно. Никаких курсов, никаких классов — только задача, экран и отказ останавливаться.",
+"about_paragraph_2": "Моё отличие не в инструментах — а в том, что перед любым проектом я сначала спрашиваю: что здесь действительно должно произойти? Я вижу полную картину, а не только задачу.",
+"about_paragraph_3": "Если вы ищете того, кто просто выполняет — вариантов много. Если вы ищете того, кто думает вместе с вами и даёт результат лучше, чем вы представляли — давайте поговорим.",
+
     "section_skills_tools_title": "Навыки и Инструменты",
     "skill_html_desc": "Создание структурированных, семантических веб-основ",
     "skill_css_desc": "Создание визуально гармоничных и адаптивных макетов",
@@ -563,10 +562,10 @@
     "section_projects_title": "Последние проекты",
     "vid": "Смотреть видео",
     "web": "Идти",
+      "project-title-smart": "Smart-eng",
+  "project-desc-smart": "Презентационный сайт для консалтинговой компании в области механической инженерии, ориентированной на промышленных клиентов в 6 отраслях. Отличается структурированным дизайном услуг, отраслевой сетью, детальным описанием процессов и сильной структурой призыва к действию — стильный дизайн с ориентацией на конверсию.",
     "project-title-flashe": "Flashe - Платформа образовательных флеш-накопителей",
     "project-desc-flashe": "Маркетинговая платформа для умных образовательных флеш-накопителей, предлагающая беспрепятственный процесс покупки с премиальной визуальной презентацией и автоматическим расчетом заказов и затрат.",
-    "project-title-waz3ha": "Waz3ha - Целевая Страница",
-    "project-desc-waz3ha": "Комплексная целевая страница для предстоящего финансового приложения, обеспечивающая бесперебойное взаимодействие с пользователем, электронной системой подписки и привлекательной демонстрацией функций.",
     "project-title-passforge": "PassForge - Целевая Страница",
     "project-desc-passforge": "Маркетинговая платформа для умного приложения генерации паролей, предлагающая привлекательный пользовательский интерфейс с системой подписки и живой демонстрацией функций безопасности.",
     
@@ -618,10 +617,10 @@
     "more_about_me": "Mais sobre mim",
     
     "section_about_title": "Sobre Mim",
-    "about_paragraph_1": "Sou Amer, um desenvolvedor do Egito focado em transformar ideias em soluções digitais funcionais. Minha jornada começou com aprendizado autodirigido, e cada projeto aprofunda minha expertise técnica e visão criativa.",
-    "about_paragraph_2": "Crio sites responsivos centrados no usuário com HTML, CSS e JavaScript, e construo aplicações práticas com Python. Minha abordagem equilibra precisão técnica com clareza estética.",
-    "about_paragraph_3": "Acredito que produtos digitais eficazes começam entendendo seus objetivos, depois traduzindo-os em soluções que entregam resultados mensuráveis.",
-    
+"about_paragraph_1": "Sou Amer — um desenvolvedor do Egito que aprendeu tudo sozinho. Sem cursos, sem salas de aula, apenas um problema, uma tela e a recusa em parar.",
+"about_paragraph_2": "O que me diferencia não são as ferramentas — é que antes de qualquer projeto, pergunto primeiro: o que realmente precisa acontecer aqui? Vejo o quadro completo, não apenas a tarefa.",
+"about_paragraph_3": "Se você procura alguém que apenas executa — há muitas opções. Se procura alguém que pensa junto e entrega algo melhor do que imaginou — vamos conversar.",
+
     "section_skills_tools_title": "Habilidades e Ferramentas",
     "skill_html_desc": "Construindo fundamentos web estruturados e semânticos",
     "skill_css_desc": "Criando layouts visualmente harmoniosos e responsivos",
@@ -663,10 +662,10 @@
     "section_projects_title": "Projetos Recentes",
     "vid": "Ver vídeo",
     "web": "Ir",
+      "project-title-smart": "Smart-eng",
+  "project-desc-smart": "Um site de apresentação para uma empresa de consultoria em engenharia mecânica voltada para clientes industriais em 6 setores. Distingue-se pelo design estruturado de serviços, uma rede setorial, explicações detalhadas de processos e uma estrutura robusta de chamada à ação — projetado com elegância e fluxo focado em conversão.",
     "project-title-flashe": "Flashe - Plataforma de pen drives educativos", 
     "project-desc-flashe": "Plataforma de marketing para pen drives educativos inteligentes, oferecendo uma experiência de compra perfeita com apresentação visual premium e cálculo automático de pedidos e custos.",
-    "project-title-waz3ha": "Waz3ha - Página de Destino", 
-    "project-desc-waz3ha": "Uma página de destino abrangente para um aplicativo financeiro em breve, oferecendo uma experiência de usuário perfeita com sistema de inscrição eletrônica e apresentação envolvente de recursos.",
     "project-title-passforge": "PassForge - Página de Destino",
     "project-desc-passforge": "Uma plataforma de marketing para um aplicativo inteligente de geração de senhas, oferecendo uma interface de usuário atraente com sistema de inscrição e demonstração ao vivo dos recursos de segurança.",
 
