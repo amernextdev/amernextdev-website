@@ -1,0 +1,79 @@
+# Amer Developer Portfolio
+
+🌐 **موقع مطور ويب متكامل متعدد اللغات**
+
+موقع شخصي احترافي يعرض مهارات وخبرات Amer Developer في تطوير الويب والحلول الرقمية.
+
+## 🚀 المميزات
+
+- **تصميم متجاوب** - متوافق مع جميع الأجهزة
+- **دعم متعدد اللغات** - 7 لغات (الإنجليزية، العربية، الألمانية، الفرنسية، الإسبانية، الروسية، البرتغالية)
+- **وضعي التصميم** - فاتح وداكن
+- **نظام طلبات الخدمات** - اختيار وطلب الخدمات بسهولة
+- **نموذج تواصل ذكي** - إرسال عبر البريد أو واتساب
+- **أداء محسن** - تحميل سريع وتحسين لمحركات البحث
+
+## 🛠️ التقنيات المستخدمة
+
+### Frontend
+- HTML5, CSS3, JavaScript (ES6+)
+- CSS Custom Properties (Variables)
+- Font Awesome Icons
+- Google Fonts (Poppins, Cairo, Roboto)
+
+### Backend Ready
+- Python (للحلول والتطبيقات)
+
+### الأدوات
+- Git & GitHub
+- VS Code
+- Figma
+
+## 📁 هيكل الملفات
+Amer-Developer/
+├── index.html
+├── assets/
+│ ├── css/
+│ │ └── main_style.css
+│ ├── js/
+│ │ └── main_script.js
+│ ├── images/
+│ │ ├── logo.webp
+│ │ ├── icon.webp
+│ │ └── projects/
+│ └── data/
+│ └── transltion.json
+├── manifest.json
+├── robots.txt
+└── sitemap.xml
+
+## 🌍 اللغات المدعومة
+
+- 🇺🇸 English
+- 🇸🇦 العربية  
+- 🇩🇪 Deutsch
+- 🇫🇷 Français
+- 🇪🇸 Español
+- 🇷🇺 Русский
+- 🇵🇹 Português
+
+## 📧 التواصل
+
+- **البريد الإلكتروني**: iamamer030@gmail.com
+- **واتساب**: +2 012 8078 7721
+- **موقع الويب**: https://amer-developer0.github.io/Amer-Developer/
+
+## 🔧 الخدمات المقدمة
+
+- 🌐 صفحات الهبوط (Landing Pages)
+- 💻 مواقع الويب (Websites)
+- 🐍 حلول بايثون (Python Solutions)
+- 🔧 الدعم والصيانة (Support & Maintenance)
+
+## 📄 الترخيص
+
+© 2025 Amer Developer. جميع الحقوق محفوظة.
+
+---
+
+**تم التطوير بـ ❤️ باستخدام تقنيات الويب الحديثة**
