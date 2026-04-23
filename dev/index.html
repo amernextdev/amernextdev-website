@@ -1,13 +1,220 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>dev</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <!-- CORE -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Amer - Front-End Developer</title>
+  <meta name="description" content="I build high-performance frontend apps — clean code, real results, on time." />
+  <meta name="keywords" content="Frontend Developer, Web Developer, React Specialist, Modern UI/UX, State Management, JavaScript (ES6+), Responsive Design." />
+  <meta name="author" content="Amer Abdelfattah" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://amerdev.pages.dev/" />
+
+  <!-- SEO STRUCTURED DATA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Amer Abdelfattah",
+    "jobTitle": "Frontend Developer",
+    "url": "https://amerdev.pages.dev/",
+    "email": "mailto:iamamer030@gmail.com",
+    "image": "https://amerdev.pages.dev/profile.jpg",
+    "description": "Frontend Developer specializing in building clean, scalable, and high-performance web applications using React and Next.js.",
+    "knowsAbout": [
+      "Web Development",
+      "Frontend Development",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "React.js",
+      "Next.js",
+      "Tailwind CSS",
+      "Responsive Design"
+    ],
+    "sameAs": [
+      "https://linkedin.com",
+      "https://github.com"
+    ]
+  }
+  </script>
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://amerdev.pages.dev/" />
+  <meta property="og:title" content="Amer - Front-End Developer" />
+  <meta property="og:description" content="From concept to reality — I build high-performance web interfaces that work." />
+  <!-- <meta property="og:image" content="[رابط صورة 1200x630]" /> -->
+  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Amer - Front-End Developer" />
+  <meta property="og:locale" content="ar_EG" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="Amer developer" />
+
+  <!-- TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://amerdev.pages.dev/" />
+  <meta name="twitter:title" content="Amer - Front-End Developer" />
+  <meta name="twitter:description" content="From concept to reality — I build high-performance web interfaces that work." />
+  <meta name="twitter:image" content="/og-image.jpg" />
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#F59E0B" />
+</head>
+<body>
+  <!-- ========== SITE HEADER ========== -->
+<header id="site-header">
+
+  <!-- Logo -->
+  <div class="header__logo-wrapper">
+    <a href="#" class="header__logo" aria-label="Amer - Front-End Developer">
+      <img src="./src/assets/images/other/logo-only-icon.png" alt="Amer - Front-End Developer" width="100" />
+    </a>
+  </div>
+
+  <!-- Primary Navigation -->
+  <nav class="header__nav" aria-label="Primary navigation">
+    <ul class="header__nav-list">
+      <li><a class="nav__link nav__link--active" href="#home"     data-trans="nav.home">Home</a></li>
+      <li><a class="nav__link"                   href="#work"     data-trans="nav.work">Work</a></li>
+      <li><a class="nav__link"                   href="#services" data-trans="nav.services">Services</a></li>
+      <li><a class="nav__link"                   href="#about"    data-trans="nav.about">About</a></li>
+      <li><a class="nav__link"                   href="#contact"  data-trans="nav.contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header Controls -->
+  <div class="header__controls">
+
+    <!-- Theme Toggle -->
+    <button class="ctrl-btn" id="theme-toggle" aria-label="Toggle theme">
+      <span id="theme-icon" aria-hidden="true">
+        <svg class="icon icon--sun"><use href="/sprites/solid.svg#sun"></use></svg>
+        <!-- <svg class="icon icon--moon"><use href="/sprites/solid.svg#moon"></use></svg> -->
+      </span>
+    </button>
+
+    <!-- Language Toggle -->
+    <button class="ctrl-btn" id="lang-toggle" aria-label="Toggle language">
+      <span id="lang-label">AR</span>
+    </button>
+
+    <!-- CTA Button -->
+    <a href="#contact" class="header__cta" id="header-cta">
+      <span class="header__cta-text" data-trans="header.cta">Let's Talk</span>
+      <span class="header__cta-arrow" aria-hidden="true">→</span>
+    </a>
+
+  </div>
+
+  <!-- Mobile Menu Trigger -->
+  <button class="burger-btn" id="burger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </button>
+
+</header>
+
+
+<!-- ========== MOBILE NAVIGATION ========== -->
+<aside id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+
+  <!-- Logo -->
+  <div class="mobile-nav__logo-wrapper">
+    <a href="#" class="mobile-nav__logo" aria-label="Amer - Front-End Developer">
+      <img src="./src/assets/images/other/logo-only-icon.png" alt="Amer - Front-End Developer" width="100" />
+    </a>
+  </div>
+
+  <!-- Close Button -->
+  <button class="mobile-nav__close-btn" id="mobile-nav-close" aria-label="Close menu">
+    <svg class="icon icon--close" aria-hidden="true"><use href="/sprites/solid.svg#xmark"></use></svg>
+  </button>
+
+  <!-- Mobile Navigation Links -->
+  <nav class="mobile-nav__nav" aria-label="Mobile navigation links">
+    <ul class="mobile-nav__list">
+      <li><a class="nav__link nav__link--active" href="#home"     data-trans="nav.home">Home</a></li>
+      <li><a class="nav__link"                   href="#work"     data-trans="nav.work">Work</a></li>
+      <li><a class="nav__link"                   href="#services" data-trans="nav.services">Services</a></li>
+      <li><a class="nav__link"                   href="#about"    data-trans="nav.about">About</a></li>
+      <li><a class="nav__link"                   href="#contact"  data-trans="nav.contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile Controls -->
+  <div class="mobile-nav__controls">
+
+    <!-- Theme Toggle -->
+    <button class="ctrl-btn" id="mobile-theme-toggle" aria-label="Toggle theme">
+      <span id="mobile-theme-icon" aria-hidden="true">
+        <svg class="icon icon--sun"><use href="/sprites/solid.svg#sun"></use></svg>
+        <!-- <svg class="icon icon--moon"><use href="/sprites/solid.svg#moon"></use></svg> -->
+      </span>
+    </button>
+
+    <!-- Language Toggle -->
+    <button class="ctrl-btn" id="mobile-lang-toggle" aria-label="Toggle language">
+      <span id="mobile-lang-label">AR</span>
+    </button>
+
+    <!-- CTA Button -->
+    <a href="#contact" class="mobile-nav__cta" id="mobile-nav-cta">
+      <span class="mobile-nav__cta-text" data-trans="header.cta">Let's Talk</span>
+    </a>
+
+  </div>
+
+</aside>
+  <main id="main_content">
+    <!-- HERO SECTION -->
+
+    <!-- WORK SECTION -->
+
+    <!-- SERVICES SECTION -->
+
+    <!-- ABOUT SECTION -->
+
+    <!-- CONTACT SECTION -->
+  </main>
+  <footer id="main_footer">
+    <div class="footer-inner">
+        <!-- Logo -->
+    <div class="footer__logo-wrapper">
+      <a href="#" class="footer__logo" aria-label="Amer - Front-End Developer">
+        <img src="./src/assets/images/other/logo-only-icon.png" alt="Amer - Front-End Developer" width="100" />
+      </a>
+      <p>Amer</p><br/><p>Full-Stack Developer</p>
+    </div>
+    <!-- Social Media Links -->
+    <div class="footer__social">
+      <a href="https://www.facebook.com/share/1HDT2VKw3a/" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+        <svg class="icon icon--facebook"><use href="/sprites/brands.svg#facebook"></use></svg>
+      </a>
+      <a href="https://github.com/amer-developer0" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+        <svg class="icon icon--github"><use href="/sprites/brands.svg#github"></use></svg>
+      </a>
+      <a href="https://wa.me/201280787721" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+        <svg class="icon icon--whatsapp"><use href="/sprites/brands.svg#whatsapp"></use></svg>
+      </a>
+    </div>
+    <div class="footer-meta">
+      <p class="footer_p_email">Email: <span><a href="mailto:iamamer030@gmail.com" class="footer-email">iamamer030@gmail.com</a></span></p>
+      <p class="footer_p_phone">Phone: <span><a href="https://wa.me/201280787721" class="footer-phone">201280787721</a></span></p>
+      <p class="footer-copy">© 2025 Aamer. All rights reserved.</p>
+    </div>
+  </div>
+  </footer>
+  <script src="./src/main.js" type="module"></script>
+</body>
 </html>

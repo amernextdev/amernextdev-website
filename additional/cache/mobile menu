@@ -1,0 +1,32 @@
+    <!-- MOBILE NAV LOGO -->
+    <div class="mobile_nav_inner">
+      <a href="#" class="mobile_nav_logo">
+        <img src="./src/assets/images/other/logo-only-icon.png" alt="Amer - Front-End Developer" width="100px" />
+      </a>
+    </div>
+    <!-- CLOSE BUTTON -->
+     <button class="m_n_close" id="m_n_close" aria-label="Close menu">
+        <svg class="m_n_close_icon"><use href="/sprites/solid.svg#xmark"></use></svg>
+     </button>
+    <!-- MOBILE NAV -->
+    <nav class="mobile_nav">
+      <ul>
+        <li><a class="m_nav_link active" href="#home" data-trans="nav_link_home">Home</a></li>
+        <li><a class="m_nav_link" href="#work" data-trans="nav_link_work">Work</a></li>
+        <li><a class="m_nav_link" href="#services" data-trans="nav_link_services">Services</a></li>
+        <li><a class="m_nav_link" href="#about" data-trans="nav_link_about">About</a></li>
+        <li><a class="m_nav_link" href="#contact" data-trans="nav_link_contact">Contact</a></li>
+      </ul>
+    </nav>
+        <!-- MOBILE NAV CONTROLS -->
+      <div class="mobile_nav_controls">
+        <button class="m_n_ctrl_btn" id="m_n_theme_toggle" aria-label="Toggle theme">
+          <span id="m_n_theme_icon"><svg class="m_n_sun_icon"><use href="/sprites/solid.svg#sun"></use></svg></span> <!--<svg class="m_n_moon_icon"><use href="/sprites/solid.svg#moon"></use></svg>-->
+        </button>
+        <button class="m_n_ctrl_btn" id="m_n_lang_toggle" aria-label="Toggle language">
+          <span id="m_n_lang_label">AR</span>
+        </button>
+        <a href="#contact" class="m_n_cta" id="m_n_cta_btn">
+          <span class="m_n_cta-text" data-trans="h.lets_talk">Let's Talk</span>
+        </a>
+      </div>

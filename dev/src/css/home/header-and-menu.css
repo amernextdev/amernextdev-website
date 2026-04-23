@@ -1,0 +1,55 @@
+/* البرجر ميني - معدل لاستخدام متغيرات التصميم الخاصة بك */
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2); /* 8px - بدلاً من 5px الثابتة */
+  width: var(--space-8); /* 32px - بدلاً من 36px */
+  height: var(--space-8); /* 32px */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-1); /* 4px */
+}
+
+.burger span {
+  display: block;
+  height: 2px;
+  background-color: var(--color-text-heading); /* بدلاً من --burger-color */
+  border-radius: var(--radius-full); /* استخدام متغير الراديوس */
+  transition: transform var(--transition-base), 
+              opacity var(--transition-base), 
+              width var(--transition-base);
+  transform-origin: center;
+}
+
+/* عرض الخطوط الافتراضي */
+.burger span:nth-child(1) { width: var(--space-6); } /* 24px */
+.burger span:nth-child(2) { width: 18px; } /* حجم مختلف متعمد */
+.burger span:nth-child(3) { width: 22px; } /* حجم مختلف متعمد */
+
+/* شكل علامة الـ X عند فتح القائمة */
+.burger.open span:nth-child(1) { 
+  transform: translateY(7px) rotate(45deg); 
+  width: var(--space-6); /* 24px */
+}
+.burger.open span:nth-child(2) { 
+  opacity: 0; 
+  width: 0; 
+}
+.burger.open span:nth-child(3) { 
+  transform: translateY(-7px) rotate(-45deg); 
+  width: var(--space-6); /* 24px */
+}
+
+/* اختياري: لو عايز تضيف تأثير hover */
+.burger:hover span {
+  background-color: var(--color-accent); /* اللون الأساسي العنبري */
+}
+
+/* اختياري: لو عايز تغير لون البرجر في حالة القائمة المفتوحة */
+.burger.open span {
+  background-color: var(--color-accent);
+}
