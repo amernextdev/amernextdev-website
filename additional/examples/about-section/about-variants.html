@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Section Variants — Aamer</title>
+
+  <style>
+    @font-face {
+      font-family: 'Syne';
+      src: url('https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjEKc.woff2') format('woff2');
+      font-weight: 400 800;
+      font-display: swap;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg:            #0A0A0F;
+      --color-bg-secondary:  #0D0D14;
+      --color-surface:       #13131A;
+      --color-surface-2:     #1A1A26;
+      --color-border:        #1E1E2E;
+      --color-border-strong: #2A2A3E;
+      --color-text-heading:  #F0F0FF;
+      --color-text-body:     #A0A0B8;
+      --color-text-muted:    #505068;
+      --color-accent:        #F59E0B;
+      --color-accent-hover:  #FBBF24;
+      --color-amber-glow:    rgba(245, 158, 11, 0.15);
+      --color-amber-border:  rgba(245, 158, 11, 0.22);
+      --color-amber-surface: rgba(245, 158, 11, 0.05);
+      --font-primary:        'Syne', sans-serif;
+      --ease:                cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html, body {
+      font-family: var(--font-primary);
+      background: var(--color-bg);
+      color: var(--color-text-heading);
+      overflow-x: hidden;
+    }
+
+    /* nav dots */
+    .nav-dots {
+      position: fixed;
+      right: 24px; top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 100;
+    }
+    .nav-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--color-border-strong);
+      border: none; cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .nav-dot.active { background: var(--color-accent); transform: scale(1.4); }
+
+    /* shared section base */
+    .about-section {
+      min-height: 100svh;
+      scroll-snap-align: start;
+      padding: 100px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 64px; right: 64px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-border-strong), transparent);
+    }
+
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    /* shared label */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+    }
+    .section-label::before { content:''; width:24px; height:1px; background:var(--color-accent); }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 56px;
+    }
+    .section-title .outline {
+      -webkit-text-stroke: 1.5px var(--color-border-strong);
+      color: transparent;
+    }
+
+    /* variant label */
+    .variant-tag {
+      position: absolute;
+      top: 32px; left: 64px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .variant-tag::before { content:''; width:20px; height:1px; background:var(--color-border-strong); }
+
+    /* shared skill tag */
+    .skill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--color-text-body);
+      background: var(--color-surface-2, #1A1A26);
+      border: 1px solid var(--color-border);
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: border-color 0.25s, color 0.25s;
+    }
+    .skill-tag:hover { border-color: var(--color-border-strong); color: var(--color-text-heading); }
+    .skill-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; }
+
+    /* body text */
+    .about-p {
+      font-size: 0.92rem;
+      line-height: 1.85;
+      color: var(--color-text-body);
+      margin-bottom: 20px;
+    }
+    .about-p:last-of-type { margin-bottom: 0; }
+    .about-p strong { color: var(--color-text-heading); font-weight: 700; }
+    .about-p .accent { color: var(--color-accent); font-weight: 700; }
+
+
+    /* ════════════════════════════════════════
+       VARIANT A — Two Column: Text | Skills
+    ════════════════════════════════════════ */
+    #va { background: var(--color-bg); }
+
+    .va-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .va-skills-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 20px;
+    }
+
+    .va-skills-group { margin-bottom: 32px; }
+    .va-skills-group-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .va-skills-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+
+    /* ════════════════════════════════════════
+       VARIANT B — Stacked: Text then Skills grid
+    ════════════════════════════════════════ */
+    #vb { background: var(--color-bg-secondary); }
+
+    .vb-text { max-width: 680px; margin-bottom: 64px; }
+
+    .vb-skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .vb-skill-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 20px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .vb-skill-card:hover { border-color: var(--color-border-strong); transform: translateY(-3px); }
+
+    .vb-skill-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--color-amber-surface);
+      border: 1px solid var(--color-amber-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      font-size: 1rem;
+    }
+    .vb-skill-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--color-text-heading);
+      margin-bottom: 4px;
+    }
+    .vb-skill-type {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
+
+    /* ════════════════════════════════════════
+       VARIANT C — Asymmetric: big quote + side panel
+    ════════════════════════════════════════ */
+    #vc { background: var(--color-bg); }
+
+    /* right amber glow */
+    #vc::after {
+      content: '';
+      position: absolute;
+      top: 20%; right: -5%;
+      width: 45%; height: 60%;
+      background: radial-gradient(ellipse, var(--color-amber-glow) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .vc-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 64px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .vc-quote {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+      color: var(--color-text-heading);
+      margin-bottom: 40px;
+      padding-left: 24px;
+      border-left: 2px solid var(--color-accent);
+    }
+
+    .vc-panel {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 28px;
+      position: sticky;
+      top: 100px;
+    }
+    .vc-panel-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .vc-skills-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+    .vc-skill-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .vc-skill-name {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--color-text-body);
+    }
+    .vc-skill-bar-wrap {
+      flex: 1;
+      height: 3px;
+      background: var(--color-border);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .vc-skill-bar {
+      height: 100%;
+      background: var(--color-accent);
+      border-radius: 100px;
+      transition: width 1s var(--ease);
+    }
+
+    .vc-panel-divider { height: 1px; background: var(--color-border); margin-bottom: 20px; }
+
+    .vc-info-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .vc-info-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .vc-info-value {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--color-text-heading);
+    }
+    .vc-info-value.green { color: #28CA41; }
+
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 1024px) {
+      .about-section { padding: 80px 40px; }
+      .about-section::before { left: 40px; right: 40px; }
+      .variant-tag { left: 40px; }
+      .vb-skills-grid { grid-template-columns: repeat(3, 1fr); }
+      .vc-grid { grid-template-columns: 1fr; }
+      .vc-panel { position: static; }
+    }
+
+    @media (max-width: 768px) {
+      .about-section { padding: 72px 24px; }
+      .about-section::before { left: 24px; right: 24px; }
+      .variant-tag { left: 24px; }
+      .va-grid { grid-template-columns: 1fr; gap: 48px; }
+      .vb-skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-dots { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .vb-skills-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+  </style>
+</head>
+<body>
+
+<nav class="nav-dots">
+  <button class="nav-dot active" onclick="document.getElementById('va').scrollIntoView({behavior:'smooth'})"></button>
+  <button class="nav-dot"        onclick="document.getElementById('vb').scrollIntoView({behavior:'smooth'})"></button>
+  <button class="nav-dot"        onclick="document.getElementById('vc').scrollIntoView({behavior:'smooth'})"></button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     VARIANT A — Two Column
+══════════════════════════════════════════ -->
+<section class="about-section" id="va">
+  <span class="variant-tag">Variant A</span>
+  <div class="section-inner">
+
+    <p class="section-label" data-en="About" data-ar="عني">About</p>
+    <h2 class="section-title">
+      <span data-en="The developer" data-ar="المطور">The developer</span><br>
+      <span class="outline" data-en="behind the code." data-ar="اللي وراء الكود.">behind the code.</span>
+    </h2>
+
+    <div class="va-grid">
+
+      <!-- Text -->
+      <div>
+        <p class="about-p" data-en="I'm Aamer, a full stack developer based in Cairo. I build web applications from the ground up — clean architecture, thoughtful UI, and backend logic that actually holds under pressure."
+           data-ar="أنا عامر، full stack developer في القاهرة. بابني web applications من الصفر — architecture نظيفة، UI مدروسة، وـ backend بيشتغل صح حتى تحت الضغط.">
+          I'm Aamer, a full stack developer based in Cairo. I build web applications from the ground up — clean architecture, thoughtful UI, and backend logic that actually holds under pressure.
+        </p>
+        <p class="about-p" data-en="I care about the details most people skip. Code should be readable six months later. Interfaces should feel obvious. Deadlines should mean something. That's what I bring to every project."
+           data-ar="بهتم بالتفاصيل اللي معظم الناس بتتجاهلها. الكود المفروض يبقى مقروء بعد ستة شهور. الـ interfaces المفروض تبان واضحة. المواعيد المفروض تعني حاجة. ده اللي بجيبه لكل مشروع.">
+          I care about the details most people skip. Code should be readable six months later. Interfaces should feel obvious. Deadlines should mean something. That's what I bring to every project.
+        </p>
+        <p class="about-p" data-en="When I'm not building, I'm learning. The web moves fast — staying current isn't optional, it's part of the job."
+           data-ar="لما مبنيش، بتعلم. الويب بيتطور بسرعة — إنك تبقى على اطلاع مش اختياري، ده جزء من الشغل.">
+          When I'm not building, I'm learning. The web moves fast — staying current isn't optional, it's part of the job.
+        </p>
+      </div>
+
+      <!-- Skills -->
+      <div>
+        <p class="va-skills-title" data-en="Tech Stack" data-ar="التقنيات">Tech Stack</p>
+
+        <div class="va-skills-group">
+          <p class="va-skills-group-label" data-en="Frontend" data-ar="الواجهة الأمامية">Frontend</p>
+          <div class="va-skills-tags">
+            <span class="skill-tag"><span class="skill-dot"></span>React</span>
+            <span class="skill-tag"><span class="skill-dot"></span>HTML</span>
+            <span class="skill-tag"><span class="skill-dot"></span>CSS</span>
+            <span class="skill-tag"><span class="skill-dot"></span>JavaScript</span>
+            <span class="skill-tag"><span class="skill-dot"></span>Tailwind</span>
+          </div>
+        </div>
+
+        <div class="va-skills-group">
+          <p class="va-skills-group-label" data-en="Backend" data-ar="الواجهة الخلفية">Backend</p>
+          <div class="va-skills-tags">
+            <span class="skill-tag"><span class="skill-dot"></span>Node.js</span>
+            <span class="skill-tag"><span class="skill-dot"></span>Express</span>
+            <span class="skill-tag"><span class="skill-dot"></span>Python</span>
+            <span class="skill-tag"><span class="skill-dot"></span>REST API</span>
+          </div>
+        </div>
+
+        <div class="va-skills-group">
+          <p class="va-skills-group-label" data-en="Database & Tools" data-ar="قواعد البيانات والأدوات">Database & Tools</p>
+          <div class="va-skills-tags">
+            <span class="skill-tag"><span class="skill-dot"></span>MongoDB</span>
+            <span class="skill-tag"><span class="skill-dot"></span>MySQL</span>
+            <span class="skill-tag"><span class="skill-dot"></span>Git</span>
+            <span class="skill-tag"><span class="skill-dot"></span>Linux</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     VARIANT B — Stacked + Skills Grid
+══════════════════════════════════════════ -->
+<section class="about-section" id="vb">
+  <span class="variant-tag">Variant B</span>
+  <div class="section-inner">
+
+    <p class="section-label" data-en="About" data-ar="عني">About</p>
+    <h2 class="section-title">
+      <span data-en="The developer" data-ar="المطور">The developer</span><br>
+      <span class="outline" data-en="behind the code." data-ar="اللي وراء الكود.">behind the code.</span>
+    </h2>
+
+    <div class="vb-text">
+      <p class="about-p" data-en="I'm Aamer, a full stack developer based in Cairo. I build web applications from the ground up — clean architecture, thoughtful UI, and backend logic that actually holds under pressure."
+         data-ar="أنا عامر، full stack developer في القاهرة. بابني web applications من الصفر — architecture نظيفة، UI مدروسة، وـ backend بيشتغل صح حتى تحت الضغط.">
+        I'm Aamer, a full stack developer based in Cairo. I build web applications from the ground up — clean architecture, thoughtful UI, and backend logic that actually holds under pressure.
+      </p>
+      <p class="about-p" data-en="I care about the details most people skip. Code should be readable six months later. Interfaces should feel obvious. Deadlines should mean something."
+         data-ar="بهتم بالتفاصيل اللي معظم الناس بتتجاهلها. الكود المفروض يبقى مقروء بعد ستة شهور. الـ interfaces المفروض تبان واضحة. المواعيد المفروض تعني حاجة.">
+        I care about the details most people skip. Code should be readable six months later. Interfaces should feel obvious. Deadlines should mean something.
+      </p>
+    </div>
+
+    <!-- Skills grid -->
+    <div class="vb-skills-grid">
+      <div class="vb-skill-card">
+        <div class="vb-skill-icon">⚛</div>
+        <p class="vb-skill-name">React</p>
+        <p class="vb-skill-type" data-en="Frontend" data-ar="واجهة أمامية">Frontend</p>
+      </div>
+      <div class="vb-skill-card">
+        <div class="vb-skill-icon">🟩</div>
+        <p class="vb-skill-name">Node.js</p>
+        <p class="vb-skill-type" data-en="Backend" data-ar="واجهة خلفية">Backend</p>
+      </div>
+      <div class="vb-skill-card">
+        <div class="vb-skill-icon">🐍</div>
+        <p class="vb-skill-name">Python</p>
+        <p class="vb-skill-type" data-en="Backend" data-ar="واجهة خلفية">Backend</p>
+      </div>
+      <div class="vb-skill-card">
+        <div class="vb-skill-icon">🍃</div>
+        <p class="vb-skill-name">MongoDB</p>
+        <p class="vb-skill-type" data-en="Database" data-ar="قاعدة بيانات">Database</p>
+      </div>
+      <div class="vb-skill-card">
+        <div class="vb-skill-icon">💨</div>
+        <p class="vb-skill-name">Tailwind</p>
+        <p class="vb-skill-type" data-en="Styling" data-ar="تصميم">Styling</p>
+      </div>
+      <div class="vb-skill-card">
+        <div class="vb-skill-icon">🔌</div>
+        <p class="vb-skill-name">REST API</p>
+        <p class="vb-skill-type" data-en="Integration" data-ar="تكامل">Integration</p>
+      </div>
+      <div class="vb-skill-card">
+        <div class="vb-skill-icon">🐙</div>
+        <p class="vb-skill-name">Git</p>
+        <p class="vb-skill-type" data-en="Version Control" data-ar="إدارة الكود">Version Control</p>
+      </div>
+      <div class="vb-skill-card">
+        <div class="vb-skill-icon">🐧</div>
+        <p class="vb-skill-name">Linux</p>
+        <p class="vb-skill-type" data-en="DevOps" data-ar="بيئة التطوير">DevOps</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     VARIANT C — Asymmetric + Side Panel
+══════════════════════════════════════════ -->
+<section class="about-section" id="vc">
+  <span class="variant-tag">Variant C</span>
+  <div class="section-inner">
+
+    <p class="section-label" data-en="About" data-ar="عني">About</p>
+    <h2 class="section-title">
+      <span data-en="The developer" data-ar="المطور">The developer</span><br>
+      <span class="outline" data-en="behind the code." data-ar="اللي وراء الكود.">behind the code.</span>
+    </h2>
+
+    <div class="vc-grid">
+
+      <!-- Text -->
+      <div>
+        <p class="vc-quote"
+           data-en="I don't just write code — I build things that work, look right, and ship on time."
+           data-ar="مش بس بكتب كود — بابني حاجات بتشتغل، بتبان صح، وبتتسلم في الموعد.">
+          I don't just write code — I build things that work, look right, and ship on time.
+        </p>
+        <p class="about-p" data-en="I'm Aamer, a full stack developer based in Cairo. I build web applications from the ground up — clean architecture, thoughtful UI, and backend logic that actually holds under pressure."
+           data-ar="أنا عامر، full stack developer في القاهرة. بابني web applications من الصفر — architecture نظيفة، UI مدروسة، وـ backend بيشتغل صح حتى تحت الضغط.">
+          I'm Aamer, a full stack developer based in Cairo. I build web applications from the ground up — clean architecture, thoughtful UI, and backend logic that actually holds under pressure.
+        </p>
+        <p class="about-p" data-en="I care about the details most people skip. Code should be readable six months later. Interfaces should feel obvious. Deadlines should mean something. That's what I bring to every project."
+           data-ar="بهتم بالتفاصيل اللي معظم الناس بتتجاهلها. الكود المفروض يبقى مقروء بعد ستة شهور. الـ interfaces المفروض تبان واضحة. المواعيد المفروض تعني حاجة. ده اللي بجيبه لكل مشروع.">
+          I care about the details most people skip. Code should be readable six months later. Interfaces should feel obvious. Deadlines should mean something. That's what I bring to every project.
+        </p>
+        <p class="about-p" data-en="When I'm not building, I'm learning. The web moves fast — staying current isn't optional, it's part of the job."
+           data-ar="لما مبنيش، بتعلم. الويب بيتطور بسرعة — إنك تبقى على اطلاع مش اختياري، ده جزء من الشغل.">
+          When I'm not building, I'm learning. The web moves fast — staying current isn't optional, it's part of the job.
+        </p>
+      </div>
+
+      <!-- Side panel -->
+      <div class="vc-panel">
+        <p class="vc-panel-title" data-en="Core Skills" data-ar="المهارات الأساسية">Core Skills</p>
+
+        <div class="vc-skills-list">
+          <div class="vc-skill-row">
+            <span class="vc-skill-name">React</span>
+            <div class="vc-skill-bar-wrap"><div class="vc-skill-bar" style="width:85%"></div></div>
+          </div>
+          <div class="vc-skill-row">
+            <span class="vc-skill-name">Node.js</span>
+            <div class="vc-skill-bar-wrap"><div class="vc-skill-bar" style="width:80%"></div></div>
+          </div>
+          <div class="vc-skill-row">
+            <span class="vc-skill-name">Python</span>
+            <div class="vc-skill-bar-wrap"><div class="vc-skill-bar" style="width:75%"></div></div>
+          </div>
+          <div class="vc-skill-row">
+            <span class="vc-skill-name">MongoDB</span>
+            <div class="vc-skill-bar-wrap"><div class="vc-skill-bar" style="width:70%"></div></div>
+          </div>
+          <div class="vc-skill-row">
+            <span class="vc-skill-name">Tailwind</span>
+            <div class="vc-skill-bar-wrap"><div class="vc-skill-bar" style="width:90%"></div></div>
+          </div>
+        </div>
+
+        <div class="vc-panel-divider"></div>
+
+        <div class="vc-info-row">
+          <span class="vc-info-label" data-en="Based" data-ar="المدينة">Based</span>
+          <span class="vc-info-value">Cairo, EG</span>
+        </div>
+        <div class="vc-info-row">
+          <span class="vc-info-label" data-en="Focus" data-ar="التخصص">Focus</span>
+          <span class="vc-info-value">Full Stack</span>
+        </div>
+        <div class="vc-info-row">
+          <span class="vc-info-label" data-en="Available" data-ar="متاح">Available</span>
+          <span class="vc-info-value green" data-en="Yes" data-ar="نعم">Yes</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<script>
+  const lang = localStorage.getItem('lang') || 'en';
+  document.documentElement.setAttribute('lang', lang);
+  if (lang === 'ar') {
+    document.querySelectorAll('[data-ar]').forEach(el => {
+      el.textContent = el.getAttribute('data-ar');
+    });
+  }
+
+  // nav dots
+  const dots = document.querySelectorAll('.nav-dot');
+  const sections = document.querySelectorAll('.about-section');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const i = [...sections].indexOf(e.target);
+        dots.forEach((d,j) => d.classList.toggle('active', i===j));
+      }
+    });
+  }, { threshold: 0.5 });
+  sections.forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>

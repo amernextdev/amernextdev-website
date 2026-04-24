@@ -499,46 +499,12 @@
 </head>
 <body>
 
-<nav class="nav-dots" aria-label="Variants">
-  <button class="nav-dot active" onclick="scrollTo(0)" aria-label="Variant 1"></button>
-  <button class="nav-dot" onclick="document.getElementById('v2').scrollIntoView({behavior:'smooth'})" aria-label="Variant 2"></button>
-  <button class="nav-dot" onclick="document.getElementById('v3').scrollIntoView({behavior:'smooth'})" aria-label="Variant 3"></button>
+<nav class="nav-dots" data-trans-a-l="variants.nav" aria-label="Variants">
+  <button class="nav-dot active" onclick="scrollTo(0)" data-trans-a-l="variant.1" aria-label="Variant 1"></button>
+  <button class="nav-dot" onclick="document.getElementById('v2').scrollIntoView({behavior:'smooth'})" data-trans-a-l="variant.2" aria-label="Variant 2"></button>
+  <button class="nav-dot" onclick="document.getElementById('v3').scrollIntoView({behavior:'smooth'})" data-trans-a-l="variant.3" aria-label="Variant 3"></button>
 </nav>
 
-<!-- ══ VARIANT 1 — Typographic Statement ══ -->
-<section id="v1">
-  <span class="variant-label">Variant 01</span>
-  <div class="v1-inner">
-    <div class="v1-tag">
-      <span class="v1-tag-dot"></span>
-      Full Stack Developer — Cairo, EG
-    </div>
-    <h1 class="v1-headline">
-      <span class="solid">I build</span>
-      <span class="amber">full stack</span>
-      <span class="outline">solutions.</span>
-    </h1>
-    <div class="v1-bottom">
-      <div>
-        <p class="v1-desc">Clean code. Real results. Frontend to backend — I handle the full picture so you don't have to.</p>
-        <div class="v1-ctas">
-          <a href="#work" class="btn-primary">See My Work →</a>
-          <a href="#contact" class="btn-ghost">Let's Talk</a>
-        </div>
-      </div>
-      <div class="v1-stats">
-        <div class="v1-stat">
-          <p class="v1-stat-num">10<span>+</span></p>
-          <p class="v1-stat-label">Projects</p>
-        </div>
-        <div class="v1-stat">
-          <p class="v1-stat-num">100<span>%</span></p>
-          <p class="v1-stat-label">On Time</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ══ VARIANT 2 — Terminal Split ══ -->
 <section id="v2">
@@ -578,32 +544,6 @@
   </div>
 </section>
 
-<!-- ══ VARIANT 3 — Centered Minimal ══ -->
-<section id="v3">
-  <span class="variant-label">Variant 03</span>
-  <div class="v3-inner">
-    <div class="v3-available">
-      <span class="v3-available-dot"></span>
-      Available for work
-    </div>
-    <p class="v3-name">Aamer</p>
-    <h1 class="v3-headline">Full Stack</h1>
-    <h2 class="v3-headline-2">Developer.</h2>
-    <div class="v3-divider"></div>
-    <p class="v3-desc">Clean code. Real results. Frontend to backend — I handle the full picture so you don't have to.</p>
-    <div class="v3-ctas">
-      <a href="#work" class="btn-primary">See My Work →</a>
-      <a href="#contact" class="btn-ghost">Let's Talk</a>
-    </div>
-    <div class="v3-stack">
-      <span class="v3-tag">React</span>
-      <span class="v3-tag">Node.js</span>
-      <span class="v3-tag">Python</span>
-      <span class="v3-tag">Tailwind</span>
-      <span class="v3-tag">REST API</span>
-    </div>
-  </div>
-</section>
 
 <script>
   const dots = document.querySelectorAll('.nav-dot');
