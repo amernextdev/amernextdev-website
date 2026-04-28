@@ -5,9 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Amer - Front-End Developer</title>
-  <meta name="description" content="I build high-performance frontend apps — clean code, real results, on time." />
-  <meta name="keywords" content="Frontend Developer, Web Developer, React Specialist, Modern UI/UX, State Management, JavaScript (ES6+), Responsive Design." />
+  <title>Amer - Full Stack Developer</title>
+  <meta name="description" content="I build websites that work, load fast, and represent your business clearly." />
+  <meta name="keywords" content="Full Stack Developer, Web Developer, React Specialist, Modern UI/UX, State Management, JavaScript (ES6+), Responsive Design." />
   <meta name="author" content="Amer Abdelfattah" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://amerdev.pages.dev/" />
@@ -18,21 +18,23 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Amer Abdelfattah",
-    "jobTitle": "Frontend Developer",
+    "jobTitle": "Full Stack Developer",
     "url": "https://amerdev.pages.dev/",
     "email": "mailto:iamamer030@gmail.com",
     "image": "https://amerdev.pages.dev/profile.jpg",
-    "description": "Frontend Developer specializing in building clean, scalable, and high-performance web applications using React and Next.js.",
+    "description": "Full Stack Developer who builds websites that load fast, look clear, and serve a real purpose.",
     "knowsAbout": [
       "Web Development",
-      "Frontend Development",
+      "Full Stack Development",
       "HTML5",
       "CSS3",
       "JavaScript",
       "React.js",
       "Next.js",
       "Tailwind CSS",
-      "Responsive Design"
+      "Responsive Design",
+      "python",
+      "flask"
     ],
     "sameAs": [
       "https://linkedin.com",
@@ -44,13 +46,12 @@
   <!-- OPEN GRAPH -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://amerdev.pages.dev/" />
-  <meta property="og:title" content="Amer - Front-End Developer" />
-  <meta property="og:description" content="From concept to reality — I build high-performance web interfaces that work." />
-  <!-- <meta property="og:image" content="[رابط صورة 1200x630]" /> -->
+  <meta property="og:title" content="Amer — Full Stack Developer" />
+  <meta property="og:description" content="I build websites that represent your business and work for your visitors." />
   <meta property="og:image" content="/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Amer - Front-End Developer" />
+  <meta property="og:image:alt" content="Amer — Full Stack Developer" />
   <meta property="og:locale" content="ar_EG" />
   <meta property="og:locale:alternate" content="en_US" />
   <meta property="og:site_name" content="Amer developer" />
@@ -58,8 +59,8 @@
   <!-- TWITTER CARD -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://amerdev.pages.dev/" />
-  <meta name="twitter:title" content="Amer - Front-End Developer" />
-  <meta name="twitter:description" content="From concept to reality — I build high-performance web interfaces that work." />
+  <meta name="twitter:title" content="Amer — Full Stack Developer" />
+  <meta name="twitter:description" content="I build websites that represent your business and work for your visitors." />
   <meta name="twitter:image" content="/og-image.jpg" />
 
   <!-- FAVICON -->
@@ -71,667 +72,631 @@
   <meta name="theme-color" content="#F59E0B" />
 </head>
 <body>
+
   <!-- ========== SITE HEADER ========== -->
-<header id="site-header">
+  <header id="site-header">
 
-  <!-- Logo -->
-  <div class="header__logo-wrapper">
-    <a href="#" class="header__logo"  data-trans-a-l="header.logo" aria-label="Amer - Front-End Developer">
-      <img src="./src/assets/images/other/logo-only-icon.png" alt="Amer - Front-End Developer" data-trans-alt="header.logo" width="100" />
-    </a>
-  </div>
+    <!-- Logo -->
+    <div class="header__logo-wrapper">
+      <a href="#" class="header__logo" aria-label="Amer — Full Stack Developer" data-i18n-aria="header.logo.aria-label">
+        <img src="./src/assets/images/other/logo-only-icon.png" alt="Amer logo" data-i18n-alt="header.logo.alt" width="100" />
+      </a>
+    </div>
 
-  <!-- Primary Navigation -->
-  <nav class="header__nav" data-trans-a-l="header.nav" aria-label="Primary navigation">
-    <ul class="header__nav-list">
-      <li><a class="nav__link nav__link--active" href="#home"     data-trans-text="nav.home">Home</a></li>
-      <li><a class="nav__link"                   href="#work"     data-trans-text="nav.work">Work</a></li>
-      <li><a class="nav__link"                   href="#services" data-trans-text="nav.services">Services</a></li>
-      <li><a class="nav__link"                   href="#about"    data-trans-text="nav.about">About</a></li>
-      <li><a class="nav__link"                   href="#contact"  data-trans-text="nav.contact">Contact</a></li>
-    </ul>
-  </nav>
+    <!-- Primary Navigation -->
+    <nav class="header__nav" aria-label="Main navigation" data-i18n-aria="header.nav.aria-label">
+      <ul class="header__nav-list">
+        <li><a class="nav__link nav__link--active" href="#hero"     data-i18n-text="nav.link.home">Home</a></li>
+        <li><a class="nav__link"                   href="#work"     data-i18n-text="nav.link.work">Work</a></li>
+        <li><a class="nav__link"                   href="#services" data-i18n-text="nav.link.services">Services</a></li>
+        <li><a class="nav__link"                   href="#about"    data-i18n-text="nav.link.about">About</a></li>
+        <li><a class="nav__link"                   href="#contact"  data-i18n-text="nav.link.contact">Contact</a></li>
+      </ul>
+    </nav>
 
-  <!-- Header Controls -->
-  <div class="header__controls" data-trans-a-l="header.controls">
+    <!-- Header Controls -->
+    <div class="header__controls">
 
-    <!-- Theme Toggle -->
-    <button class="ctrl-btn" id="theme-toggle" data-trans-a-l="h.theme" aria-label="Toggle theme">
-      <span id="theme-icon" aria-hidden="true">
-        <svg class="icon icon--sun"><use href="/sprites/solid.svg#sun"></use></svg>
-        <!-- <svg class="icon icon--moon"><use href="/sprites/solid.svg#moon"></use></svg> -->
-      </span>
+      <!-- Theme Toggle -->
+      <button class="header__theme-toggle-button" id="theme-toggle" aria-label="Switch theme" data-i18n-aria="header.controls.theme-toggle.aria-label">
+        <span id="theme-icon" aria-hidden="true">
+          <svg class="icon icon--sun"><use href="/sprites/solid.svg#sun"></use></svg>
+        </span>
+      </button>
+
+      <!-- Language Toggle -->
+      <button class="header__lang-toggle-button" id="lang-toggle" aria-label="Switch language" data-i18n-aria="header.controls.lang-toggle.aria-label">
+        <span id="lang-label">AR</span>
+      </button>
+
+      <!-- CTA Button -->
+      <a href="#contact" class="header__cta-link" id="header-cta">
+        <span class="header__cta-label" data-i18n-text="header.cta.label">Let's Talk</span>
+        <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+      </a>
+
+    </div>
+
+    <!-- Mobile Menu Trigger -->
+    <button class="header__burger-button" id="burger-btn" aria-label="Open navigation" data-i18n-aria="header.burger.aria-label" aria-expanded="false" aria-controls="mobile-nav">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
     </button>
 
-    <!-- Language Toggle -->
-    <button class="ctrl-btn" id="lang-toggle" data-trans-a-l="h.lang" aria-label="Toggle language">
-      <span id="lang-label">AR</span>
+  </header>
+
+
+  <!-- ========== MOBILE NAVIGATION ========== -->
+  <aside id="mobile-nav" aria-label="Mobile navigation" data-i18n-aria="mobile-nav.aria-label" aria-hidden="true">
+
+    <!-- Logo -->
+    <div class="mobile-nav__logo-wrapper">
+      <a href="#" class="mobile-nav__logo-link" aria-label="Amer — Full Stack Developer" data-i18n-aria="mobile-nav.logo.aria-label">
+        <img src="./src/assets/images/other/logo-only-icon.png" alt="Amer logo" data-i18n-alt="mobile-nav.logo.alt" width="100" />
+      </a>
+    </div>
+
+    <!-- Close Button -->
+    <button class="mobile-nav__close-button" id="mobile-nav-close" aria-label="Close navigation" data-i18n-aria="mobile-nav.close-button.aria-label">
+      <svg class="icon icon--close" aria-hidden="true"><use href="/sprites/solid.svg#xmark"></use></svg>
     </button>
 
-    <!-- CTA Button -->
-    <a href="#contact" class="header__cta" id="header-cta" data-trans-a-l="h.cta">
-      <span class="header__cta-text" data-trans-text="header.cta">Let's Talk</span>
-      <span class="header__cta-arrow" aria-hidden="true">→</span>
-    </a>
+    <!-- Mobile Navigation Links -->
+    <nav class="mobile-nav__nav" aria-label="Navigation links" data-i18n-aria="mobile-nav.nav.aria-label">
+      <ul class="mobile-nav__list">
+        <li><a class="nav__link nav__link--active" href="#hero"     data-i18n-text="nav.link.home">Home</a></li>
+        <li><a class="nav__link"                   href="#work"     data-i18n-text="nav.link.work">Work</a></li>
+        <li><a class="nav__link"                   href="#services" data-i18n-text="nav.link.services">Services</a></li>
+        <li><a class="nav__link"                   href="#about"    data-i18n-text="nav.link.about">About</a></li>
+        <li><a class="nav__link"                   href="#contact"  data-i18n-text="nav.link.contact">Contact</a></li>
+      </ul>
+    </nav>
 
-  </div>
+    <!-- Mobile Controls -->
+    <div class="mobile-nav__controls">
 
-  <!-- Mobile Menu Trigger -->
-  <button class="burger-btn" id="burger-btn" data-trans-a-l="burger.open" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
-  </button>
+      <!-- Theme Toggle -->
+      <button class="mobile-nav__theme-toggle-button" id="mobile-theme-toggle" aria-label="Switch theme" data-i18n-aria="mobile-nav.controls.theme-toggle.aria-label">
+        <span id="mobile-theme-icon" aria-hidden="true">
+          <svg class="icon icon--sun"><use href="/sprites/solid.svg#sun"></use></svg>
+        </span>
+      </button>
 
-</header>
+      <!-- Language Toggle -->
+      <button class="mobile-nav__lang-toggle-button" id="mobile-lang-toggle" aria-label="Switch language" data-i18n-aria="mobile-nav.controls.lang-toggle.aria-label">
+        <span id="mobile-lang-label">AR</span>
+      </button>
 
+      <!-- CTA Button -->
+      <a href="#contact" class="mobile-nav__cta-link" id="mobile-nav-cta">
+        <span class="mobile-nav__cta-label" data-i18n-text="header.cta.label">Let's Talk</span>
+      </a>
 
-<!-- ========== MOBILE NAVIGATION ========== -->
-<aside id="mobile-nav" data-trans-a-l="mobile.nav" aria-label="Mobile navigation" aria-hidden="true">
+    </div>
 
-  <!-- Logo -->
-  <div class="mobile-nav__logo-wrapper">
-    <a href="#" class="mobile-nav__logo" data-trans-a-l="header.logo" aria-label="Amer - Front-End Developer">
-      <img src="./src/assets/images/other/logo-only-icon.png" alt="Amer - Front-End Developer" data-trans-alt="mobile.logo" width="100" />
-    </a>
-  </div>
+  </aside>
 
-  <!-- Close Button -->
-  <button class="mobile-nav__close-btn" id="mobile-nav-close" data-trans-a-l="mobile.close" aria-label="Close menu">
-    <svg class="icon icon--close" aria-hidden="true"><use href="/sprites/solid.svg#xmark"></use></svg>
-  </button>
+  <main id="main-content">
 
-  <!-- Mobile Navigation Links -->
-  <nav class="mobile-nav__nav" data-trans-a-l="mobile.nav.links" aria-label="Mobile navigation links">
-    <ul class="mobile-nav__list">
-      <li><a class="nav__link nav__link--active" href="#home"     data-trans-text="nav.home">Home</a></li>
-      <li><a class="nav__link"                   href="#work"     data-trans-text="nav.work">Work</a></li>
-      <li><a class="nav__link"                   href="#services" data-trans-text="nav.services">Services</a></li>
-      <li><a class="nav__link"                   href="#about"    data-trans-text="nav.about">About</a></li>
-      <li><a class="nav__link"                   href="#contact"  data-trans-text="nav.contact">Contact</a></li>
-    </ul>
-  </nav>
+    <!-- ========== HERO SECTION ========== -->
+    <section id="hero">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <p class="hero-eyebrow" data-i18n-text="hero.eyebrow">Full Stack Developer</p>
+          <h1 class="hero-headline" data-i18n-html="hero.headline">Websites that<br><em>work</em><br>for you.</h1>
+          <p class="hero-description" data-i18n-text="hero.description">Full Stack to backend — I build things that load, look right, and hold up.</p>
+          <div class="hero-cta-group">
+            <a href="#work"    class="btn-primary" data-i18n-text="hero.cta.work">See My Work <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
+            <a href="#contact" class="btn-ghost"   data-i18n-text="hero.cta.contact">Start a Project</a>
+          </div>
+        </div>
 
-  <!-- Mobile Controls -->
-  <div class="mobile-nav__controls">
+        <div class="hero-terminal">
+          <div class="hero-terminal__header">
+            <span class="hero-terminal__dot"></span>
+            <span class="hero-terminal__dot"></span>
+            <span class="hero-terminal__dot"></span>
+            <span class="hero-terminal__title">amer.sh</span>
+          </div>
+          <div class="hero-terminal__body">
+            <div class="hero-terminal__line">
+              <span class="term-var">$</span> <span class="term-kw">amer</span> <span class="term-str">--status</span>
+            </div>
+            <div class="hero-terminal__line">
+              <span class="term-bool">[INFO]</span> <span class="term-muted" data-i18n-text="hero.terminal.loading">Loading profile...</span>
+            </div>
+            <div class="hero-terminal__line">
+              <span class="term-kw">●</span> <span class="term-muted" data-i18n-text="hero.terminal.role-label">Role:</span> <span class="term-acc" data-i18n-text="hero.terminal.role-value">Full Stack Developer</span>
+            </div>
+            <div class="hero-terminal__line">
+              <span class="term-kw">●</span> <span class="term-muted" data-i18n-text="hero.terminal.stack-label">Stack:</span> <span class="term-str" data-i18n-text="hero.terminal.stack-value">[React, Next.js, Python]</span>
+            </div>
+            <div class="hero-terminal__line">
+              <span class="term-kw">●</span> <span class="term-muted" data-i18n-text="hero.terminal.location-label">Location:</span> <span class="term-acc" data-i18n-text="hero.terminal.location-value">Cairo, Egypt</span>
+            </div>
+            <div class="hero-terminal__line">
+              <span class="term-kw">●</span> <span class="term-muted" data-i18n-text="hero.terminal.availability-label">Availability:</span> <span class="term-acc" data-i18n-text="hero.terminal.availability-value">Open to new projects</span>
+            </div>
+            <div class="hero-terminal__line">&nbsp;</div>
+            <div class="hero-terminal__line">
+              <span class="term-var">$</span> <span class="term-cursor"></span>
+            </div>
+          </div>
+        </div>
 
-    <!-- Theme Toggle -->
-    <button class="ctrl-btn" id="mobile-theme-toggle" data-trans-a-l="mobile.theme" aria-label="Toggle theme">
-      <span id="mobile-theme-icon" aria-hidden="true">
-        <svg class="icon icon--sun"><use href="/sprites/solid.svg#sun"></use></svg>
-        <!-- <svg class="icon icon--moon"><use href="/sprites/solid.svg#moon"></use></svg> -->
-      </span>
-    </button>
-
-    <!-- Language Toggle -->
-    <button class="ctrl-btn" id="mobile-lang-toggle" data-trans-a-l="mobile.lang" aria-label="Toggle language">
-      <span id="mobile-lang-label">AR</span>
-    </button>
-
-    <!-- CTA Button -->
-    <a href="#contact" class="mobile-nav__cta" id="mobile-nav-cta" data-trans-a-l="h.cta">
-      <span class="mobile-nav__cta-text" data-trans-text="header.cta">Let's Talk</span>
-    </a>
-
-  </div>
-
-</aside>
-  <main id="main_content">
-    <!-- HERO SECTION -->
-<section id="hero">
-  <div class="hero-inner">
-    <div class="hero-left">
-      <p class="hero-eyebrow" data-trans-text="hero.eyebrow">Full Stack Developer</p>
-      <h1 class="hero-headline" data-trans-text="hero.headline--html" data-trans-html="hero.headline--html">Code that<br><em>actually</em><br>ships.</h1>
-      <p class="hero-desc" data-trans-text="hero.desc">Frontend to backend — I build things that work, look good, and don't break at 2am.</p>
-      <div class="hero-ctas">
-        <a href="#work" class="btn-primary" data-trans-text="hero.cta.work">See My Work →</a>
-        <a href="#contact" class="btn-ghost" data-trans-text="hero.cta.contact">Let's Talk</a>
       </div>
-    </div>
-<div class="hero-terminal">
-  <div class="hero-term-header">
-    <span class="term-dot"></span>
-    <span class="term-dot"></span>
-    <span class="term-dot"></span>
-    <!-- تم تغيير الاسم ليكون ملف Bash -->
-    <span class="term-title">amer.sh</span>
-  </div>
-  <div class="hero-term-body">
-    <!-- السطر الأول: الأمر -->
-    <div class="term-line">
-      <span class="term-var">$</span> <span class="term-kw">amer</span> <span class="term-str">--status</span>
-    </div>
-    
-    <!-- السطر الثاني: رسالة النظام -->
-    <div class="term-line">
-      <span class="term-bool">[INFO]</span> <span class="term-muted">Fetching developer profile...</span>
-    </div>
+    </section>
 
-    <!-- الأسطر التالية: البيانات -->
-    <div class="term-line">
-      <span class="term-kw">●</span> <span class="term-muted">Role:</span> <span class="term-acc">Full Stack Developer</span>
-    </div>
-    <div class="term-line">
-      <span class="term-kw">●</span> <span class="term-muted">Stack:</span> <span class="term-str">[React, Next.js, Python]</span>
-    </div>
-    <div class="term-line">
-      <span class="term-kw">●</span> <span class="term-muted">Location:</span> <span class="term-acc">Cairo, Egypt</span>
-    </div>
-    <div class="term-line">
-      <span class="term-kw">●</span> <span class="term-muted">Availability:</span> <span class="term-acc">Ready for next project</span>
-    </div>
-    
-    <div class="term-line">&nbsp;</div> <!-- سطر فارغ للجمالية -->
-    
-    <!-- السطر الأخير مع المؤشر الوامض -->
-    <div class="term-line">
-      <span class="term-var">$</span> <span class="term-cursor"></span>
-    </div>
-  </div>
-</div>
+    <!-- ========== WORK SECTION ========== -->
+    <section class="work-section" id="work">
+      <div class="work-inner">
 
-  </div>
-</section>
+        <!-- Section Header -->
+        <div class="section-header">
+          <div>
+            <p class="section-label" data-i18n-text="work.section-label">Selected Work</p>
+            <h2 class="section-title">
+              <span data-i18n-text="work.section-title.line1">Projects that</span><br>
+              <span class="outline" data-i18n-text="work.section-title.line2">got things done.</span>
+            </h2>
+          </div>
+        </div>
 
-    <!-- WORK SECTION -->
-<section class="work-section" id="work">
-  <div class="work-inner">
+        <!-- Projects Grid -->
+        <div class="projects-grid">
 
-    <!-- Header -->
-    <div class="section-header">
-      <div>
-        <p class="section-label"
-           data-en="Selected Work"
-           data-ar="من أعمالي">Selected Work</p>
+          <!-- Card 1 -->
+          <article class="project-card">
+            <div class="project-card__image">
+              <div class="project-card__image-placeholder">
+                <div class="project-card__placeholder-icon">
+                  <svg class="icon icon--table-columns" aria-hidden="true"><use href="/sprites/solid.svg#table-columns"></use></svg>
+                </div>
+              </div>
+              <span class="project-card__number">01</span>
+              <span class="project-card__live-badge"><span class="live-dot"></span><span data-i18n-text="work.card.live-badge">Live</span></span>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title" data-i18n-text="work.card1.title">Project Name</h3>
+              <p class="project-card__description" data-i18n-text="work.card1.description">One sentence that describes what the project does and who it's for.</p>
+              <div class="project-card__stack">
+                <span class="stack-tag">React</span>
+                <span class="stack-tag">Node.js</span>
+                <span class="stack-tag">MongoDB</span>
+              </div>
+            </div>
+            <div class="project-card__footer">
+              <a href="#" class="project-card__link project-card__link--live" target="_blank" rel="noopener">
+                <span data-i18n-text="work.card.link.live-site">Live Site</span>
+                <svg class="icon icon--arrow-up-right-from-square" aria-hidden="true"><use href="/sprites/solid.svg#arrow-up-right-from-square"></use></svg>
+              </a>
+              <a href="/work/project-slug" class="project-card__link project-card__link--case-study">
+                <span data-i18n-text="work.card.link.case-study">Case Study</span>
+                <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="project-card">
+            <div class="project-card__image">
+              <div class="project-card__image-placeholder">
+                <div class="project-card__placeholder-icon">
+                  <svg class="icon icon--table-columns" aria-hidden="true"><use href="/sprites/solid.svg#table-columns"></use></svg>
+                </div>
+              </div>
+              <span class="project-card__number">02</span>
+              <span class="project-card__live-badge"><span class="live-dot"></span><span data-i18n-text="work.card.live-badge">Live</span></span>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title" data-i18n-text="work.card2.title">Project Name</h3>
+              <p class="project-card__description" data-i18n-text="work.card2.description">One sentence that describes what the project does and who it's for.</p>
+              <div class="project-card__stack">
+                <span class="stack-tag">HTML</span>
+                <span class="stack-tag">CSS</span>
+                <span class="stack-tag">JavaScript</span>
+              </div>
+            </div>
+            <div class="project-card__footer">
+              <a href="#" class="project-card__link project-card__link--live" target="_blank" rel="noopener">
+                <span data-i18n-text="work.card.link.live-site">Live Site</span>
+                <svg class="icon icon--arrow-up-right-from-square" aria-hidden="true"><use href="/sprites/solid.svg#arrow-up-right-from-square"></use></svg>
+              </a>
+              <a href="/work/project-slug" class="project-card__link project-card__link--case-study">
+                <span data-i18n-text="work.card.link.case-study">Case Study</span>
+                <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="project-card">
+            <div class="project-card__image">
+              <div class="project-card__image-placeholder">
+                <div class="project-card__placeholder-icon">
+                  <svg class="icon icon--table-columns" aria-hidden="true"><use href="/sprites/solid.svg#table-columns"></use></svg>
+                </div>
+              </div>
+              <span class="project-card__number">03</span>
+              <span class="project-card__live-badge"><span class="live-dot"></span><span data-i18n-text="work.card.live-badge">Live</span></span>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title" data-i18n-text="work.card3.title">Project Name</h3>
+              <p class="project-card__description" data-i18n-text="work.card3.description">One sentence that describes what the project does and who it's for.</p>
+              <div class="project-card__stack">
+                <span class="stack-tag">Python</span>
+                <span class="stack-tag">Tailwind</span>
+                <span class="stack-tag">REST API</span>
+              </div>
+            </div>
+            <div class="project-card__footer">
+              <a href="#" class="project-card__link project-card__link--live" target="_blank" rel="noopener">
+                <span data-i18n-text="work.card.link.live-site">Live Site</span>
+                <svg class="icon icon--arrow-up-right-from-square" aria-hidden="true"><use href="/sprites/solid.svg#arrow-up-right-from-square"></use></svg>
+              </a>
+              <a href="/work/project-slug" class="project-card__link project-card__link--case-study">
+                <span data-i18n-text="work.card.link.case-study">Case Study</span>
+                <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Footer CTA -->
+        <div class="work-footer">
+          <a href="/work" class="btn-outline">
+            <span data-i18n-text="work.footer.view-all-projects">All Projects</span>
+            <svg width="14" height="14" class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========== SERVICES SECTION ========== -->
+    <section class="services-section" id="services">
+      <div class="services-inner">
+
+        <!-- Section Header -->
+        <div class="section-header">
+          <div class="section-eyebrow" data-i18n-text="services.section-eyebrow">Services</div>
+          <h2 class="section-title" data-i18n-html="services.section-title">What I <span>build</span></h2>
+          <p class="section-description" data-i18n-text="services.section-description">Each project starts with a clear goal. It ends with something that works.</p>
+        </div>
+
+        <!-- Desktop Layout -->
+        <div class="desktop-layout">
+
+          <!-- Service List -->
+          <div class="services-list-panel">
+            <div class="services-list" id="svc-list">
+              <div class="service-list-item service-list-item--active">
+                <span class="service-list-item__number">01</span>
+                <span class="service-list-item__name" data-i18n-text="services.item1.name">Business Website</span>
+                <svg class="icon icon--arrow-right service-list-item__arrow" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+              </div>
+              <div class="service-list-item">
+                <span class="service-list-item__number">02</span>
+                <span class="service-list-item__name" data-i18n-text="services.item2.name">Landing Page</span>
+                <svg class="icon icon--arrow-right service-list-item__arrow" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+              </div>
+              <div class="service-list-item">
+                <span class="service-list-item__number">03</span>
+                <span class="service-list-item__name" data-i18n-text="services.item3.name">Web Application</span>
+                <svg class="icon icon--arrow-right service-list-item__arrow" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+              </div>
+              <div class="service-list-item">
+                <span class="service-list-item__number">04</span>
+                <span class="service-list-item__name" data-i18n-text="services.item4.name">Frontend UI</span>
+                <svg class="icon icon--arrow-right service-list-item__arrow" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+              </div>
+              <div class="service-list-item">
+                <span class="service-list-item__number">05</span>
+                <span class="service-list-item__name" data-i18n-text="services.item5.name">Website Maintenance</span>
+                <svg class="icon icon--arrow-right service-list-item__arrow" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detail Panel -->
+          <div class="service-detail-panel glow" id="svc-detail">
+            <div class="service-detail-panel__top" id="svc-detail-content">
+              <span class="service-detail-panel__icon" id="svc-icon"><svg class="icon icon--building" aria-hidden="true"><use href="/sprites/solid.svg#building"></use></svg></span>
+              <div class="service-detail-panel__name" id="svc-name" data-i18n-text="services.item1.name">Business Website</div>
+              <p class="service-detail-panel__description" id="svc-desc" data-i18n-text="services.item1.description">
+                Your website is often the first thing a client sees. It needs to be fast, clear, and work on every device.
+              </p>
+              <p class="service-detail-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
+              <ul class="service-detail-panel__includes-list" id="svc-includes">
+                <li data-i18n-text="services.item1.include1">Responsive design for all devices</li>
+                <li data-i18n-text="services.item1.include2">SEO-ready structure</li>
+                <li data-i18n-text="services.item1.include3">Fast load times</li>
+                <li data-i18n-text="services.item1.include4">Contact form integration</li>
+                <li data-i18n-text="services.item1.include5">CMS setup (optional)</li>
+              </ul>
+              <div class="service-detail-panel__tags" id="svc-tags">
+                <span class="service-detail-panel__tag">HTML/CSS</span>
+                <span class="service-detail-panel__tag">React</span>
+                <span class="service-detail-panel__tag">CMS</span>
+              </div>
+            </div>
+            <a href="#contact" class="btn-primary" style="margin-top:auto;width:fit-content" data-i18n-text="services.detail.cta">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
+          </div>
+
+        </div>
+
+        <!-- Mobile Layout -->
+        <div class="mobile-layout">
+
+          <!-- Tabs Navigation -->
+          <div class="tabs-nav-wrapper">
+            <div class="tabs-nav" id="tabs-nav">
+              <button class="tab-button tab-button--active" data-i18n-text="services.tab1.short-name">Business Site</button>
+              <button class="tab-button" data-i18n-text="services.tab2.short-name">Landing Page</button>
+              <button class="tab-button" data-i18n-text="services.tab3.short-name">Web App</button>
+              <button class="tab-button" data-i18n-text="services.tab4.short-name">Frontend UI</button>
+              <button class="tab-button" data-i18n-text="services.tab5.short-name">Maintenance</button>
+            </div>
+          </div>
+
+          <!-- Indicator Dots -->
+          <div class="tab-dots" id="tab-dots">
+            <div class="tab-dot tab-dot--active"></div>
+            <div class="tab-dot"></div>
+            <div class="tab-dot"></div>
+            <div class="tab-dot"></div>
+            <div class="tab-dot"></div>
+          </div>
+
+          <!-- Tab Panels -->
+          <div class="tab-panels" id="tab-panels">
+
+            <div class="tab-panel tab-panel--active">
+              <span class="tab-panel__icon"><svg class="icon icon--building" aria-hidden="true"><use href="/sprites/solid.svg#building"></use></svg></span>
+              <h3 class="tab-panel__name" data-i18n-html="services.tab1.heading">Business <span>Website</span></h3>
+              <p class="tab-panel__description" data-i18n-text="services.item1.description">Your website is often the first thing a client sees. It needs to be fast, clear, and work on every device.</p>
+              <div class="tab-panel__includes">
+                <p class="tab-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
+                <ul class="tab-panel__includes-list">
+                  <li data-i18n-text="services.item1.include1">Responsive design for all devices</li>
+                  <li data-i18n-text="services.item1.include2">SEO-ready structure</li>
+                  <li data-i18n-text="services.item1.include3">Fast load times</li>
+                  <li data-i18n-text="services.item1.include4">Contact form integration</li>
+                  <li data-i18n-text="services.item1.include5">CMS setup (optional)</li>
+                </ul>
+              </div>
+              <a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
+            </div>
+
+            <div class="tab-panel">
+              <span class="tab-panel__icon"><svg class="icon icon--rocket" aria-hidden="true"><use href="/sprites/solid.svg#rocket"></use></svg></span>
+              <h3 class="tab-panel__name" data-i18n-html="services.tab2.heading">Landing <span>Page</span></h3>
+              <p class="tab-panel__description" data-i18n-text="services.item2.description">One page, one goal — built to turn visitors into customers.</p>
+              <div class="tab-panel__includes">
+                <p class="tab-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
+                <ul class="tab-panel__includes-list">
+                  <li data-i18n-text="services.item2.include1">Custom animations &amp; interactions</li>
+                  <li data-i18n-text="services.item2.include2">Conversion-focused layout</li>
+                  <li data-i18n-text="services.item2.include3">A/B test ready structure</li>
+                  <li data-i18n-text="services.item2.include4">Analytics integration</li>
+                  <li data-i18n-text="services.item2.include5">Mobile-first design</li>
+                </ul>
+              </div>
+              <a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
+            </div>
+
+            <div class="tab-panel">
+              <span class="tab-panel__icon"><svg class="icon icon--gear" aria-hidden="true"><use href="/sprites/solid.svg#gear"></use></svg></span>
+              <h3 class="tab-panel__name" data-i18n-html="services.tab3.heading">Web <span>Application</span></h3>
+              <p class="tab-panel__description" data-i18n-text="services.item3.description">Web apps that solve real problems. No unnecessary complexity.</p>
+              <div class="tab-panel__includes">
+                <p class="tab-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
+                <ul class="tab-panel__includes-list">
+                  <li data-i18n-text="services.item3.include1">React frontend</li>
+                  <li data-i18n-text="services.item3.include2">REST API integration</li>
+                  <li data-i18n-text="services.item3.include3">Authentication system</li>
+                  <li data-i18n-text="services.item3.include4">Database setup (light backend)</li>
+                  <li data-i18n-text="services.item3.include5">Deployment &amp; hosting setup</li>
+                </ul>
+              </div>
+              <a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
+            </div>
+
+            <div class="tab-panel">
+              <span class="tab-panel__icon"><svg class="icon icon--palette" aria-hidden="true"><use href="/sprites/solid.svg#palette"></use></svg></span>
+              <h3 class="tab-panel__name" data-i18n-html="services.tab4.heading">Frontend <span>UI</span></h3>
+              <p class="tab-panel__description" data-i18n-text="services.item4.description">A precise interface built from your design or from scratch — clean, compatible, and fast.</p>
+              <div class="tab-panel__includes">
+                <p class="tab-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
+                <ul class="tab-panel__includes-list">
+                  <li data-i18n-text="services.item4.include1">Component-based architecture</li>
+                  <li data-i18n-text="services.item4.include2">Design system implementation</li>
+                  <li data-i18n-text="services.item4.include3">Cross-browser compatibility</li>
+                  <li data-i18n-text="services.item4.include4">Figma to code</li>
+                  <li data-i18n-text="services.item4.include5">Performance optimization</li>
+                </ul>
+              </div>
+              <a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
+            </div>
+
+            <div class="tab-panel">
+              <span class="tab-panel__icon"><svg class="icon icon--wrench" aria-hidden="true"><use href="/sprites/solid.svg#wrench"></use></svg></span>
+              <h3 class="tab-panel__name" data-i18n-html="services.tab5.heading">Website <span>Maintenance</span></h3>
+              <p class="tab-panel__description" data-i18n-text="services.item5.description">Your existing site fixed, updated, or improved — without breaking what already works.</p>
+              <div class="tab-panel__includes">
+                <p class="tab-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
+                <ul class="tab-panel__includes-list">
+                  <li data-i18n-text="services.item5.include1">Bug fixing &amp; debugging</li>
+                  <li data-i18n-text="services.item5.include2">Performance improvements</li>
+                  <li data-i18n-text="services.item5.include3">Content updates</li>
+                  <li data-i18n-text="services.item5.include4">Security patches</li>
+                  <li data-i18n-text="services.item5.include5">Feature additions</li>
+                </ul>
+              </div>
+              <a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
+            </div>
+
+          </div><!-- /tab-panels -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========== ABOUT SECTION ========== -->
+    <section class="about-section" id="about">
+      <div class="about-inner">
+        <p class="section-label" data-i18n-text="about.section-label">About</p>
+
         <h2 class="section-title">
-          <span data-en="Projects that" data-ar="مشاريع">Projects that</span><br>
-          <span class="outline" data-en="speak for themselves." data-ar="بتتكلم عن نفسها.">speak for themselves.</span>
+          <span data-i18n-text="about.section-title.line1">The person</span><br>
+          <span class="outline" data-i18n-text="about.section-title.line2">behind the work.</span>
         </h2>
-      </div>
-    </div>
 
-    <!-- Grid -->
-    <div class="projects-grid">
+        <div class="about-grid">
+          <div class="typewriter-block">
 
-      <!-- Card 1 -->
-      <article class="project-card">
-        <div class="card-image">
-          <!-- Replace src with actual image -->
-          <div class="card-image-placeholder">
-            <div class="placeholder-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
-              </svg>
+            <p class="typewriter-line" id="p1">
+              <span class="typewriter-line__text" data-i18n-text="about.bio.paragraph1">
+                I'm Amer — a full stack developer based in Cairo. I build web apps from scratch, frontend to backend, with clean code and real attention to detail.
+              </span>
+            </p>
+
+            <p class="typewriter-line" id="p2">
+              <span class="typewriter-line__text" data-i18n-text="about.bio.paragraph2">
+                I care about the things most people skip — readable code, obvious interfaces, and deadlines that mean something.
+              </span>
+            </p>
+
+            <p class="typewriter-line" id="p3">
+              <span class="typewriter-line__text" data-i18n-text="about.bio.paragraph3">
+                When I'm not building, I'm learning. The web moves fast — staying current is part of the job.
+              </span>
+            </p>
+
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="about-skills" id="skills-panel">
+
+          <p class="skills-title" data-i18n-text="about.skills.heading">Tech Stack</p>
+
+          <!-- Frontend -->
+          <div class="skills-group">
+            <p class="skills-group__label" data-i18n-text="about.skills.group.frontend">Frontend</p>
+            <div class="skills-tags">
+              <span class="skill-tag" data-order="1"><span class="skill-dot"></span>HTML</span>
+              <span class="skill-tag" data-order="2"><span class="skill-dot"></span>CSS</span>
+              <span class="skill-tag" data-order="3"><span class="skill-dot"></span>JS ES6</span>
+              <span class="skill-tag" data-order="4"><span class="skill-dot"></span>React</span>
+              <span class="skill-tag" data-order="5"><span class="skill-dot"></span>Next.js</span>
+              <span class="skill-tag" data-order="6"><span class="skill-dot"></span>Tailwind CSS</span>
             </div>
           </div>
-          <span class="card-number">01</span>
-          <span class="card-live"><span class="live-dot"></span>Live</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title" data-en="Project Name" data-ar="اسم المشروع">Project Name</h3>
-          <p class="card-desc"
-             data-en="One sentence that describes what the project does and who it's for."
-             data-ar="جملة واحدة تصف المشروع ومن هو المستهدف.">
-            One sentence that describes what the project does and who it's for.
-          </p>
-          <div class="card-stack">
-            <span class="stack-tag">React</span>
-            <span class="stack-tag">Node.js</span>
-            <span class="stack-tag">MongoDB</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="card-link card-link-live" target="_blank" rel="noopener">
-            <span data-en="Live Site" data-ar="الموقع">Live Site</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
-          </a>
-          <a href="/work/project-slug" class="card-link card-link-case">
-            <span data-en="Case Study" data-ar="دراسة الحالة">Case Study</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-      </article>
 
-      <!-- Card 2 -->
-      <article class="project-card">
-        <div class="card-image">
-          <div class="card-image-placeholder">
-            <div class="placeholder-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
-              </svg>
+          <!-- Backend -->
+          <div class="skills-group">
+            <p class="skills-group__label" data-i18n-text="about.skills.group.backend">Backend</p>
+            <div class="skills-tags">
+              <span class="skill-tag" data-order="7"><span class="skill-dot"></span>Python</span>
+              <span class="skill-tag" data-order="8"><span class="skill-dot"></span>Flask</span>
             </div>
           </div>
-          <span class="card-number">02</span>
-          <span class="card-live"><span class="live-dot"></span>Live</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title" data-en="Project Name" data-ar="اسم المشروع">Project Name</h3>
-          <p class="card-desc"
-             data-en="One sentence that describes what the project does and who it's for."
-             data-ar="جملة واحدة تصف المشروع ومن هو المستهدف.">
-            One sentence that describes what the project does and who it's for.
-          </p>
-          <div class="card-stack">
-            <span class="stack-tag">HTML</span>
-            <span class="stack-tag">CSS</span>
-            <span class="stack-tag">JavaScript</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="card-link card-link-live" target="_blank" rel="noopener">
-            <span data-en="Live Site" data-ar="الموقع">Live Site</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
-          </a>
-          <a href="/work/project-slug" class="card-link card-link-case">
-            <span data-en="Case Study" data-ar="دراسة الحالة">Case Study</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-      </article>
 
-      <!-- Card 3 -->
-      <article class="project-card">
-        <div class="card-image">
-          <div class="card-image-placeholder">
-            <div class="placeholder-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
-              </svg>
+          <!-- Tools -->
+          <div class="skills-group">
+            <p class="skills-group__label" data-i18n-text="about.skills.group.tools">Tools</p>
+            <div class="skills-tags">
+              <span class="skill-tag" data-order="9"><span class="skill-dot"></span>Git</span>
+              <span class="skill-tag" data-order="10"><span class="skill-dot"></span>GitHub</span>
+              <span class="skill-tag" data-order="11"><span class="skill-dot"></span>Responsive Design</span>
             </div>
           </div>
-          <span class="card-number">03</span>
-          <span class="card-live"><span class="live-dot"></span>Live</span>
+
         </div>
-        <div class="card-body">
-          <h3 class="card-title" data-en="Project Name" data-ar="اسم المشروع">Project Name</h3>
-          <p class="card-desc"
-             data-en="One sentence that describes what the project does and who it's for."
-             data-ar="جملة واحدة تصف المشروع ومن هو المستهدف.">
-            One sentence that describes what the project does and who it's for.
-          </p>
-          <div class="card-stack">
-            <span class="stack-tag">Python</span>
-            <span class="stack-tag">Tailwind</span>
-            <span class="stack-tag">REST API</span>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <section id="contact">
+      <span class="variant-label"></span>
+
+      <div class="contact-inner">
+        <div class="contact-eyebrow" data-i18n-text="contact.eyebrow">Contact</div>
+        <h2 class="section-title" data-i18n-html="contact.section-title">Start a project <span>today</span></h2>
+        <p class="section-description" style="margin: 12px auto 0; text-align:center" data-i18n-text="contact.section-description">Have something in mind? I reply within 24 hours.</p>
+
+        <form class="contact-form" onsubmit="handleSubmit(event,'contact-success')">
+          <div class="form-group">
+            <label class="form-label" data-i18n-text="contact.form.name-label">Name</label>
+            <input class="form-input" type="text" placeholder="Your name" data-i18n-aria="contact.form.name-input.aria-label" required />
           </div>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="card-link card-link-live" target="_blank" rel="noopener">
-            <span data-en="Live Site" data-ar="الموقع">Live Site</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
+          <div class="form-group">
+            <label class="form-label" data-i18n-text="contact.form.email-label">Email</label>
+            <input class="form-input" type="email" placeholder="your@email.com" data-i18n-aria="contact.form.email-input.aria-label" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n-text="contact.form.message-label">Message</label>
+            <textarea class="form-textarea" placeholder="Describe your project briefly" data-i18n-aria="contact.form.message-textarea.aria-label"></textarea>
+          </div>
+          <div class="contact-form__success-message" id="contact-success" data-i18n-text="contact.form.success-message"><svg class="icon icon--circle-check" aria-hidden="true"><use href="/sprites/solid.svg#circle-check"></use></svg> Sent. I'll get back to you within 24 hours.</div>
+          <button type="submit" class="btn-primary" data-i18n-text="contact.form.submit-button">Send <svg class="icon icon--paper-plane" aria-hidden="true"><use href="/sprites/solid.svg#paper-plane"></use></svg></button>
+        </form>
+
+        <div class="contact-divider" data-i18n-text="contact.divider">or write directly</div>
+
+        <div class="contact-direct-buttons">
+          <a href="mailto:iamamer030@gmail.com" class="btn-outline" data-i18n-text="contact.direct.email-button"><svg class="icon icon--envelope" aria-hidden="true"><use href="/sprites/solid.svg#envelope"></use></svg> Email</a>
+          <a href="https://wa.me/201280787721" class="contact-whatsapp-button" target="_blank" data-i18n-text="contact.direct.whatsapp-button">
+            <svg class="icon icon--whatsapp" aria-hidden="true"><use href="/sprites/brands.svg#whatsapp"></use></svg>
+            WhatsApp
           </a>
-          <a href="/work/project-slug" class="card-link card-link-case">
-            <span data-en="Case Study" data-ar="دراسة الحالة">Case Study</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
         </div>
-      </article>
 
-    </div>
-
-    <!-- Footer CTA -->
-    <div class="work-footer">
-      <a href="/work" class="btn-outline">
-        <span data-en="View All Projects" data-ar="كل المشاريع">View All Projects</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-    <!-- SERVICES SECTION -->
-<section class="services-section" id="services">
-  <div class="services-inner">
-        <!-- Section Header (shared) -->
-    <div class="section-header">
-      <div class="section-eyebrow">Services</div>
-      <h2 class="section-title">What I <span>build</span></h2>
-      <p class="section-desc">Every project starts with a clear goal — and ends with something that works.</p>
-    </div>
-    <!-- ==================================================
-                  SERVICES IN DESKTOP
-    =======================================================-->
-    <div class="desktop-layout">
-      <!-- ======== 1. lift: Service List  =========-->
-       <div class="services-lift">
-        <div class="svc-list" id="svc-list">
-          <div class="svc-item active">
-            <span class="svc-item-num">01</span>
-            <span class="svc-item-name">Business Website</span>
-            <span class="svc-item-arrow">→</span>
-          </div>
-          <div class="svc-item">
-            <span class="svc-item-num">02</span>
-            <span class="svc-item-name">Landing Page</span>
-            <span class="svc-item-arrow">→</span>
-          </div>
-          <div class="svc-item">
-            <span class="svc-item-num">03</span>
-            <span class="svc-item-name">Web Application</span>
-            <span class="svc-item-arrow">→</span>
-          </div>
-          <div class="svc-item">
-            <span class="svc-item-num">04</span>
-            <span class="svc-item-name">Frontend UI</span>
-            <span class="svc-item-arrow">→</span>
-          </div>
-          <div class="svc-item">
-            <span class="svc-item-num">05</span>
-            <span class="svc-item-name">Website Maintenance</span>
-            <span class="svc-item-arrow">→</span>
-          </div>
-        </div>
-       </div>
-      <!-- ======== 2. right: Detail Panel  =========-->
-       <div class="svc-detail glow" id="svc-detail">
-        <div class="svc-detail-top" id="svc-detail-content">
-          <span class="svc-detail-icon" id="svc-icon">🏢</span>
-          <div class="svc-detail-name" id="svc-name">Business Website</div>
-          <p class="svc-detail-desc" id="svc-desc">
-            A professional online presence that represents you before you say a word. Built to load fast, look sharp, and work on every device.
-          </p>
-          <p class="svc-detail-includes-title">What's included</p>
-          <ul class="svc-detail-includes" id="svc-includes">
-            <li>Responsive design for all devices</li>
-            <li>SEO-ready structure</li>
-            <li>Fast load times</li>
-            <li>Contact form integration</li>
-            <li>CMS setup (optional)</li>
-          </ul>
-          <div class="svc-detail-tags" id="svc-tags">
-            <span class="svc-detail-tag">HTML/CSS</span>
-            <span class="svc-detail-tag">React</span>
-            <span class="svc-detail-tag">CMS</span>
-          </div>
-        </div>
-        <a href="#contact" class="btn-primary" style="margin-top:auto;width:fit-content">Start a Project →</a>
-       </div>
-    </div>
-    <!-- ==================================================
-                  SERVICES IN MOBILE
-    =======================================================-->
-    <div class="mobile-layout">
-      <!-- TABS -->
-      <div class="tabs-nav-wrapper">
-        <div class="tabs-nav" id="tabs-nav">
-          <button class="tab-btn active">Business Site</button>
-          <button class="tab-btn">Landing Page</button>
-          <button class="tab-btn">Web App</button>
-          <button class="tab-btn">Frontend UI</button>
-          <button class="tab-btn">Maintenance</button>
+        <div class="contact-availability-chips">
+          <span class="contact-chip"><span class="contact-chip__dot"></span><span data-i18n-text="contact.chip.availability">Available for projects</span></span>
+          <span class="contact-chip" data-i18n-text="contact.chip.response-time"><svg class="icon icon--bolt" aria-hidden="true"><use href="/sprites/solid.svg#bolt"></use></svg> Replies within 24h</span>
         </div>
       </div>
-      <!-- Indicator Dots -->
-      <div class="tab-dots" id="tab-dots">
-        <div class="tab-dot active"></div>
-        <div class="tab-dot"></div>
-        <div class="tab-dot"></div>
-        <div class="tab-dot"></div>
-        <div class="tab-dot"></div>
-      </div>
-      <!-- Tab Panels -->
-      <div class="tab-panels" id="tab-panels">
-
-        <div class="tab-panel active">
-          <span class="tab-panel-icon">🏢</span>
-          <h3 class="tab-panel-name">Business <span>Website</span></h3>
-          <p class="tab-panel-desc">A professional online presence that represents you before you say a word. Built to load fast, look sharp, and work on every device.</p>
-          <div class="tab-panel-includes">
-            <p class="tab-panel-includes-title">What's included</p>
-            <ul class="tab-panel-includes-list">
-              <li>Responsive design for all devices</li>
-              <li>SEO-ready structure</li>
-              <li>Fast load times</li>
-              <li>Contact form integration</li>
-              <li>CMS setup (optional)</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn-primary">Start a Project →</a>
-        </div>
-
-        <div class="tab-panel">
-          <span class="tab-panel-icon">🚀</span>
-          <h3 class="tab-panel-name">Landing <span>Page</span></h3>
-          <p class="tab-panel-desc">One page, one goal — turn visitors into customers with a focused, high-converting experience.</p>
-          <div class="tab-panel-includes">
-            <p class="tab-panel-includes-title">What's included</p>
-            <ul class="tab-panel-includes-list">
-              <li>Custom animations & interactions</li>
-              <li>Conversion-focused layout</li>
-              <li>A/B test ready structure</li>
-              <li>Analytics integration</li>
-              <li>Mobile-first design</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn-primary">Start a Project →</a>
-        </div>
-
-        <div class="tab-panel">
-          <span class="tab-panel-icon">⚙️</span>
-          <h3 class="tab-panel-name">Web <span>Application</span></h3>
-          <p class="tab-panel-desc">Simple, functional web apps that solve real problems — without unnecessary complexity.</p>
-          <div class="tab-panel-includes">
-            <p class="tab-panel-includes-title">What's included</p>
-            <ul class="tab-panel-includes-list">
-              <li>React frontend</li>
-              <li>REST API integration</li>
-              <li>Authentication system</li>
-              <li>Database setup (light backend)</li>
-              <li>Deployment & hosting setup</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn-primary">Start a Project →</a>
-        </div>
-
-        <div class="tab-panel">
-          <span class="tab-panel-icon">🎨</span>
-          <h3 class="tab-panel-name">Frontend <span>UI</span></h3>
-          <p class="tab-panel-desc">Pixel-perfect interface for any project or system — built from your design or from scratch.</p>
-          <div class="tab-panel-includes">
-            <p class="tab-panel-includes-title">What's included</p>
-            <ul class="tab-panel-includes-list">
-              <li>Component-based architecture</li>
-              <li>Design system implementation</li>
-              <li>Cross-browser compatibility</li>
-              <li>Figma to code</li>
-              <li>Performance optimization</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn-primary">Start a Project →</a>
-        </div>
-
-        <div class="tab-panel">
-          <span class="tab-panel-icon">🔧</span>
-          <h3 class="tab-panel-name">Website <span>Maintenance</span></h3>
-          <p class="tab-panel-desc">Your old site fixed, updated, or evolved — the right way, without breaking what works.</p>
-          <div class="tab-panel-includes">
-            <p class="tab-panel-includes-title">What's included</p>
-            <ul class="tab-panel-includes-list">
-              <li>Bug fixing & debugging</li>
-              <li>Performance improvements</li>
-              <li>Content updates</li>
-              <li>Security patches</li>
-              <li>Feature additions</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn-primary">Start a Project →</a>
-        </div>
-
-      </div><!-- /tab-panels -->
-    </div>
-  </div>
-</section>
-    <!-- ABOUT SECTION -->
-<section class="about-section" id="about">
-  <div class="about-inner">
-    <p class="section-label"
-       data-en="About" data-ar="عني">About</p>
-
-    <h2 class="section-title">
-      <span data-en="The developer" data-ar="المطور">The developer</span><br>
-      <span class="outline"
-            data-en="behind the code." data-ar="اللي وراء الكود.">behind the code.</span>
-    </h2>
-
-    <div class="about-grid">
-              <div class="typewriter-block">
-
-          <p class="typewriter-line" id="p1">
-            <span class="tw-text"
-                  data-en="I'm Aamer — a full stack developer based in Cairo. I build web apps from scratch, frontend to backend, with clean code and real attention to detail."
-                  data-ar="أنا عامر — full stack developer في القاهرة. بابني web apps من الصفر، من الـ frontend للـ backend، بكود نظيف واهتمام حقيقي بالتفاصيل.">
-            </span>
-          </p>
-
-          <p class="typewriter-line" id="p2">
-            <span class="tw-text"
-                  data-en="I care about the things most people skip — readable code, obvious interfaces, and deadlines that actually mean something."
-                  data-ar="بهتم بالحاجات اللي معظم الناس بتتجاهلها — كود مقروء، interfaces واضحة، ومواعيد تعني حاجة فعلاً.">
-            </span>
-          </p>
-
-          <p class="typewriter-line" id="p3">
-            <span class="tw-text"
-                  data-en="When I'm not building, I'm learning. The web moves fast — keeping up isn't optional."
-                  data-ar="لما مبنيش، بتعلم. الويب بيتطور بسرعة — متابعته مش اختياري.">
-            </span>
-          </p>
-
-        </div>
-    </div>
-          <!-- SKILLS -->
-      <div class="about-skills" id="skills-panel">
-
-        <p class="skills-title"
-           data-en="Tech Stack" data-ar="التقنيات">Tech Stack</p>
-
-        <!-- Frontend -->
-        <div class="skills-group">
-          <p class="skills-group-label"
-             data-en="Frontend" data-ar="الواجهة الأمامية">Frontend</p>
-          <div class="skills-tags">
-            <span class="skill-tag" data-order="1"><span class="skill-dot"></span>HTML</span>
-            <span class="skill-tag" data-order="2"><span class="skill-dot"></span>CSS</span>
-            <span class="skill-tag" data-order="3"><span class="skill-dot"></span>JS ES6</span>
-            <span class="skill-tag" data-order="4"><span class="skill-dot"></span>React</span>
-            <span class="skill-tag" data-order="5"><span class="skill-dot"></span>Next.js</span>
-            <span class="skill-tag" data-order="6"><span class="skill-dot"></span>Tailwind CSS</span>
-          </div>
-        </div>
-
-        <!-- Backend -->
-        <div class="skills-group">
-          <p class="skills-group-label"
-             data-en="Backend" data-ar="الواجهة الخلفية">Backend</p>
-          <div class="skills-tags">
-            <span class="skill-tag" data-order="7"><span class="skill-dot"></span>Python</span>
-            <span class="skill-tag" data-order="8"><span class="skill-dot"></span>Flask</span>
-          </div>
-        </div>
-
-        <!-- Tools -->
-        <div class="skills-group">
-          <p class="skills-group-label"
-             data-en="Tools" data-ar="الأدوات">Tools</p>
-          <div class="skills-tags">
-            <span class="skill-tag" data-order="9"><span class="skill-dot"></span>Git</span>
-            <span class="skill-tag" data-order="10"><span class="skill-dot"></span>GitHub</span>
-            <span class="skill-tag" data-order="11"><span class="skill-dot"></span>Responsive Design</span>
-          </div>
-        </div>
-
-      </div>
-  </div>
-</section>
-    <!-- CONTACT SECTION -->
-     <section id="contact">
-  <span class="variant-label">Variant 02 — Centered Minimal</span>
-
-  <div class="contact-inner">
-    <div class="eyebrow">Contact</div>
-    <h2 class="section-title">Let's build something <span>real</span></h2>
-    <p class="section-desc" style="margin: 12px auto 0; text-align:center">Have a project? I respond within 24 hours.</p>
-
-    <form class="contact-form" onsubmit="handleSubmit(event,'contact-success')">
-      <div class="form-group">
-        <label class="form-label">Name</label>
-        <input class="form-input" type="text" placeholder="Your name" required />
-      </div>
-      <div class="form-group">
-        <label class="form-label">Email</label>
-        <input class="form-input" type="email" placeholder="your@email.com" required />
-      </div>
-      <div class="form-group">
-        <label class="form-label">Message</label>
-        <textarea class="form-textarea" placeholder="Tell me about your project..."></textarea>
-      </div>
-      <div class="success-msg" id="contact-success">✓ Message sent! I'll get back to you within 24h.</div>
-      <button type="submit" class="btn-primary">Send Message →</button>
-    </form>
-
-    <div class="contact-or">or reach out directly</div>
-
-    <div class="contact-direct-btns">
-      <a href="mailto:[your@email.com]" class="btn-outline">✉️ Email Me</a>
-      <a href="https://wa.me/[your-number]" class="btn-whatsapp" target="_blank">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp
-      </a>
-    </div>
-
-    <div class="contact-chips">
-      <span class="contact-chip"><span class="contact-chip-dot"></span> Available for projects</span>
-      <span class="contact-chip">⚡ Replies within 24h</span>
-    </div>
-  </div>
-</section>
+    </section>
 
   </main>
-  <footer id="main_footer">
+
+  <footer id="main-footer">
     <div class="footer-inner">
-        <!-- Logo -->
-    <div class="footer__logo-wrapper">
-      <a href="#" class="footer__logo" data-trans-a-l="footer.logo" aria-label="Amer - Front-End Developer">
-        <img src="./src/assets/images/other/logo-only-icon.png" alt="Amer - Front-End Developer" data-trans-alt="footer.logo" width="100" />
-      </a>
-      <div data-trans-html="footer.name"><p>Amer</p><br/><p>Full-Stack Developer</p></div>
+
+      <!-- Logo -->
+      <div class="footer__logo-wrapper">
+        <a href="#" class="footer__logo-link" aria-label="Amer — Frontend Developer" data-i18n-aria="footer.logo.aria-label">
+          <img src="./src/assets/images/other/logo-only-icon.png" alt="Amer logo" data-i18n-alt="footer.logo.alt" width="100" />
+        </a>
+        <div data-i18n-html="footer.identity"><p>Amer</p><br/><p>Full Stack Developer</p></div>
+      </div>
+
+      <!-- Social Media Links -->
+      <div class="footer__social-links">
+        <a href="https://www.facebook.com/share/1HDT2VKw3a/" class="social-link" aria-label="Visit Amer on Facebook" data-i18n-aria="footer.social.facebook.aria-label" target="_blank" rel="noopener noreferrer">
+          <svg class="icon icon--facebook" aria-hidden="true"><use href="/sprites/brands.svg#facebook"></use></svg>
+        </a>
+        <a href="https://github.com/amer-developer0" class="social-link" aria-label="Visit Amer on GitHub" data-i18n-aria="footer.social.github.aria-label" target="_blank" rel="noopener noreferrer">
+          <svg class="icon icon--github" aria-hidden="true"><use href="/sprites/brands.svg#github"></use></svg>
+        </a>
+        <a href="https://wa.me/201280787721" class="social-link" aria-label="Contact Amer on WhatsApp" data-i18n-aria="footer.social.whatsapp.aria-label" target="_blank" rel="noopener noreferrer">
+          <svg class="icon icon--whatsapp" aria-hidden="true"><use href="/sprites/brands.svg#whatsapp"></use></svg>
+        </a>
+      </div>
+
+      <div class="footer-meta">
+        <p class="footer__email-line"><span data-i18n-text="footer.meta.email-prefix">Email:</span> <span><a href="mailto:iamamer030@gmail.com" class="footer__email-link">iamamer030@gmail.com</a></span></p>
+        <p class="footer__phone-line"><span data-i18n-text="footer.meta.phone-prefix">Phone:</span> <span><a href="https://wa.me/201280787721" class="footer__phone-link">201280787721</a></span></p>
+        <p class="footer__copyright" data-i18n-text="footer.meta.copyright">© 2025 Amer. All rights reserved.</p>
+      </div>
+
     </div>
-    <!-- Social Media Links -->
-    <div class="footer__social">
-      <a href="https://www.facebook.com/share/1HDT2VKw3a/" class="social-link" data-trans-a-l="social.facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-        <svg class="icon icon--facebook"><use href="/sprites/brands.svg#facebook"></use></svg>
-      </a>
-      <a href="https://github.com/amer-developer0" class="social-link" data-trans-a-l="social.github" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-        <svg class="icon icon--github"><use href="/sprites/brands.svg#github"></use></svg>
-      </a>
-      <a href="https://wa.me/201280787721" class="social-link" data-trans-a-l="social.whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
-        <svg class="icon icon--whatsapp"><use href="/sprites/brands.svg#whatsapp"></use></svg>
-      </a>
-    </div>
-    <div class="footer-meta">
-      <p class="footer_p_email">Email: <span><a href="mailto:iamamer030@gmail.com" class="footer-email">iamamer030@gmail.com</a></span></p>
-      <p class="footer_p_phone">Phone: <span><a href="https://wa.me/201280787721" class="footer-phone">201280787721</a></span></p>
-      <p class="footer-copy">© 2025 Aamer. All rights reserved.</p>
-    </div>
-  </div>
   </footer>
+
   <script src="./src/main.js" type="module"></script>
 </body>
 </html>
