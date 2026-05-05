@@ -1,0 +1,689 @@
+/* ═══════════════════════════════════════════════════
+   header.css
+   تصميم الهيدر والقائمة الجانبية للموبايل
+   يعتمد على متغيرات variables.css ويتوافق مع header.js
+   مرن – متجاوب – سهل التطوير
+═══════════════════════════════════════════════════ */
+
+/* ───────────────────────────────────────
+   1. الأساسيات (reset خاص بالهيدر والقائمة)
+   ─────────────────────────────────────── */
+#site-header,
+#mobile-nav {
+  /* اعتماد الخط الأساسي من المتغيرات */
+  font-family: var(--font-secondary, var(--font-primary, sans-serif));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* إزالة التنسيقات الافتراضية للقوائم */
+.header__nav-list,
+.mobile-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* روابط أساسية */
+.nav__link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* أيقونات SVG داخل الأزرار والروابط */
+#site-header .icon,
+#mobile-nav .icon {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* ───────────────────────────────────────
+   2. الهيدر الرئيسي #site-header
+   ─────────────────────────────────────── */
+#site-header {
+  position: fixed;
+  top: 0;
+  inset-inline: 0;          /* يتمدد من اليمين إلى اليسار حسب اتجاه اللغة */
+  z-index: var(--z-sticky, 200);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height, 64px);
+  padding-inline: var(--space-6, 24px);
+  
+  /* خلفية شفافة مع تأثير زجاجي (blur) جاهز للسكرول */
+  background-color: rgba(19, 19, 26, 0.85);  /* لون قريب من --color-surface بشفافية */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  
+  border-bottom: 1px solid var(--color-border-subtle, #16161F);
+  transition: background-color var(--transition-base, 250ms ease),
+              border-color var(--transition-base, 250ms ease);
+}
+
+/* ───────────────────────────────────────
+   3. الشعار
+   ─────────────────────────────────────── */
+.header__logo-wrapper {
+  flex-shrink: 0;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo img {
+  display: block;
+  height: 32px;           /* يمكن تعديله بسهولة */
+  width: auto;
+}
+
+/* ───────────────────────────────────────
+   4. قائمة التنقل الرئيسية (ديسكتوب)
+   ─────────────────────────────────────── */
+.header__nav {
+  display: none;            /* مخفية افتراضياً، تظهر في الميديا كويري */
+  margin-inline: auto;      /* توسيط في المساحة الفارغة */
+}
+
+.header__nav-list {
+  display: flex;
+  gap: var(--space-4, 16px);
+}
+
+.nav__link {
+  position: relative;
+  display: inline-block;
+  padding: var(--space-2, 8px) var(--space-1, 4px);
+  font-size: var(--fs-sm, 0.875rem);
+  font-weight: var(--fw-medium, 500);
+  letter-spacing: var(--ls-wide, 0.02em);
+  color: var(--color-text-body, #A0A0B8);
+  transition: color var(--transition-fast, 150ms ease);
+  white-space: nowrap;
+}
+
+/* خط تحت الرابط عند التفعيل أو التحويم */
+.nav__link::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-accent, #F59E0B);
+  transform: scaleX(0);
+  transform-origin: var(--dir) center; /* RTL: right, LTR: left */
+  transition: transform var(--transition-fast, 150ms ease);
+}
+
+.nav__link:hover,
+.nav__link:focus-visible {
+  color: var(--color-text-heading, #F0F0FF);
+}
+
+.nav__link--active,
+.nav__link:hover::after,
+.nav__link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.nav__link--active {
+  color: var(--color-accent, #F59E0B);
+  font-weight: var(--fw-semibold, 600);
+}
+
+/* ───────────────────────────────────────
+   5. عناصر التحكم (الثيم، اللغة، CTA)
+   ─────────────────────────────────────── */
+.header__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 8px);
+}
+
+/* أزرار الثيم واللغة */
+.header__theme-toggle-button,
+.header__lang-toggle-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--color-border, #1E1E2E);
+  background-color: var(--color-surface-2, #1A1A26);
+  color: var(--color-text-body, #A0A0B8);
+  cursor: pointer;
+  transition: background-color var(--transition-fast, 150ms ease),
+              color var(--transition-fast, 150ms ease),
+              border-color var(--transition-fast, 150ms ease);
+}
+
+.header__theme-toggle-button:hover,
+.header__lang-toggle-button:hover {
+  background-color: var(--color-surface-3, #1E1E2E);
+  border-color: var(--color-border-strong, #2A2A3E);
+  color: var(--color-text-heading, #F0F0FF);
+}
+
+/* أيقونة الشمس/القمر داخل زر الثيم */
+#theme-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#theme-icon .icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ملصق اللغة (AR/EN) */
+.lang-label {
+  font-size: var(--fs-xs, 0.75rem);
+  font-weight: var(--fw-bold, 700);
+  letter-spacing: var(--ls-wider, 0.06em);
+  line-height: 1;
+}
+
+/* زر Let's Talk */
+.header__cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1, 4px);
+  padding: var(--space-2, 8px) var(--space-4, 16px);
+  border-radius: var(--radius-full, 9999px);
+  background-color: var(--color-accent, #F59E0B);
+  color: var(--color-text-inverse, #0A0A0F);
+  font-size: var(--fs-sm, 0.875rem);
+  font-weight: var(--fw-semibold, 600);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast, 150ms ease),
+              box-shadow var(--transition-fast, 150ms ease);
+}
+
+.header__cta-link:hover {
+  background-color: var(--color-accent-hover, #FBBF24);
+  box-shadow: var(--shadow-amber-sm, 0 0 12px rgba(245, 158, 11, 0.2));
+}
+
+/* السهم داخل زر CTA */
+.header__cta-link .icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* ───────────────────────────────────────
+   6. زر الهامبرجر (للموبايل)
+   ─────────────────────────────────────── */
+.header__burger-button {
+  display: none;                /* يظهر فقط تحت breakpoint */
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  z-index: calc(var(--z-sticky, 200) + 1);
+}
+
+.header__burger-button span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text-heading, #F0F0FF);
+  border-radius: 2px;
+  transition: transform var(--transition-fast, 150ms ease),
+              opacity var(--transition-fast, 150ms ease);
+  transform-origin: center;
+}
+
+/* تأثيرات عند فتح القائمة (اختياري، يمكن إضافته لاحقاً) */
+#mobile-nav.is-open ~ #site-header .header__burger-button span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+#mobile-nav.is-open ~ #site-header .header__burger-button span:nth-child(2) {
+  opacity: 0;
+}
+#mobile-nav.is-open ~ #site-header .header__burger-button span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ───────────────────────────────────────
+   7. القائمة الجانبية للموبايل #mobile-nav
+   ─────────────────────────────────────── */
+#mobile-nav {
+  position: fixed;
+  top: 0;
+  inset-inline-end: 0;                          /* تبدأ من الجانب الأيمن/الأيسر حسب اللغة */
+  height: 100%;
+  width: min(320px, 85vw);                      /* عرض مرن */
+  z-index: var(--z-overlay, 300);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-10, 40px) var(--space-6, 24px);
+  
+  background-color: var(--color-bg-secondary, #0D0D14);
+  border-inline-start: 1px solid var(--color-border, #1E1E2E);
+  
+  /* إخفاء القائمة خارج الشاشة */
+  transform: translateX(100%);
+  transition: transform var(--transition-slow, 400ms ease);
+  
+  /* التوافق مع accessibility */
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* حالة الفتح */
+#mobile-nav.is-open {
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* اتجاه RTL: القائمة تظهر من اليسار */
+html[dir="rtl"] #mobile-nav {
+  transform: translateX(-100%);
+}
+html[dir="rtl"] #mobile-nav.is-open {
+  transform: translateX(0);
+}
+
+/* ───────────────────────────────────────
+   8. محتوى القائمة الجانبية
+   ─────────────────────────────────────── */
+
+/* الشعار داخل القائمة */
+.mobile-nav__logo-wrapper {
+  margin-bottom: var(--space-8, 32px);
+}
+
+.mobile-nav__logo-link img {
+  display: block;
+  height: 32px;
+  width: auto;
+}
+
+/* زر الإغلاق */
+.mobile-nav__close-button {
+  position: absolute;
+  top: var(--space-4, 16px);
+  inset-inline-end: var(--space-4, 16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--color-border, #1E1E2E);
+  background-color: var(--color-surface-2, #1A1A26);
+  color: var(--color-text-body, #A0A0B8);
+  cursor: pointer;
+  transition: background-color var(--transition-fast, 150ms ease),
+              color var(--transition-fast, 150ms ease);
+}
+
+.mobile-nav__close-button:hover {
+  background-color: var(--color-surface-3, #1E1E2E);
+  color: var(--color-text-heading, #F0F0FF);
+}
+
+.mobile-nav__close-button .icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* قائمة الروابط */
+.mobile-nav__nav {
+  margin-bottom: auto;        /* يدفع عناصر التحكم للأسفل */
+}
+
+.mobile-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1, 4px);
+}
+
+.mobile-nav__list .nav__link {
+  display: block;
+  padding: var(--space-3, 12px) var(--space-4, 16px);
+  font-size: var(--fs-base, 1rem);
+  border-radius: var(--radius-md, 8px);
+  transition: background-color var(--transition-fast, 150ms ease);
+}
+
+.mobile-nav__list .nav__link:hover {
+  background-color: var(--color-surface, #13131A);
+}
+
+/* عناصر التحكم أسفل القائمة */
+.mobile-nav__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 8px);
+  margin-top: var(--space-6, 24px);
+  padding-top: var(--space-6, 24px);
+  border-top: 1px solid var(--color-border-subtle, #16161F);
+}
+
+/* أزرار الثيم واللغة (مطابقة لأزرار سطح المكتب) */
+.mobile-nav__theme-toggle-button,
+.mobile-nav__lang-toggle-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--color-border, #1E1E2E);
+  background-color: var(--color-surface-2, #1A1A26);
+  color: var(--color-text-body, #A0A0B8);
+  cursor: pointer;
+  transition: background-color var(--transition-fast, 150ms ease),
+              color var(--transition-fast, 150ms ease);
+}
+
+.mobile-nav__theme-toggle-button:hover,
+.mobile-nav__lang-toggle-button:hover {
+  background-color: var(--color-surface-3, #1E1E2E);
+  color: var(--color-text-heading, #F0F0FF);
+}
+
+/* أيقونة الثيم داخل الموبايل */
+#mobile-theme-icon {
+  display: flex;
+}
+
+#mobile-theme-icon .icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* زر Let's Talk في الموبايل */
+.mobile-nav__cta-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2, 8px) var(--space-5, 20px);
+  border-radius: var(--radius-full, 9999px);
+  background-color: var(--color-accent, #F59E0B);
+  color: var(--color-text-inverse, #0A0A0F);
+  font-size: var(--fs-sm, 0.875rem);
+  font-weight: var(--fw-semibold, 600);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast, 150ms ease);
+}
+
+.mobile-nav__cta-link:hover {
+  background-color: var(--color-accent-hover, #FBBF24);
+}
+
+/* ───────────────────────────────────────
+   9. الميديا كويري – الظهور/الإخفاء
+   ─────────────────────────────────────── */
+
+/* فوق 768px (ديسكتوب) */
+@media (min-width: 768px) {
+  .header__nav {
+    display: block;               /* إظهار قائمة التنقل */
+  }
+
+  .header__burger-button {
+    display: none;                /* التأكيد على إخفاء الهامبرجر */
+  }
+
+  /* إخفاء القائمة الجانبية في الديسكتوب (احتياط) */
+  #mobile-nav {
+    display: none;
+  }
+}
+
+/* تحت 768px (موبايل) */
+@media (max-width: 767px) {
+  .header__nav {
+    display: none;                /* إخفاء القائمة العادية */
+  }
+
+  .header__burger-button {
+    display: flex;                /* إظهار زر الهامبرجر */
+  }
+
+  /* إخفاء زر Let's Talk من الـ header في الموبايل (موجود داخل القائمة) */
+  .header__cta-link {
+    display: none;
+  }
+}
+
+/* ───────────────────────────────────────
+   10. تحسينات للـ touch والأجهزة الصغيرة
+   ─────────────────────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+  /* تكبير مساحات اللمس */
+  .header__theme-toggle-button,
+  .header__lang-toggle-button,
+  .mobile-nav__close-button,
+  .nav__link {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   header.css — تحسينات الموبايل
+   (يُضاف أو يستبدل الأجزاء المتعلقة بالموبايل)
+═══════════════════════════════════════════════════ */
+
+/* ── تصحيح عام للهيدر في الموبايل ── */
+@media (max-width: 767px) {
+  #site-header {
+    height: 64px;                      /* ارتفاع موحد */
+    padding-inline: var(--space-4, 16px);
+    background-color: rgba(13, 13, 20, 0.92); /* خلفية زجاجية داكنة */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(30, 30, 46, 0.6);
+  }
+
+  .header__logo img {
+    height: 30px;                       /* شعار أصغر قليلاً */
+  }
+}
+
+/* ── زر الهامبرجر (أكثر وضوحاً) ── */
+.header__burger-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md, 8px);
+  background-color: var(--color-surface-2, #1A1A26);
+  border: 1px solid var(--color-border, #1E1E2E);
+  transition: background-color var(--transition-fast, 150ms ease);
+}
+
+.header__burger-button:hover {
+  background-color: var(--color-surface-3, #1E1E2E);
+}
+
+.header__burger-button span {
+  width: 20px;
+  height: 2px;
+  background-color: var(--color-text-heading, #F0F0FF);
+  border-radius: 1px;
+  transition: transform var(--transition-fast, 150ms ease),
+              opacity var(--transition-fast, 150ms ease);
+}
+
+/* ── القائمة الجانبية (تصميم جديد) ── */
+#mobile-nav {
+  position: fixed;
+  top: 0;
+  inset-inline-end: 0;
+  height: 100%;
+  width: min(300px, 85vw);
+  z-index: var(--z-overlay, 300);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-8, 32px) var(--space-6, 24px);
+  background: linear-gradient(
+    145deg,
+    var(--color-bg-secondary, #0D0D14) 0%,
+    var(--color-surface, #13131A) 100%
+  );
+  border-inline-start: 1px solid var(--color-border, #1E1E2E);
+  box-shadow: var(--shadow-xl, 0 16px 64px rgba(0,0,0,0.7));
+  
+  /* إخفاء خارج الشاشة */
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform var(--transition-slow, 400ms ease),
+              opacity var(--transition-slow, 400ms ease),
+              visibility 0s var(--transition-slow, 400ms);
+}
+
+/* عند الفتح */
+#mobile-nav.is-open {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: transform var(--transition-slow, 400ms ease),
+              opacity var(--transition-slow, 400ms ease),
+              visibility 0s 0s;
+}
+
+/* دعم RTL */
+html[dir="rtl"] #mobile-nav {
+  transform: translateX(-100%);
+}
+html[dir="rtl"] #mobile-nav.is-open {
+  transform: translateX(0);
+}
+
+/* ── محتوى القائمة بشكل متوازن ── */
+.mobile-nav__logo-wrapper {
+  margin-bottom: var(--space-10, 40px);
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-nav__logo-link img {
+  height: 34px;
+  width: auto;
+}
+
+/* زر الإغلاق */
+.mobile-nav__close-button {
+  position: absolute;
+  top: var(--space-4, 16px);
+  inset-inline-end: var(--space-4, 16px);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md, 8px);
+  background-color: var(--color-surface-2, #1A1A26);
+  border: 1px solid var(--color-border, #1E1E2E);
+  color: var(--color-text-body, #A0A0B8);
+  transition: background-color var(--transition-fast, 150ms ease),
+              color var(--transition-fast, 150ms ease);
+}
+
+.mobile-nav__close-button:hover {
+  background-color: var(--color-surface-3, #1E1E2E);
+  color: var(--color-text-heading, #F0F0FF);
+}
+
+/* روابط القائمة */
+.mobile-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+  margin-bottom: auto;        /* يدفع المحتوى السفلي للأسفل */
+}
+
+.mobile-nav__list .nav__link {
+  display: block;
+  padding: var(--space-3, 12px) var(--space-4, 16px);
+  font-size: var(--fs-base, 1rem);
+  font-weight: var(--fw-medium, 500);
+  letter-spacing: var(--ls-wide, 0.02em);
+  border-radius: var(--radius-md, 8px);
+  color: var(--color-text-body, #A0A0B8);
+  transition: background-color var(--transition-fast, 150ms ease),
+              color var(--transition-fast, 150ms ease);
+}
+
+.mobile-nav__list .nav__link:hover {
+  background-color: var(--color-surface, #13131A);
+  color: var(--color-text-heading, #F0F0FF);
+}
+
+/* عناصر التحكم السفلية */
+.mobile-nav__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3, 12px);
+  padding-top: var(--space-6, 24px);
+  border-top: 1px solid var(--color-border-subtle, #16161F);
+  margin-top: var(--space-6, 24px);
+}
+
+/* أزرار الثيم واللغة */
+.mobile-nav__theme-toggle-button,
+.mobile-nav__lang-toggle-button {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md, 8px);
+  background-color: var(--color-surface-2, #1A1A26);
+  border: 1px solid var(--color-border, #1E1E2E);
+  color: var(--color-text-body, #A0A0B8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast, 150ms ease),
+              color var(--transition-fast, 150ms ease);
+}
+
+.mobile-nav__theme-toggle-button:hover,
+.mobile-nav__lang-toggle-button:hover {
+  background-color: var(--color-surface-3, #1E1E2E);
+  color: var(--color-text-heading, #F0F0FF);
+}
+
+/* زر CTA داخل القائمة */
+.mobile-nav__cta-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2, 8px) var(--space-5, 20px);
+  font-size: var(--fs-sm, 0.875rem);
+  font-weight: var(--fw-semibold, 600);
+  background: var(--color-accent, #F59E0B);
+  color: var(--color-text-inverse, #0A0A0F);
+  border-radius: var(--radius-full, 9999px);
+  text-decoration: none;
+  transition: background-color var(--transition-fast, 150ms ease);
+}
+
+.mobile-nav__cta-link:hover {
+  background-color: var(--color-accent-hover, #FBBF24);
+}
+
+/* ── اللمسات الأخيرة للفراغ ── */
+/* يمكن إضافة عنصر زخرفي سفلي أو شعار صغير جداً لو حابب */
