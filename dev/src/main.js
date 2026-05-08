@@ -12,3 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   // أي مهام أخرى...
 });
+
+
+window.addEventListener('scroll', () => {document.body.classList.toggle('is-scrolled', window.scrollY > 10);});

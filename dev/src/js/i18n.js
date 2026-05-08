@@ -68,14 +68,28 @@ function applyPageHead(pageHead) {
 }
 
 /**
- * Updates all language toggle button labels.
+ * Updates all language toggle button labels and the mobile card badges.
  * @param {string} currentLang - The newly applied language code
  */
 function updateToggleLabels(currentLang) {
     const oppositeLabel = currentLang === 'ar' ? 'EN' : 'AR';
+
+    // Desktop header lang button label (unchanged element)
     document.querySelectorAll('.lang-label').forEach(el => {
         el.textContent = oppositeLabel;
     });
+
+    // Mobile card — highlight the active badge (.is-active)
+    document.querySelectorAll('.mobile-nav__lang-badge').forEach(badge => {
+        const isActive = badge.dataset.lang === currentLang;
+        badge.classList.toggle('is-active', isActive);
+    });
+
+    // Mobile card subtitle — show current language name
+    const subEl = document.querySelector('#mobile-lang-sub');
+    if (subEl) {
+        subEl.textContent = currentLang === 'ar' ? 'Arabic / العربية' : 'English / الإنجليزية';
+    }
 }
 
 // ── Main Translation Function ─────────────────

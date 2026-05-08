@@ -4,9 +4,9 @@
 // ===================================================
 
 const SELECTORS = {
-  burger: '#burger-btn',
+  burger:    '#burger-btn',
   mobileNav: '#mobile-nav',
-  closeBtn: '#mobile-nav-close',
+  closeBtn:  '#mobile-nav-close',
 };
 
 const CLASS_OPEN = 'is-open';
@@ -76,3 +76,9 @@ export default function initMobileNav() {
     link.addEventListener('click', closeNav);
   });
 }
+
+
+window.addEventListener('scroll', () => {
+  document.getElementById('site-header')
+    .classList.toggle('is-scrolled', window.scrollY > 10);
+});

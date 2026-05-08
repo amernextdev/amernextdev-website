@@ -73,7 +73,7 @@
 </head>
 <body data-theme="dark">
   <!-- ========== SITE HEADER ========== -->
-  <header id="site-header">
+<header id="site-header">
 <div class="header-inner">
     <!-- Logo -->
     <div class="header__logo-wrapper">
@@ -105,7 +105,7 @@
 
       <!-- Language Toggle -->
       <button class="header__lang-toggle-button lang-toggle" id="lang-toggle" aria-label="Switch language" data-i18n-aria="header.controls.lang-toggle.aria-label">
-        <span class="lang-label">AR</span>
+        <span class="lang-label" data-i18n-text="header.controls.lang-toggle.label">AR</span>
       </button>
 
       <!-- CTA Button -->
@@ -160,32 +160,49 @@
     <!-- Mobile Controls -->
     <div class="mobile-nav__controls">
 
-      <!-- Theme Toggle -->
-      <button class="mobile-nav__theme-toggle-button" id="mobile-theme-toggle" aria-label="Switch theme" data-i18n-aria="mobile-nav.controls.theme-toggle.aria-label">
-        Theme
-        <span class="mobile-theme-icon mobile-theme-icon-moon mobile-theme-icon-active"><svg class="icon icon--moon"><use href="/sprites/solid.svg#moon"></use></svg> </span>
-        <span class="mobile-theme-icon mobile-theme-icon-sun"><svg class="icon icon--sun"><use href="/sprites/solid.svg#sun"></use></svg></span>
+      <!-- Theme Toggle Card -->
+      <button class="mobile-nav__ctrl-card" id="mobile-theme-toggle" aria-label="Switch theme" data-i18n-aria="mobile-nav.controls.theme-toggle.aria-label">
+        <div class="mobile-nav__ctrl-card-left">
+          <span class="mobile-nav__ctrl-icon" aria-hidden="true" id="mobile-theme-icon">
+            <svg class="icon icon--moon"><use href="/sprites/solid.svg#moon"></use></svg>
+          </span>
+          <div class="mobile-nav__ctrl-text">
+            <span class="mobile-nav__ctrl-title" data-i18n-text="mobile-nav.controls.theme-toggle.label">Theme</span>
+            <span class="mobile-nav__ctrl-sub" id="mobile-theme-sub" data-i18n-text="mobile-nav.controls.theme-toggle.sub">Dark mode</span>
+          </div>
+        </div>
+        <!-- CSS-only toggle switch; JS adds .is-on to this span -->
+        <span class="mobile-nav__switch" id="mobile-theme-switch" aria-hidden="true"></span>
       </button>
 
-      <!-- Language Toggle -->
-      <button class="mobile-nav__lang-toggle-button lang-toggle" id="mobile-lang-toggle" aria-label="Switch language" data-i18n-aria="mobile-nav.controls.lang-toggle.aria-label">
-        Language
-        <span class="lang-label lang-label-en lang-label-active">EN</span>
-        <span class="lang-label lang-label-ar">AR</span>
+      <!-- Language Toggle Card -->
+      <button class="mobile-nav__ctrl-card lang-toggle" id="mobile-lang-toggle" aria-label="Switch language" data-i18n-aria="mobile-nav.controls.lang-toggle.aria-label">
+        <div class="mobile-nav__ctrl-card-left">
+          <span class="mobile-nav__ctrl-icon" aria-hidden="true">
+            <svg class="icon icon--globe"><use href="/sprites/solid.svg#globe"></use></svg>
+          </span>
+          <div class="mobile-nav__ctrl-text">
+            <span class="mobile-nav__ctrl-title" data-i18n-text="mobile-nav.controls.lang-toggle.label">Language</span>
+            <span class="mobile-nav__ctrl-sub" id="mobile-lang-sub">Arabic / العربية</span>
+          </div>
+        </div>
+        <div class="mobile-nav__lang-badges">
+          <span class="mobile-nav__lang-badge" id="mobile-lang-badge-ar" data-lang="ar">AR</span>
+          <span class="mobile-nav__lang-badge" id="mobile-lang-badge-en" data-lang="en">EN</span>
+        </div>
       </button>
 
     </div>
     <div class="mobile-nav-social">
         <ul class="m-n-s-list">
-            <li class="m-n-s-item"><a href="https://wa.me/201280787721" class="m-n-s-link m-n-s-whatsapp-icon"><svg class="icon icon--whatsapp" aria-hidden="true"><use href="/sprites/brands.svg#whatsapp"></use></svg></a></li>
-            <li class="m-n-s-item"><a href="https://github.com/amer-developer0" class="m-n-s-link m-n-s-github-icon"><svg class="icon icon--github" aria-hidden="true"><use href="/sprites/brands.svg#github"></use></svg></a></li>
-            <li class="m-n-s-item"><a href="https://www.facebook.com/share/1HDT2VKw3a/" class="m-n-s-link m-n-s-facebook-icon"><svg class="icon icon--facebook" aria-hidden="true"><use href="/sprites/brands.svg#facebook"></use></svg></a></li>
+            <li class="m-n-s-item"><a href="https://wa.me/201280787721" class="m-n-s-link m-n-s-whatsapp-icon" aria-label="Contact Amer on WhatsApp" data-i18n-aria="mobile-nav.social.whatsapp.aria-label"><svg class="icon icon--whatsapp" aria-hidden="true"><use href="/sprites/brands.svg#whatsapp"></use></svg></a></li>
+            <li class="m-n-s-item"><a href="https://github.com/amer-developer0" class="m-n-s-link m-n-s-github-icon" aria-label="Visit Amer on GitHub" data-i18n-aria="mobile-nav.social.github.aria-label"><svg class="icon icon--github" aria-hidden="true"><use href="/sprites/brands.svg#github"></use></svg></a></li>
+            <li class="m-n-s-item"><a href="https://www.facebook.com/share/1HDT2VKw3a/" class="m-n-s-link m-n-s-facebook-icon" aria-label="Visit Amer on Facebook" data-i18n-aria="mobile-nav.social.facebook.aria-label"><svg class="icon icon--facebook" aria-hidden="true"><use href="/sprites/brands.svg#facebook"></use></svg></a></li>
         </ul>
     </div>
 
 </div> 
 </aside>
-
   <main id="main-content">
 
     <!-- ========== HERO SECTION ========== -->
@@ -201,7 +218,7 @@
           </div>
         </div>
 
-        <div class="hero-terminal">
+        <div class="hero-terminal" dir="ltr">
           <div class="hero-terminal__header">
             <span class="hero-terminal__dot"></span>
             <span class="hero-terminal__dot"></span>
@@ -233,7 +250,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
 

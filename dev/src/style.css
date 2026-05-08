@@ -1,5 +1,14 @@
+
 @import './css/fonts.css';
 @import './css/variables.css';
 @import './css/header.css';
 @import './css/hero.css';
-@import './css/footer.css'
+@import './css/work.css';
+@import './css/footer.css';
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--color-bg); 
+}

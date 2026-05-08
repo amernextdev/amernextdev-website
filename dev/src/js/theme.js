@@ -14,6 +14,12 @@ const ICON_SVG = {
     dark:  `<svg class="icon icon--sun"   aria-hidden="true"><use href="/sprites/solid.svg#sun"></use></svg>`,
 };
 
+// Subtitle text shown inside the mobile theme card (reflects active theme)
+const THEME_SUB = {
+    light: 'Light mode',
+    dark:  'Dark mode',
+};
+
 // ── Selectors ─────────────────────────────────
 
 const TOGGLE_SELECTORS = ['#theme-toggle', '#mobile-theme-toggle'];
@@ -35,6 +41,7 @@ function getOppositeTheme(current) {
  * Icon shows what the NEXT click will switch TO (i.e. opposite of current).
  * dark theme → show sun icon (switch to light)
  * light theme → show moon icon (switch to dark)
+ * Also updates the mobile card subtitle and toggle switch state.
  * @param {string} activeTheme
  */
 function syncIcons(activeTheme) {
@@ -43,6 +50,14 @@ function syncIcons(activeTheme) {
         const el = document.querySelector(selector);
         if (el) el.innerHTML = iconHTML;
     });
+
+    // Update mobile card subtitle (e.g. "Dark mode" / "Light mode")
+    const subEl = document.querySelector('#mobile-theme-sub');
+    if (subEl) subEl.textContent = THEME_SUB[activeTheme] ?? '';
+
+    // Toggle the CSS switch pill: .is-on = theme is dark (switch ON)
+    const switchEl = document.querySelector('#mobile-theme-switch');
+    if (switchEl) switchEl.classList.toggle('is-on', activeTheme === THEMES.DARK);
 }
 
 /**
