@@ -1,1 +1,0 @@
-import servicesData from '../data/services.json';

@@ -7,7 +7,7 @@ import './style.css';
 import './js/i18n.js';
 import './js/theme.js';
 import initMobileNav from './js/header.js';
-
+import './js/services.js';
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   // أي مهام أخرى...
