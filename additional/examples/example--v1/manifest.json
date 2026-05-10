@@ -1,0 +1,66 @@
+{
+  "name": "Amer Developer | Crafting Digital Experiences",
+  "short_name": "Amer Developer",
+  "description": "Full-Stack Web Developer & AI-Powered Solution Builder - Building digital experiences with precision code",
+  "start_url": "/Amer-Developer/",
+  "display": "standalone",
+  "background_color": "#000033",
+  "theme_color": "#000033",
+  "orientation": "portrait-primary",
+  "scope": "/Amer-Developer/",
+  "lang": "en",
+  "categories": ["business", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "assets/images/icon.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/icon.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/images/logo.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Amer Developer Portfolio Website"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "About Me",
+      "short_name": "About",
+      "description": "Learn more about Amer Developer",
+      "url": "/Amer-Developer/#about",
+      "icons": [
+        {
+          "src": "assets/images/icon.webp",
+          "sizes": "96x96",
+          "type": "image/webp"
+        }
+      ]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Get in touch with Amer Developer",
+      "url": "/Amer-Developer/#contact",
+      "icons": [
+        {
+          "src": "assets/images/icon.webp",
+          "sizes": "96x96",
+          "type": "image/webp"
+        }
+      ]
+    }
+  ]
+}

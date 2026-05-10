@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Aamer</title>
+
+  <style>
+    @font-face {
+      font-family: 'Syne';
+      src: url('https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjEKc.woff2') format('woff2');
+      font-weight: 400 800;
+      font-display: swap;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg:            #0A0A0F;
+      --color-bg-secondary:  #0D0D14;
+      --color-surface:       #13131A;
+      --color-surface-2:     #1A1A26;
+      --color-border:        #1E1E2E;
+      --color-border-strong: #2A2A3E;
+      --color-text-heading:  #F0F0FF;
+      --color-text-body:     #A0A0B8;
+      --color-text-muted:    #505068;
+      --color-accent:        #F59E0B;
+      --color-accent-hover:  #FBBF24;
+      --color-amber-glow:    rgba(245, 158, 11, 0.15);
+      --color-amber-border:  rgba(245, 158, 11, 0.22);
+      --color-amber-surface: rgba(245, 158, 11, 0.05);
+      --font-primary:        'Syne', sans-serif;
+      --ease:                cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html, body {
+      font-family: var(--font-primary);
+      background: var(--color-bg);
+      color: var(--color-text-heading);
+      overflow-x: hidden;
+    }
+
+    /* ── SECTION ────────────────────────────────── */
+    .about-section {
+      padding: 120px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 64px; right: 64px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-border-strong), transparent);
+    }
+
+    .about-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ── SECTION HEADER ─────────────────────────── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+    }
+    .section-label::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--color-accent);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 64px;
+    }
+    .section-title .outline {
+      -webkit-text-stroke: 1.5px var(--color-border-strong);
+      color: transparent;
+    }
+
+    /* ── GRID ───────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* ── TEXT SIDE ──────────────────────────────── */
+    .about-text { position: relative; }
+
+    .typewriter-block {
+      position: relative;
+      min-height: 120px;
+    }
+
+    .typewriter-line {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--color-text-body);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    /* each paragraph starts invisible */
+    .typewriter-line .tw-text {
+      display: inline;
+      border-right: 2px solid transparent;
+    }
+
+    .typewriter-line.typing .tw-text {
+      border-right-color: var(--color-accent);
+      animation: caretBlink 0.7s step-end infinite;
+    }
+
+    .typewriter-line.done .tw-text {
+      border-right: none;
+    }
+
+    @keyframes caretBlink {
+      0%,100% { border-right-color: var(--color-accent); }
+      50%      { border-right-color: transparent; }
+    }
+
+    /* ── SKILLS SIDE ────────────────────────────── */
+    .about-skills {}
+
+    .skills-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .skills-group {
+      margin-bottom: 28px;
+    }
+
+    .skills-group-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 12px;
+    }
+
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* each skill starts hidden and slides in */
+    .skill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--color-text-body);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: 7px 14px;
+      border-radius: 6px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition:
+        opacity 0.4s var(--ease),
+        transform 0.4s var(--ease),
+        border-color 0.25s,
+        color 0.25s;
+    }
+
+    .skill-tag.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .skill-tag:hover {
+      border-color: var(--color-amber-border);
+      color: var(--color-accent);
+    }
+
+    .skill-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      flex-shrink: 0;
+      opacity: 0.6;
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 960px) {
+      .about-section { padding: 80px 40px; }
+      .about-section::before { left: 40px; right: 40px; }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .about-section { padding: 72px 24px; }
+      .about-section::before { left: 24px; right: 24px; }
+      .section-title { margin-bottom: 48px; }
+      .typewriter-line { font-size: 0.85rem; }
+    }
+
+    /* ── RTL ─────────────────────────────────────── */
+    [lang="ar"] .section-label::before { display: none; }
+    [lang="ar"] .section-label::after  { content:''; width:24px; height:1px; background:var(--color-accent); }
+    [lang="ar"] .section-label         { flex-direction: row-reverse; }
+    [lang="ar"] .about-grid            { direction: rtl; }
+  </style>
+</head>
+
+<body>
+
+<section class="about-section" id="about">
+  <div class="about-inner">
+
+    <p class="section-label"
+       data-en="About" data-ar="عني">About</p>
+
+    <h2 class="section-title">
+      <span data-en="The developer" data-ar="المطور">The developer</span><br>
+      <span class="outline"
+            data-en="behind the code." data-ar="اللي وراء الكود.">behind the code.</span>
+    </h2>
+
+    <div class="about-grid">
+
+      <!-- TEXT -->
+      <div class="about-text">
+        <div class="typewriter-block">
+
+          <p class="typewriter-line" id="p1">
+            <span class="tw-text"
+                  data-en="I'm Aamer — a full stack developer based in Cairo. I build web apps from scratch, frontend to backend, with clean code and real attention to detail."
+                  data-ar="أنا عامر — full stack developer في القاهرة. بابني web apps من الصفر، من الـ frontend للـ backend، بكود نظيف واهتمام حقيقي بالتفاصيل.">
+            </span>
+          </p>
+
+          <p class="typewriter-line" id="p2">
+            <span class="tw-text"
+                  data-en="I care about the things most people skip — readable code, obvious interfaces, and deadlines that actually mean something."
+                  data-ar="بهتم بالحاجات اللي معظم الناس بتتجاهلها — كود مقروء، interfaces واضحة، ومواعيد تعني حاجة فعلاً.">
+            </span>
+          </p>
+
+          <p class="typewriter-line" id="p3">
+            <span class="tw-text"
+                  data-en="When I'm not building, I'm learning. The web moves fast — keeping up isn't optional."
+                  data-ar="لما مبنيش، بتعلم. الويب بيتطور بسرعة — متابعته مش اختياري.">
+            </span>
+          </p>
+
+        </div>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="about-skills" id="skills-panel">
+
+        <p class="skills-title"
+           data-en="Tech Stack" data-ar="التقنيات">Tech Stack</p>
+
+        <!-- Frontend -->
+        <div class="skills-group">
+          <p class="skills-group-label"
+             data-en="Frontend" data-ar="الواجهة الأمامية">Frontend</p>
+          <div class="skills-tags">
+            <span class="skill-tag" data-order="1"><span class="skill-dot"></span>HTML</span>
+            <span class="skill-tag" data-order="2"><span class="skill-dot"></span>CSS</span>
+            <span class="skill-tag" data-order="3"><span class="skill-dot"></span>JS ES6</span>
+            <span class="skill-tag" data-order="4"><span class="skill-dot"></span>React</span>
+            <span class="skill-tag" data-order="5"><span class="skill-dot"></span>Next.js</span>
+            <span class="skill-tag" data-order="6"><span class="skill-dot"></span>Tailwind CSS</span>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="skills-group">
+          <p class="skills-group-label"
+             data-en="Backend" data-ar="الواجهة الخلفية">Backend</p>
+          <div class="skills-tags">
+            <span class="skill-tag" data-order="7"><span class="skill-dot"></span>Python</span>
+            <span class="skill-tag" data-order="8"><span class="skill-dot"></span>Flask</span>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="skills-group">
+          <p class="skills-group-label"
+             data-en="Tools" data-ar="الأدوات">Tools</p>
+          <div class="skills-tags">
+            <span class="skill-tag" data-order="9"><span class="skill-dot"></span>Git</span>
+            <span class="skill-tag" data-order="10"><span class="skill-dot"></span>GitHub</span>
+            <span class="skill-tag" data-order="11"><span class="skill-dot"></span>Responsive Design</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ── Lang ────────────────────────────────────────
+  const lang = localStorage.getItem('lang') || 'en';
+  document.documentElement.setAttribute('lang', lang);
+
+  // set static translated elements
+  document.querySelectorAll('[data-en]').forEach(el => {
+    if (!el.classList.contains('tw-text')) {
+      el.textContent = el.getAttribute(`data-${lang}`);
+    }
+  });
+
+  // ── Typewriter ──────────────────────────────────
+  const paragraphs = [
+    { el: document.querySelector('#p1 .tw-text') },
+    { el: document.querySelector('#p2 .tw-text') },
+    { el: document.querySelector('#p3 .tw-text') },
+  ];
+
+  const skillTags = [...document.querySelectorAll('.skill-tag')]
+    .sort((a, b) => +a.dataset.order - +b.dataset.order);
+
+  let skillsStarted = false;
+  let totalCharsTyped = 0;
+
+  // get full text for each paragraph
+  paragraphs.forEach(p => {
+    p.full = p.el.getAttribute(`data-${lang}`) || p.el.getAttribute('data-en');
+    p.el.textContent = '';
+  });
+
+  // total chars across all paragraphs
+  const totalChars = paragraphs.reduce((acc, p) => acc + p.full.length, 0);
+  const skillsTrigger = Math.floor(totalChars * 0.45); // start skills at 45%
+
+  function revealSkillsSequentially() {
+    if (skillsStarted) return;
+    skillsStarted = true;
+    skillTags.forEach((tag, i) => {
+      setTimeout(() => { tag.classList.add('visible'); }, i * 120);
+    });
+  }
+
+  // Intersection Observer to start animation when section is visible
+  const section = document.getElementById('about');
+  let animationStarted = false;
+
+  const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !animationStarted) {
+      animationStarted = true;
+      startTypewriter();
+    }
+  }, { threshold: 0.3 });
+
+  observer.observe(section);
+
+  function startTypewriter() {
+    let pIndex = 0;
+    let charIndex = 0;
+
+    const pEl = (i) => paragraphs[i].el;
+    const pLine = (i) => paragraphs[i].el.closest('.typewriter-line');
+
+    function typeNext() {
+      if (pIndex >= paragraphs.length) return;
+
+      const current = paragraphs[pIndex];
+
+      // mark as typing
+      pLine(pIndex).classList.add('typing');
+
+      if (charIndex < current.full.length) {
+        pEl(pIndex).textContent += current.full[charIndex];
+        charIndex++;
+        totalCharsTyped++;
+
+        // trigger skills mid-way
+        if (totalCharsTyped >= skillsTrigger) {
+          revealSkillsSequentially();
+        }
+
+        // speed: faster for longer texts
+        const delay = current.full.length > 80 ? 18 : 25;
+        setTimeout(typeNext, delay);
+
+      } else {
+        // paragraph done
+        pLine(pIndex).classList.remove('typing');
+        pLine(pIndex).classList.add('done');
+        pIndex++;
+        charIndex = 0;
+
+        if (pIndex < paragraphs.length) {
+          setTimeout(typeNext, 300);
+        } else {
+          // ensure all skills visible when typing ends
+          revealSkillsSequentially();
+        }
+      }
+    }
+
+    typeNext();
+  }
+</script>
+
+</body>
+</html>
