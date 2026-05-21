@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Variants</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:            #0A0A0F;
+      --bg-2:          #0D0D14;
+      --surface:       #13131A;
+      --surface-2:     #1A1A26;
+      --border:        #1E1E2E;
+      --border-strong: #2A2A3E;
+      --text-h:        #F0F0FF;
+      --text-b:        #A0A0B8;
+      --text-m:        #505068;
+      --accent:        #F59E0B;
+      --accent-hover:  #FBBF24;
+      --amber-glow:    rgba(245,158,11,0.18);
+      --amber-glow-sm: rgba(245,158,11,0.08);
+      --amber-border:  rgba(245,158,11,0.22);
+      --amber-surface: rgba(245,158,11,0.05);
+      --green:         #22C55E;
+      --font: 'Space Grotesk', sans-serif;
+      --ease: cubic-bezier(0.4,0,0.2,1);
+    }
+
+    html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text-h); overflow-x: hidden; }
+
+    /* ── NAV DOTS ── */
+    .nav-dots {
+      position: fixed; right: 24px; top: 50%;
+      transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 12px; z-index: 100;
+    }
+    .nav-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--border-strong); cursor: pointer;
+      transition: all 0.3s; border: none;
+    }
+    .nav-dot.active { background: var(--accent); transform: scale(1.4); }
+
+    /* ── SHARED ── */
+    section {
+      min-height: 100svh; scroll-snap-align: start;
+      position: relative; padding: 100px 64px;
+      overflow: hidden; display: flex;
+      flex-direction: column; justify-content: center;
+    }
+
+    .variant-label {
+      position: absolute; top: 32px; left: 64px;
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-m);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .variant-label::before {
+      content: ''; width: 24px; height: 1px; background: var(--border-strong);
+    }
+
+    .eyebrow {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent);
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 16px;
+    }
+    .eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--accent); opacity: 0.5; }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.1; color: var(--text-h); margin-bottom: 12px;
+    }
+    .section-title span { color: var(--accent); }
+    .section-desc { font-size: 0.9rem; line-height: 1.75; color: var(--text-b); max-width: 440px; }
+
+    /* ── FORM ELEMENTS ── */
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
+    .form-label {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-m);
+    }
+    .form-input, .form-textarea, .form-select {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 13px 16px;
+      font-family: var(--font); font-size: 0.88rem;
+      color: var(--text-h); outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-m); }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      border-color: var(--amber-border);
+      box-shadow: 0 0 0 3px var(--amber-glow-sm);
+    }
+    .form-textarea { resize: none; min-height: 120px; line-height: 1.6; }
+    .form-select { appearance: none; cursor: pointer; }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--accent); color: #0A0A0F;
+      font-family: var(--font); font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 0.02em; padding: 14px 28px;
+      border-radius: 8px; border: none; cursor: pointer;
+      transition: all 0.25s var(--ease); text-decoration: none;
+      width: 100%;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover); transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--amber-glow);
+    }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      background: transparent; color: var(--text-b);
+      font-family: var(--font); font-size: 0.85rem; font-weight: 600;
+      padding: 14px 28px; border-radius: 8px;
+      border: 1px solid var(--border); cursor: pointer;
+      transition: all 0.25s var(--ease); text-decoration: none;
+      width: 100%;
+    }
+    .btn-outline:hover {
+      border-color: var(--amber-border); color: var(--text-h);
+      background: var(--amber-surface);
+    }
+
+    .btn-whatsapp {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      background: #25D366; color: #fff;
+      font-family: var(--font); font-size: 0.85rem; font-weight: 700;
+      padding: 14px 28px; border-radius: 8px;
+      border: none; cursor: pointer;
+      transition: all 0.25s var(--ease); text-decoration: none;
+      width: 100%;
+    }
+    .btn-whatsapp:hover { background: #1ebe5c; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.25); }
+
+    /* contact chips */
+    .contact-chip {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 999px; padding: 10px 18px;
+      font-size: 0.82rem; color: var(--text-b);
+      text-decoration: none; transition: all 0.2s;
+    }
+    .contact-chip:hover { border-color: var(--amber-border); color: var(--text-h); background: var(--amber-surface); }
+    .contact-chip-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+
+    /* ── SUCCESS STATE ── */
+    .success-msg {
+      display: none; align-items: center; gap: 12px;
+      background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 8px; padding: 14px 18px;
+      font-size: 0.85rem; color: var(--green);
+    }
+    .success-msg.show { display: flex; }
+
+    /* ══════════════════════════════════════
+       VARIANT 1 — Split: Form + Info
+    ══════════════════════════════════════ */
+    #v1 { background: var(--bg); }
+    #v1::before {
+      content: ''; position: absolute; bottom: -20%; right: -5%;
+      width: 55%; height: 70%;
+      background: radial-gradient(ellipse, var(--amber-glow) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .v1-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start; position: relative; z-index: 1;
+    }
+
+    .v1-form { display: flex; flex-direction: column; gap: 18px; }
+    .v1-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .v1-info { display: flex; flex-direction: column; gap: 40px; padding-top: 8px; }
+    .v1-info-header { margin-bottom: 0; }
+
+    .v1-direct {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .v1-direct-label {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-m); margin-bottom: 4px;
+    }
+
+    .v1-divider {
+      display: flex; align-items: center; gap: 12px;
+      color: var(--text-m); font-size: 0.75rem;
+    }
+    .v1-divider::before, .v1-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    .v1-availability {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .v1-avail-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); flex-shrink: 0; animation: pulse 2s infinite; }
+    .v1-avail-text { font-size: 0.82rem; color: var(--text-b); line-height: 1.5; }
+    .v1-avail-text strong { color: var(--text-h); display: block; font-size: 0.88rem; margin-bottom: 2px; }
+
+    /* ══════════════════════════════════════
+       VARIANT 2 — Centered Minimal
+    ══════════════════════════════════════ */
+    #v2 { background: var(--bg-2); align-items: center; text-align: center; }
+
+    .v2-inner { max-width: 560px; width: 100%; }
+    .v2-inner .eyebrow { justify-content: center; }
+    .v2-inner .eyebrow::before { display: none; }
+
+    .v2-form { display: flex; flex-direction: column; gap: 14px; margin-top: 40px; text-align: left; }
+
+    .v2-or {
+      display: flex; align-items: center; gap: 12px;
+      color: var(--text-m); font-size: 0.75rem; margin: 4px 0;
+    }
+    .v2-or::before, .v2-or::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    .v2-direct-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    .v2-chips {
+      display: flex; justify-content: center; gap: 10px;
+      flex-wrap: wrap; margin-top: 24px;
+    }
+
+    /* ══════════════════════════════════════
+       VARIANT 3 — Two Column Cards
+    ══════════════════════════════════════ */
+    #v3 { background: var(--bg); }
+    #v3::before {
+      content: ''; position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(ellipse, var(--amber-glow) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .v3-header { text-align: center; margin-bottom: 60px; position: relative; z-index: 1; }
+    .v3-header .eyebrow { justify-content: center; }
+    .v3-header .eyebrow::before { display: none; }
+
+    .v3-cards {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 20px; max-width: 800px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+
+    .v3-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 36px;
+      display: flex; flex-direction: column; gap: 20px;
+      transition: border-color 0.25s;
+    }
+    .v3-card:hover { border-color: var(--amber-border); }
+    .v3-card.featured {
+      background: var(--amber-surface);
+      border-color: var(--amber-border);
+    }
+
+    .v3-card-icon { font-size: 1.8rem; }
+    .v3-card-name { font-size: 1.1rem; font-weight: 700; color: var(--text-h); letter-spacing: -0.02em; }
+    .v3-card-desc { font-size: 0.82rem; line-height: 1.7; color: var(--text-b); flex: 1; }
+
+    .v3-form { display: flex; flex-direction: column; gap: 14px; }
+    .v3-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    /* ══════════════════════════════════════
+       VARIANT 4 — Big CTA + Inline Form
+    ══════════════════════════════════════ */
+    #v4 { background: var(--bg-2); }
+    #v4::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, var(--amber-glow) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .v4-inner { max-width: 720px; position: relative; z-index: 1; }
+
+    .v4-big-title {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 800; letter-spacing: -0.04em;
+      line-height: 1.05; color: var(--text-h); margin-bottom: 20px;
+    }
+    .v4-big-title span { color: var(--accent); }
+
+    .v4-sub { font-size: 1rem; line-height: 1.75; color: var(--text-b); margin-bottom: 48px; max-width: 500px; }
+
+    .v4-form {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 36px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .v4-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .v4-form-footer {
+      display: flex; align-items: center; gap: 16px;
+      padding-top: 4px;
+    }
+    .v4-form-footer .btn-primary { width: auto; flex-shrink: 0; }
+    .v4-or { font-size: 0.75rem; color: var(--text-m); white-space: nowrap; }
+    .v4-direct { display: flex; gap: 10px; flex: 1; }
+    .v4-direct .btn-outline, .v4-direct .btn-whatsapp { padding: 14px 16px; font-size: 0.78rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      section { padding: 80px 24px; }
+      .variant-label { left: 24px; }
+      .v1-inner, .v3-cards { grid-template-columns: 1fr; gap: 40px; }
+      .v1-form-row, .v3-form-row, .v4-form-row { grid-template-columns: 1fr; }
+      .v2-direct-btns { grid-template-columns: 1fr; }
+      .v4-form-footer { flex-direction: column; align-items: stretch; }
+      .v4-direct { flex-direction: column; }
+      .nav-dots { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav-dots">
+  <button class="nav-dot active" aria-label="V1"></button>
+  <button class="nav-dot" aria-label="V2"></button>
+  <button class="nav-dot" aria-label="V3"></button>
+  <button class="nav-dot" aria-label="V4"></button>
+</nav>
+
+<!-- ══ VARIANT 1 — Split: Form + Info ══ -->
+<section id="v1">
+  <span class="variant-label">Variant 01 — Split Form + Info</span>
+
+  <div class="v1-inner">
+
+    <!-- Left: Form -->
+    <div>
+      <form class="v1-form" onsubmit="handleSubmit(event,'v1-success')">
+        <div class="v1-form-row">
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input class="form-input" type="text" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input class="form-input" type="email" placeholder="your@email.com" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Service</label>
+          <select class="form-select form-input">
+            <option value="" disabled selected>What do you need?</option>
+            <option>Business Website</option>
+            <option>Landing Page</option>
+            <option>Web Application</option>
+            <option>Frontend UI</option>
+            <option>Website Maintenance</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Tell me about your project..."></textarea>
+        </div>
+        <div class="success-msg" id="v1-success">✓ Message sent! I'll get back to you within 24h.</div>
+        <button type="submit" class="btn-primary">Send Message →</button>
+      </form>
+    </div>
+
+    <!-- Right: Info -->
+    <div class="v1-info">
+      <div class="v1-info-header">
+        <div class="eyebrow">Contact</div>
+        <h2 class="section-title">Let's build<br>something <span>real</span></h2>
+        <p class="section-desc" style="margin-top:12px">Have a project in mind? Fill the form or reach out directly — I respond within 24 hours.</p>
+      </div>
+
+      <div class="v1-availability">
+        <div class="v1-avail-dot"></div>
+        <div class="v1-avail-text">
+          <strong>Available for new projects</strong>
+          Typically responds within 24 hours
+        </div>
+      </div>
+
+      <div class="v1-direct">
+        <p class="v1-direct-label">Or reach out directly</p>
+        <a href="mailto:[your@email.com]" class="btn-outline">✉️ Send an Email</a>
+        <div class="v1-divider">or</div>
+        <a href="https://wa.me/[your-number]" class="btn-whatsapp" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ VARIANT 2 — Centered Minimal ══ -->
+<section id="v2">
+  <span class="variant-label">Variant 02 — Centered Minimal</span>
+
+  <div class="v2-inner">
+    <div class="eyebrow">Contact</div>
+    <h2 class="section-title">Let's build something <span>real</span></h2>
+    <p class="section-desc" style="margin: 12px auto 0; text-align:center">Have a project? I respond within 24 hours.</p>
+
+    <form class="v2-form" onsubmit="handleSubmit(event,'v2-success')">
+      <div class="form-group">
+        <label class="form-label">Name</label>
+        <input class="form-input" type="text" placeholder="Your name" required />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" placeholder="your@email.com" required />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Tell me about your project..."></textarea>
+      </div>
+      <div class="success-msg" id="v2-success">✓ Message sent! I'll get back to you within 24h.</div>
+      <button type="submit" class="btn-primary">Send Message →</button>
+    </form>
+
+    <div class="v2-or">or reach out directly</div>
+
+    <div class="v2-direct-btns">
+      <a href="mailto:[your@email.com]" class="btn-outline">✉️ Email Me</a>
+      <a href="https://wa.me/[your-number]" class="btn-whatsapp" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+
+    <div class="v2-chips">
+      <span class="contact-chip"><span class="contact-chip-dot"></span> Available for projects</span>
+      <span class="contact-chip">⚡ Replies within 24h</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VARIANT 3 — Two Cards ══ -->
+<section id="v3">
+  <span class="variant-label">Variant 03 — Two Cards</span>
+
+  <div class="v3-header">
+    <div class="eyebrow">Contact</div>
+    <h2 class="section-title">Let's build something <span>real</span></h2>
+    <p class="section-desc" style="margin: 12px auto 0; text-align:center">Choose how you want to reach out.</p>
+  </div>
+
+  <div class="v3-cards">
+
+    <!-- Card 1: Form -->
+    <div class="v3-card featured">
+      <div class="v3-card-icon">✉️</div>
+      <div class="v3-card-name">Send a Message</div>
+      <div class="v3-card-desc">Fill the form and I'll get back to you within 24 hours with everything you need to know.</div>
+      <form class="v3-form" onsubmit="handleSubmit(event,'v3-success')">
+        <div class="form-group">
+          <input class="form-input" type="text" placeholder="Your name" required />
+        </div>
+        <div class="v3-form-row">
+          <input class="form-input" type="email" placeholder="Email" required />
+          <select class="form-select form-input">
+            <option value="" disabled selected>Service</option>
+            <option>Business Website</option>
+            <option>Landing Page</option>
+            <option>Web App</option>
+            <option>Maintenance</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea class="form-textarea" placeholder="Your project idea..." style="min-height:90px"></textarea>
+        </div>
+        <div class="success-msg" id="v3-success">✓ Sent! Talk soon.</div>
+        <button type="submit" class="btn-primary">Send →</button>
+      </form>
+    </div>
+
+    <!-- Card 2: Direct -->
+    <div class="v3-card" style="justify-content: space-between;">
+      <div>
+        <div class="v3-card-icon">⚡</div>
+        <div class="v3-card-name" style="margin-bottom:10px">Reach Out Directly</div>
+        <div class="v3-card-desc">Prefer a faster reply? WhatsApp or email works great for quick questions and project discussions.</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:24px">
+        <a href="https://wa.me/[your-number]" class="btn-whatsapp" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+        <a href="mailto:[your@email.com]" class="btn-outline">✉️ Send an Email</a>
+      </div>
+
+      <div style="margin-top:28px;padding-top:28px;border-top:1px solid var(--border)">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <span class="contact-chip" style="width:fit-content"><span class="contact-chip-dot"></span> Available for new projects</span>
+          <span class="contact-chip" style="width:fit-content">⚡ Replies within 24h</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ VARIANT 4 — Big CTA + Form ══ -->
+<section id="v4">
+  <span class="variant-label">Variant 04 — Big CTA + Form</span>
+
+  <div class="v4-inner">
+    <div class="eyebrow">Contact</div>
+    <h2 class="v4-big-title">Got a project?<br>Let's <span>talk.</span></h2>
+    <p class="v4-sub">I build websites that work as good as they look. Tell me about your idea and let's make it real.</p>
+
+    <div class="v4-form">
+      <form onsubmit="handleSubmit(event,'v4-success')" style="display:contents">
+        <div class="v4-form-row">
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input class="form-input" type="text" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input class="form-input" type="email" placeholder="your@email.com" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Project Brief</label>
+          <textarea class="form-textarea" placeholder="What are you building?" style="min-height:100px"></textarea>
+        </div>
+        <div class="success-msg" id="v4-success">✓ Message sent! Talk soon.</div>
+        <div class="v4-form-footer">
+          <button type="submit" class="btn-primary" style="width:auto;padding:14px 28px">Send Message →</button>
+          <span class="v4-or">or</span>
+          <div class="v4-direct">
+            <a href="https://wa.me/[your-number]" class="btn-whatsapp" target="_blank" style="width:auto">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+            <a href="mailto:[your@email.com]" class="btn-outline" style="width:auto">✉️ Email</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  /* Nav Dots */
+  const dots = document.querySelectorAll('.nav-dot');
+  const sections = document.querySelectorAll('section');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const i = [...sections].indexOf(e.target);
+        dots.forEach((d,j) => d.classList.toggle('active', i===j));
+      }
+    });
+  }, { threshold: 0.5 });
+  sections.forEach(s => obs.observe(s));
+
+  /* Form Submit */
+  function handleSubmit(e, successId) {
+    e.preventDefault();
+    const msg = document.getElementById(successId);
+    msg.classList.add('show');
+    e.target.reset();
+    setTimeout(() => msg.classList.remove('show'), 4000);
+  }
+</script>
+
+</body>
+</html>
