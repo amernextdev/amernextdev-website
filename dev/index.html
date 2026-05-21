@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en" dir="en">
+  <head>
+  <!-- CORE -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Amer - Front-End Developer</title>
+  <meta name="description" content="I build websites that work, load fast, and represent your business clearly." />
+  <meta name="keywords" content="Front end Developer, Web Developer, React Specialist, Modern UI/UX, State Management, JavaScript (ES6+), Responsive Design." />
+  <meta name="author" content="Amer Abdelfattah" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://amerdev.pages.dev/" />
+
+  <!-- SEO STRUCTURED DATA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Amer Abdelfattah",
+    "jobTitle": "Front End Developer",
+    "url": "https://amerdev.pages.dev/",
+    "email": "mailto:iamamer030@gmail.com",
+    "image": "https://amerdev.pages.dev/profile.jpg",
+    "description": "Front-End Developer who builds interfaces that load fast, look clear, and feel intentional.",
+    "knowsAbout": [
+      "Web Development",
+      "Front End Development",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "React.js",
+      "Next.js",
+      "Tailwind CSS",
+      "Responsive Design"
+    ],
+    "sameAs": [
+      "https://linkedin.com",
+      "https://github.com"
+    ]
+  }
+  </script>
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://amerdev.pages.dev/" />
+  <meta property="og:title" content="Amer — Front End Developer" />
+  <meta property="og:description" content="I build interfaces that represent your brand and work for your users." />
+  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Amer — Front End Developer" />
+  <meta property="og:locale" content="ar_EG" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="Amer developer" />
+
+  <!-- TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://amerdev.pages.dev/" />
+  <meta name="twitter:title" content="Amer — Front End Developer" />
+  <meta name="twitter:description" content="I build interfaces that represent your brand and work for your users." />
+  <meta name="twitter:image" content="/og-image.jpg" />
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#F59E0B" />
+  </head>
+  <body data-theme="dark">
+      <!-- ========== SITE HEADER ========== -->
+    <header id="site-header">
+    <div class="header-inner">
+        <!-- Logo -->
+        <div class="header__logo-wrapper">
+          <a href="#" class="header__logo" aria-label="Amer — Front End Developer" data-i18n-aria="header.logo.aria-label">
+            <picture>
+              <source srcset="/src/assets/images/amer_logo/amer_logo.avif" type="image/avif">
+              <source srcset="/src/assets/images/amer_logo/amer_logo.webp" type="image/webp">
+              <img src="/src/assets/images/amer_logo/amer_logo.png" alt="Amer logo" data-i18n-alt="header.logo.alt" width="60px" height="60px"/>
+            </picture>
+          </a>
+        </div>
+
+        <!-- Primary Navigation -->
+        <nav class="header__nav" aria-label="Main navigation" data-i18n-aria="header.nav.aria-label">
+          <ul class="header__nav-list">
+            <li><a class="nav__link nav__link--active" href="#hero"     data-i18n-text="nav.link.home">Home</a></li>
+            <li><a class="nav__link" href="#work" data-i18n-text="nav.link.work">Work</a></li>
+            <li><a class="nav__link" href="#services" data-i18n-text="nav.link.services">Services</a></li>
+            <li><a class="nav__link" href="#about" data-i18n-text="nav.link.about">About</a></li>
+            <li><a class="nav__link" href="#contact" data-i18n-text="nav.link.contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Header Controls -->
+        <div class="header__controls">
+
+          <!-- Theme Toggle -->
+          <button class="header__theme-toggle-button" id="theme-toggle" aria-label="Switch theme" data-i18n-aria="header.controls.theme-toggle.aria-label">
+            <span id="theme-icon" aria-hidden="true">
+              <svg class="icon icon--sun"><use href="/sprites/solid.svg#sun"></use></svg>
+            </span>
+          </button>
+
+          <!-- Language Toggle -->
+          <button class="header__lang-toggle-button lang-toggle" id="lang-toggle" aria-label="Switch language" data-i18n-aria="header.controls.lang-toggle.aria-label">
+            <span class="lang-label">AR</span>
+          </button>
+
+          <!-- CTA Button -->
+          <a href="#contact" class="header__cta-link" id="header-cta">
+            <span class="header__cta-label" data-i18n-text="header.cta.label">Let's Talk</span>
+            <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+          </a>
+
+        </div>
+
+        <!-- Mobile Menu Trigger -->
+        <button class="header__burger-button" id="burger-btn" aria-label="Open navigation" data-i18n-aria="header.burger.aria-label" aria-expanded="false" aria-controls="mobile-nav">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+    </div>
+  </header>
+    <!-- ========== MOBILE NAVIGATION ========== -->
+  <aside id="mobile-nav" aria-label="Mobile navigation" data-i18n-aria="mobile-nav.aria-label" aria-hidden="true">
+<div class="mobile-nav-inner">
+    <div class="mobile-menu-header">
+        <!-- Logo -->
+        <div class="mobile-nav__logo-wrapper">
+        <a href="#" class="mobile-nav__logo-link" aria-label="Amer — Full Stack Developer" data-i18n-aria="mobile-nav.logo.aria-label">
+          <picture>
+              <source srcset="/src/assets/images/amer_logo/amer_logo.avif" type="image/avif">
+              <source srcset="/src/assets/images/amer_logo/amer_logo.webp" type="image/webp">
+              <img src="/src/assets/images/amer_logo/amer_logo.png" alt="Amer logo" data-i18n-alt="header.logo.alt" width="60px" height="60px"/>
+            </picture>
+        </a>
+        </div>
+
+        <!-- Close Button -->
+        <button class="mobile-nav__close-button" id="mobile-nav-close" aria-label="Close navigation" data-i18n-aria="mobile-nav.close-button.aria-label">
+        <svg class="icon icon--close" aria-hidden="true"><use href="/sprites/solid.svg#xmark"></use></svg>
+        </button>
+    </div>
+    <!-- Mobile Navigation Links -->
+    <nav class="mobile-nav__nav" aria-label="Navigation links" data-i18n-aria="mobile-nav.nav.aria-label">
+      <ul class="mobile-nav__list">
+        <li><a class="nav__link nav__link--active" href="#hero"     data-i18n-text="nav.link.home">Home <svg class="icon icon--chevron" aria-hidden="true"><use href="/sprites/solid.svg#chevron-right"></use></svg></a></li>
+        <li><a class="nav__link"                   href="#work"     data-i18n-text="nav.link.work">Work <svg class="icon icon--chevron" aria-hidden="true"><use href="/sprites/solid.svg#chevron-right"></use></svg></a></li>
+        <li><a class="nav__link"                   href="#services" data-i18n-text="nav.link.services">Services <svg class="icon icon--chevron" aria-hidden="true"><use href="/sprites/solid.svg#chevron-right"></use></svg></a></li>
+        <li><a class="nav__link"                   href="#about"    data-i18n-text="nav.link.about">About <svg class="icon icon--chevron" aria-hidden="true"><use href="/sprites/solid.svg#chevron-right"></use></svg></a></li>
+        <li><a class="nav__link"                   href="#contact"  data-i18n-text="nav.link.contact">Contact <svg class="icon icon--chevron" aria-hidden="true"><use href="/sprites/solid.svg#chevron-right"></use></svg></a></li>
+      </ul>
+    </nav>
+          <a href="#contact" class="mobile__cta-link" id="mobile-cta">
+        <span class="mobile__cta-label" data-i18n-text="mobile.cta.label">Let's Talk</span>
+        <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+      </a>
+
+    <!-- Mobile Controls -->
+    <div class="mobile-nav__controls">
+
+      <!-- Theme Toggle Card -->
+      <button class="mobile-nav__ctrl-card" id="mobile-theme-toggle" aria-label="Switch theme" data-i18n-aria="mobile-nav.controls.theme-toggle.aria-label">
+        <div class="mobile-nav__ctrl-card-left">
+          <span class="mobile-nav__ctrl-icon" aria-hidden="true" id="mobile-theme-icon">
+            <svg class="icon icon--moon"><use href="/sprites/solid.svg#moon"></use></svg>
+          </span>
+          <div class="mobile-nav__ctrl-text">
+            <span class="mobile-nav__ctrl-title" data-i18n-text="mobile-nav.controls.theme-toggle.label">Theme</span>
+            <span class="mobile-nav__ctrl-sub" id="mobile-theme-sub" data-i18n-text="mobile-nav.controls.theme-toggle.sub">Dark mode</span>
+          </div>
+        </div>
+        <!-- CSS-only toggle switch; JS adds .is-on to this span -->
+        <span class="mobile-nav__switch" id="mobile-theme-switch" aria-hidden="true"></span>
+      </button>
+
+      <!-- Language Toggle Card -->
+      <button class="mobile-nav__ctrl-card lang-toggle" id="mobile-lang-toggle" aria-label="Switch language" data-i18n-aria="mobile-nav.controls.lang-toggle.aria-label">
+        <div class="mobile-nav__ctrl-card-left">
+          <span class="mobile-nav__ctrl-icon" aria-hidden="true">
+            <svg class="icon icon--globe"><use href="/sprites/solid.svg#globe"></use></svg>
+          </span>
+          <div class="mobile-nav__ctrl-text">
+            <span class="mobile-nav__ctrl-title" data-i18n-text="mobile-nav.controls.lang-toggle.label">Language</span>
+            <span class="mobile-nav__ctrl-sub" id="mobile-lang-sub">Arabic / العربية</span>
+          </div>
+        </div>
+        <div class="mobile-nav__lang-badges">
+          <span class="mobile-nav__lang-badge" id="mobile-lang-badge-ar" data-lang="ar">AR</span>
+          <span class="mobile-nav__lang-badge" id="mobile-lang-badge-en" data-lang="en">EN</span>
+        </div>
+      </button>
+
+    </div>
+    <div class="mobile-nav-social">
+        <ul class="m-n-s-list">
+            <li class="m-n-s-item"><a href="https://wa.me/201280787721" class="m-n-s-link m-n-s-whatsapp-icon" aria-label="Contact Amer on WhatsApp" data-i18n-aria="mobile-nav.social.whatsapp.aria-label"><svg class="icon icon--whatsapp" aria-hidden="true"><use href="/sprites/brands.svg#whatsapp"></use></svg></a></li>
+            <li class="m-n-s-item"><a href="https://github.com/amer-developer0" class="m-n-s-link m-n-s-github-icon" aria-label="Visit Amer on GitHub" data-i18n-aria="mobile-nav.social.github.aria-label"><svg class="icon icon--github" aria-hidden="true"><use href="/sprites/brands.svg#github"></use></svg></a></li>
+            <li class="m-n-s-item"><a href="https://www.facebook.com/share/1HDT2VKw3a/" class="m-n-s-link m-n-s-facebook-icon" aria-label="Visit Amer on Facebook" data-i18n-aria="mobile-nav.social.facebook.aria-label"><svg class="icon icon--facebook" aria-hidden="true"><use href="/sprites/brands.svg#facebook"></use></svg></a></li>
+        </ul>
+    </div>
+
+</div> 
+</aside>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
