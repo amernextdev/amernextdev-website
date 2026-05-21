@@ -524,15 +524,5 @@
   </div>
 </section>
 
-<script>
-  const lang = localStorage.getItem('lang') || 'en';
-  document.documentElement.setAttribute('lang', lang);
-  if (lang === 'ar') {
-    document.querySelectorAll('[data-ar]').forEach(el => {
-      el.textContent = el.getAttribute('data-ar');
-    });
-  }
-</script>
-
 </body>
 </html>

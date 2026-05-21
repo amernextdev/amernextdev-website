@@ -1,0 +1,282 @@
+/*
+ * about.css
+ * About section — clone of about-section.html applied to about.html
+ * Depends on: variables.css
+ * PRE-DEPLOY: Run Autoprefixer targeting: last 2 Chrome versions, last 2 Firefox versions,
+ *             last 2 Safari versions, last 2 Edge versions, iOS >= 14
+ */
+
+/* === PRE-DEPLOY NOTES ===
+ * -webkit-text-stroke requires Autoprefixer or manual vendor prefix for older WebKit.
+ * CSS custom property fallbacks are intentionally omitted — variables.css is required.
+ */
+
+/* === SECTION BASE === */
+.about-section {
+  padding: 120px 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 64px;
+  right: 64px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border-strong), transparent);
+}
+
+.about-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* === SECTION LABEL === */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.7rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+}
+
+.section-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+/* === SECTION TITLE === */
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: var(--fw-extrabold);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: 64px;
+}
+
+.section-title .outline {
+  -webkit-text-stroke: 1.5px var(--color-border-strong);
+  color: transparent;
+}
+
+/* === ABOUT GRID === */
+/*
+ * In about.html, .about-skills is OUTSIDE .about-grid (sibling, not child).
+ * We replicate the two-column visual by making .about-inner a grid context,
+ * letting .about-grid (text column) occupy the left 1.1fr and positioning
+ * .about-skills as a companion column via a wrapper grid on .about-inner.
+ *
+ * Implementation: stack .section-label, .section-title, then a two-column
+ * row for [.about-grid | .about-skills] using CSS grid on .about-inner.
+ */
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "label"
+    "title"
+    "columns";
+}
+
+.about-inner > .section-label  { grid-area: label; }
+.about-inner > .section-title  { grid-area: title; }
+
+/* Two-column row */
+.about-inner > .about-grid,
+.about-inner > .about-skills {
+  grid-row: 3;
+}
+
+.about-inner > .about-grid {
+  grid-column: 1;
+}
+
+.about-inner > .about-skills {
+  grid-column: 2;
+}
+
+/* Re-enter the two-column layout at the .about-inner level */
+.about-inner {
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+/* Override for label and title — they must span both columns */
+.about-inner > .section-label,
+.about-inner > .section-title {
+  grid-column: 1 / -1;
+}
+
+/* Gap between text column and skills column */
+.about-inner {
+  column-gap: 80px;
+}
+
+.about-grid {
+  align-self: start;
+}
+
+.about-skills {
+  align-self: start;
+}
+
+/* === TYPEWRITER BLOCK === */
+.typewriter-block {
+  position: relative;
+  min-height: 120px;
+}
+
+.typewriter-line {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--color-text-body);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.typewriter-line .typewriter-line__text {
+  display: inline;
+  border-right: 2px solid transparent;
+}
+
+.typewriter-line.typing .typewriter-line__text {
+  border-right-color: var(--color-accent);
+  animation: caretBlink 0.7s step-end infinite;
+}
+
+.typewriter-line.done .typewriter-line__text {
+  border-right: none;
+}
+
+@keyframes caretBlink {
+  0%,
+  100% { border-right-color: var(--color-accent); }
+  50%  { border-right-color: transparent; }
+}
+
+/* === SKILL TAGS === */
+.skills-title {
+  font-size: 0.68rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.skills-group {
+  margin-bottom: 28px;
+}
+
+.skills-group__label {
+  font-size: 0.65rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.04em;
+  color: var(--color-text-body);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 7px 14px;
+  border-radius: var(--radius-md);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.skill-tag.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+/* === SKILL TAG STAGGER DELAYS === */
+.skill-tag[data-order="1"]  { transition-delay: 0ms; }
+.skill-tag[data-order="2"]  { transition-delay: 80ms; }
+.skill-tag[data-order="3"]  { transition-delay: 160ms; }
+.skill-tag[data-order="4"]  { transition-delay: 240ms; }
+.skill-tag[data-order="5"]  { transition-delay: 320ms; }
+.skill-tag[data-order="6"]  { transition-delay: 400ms; }
+.skill-tag[data-order="7"]  { transition-delay: 480ms; }
+.skill-tag[data-order="8"]  { transition-delay: 560ms; }
+.skill-tag[data-order="9"]  { transition-delay: 640ms; }
+.skill-tag[data-order="10"] { transition-delay: 720ms; }
+.skill-tag[data-order="11"] { transition-delay: 800ms; }
+
+/* === HOVER STATES === */
+.skill-tag:hover {
+  border-color: var(--color-amber-border);
+  color: var(--color-accent);
+}
+
+/* === RTL === */
+[lang="ar"] .section-label::before { display: none; }
+[lang="ar"] .section-label::after  { content: ''; width: 24px; height: 1px; background: var(--color-accent); }
+[lang="ar"] .section-label         { flex-direction: row-reverse; }
+[lang="ar"] .about-inner           { direction: rtl; }
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  .skill-tag { transition: none !important; opacity: 1 !important; transform: none !important; }
+  .typewriter-line__text { border-right: none !important; animation: none !important; }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 960px) {
+  .about-section { padding: 80px 40px; }
+  .about-section::before { left: 40px; right: 40px; }
+
+  .about-inner {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 48px;
+  }
+
+  .about-inner > .about-grid  { grid-column: 1; grid-row: 3; }
+  .about-inner > .about-skills { grid-column: 1; grid-row: 4; }
+}
+
+@media (max-width: 600px) {
+  .about-section { padding: 72px 24px; }
+  .about-section::before { left: 24px; right: 24px; }
+  .section-title { margin-bottom: 48px; }
+  .typewriter-line { font-size: 0.85rem; }
+}

@@ -1,0 +1,26 @@
+
+@import './css/fonts.css';
+@import './css/variables.css';
+@import './css/header.css';
+@import './css/hero.css';
+@import './css/work.css';
+@import './css/services.css';
+@import './css/about.css';
+@import './css/footer.css';
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--color-bg); 
+}
+a, button, input, textarea, select, [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+}
+a:focus, button:focus, input:focus, .card:focus {
+    outline: none;
+}
+a:focus-visible, button:focus-visible, .card:focus-visible {
+    outline: 2px solid var(--color-amber-500);
+    outline-offset: 3px;
+}

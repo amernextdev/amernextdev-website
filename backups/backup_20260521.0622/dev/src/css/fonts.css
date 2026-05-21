@@ -1,0 +1,45 @@
+/* ═══════════════════════════════════════════════════
+   fonts.css
+   Local font definitions — no external requests
+   Supports: Chrome 4+, Firefox 3.5+, Safari 3.1+
+═══════════════════════════════════════════════════ */
+
+/* ───────────────────────────────────────
+   Syne — Variable Font
+─────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Syne';
+  src: url('./src/assets/fonts/Syne/Syne-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ───────────────────────────────────────
+   IBM Plex Sans Arabic
+─────────────────────────────────────── */
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('./src/assets/fonts/IBMPlexSansArabic/IBMPlexSansArabic-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('./src/assets/fonts/IBMPlexSansArabic/IBMPlexSansArabic-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('./src/assets/fonts/IBMPlexSansArabic/IBMPlexSansArabic-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
