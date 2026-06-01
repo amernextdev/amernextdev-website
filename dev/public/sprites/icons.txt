@@ -1,0 +1,30 @@
+================================================================
+  قائمة الأيقونات المستخدمة.
+================================================================
+
+[ solid.svg — FontAwesome Solid ]
+----------------------------------
+sun
+arrow-right
+xmark
+chevron-right
+moon
+globe
+table-columns
+arrow-up-right-from-square
+building
+rocket
+palette
+wrench
+circle-check
+paper-plane
+envelope
+bolt
+
+[ brands.svg — FontAwesome Brands ]
+-------------------------------------
+whatsapp
+github
+facebook
+
+================================================================
