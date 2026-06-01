@@ -1,0 +1,11 @@
+1. CEO: عامر
+2. وزير الاركان والتنسيق: https://claude.ai/chat/edbaa181-3b87-4542-bc11-01a367f5a192, profile: 6
+
+اعضاء التيم:
+1. مهندس المحتوى: https://claude.ai/chat/ab867655-e90d-4254-a912-dac77879412c, profile: 3
+2. مدير المحتوى: https://claude.ai/chat/479a6527-2ba7-472e-add4-dcaec4cceeae, profile: 3
+3. مدير Accessibility:  https://chat.deepseek.com/a/chat/s/bf5e877b-8aec-4166-ac1a-f3452fe80cd8, profile: 3
+4. المصمم: https://claude.ai/chat/dc772731-1d96-44b3-81ce-08f209c4d234, profile: 3
+5. Code Naming: https://chat.deepseek.com/a/chat/s/debfb9de-70e2-4e7b-bce3-6ebf6d6ebc70, profile: 3
+6. HTML Reviewer: https://claude.ai/chat/56f1b74d-39e1-489b-a6a1-c9501ed3099d, profile 3
+7. JS Reviewer: https://claude.ai/chat/8b537ae1-ae69-4bb1-9412-2b93732fb659, profile 3
