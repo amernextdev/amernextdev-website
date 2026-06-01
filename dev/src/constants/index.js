@@ -1,8 +1,8 @@
 // /src/constants/index.js
-export const THEMES = { DARK: 'dark', LIGHT: 'light' }
-export const LANGUAGES = ['ar', 'en']
-export const DEFAULT_LANG = 'en'
-export const DEFAULT_THEME = 'dark'
+export const THEMES = { DARK: 'dark', LIGHT: 'light' };
+export const LANGUAGES = ['ar', 'en'];
+export const DEFAULT_LANG = 'en';
+export const DEFAULT_THEME = 'dark';
 
 export const LOCAL_STORAGE_KEYS = {
   THEME: 'theme',
