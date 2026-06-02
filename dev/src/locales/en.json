@@ -1,10 +1,17 @@
 {
-  "page-head": {
-    "title": "Amer — Full Stack Developer",
-    "description": "I help businesses build fast, reliable web products — from frontend to backend, clean code, on time."
+    "_meta": {
+    "lang": "en",
+    "dir": "ltr",
+    "description": "English translations for index.html",
+    "key_types": {
+      "data-i18n-text": "plain text — innerText replacement",
+      "data-i18n-html": "rich text — innerHTML replacement (may contain HTML tags)",
+      "data-i18n-aria": "aria-label attribute replacement",
+      "data-i18n-alt":  "img alt attribute replacement"
+    }
   },
-
   "i18n-text": {
+    "page.title": "Amer — Full Stack Developer",
     "nav.link.home":    "Home",
     "nav.link.work":    "Work",
     "nav.link.services":"Services",
