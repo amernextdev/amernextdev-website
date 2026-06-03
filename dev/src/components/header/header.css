@@ -1028,12 +1028,18 @@
   }
 
   .header__logo img {
-    border:        1px solid var(--color-accent);
-    border-radius: 25% ;
+    border:        2px solid var(--color-accent);
+    border-radius: 50%;
     margin-top:    150px;
     width:         150px;
     height:        150px;
-    transition:    all 500ms;
+    transition:
+      width         400ms ease,
+      height        400ms ease,
+      margin-top    400ms ease,
+      border-radius 400ms ease,
+      border-color  400ms ease,
+      box-shadow    400ms ease;
   }
 
   .hero-inner {
@@ -1060,12 +1066,13 @@
   }
 
   #site-header.is-scrolled .header__logo img {
-    border:        1px solid var(--color-accent);
+    border:        2px solid var(--color-accent);
     border-radius: 50%;
     margin-top:    5px;
-    width:         50px;
-    height:        50px;
+    width:         46px;
+    height:        46px;
     transform:     translateX(0);
+    box-shadow:    var(--shadow-amber-sm);
   }
 
   #site-header.is-scrolled .header__burger-button {
