@@ -1,0 +1,442 @@
+/* ═══════════════════════════════════════════════════
+   contact.css
+   Contact Section Styles
+   كل القيم بتيجي من variables.css
+═══════════════════════════════════════════════════ */
+
+
+/* ════════════════════════════════════════
+   SECTION WRAPPER
+════════════════════════════════════════ */
+
+#contact {
+  background-color: var(--color-bg);
+  padding-block: var(--space-24);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient glow — mirrors hero::before and about-section::before */
+#contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 50% at 50% 0%,   var(--color-amber-glow-sm) 0%, transparent 65%),
+    radial-gradient(ellipse 30% 40% at 10% 100%,  var(--color-info-surface)  0%, transparent 60%);
+  pointer-events: none;
+}
+
+
+/* ════════════════════════════════════════
+   INNER CONTAINER
+════════════════════════════════════════ */
+
+.contact-inner {
+  max-width: var(--container-md);
+  margin-inline: auto;
+  padding-inline: var(--space-8);
+  position: relative;
+  z-index: var(--z-raised);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+
+/* ════════════════════════════════════════
+   EYEBROW
+════════════════════════════════════════ */
+
+.contact-eyebrow {
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-accent);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+
+/* ════════════════════════════════════════
+   SECTION TITLE — reuses work.css .section-title
+   الكلاس موجود بالفعل — نضيف فقط تعديلات
+   خاصة بالـ contact
+════════════════════════════════════════ */
+
+#contact .section-title {
+  text-align: center;
+  margin: 0;
+}
+
+/* span inside the title → amber accent */
+#contact .section-title span {
+  color: var(--color-accent);
+}
+
+
+/* ════════════════════════════════════════
+   SECTION DESCRIPTION
+════════════════════════════════════════ */
+
+.section-description {
+  font-family: var(--font-primary);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-muted);
+  max-width: 48ch;
+  margin: 0;
+}
+
+
+/* ════════════════════════════════════════
+   CONTACT FORM
+════════════════════════════════════════ */
+
+.contact-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-block-start: var(--space-4);
+}
+
+
+/* ── Form Group ── */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+
+/* ── Label ── */
+
+.form-label {
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+
+/* ── Input & Textarea shared base ── */
+
+.form-input,
+.form-textarea {
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-heading);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  width: 100%;
+  outline: none;
+  transition:
+    border-color    var(--transition-fast),
+    background-color var(--transition-fast),
+    box-shadow      var(--transition-fast);
+  line-height: var(--lh-normal);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+/* Focus state */
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--color-amber-border);
+  background-color: var(--color-surface-2);
+  box-shadow: 0 0 0 3px var(--color-amber-glow-sm);
+}
+
+/* Hover state */
+.form-input:hover:not(:focus),
+.form-textarea:hover:not(:focus) {
+  border-color: var(--color-border-strong);
+}
+
+
+/* ── Textarea specific ── */
+
+.form-textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+
+/* ── Submit Button — reuses .btn-primary from hero.css ── */
+
+.contact-form .btn-primary {
+  align-self: flex-start;
+  margin-block-start: var(--space-2);
+}
+
+
+/* ── Success Message ── */
+
+.contact-form__success-message {
+  display: none;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-success);
+  background-color: var(--color-success-surface);
+  border: 1px solid var(--color-success-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  line-height: var(--lh-normal);
+}
+
+/* Show when form is submitted — toggle via JS */
+.contact-form__success-message.is-visible {
+  display: flex;
+}
+
+.contact-form__success-message .icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+
+/* ════════════════════════════════════════
+   DIVIDER
+════════════════════════════════════════ */
+
+.contact-divider {
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.contact-divider::before,
+.contact-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-border-subtle);
+}
+
+
+/* ════════════════════════════════════════
+   DIRECT CONTACT BUTTONS
+════════════════════════════════════════ */
+
+.contact-direct-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+/* Email button — reuses .btn-outline from work.css */
+.contact-direct-buttons .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.contact-direct-buttons .btn-outline .icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+
+/* ── WhatsApp Button ── */
+
+.contact-whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-success);
+  background-color: var(--color-success-surface);
+  border: 1px solid var(--color-success-border);
+  border-radius: var(--radius-full);
+  padding: var(--space-3) var(--space-6);
+  text-decoration: none;
+  transition:
+    color         var(--transition-base),
+    background-color var(--transition-base),
+    border-color  var(--transition-base),
+    box-shadow    var(--transition-base);
+}
+
+.contact-whatsapp-button:hover {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-whatsapp-button .icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+
+/* ════════════════════════════════════════
+   AVAILABILITY CHIPS
+════════════════════════════════════════ */
+
+.contact-availability-chips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-block-start: var(--space-2);
+}
+
+.contact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-text-muted);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  line-height: var(--lh-normal);
+}
+
+.contact-chip .icon {
+  width: 12px;
+  height: 12px;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+
+/* ── Availability Dot — animated like .live-dot in work.css ── */
+
+.contact-chip__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-success);
+  flex-shrink: 0;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* pulse-dot keyframes already declared in work.css — no need to repeat */
+
+
+/* ════════════════════════════════════════
+   LIGHT MODE OVERRIDES
+════════════════════════════════════════ */
+
+[data-theme="light"] #contact {
+  background-color: var(--color-bg);
+}
+
+[data-theme="light"] .form-input,
+[data-theme="light"] .form-textarea {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text-heading);
+}
+
+[data-theme="light"] .form-input:focus,
+[data-theme="light"] .form-textarea:focus {
+  background-color: var(--color-surface-2);
+  border-color: var(--color-amber-border);
+  box-shadow: 0 0 0 3px var(--color-amber-glow-sm);
+}
+
+[data-theme="light"] .form-input:hover:not(:focus),
+[data-theme="light"] .form-textarea:hover:not(:focus) {
+  border-color: var(--color-border-strong);
+}
+
+[data-theme="light"] .contact-chip {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+[data-theme="light"] .contact-whatsapp-button {
+  background-color: var(--color-success-surface);
+  border-color: var(--color-success-border);
+}
+
+[data-theme="light"] .contact-whatsapp-button:hover {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+  color: var(--color-text-inverse);
+}
+
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .contact-inner {
+    gap: var(--space-5);
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  #contact {
+    padding-block: var(--space-16);
+  }
+
+  .contact-inner {
+    padding-inline: var(--space-4);
+    gap: var(--space-5);
+  }
+
+  .contact-form .btn-primary {
+    align-self: stretch;
+    justify-content: center;
+  }
+
+  .contact-direct-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contact-direct-buttons .btn-outline,
+  .contact-whatsapp-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-availability-chips {
+    gap: var(--space-2);
+  }
+}
