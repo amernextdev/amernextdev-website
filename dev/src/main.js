@@ -15,6 +15,7 @@ import { initTheme } from '/src/services/js/theme.js';
 // - Components
 import { initHeader } from '/src/components/header/header.js';
 import '/src/components/about/about.js';
+import '/src/components/services/services.js';
 
 
 await initI18n();
