@@ -1,0 +1,426 @@
+/* ═══════════════════════════════════════════════════
+   contact.css
+   Contact Section Styles
+   كل القيم بتيجي من variables.css
+═══════════════════════════════════════════════════ */
+
+
+/* ════════════════════════════════════════
+   SECTION WRAPPER
+════════════════════════════════════════ */
+
+#contact {
+  background-color: var(--color-bg);
+  padding-block: var(--space-24);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle ambient glow — mirrors hero/about approach */
+#contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 50% at 50% 0%,   var(--color-amber-glow-sm) 0%, transparent 65%),
+    radial-gradient(ellipse 30% 40% at 10% 90%,  var(--color-info-surface)  0%, transparent 60%);
+  pointer-events: none;
+}
+
+
+/* ════════════════════════════════════════
+   INNER CONTAINER
+════════════════════════════════════════ */
+
+.contact-inner {
+  max-width: 560px;
+  margin-inline: auto;
+  padding-inline: var(--space-8);
+  position: relative;
+  z-index: var(--z-raised);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+
+/* ════════════════════════════════════════
+   EYEBROW & HEADING
+════════════════════════════════════════ */
+
+.contact-eyebrow {
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  text-align: center;
+}
+
+/* Reuse section-title from work.css — override to center */
+.contact-inner .section-title {
+  text-align: center;
+  font-size: var(--fs-4xl);
+  margin: 0;
+}
+
+.contact-inner .section-title span {
+  -webkit-text-stroke: 1.5px var(--color-text-heading);
+  color: transparent;
+}
+
+.contact-inner .section-description {
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  color: var(--color-text-muted);
+  text-align: center;
+  max-width: 38ch;
+}
+
+
+/* ════════════════════════════════════════
+   CONTACT FORM
+════════════════════════════════════════ */
+
+.contact-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-block-start: var(--space-2);
+}
+
+
+/* ── Form Group ── */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+
+/* ── Form Label ── */
+
+.form-label {
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+
+/* ── Form Input & Textarea ── */
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  color: var(--color-text-body);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  outline: none;
+  transition:
+    border-color var(--transition-base),
+    box-shadow   var(--transition-base),
+    background-color var(--transition-base);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-text-disabled);
+}
+
+.form-input:hover,
+.form-textarea:hover {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-surface-2);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--color-amber-border);
+  background-color: var(--color-surface);
+  box-shadow: 0 0 0 3px var(--color-amber-glow-sm);
+}
+
+.form-textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+
+/* ── Success Message ── */
+
+.contact-form__success-message {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-success);
+  background-color: var(--color-success-surface);
+  border: 1px solid var(--color-success-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-5);
+}
+
+.contact-form__success-message.is-visible {
+  display: flex;
+}
+
+.contact-form__success-message .icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+
+/* ── Submit Button — full width, amber ── */
+
+.contact-form .btn-primary {
+  width: 100%;
+  justify-content: center;
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  border-radius: var(--radius-md);
+  letter-spacing: var(--ls-wide);
+  gap: var(--space-3);
+}
+
+.contact-form .btn-primary .icon {
+  width: 14px;
+  height: 14px;
+}
+
+
+/* ════════════════════════════════════════
+   DIVIDER
+════════════════════════════════════════ */
+
+.contact-divider {
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-text-muted);
+  text-align: center;
+  opacity: 0.6;
+}
+
+
+/* ════════════════════════════════════════
+   DIRECT CONTACT BUTTONS
+════════════════════════════════════════ */
+
+.contact-direct-buttons {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+/* Email button — reuses .btn-outline from work.css, override for half-width */
+.contact-direct-buttons .btn-outline {
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  border-radius: var(--radius-md);
+}
+
+.contact-direct-buttons .btn-outline .icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* WhatsApp button — green brand */
+.contact-whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-wide);
+  color: #FFFFFF;
+  background-color: #25D366;
+  border: 1px solid #25D366;
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  text-decoration: none;
+  transition:
+    background-color var(--transition-base),
+    border-color     var(--transition-base),
+    box-shadow       var(--transition-base),
+    transform        var(--transition-fast);
+}
+
+.contact-whatsapp-button:hover {
+  background-color: #1EBE58;
+  border-color: #1EBE58;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.25);
+  transform: translateY(-1px);
+}
+
+.contact-whatsapp-button:active {
+  transform: translateY(0);
+}
+
+.contact-whatsapp-button .icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+
+/* ════════════════════════════════════════
+   AVAILABILITY CHIPS
+════════════════════════════════════════ */
+
+.contact-availability-chips {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-block-start: var(--space-2);
+}
+
+.contact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-text-muted);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  line-height: var(--lh-normal);
+}
+
+/* Availability dot — green pulsing */
+.contact-chip__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-success);
+  flex-shrink: 0;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Bolt icon inside chip */
+.contact-chip .icon {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+
+
+/* ════════════════════════════════════════
+   LIGHT MODE OVERRIDES
+════════════════════════════════════════ */
+
+[data-theme="light"] #contact {
+  background-color: var(--color-bg);
+}
+
+[data-theme="light"] .form-input,
+[data-theme="light"] .form-textarea {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text-body);
+}
+
+[data-theme="light"] .form-input:hover,
+[data-theme="light"] .form-textarea:hover {
+  background-color: var(--color-surface-2);
+  border-color: var(--color-border-strong);
+}
+
+[data-theme="light"] .form-input:focus,
+[data-theme="light"] .form-textarea:focus {
+  border-color: var(--color-amber-border);
+  background-color: var(--color-surface);
+}
+
+[data-theme="light"] .contact-chip {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+[data-theme="light"] .contact-direct-buttons .btn-outline {
+  background-color: var(--color-surface);
+  border-color: var(--color-border-strong);
+}
+
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .contact-inner .section-title {
+    font-size: var(--fs-3xl);
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  #contact {
+    padding-block: var(--space-16);
+  }
+
+  .contact-inner {
+    padding-inline: var(--space-4);
+    gap: var(--space-5);
+  }
+
+  .contact-inner .section-title {
+    font-size: var(--fs-2xl);
+  }
+
+  .contact-direct-buttons {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+
+  .contact-availability-chips {
+    gap: var(--space-2);
+  }
+
+  .contact-chip {
+    font-size: 0.65rem;
+    padding: var(--space-1) var(--space-3);
+  }
+}
+
+@media (max-width: 380px) {
+  .contact-direct-buttons {
+    grid-template-columns: 1fr;
+  }
+}
