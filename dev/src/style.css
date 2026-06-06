@@ -7,8 +7,9 @@
 @import '/src/services/css/variables.css';
 
 /* === Styles === */
-@import './components/header/header.css';
-@import './components/hero/hero.css';
+@import '/src/components/header/header.css';
+@import '/src/components/hero/hero.css';
+@import '/src/components/work/work.css';
 
 /* =============================================== */
 /*  Public Styles                                  */
