@@ -1,6 +1,7 @@
 /* ═══════════════════════════════════════════════════
    services.css
-   Services Section Styles
+   Services Section Styles — Design Transfer
+   Visual reference: screenshot (desktop + mobile)
    كل القيم بتيجي من variables.css
 ═══════════════════════════════════════════════════ */
 
@@ -17,14 +18,14 @@
   overflow: hidden;
 }
 
-/* Ambient glow — mirrors hero & about approach */
+/* Ambient glow — subtle, mirrors hero/about approach */
 .services-section::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 45% 55% at 15% 30%, var(--color-amber-glow-sm) 0%, transparent 65%),
-    radial-gradient(ellipse 35% 40% at 85% 75%, var(--color-info-surface) 0%, transparent 60%);
+    radial-gradient(ellipse 60% 55% at 80% 70%, var(--color-amber-glow-sm) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 45% at 10% 20%, var(--color-info-surface)  0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -44,245 +45,233 @@
    SECTION HEADER
 ════════════════════════════════════════ */
 
-.services-section .section-header {
+.section-header {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-3);
-  max-width: 56ch;
+  gap: 0;
 }
 
+/* Eyebrow — dash + label (from screenshot) */
 .section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   font-family: var(--font-primary);
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
   color: var(--color-accent);
+  margin-block-end: var(--space-4);
 }
 
-.services-section .section-title {
-  font-family: var(--font-primary);
-  font-size: var(--fs-4xl);
-  font-weight: var(--fw-bold);
-  line-height: var(--lh-tight);
-  letter-spacing: var(--ls-tight);
-  color: var(--color-text-heading);
-  margin: 0;
+/* The dash before eyebrow text */
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background-color: var(--color-accent);
+  flex-shrink: 0;
 }
 
-.services-section .section-title span {
+/* .section-title → defined in work.css, reused */
+/* Accent span inside title */
+.section-title span {
   color: var(--color-accent);
 }
 
 .section-description {
   font-family: var(--font-primary);
-  font-size: var(--fs-md);
+  font-size: var(--fs-base);
   font-weight: var(--fw-regular);
   line-height: var(--lh-relaxed);
   color: var(--color-text-muted);
-  margin: 0;
+  margin-block-start: var(--space-4);
+  max-width: 52ch;
 }
 
 
 /* ════════════════════════════════════════
-   DESKTOP LAYOUT — List + Detail Panel
+   DESKTOP LAYOUT
 ════════════════════════════════════════ */
 
 .desktop-layout {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-6);
-  align-items: stretch;
+  align-items: start;
 }
 
+/* Hide mobile on desktop */
 .mobile-layout {
   display: none;
 }
 
 
 /* ════════════════════════════════════════
-   SERVICES LIST PANEL
+   SERVICES LIST (left column)
 ════════════════════════════════════════ */
 
 .services-list-panel {
-  display: flex;
-  flex-direction: column;
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-8));
 }
 
 .services-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
 }
 
 
-/* ── Service List Item ── */
+/* ── List Item ── */
 
 .service-list-item {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
-  padding: var(--space-5) var(--space-6);
-  border-radius: var(--radius-lg);
-  border: 1px solid transparent;
+  gap: var(--space-5);
+  width: 100%;
+  padding: var(--space-5) var(--space-4);
   background-color: transparent;
+  border: none;
+  border-block-end: 1px solid var(--color-border-subtle);
+  border-inline-start: 3px solid transparent;
   cursor: pointer;
+  text-align: start;
   transition:
-    background-color var(--transition-base),
-    border-color     var(--transition-base),
-    color            var(--transition-base);
-  position: relative;
-  overflow: hidden;
+    background-color   var(--transition-base),
+    border-color       var(--transition-base),
+    color              var(--transition-base);
 }
 
-/* Subtle left-edge indicator */
-.service-list-item::before {
-  content: '';
-  position: absolute;
-  inset-inline-start: 0;
-  top: 20%;
-  bottom: 20%;
-  width: 2px;
-  border-radius: var(--radius-full);
-  background-color: var(--color-accent);
-  opacity: 0;
-  transition: opacity var(--transition-base);
+/* First item — top border too */
+.service-list-item:first-child {
+  border-block-start: 1px solid var(--color-border-subtle);
 }
 
 .service-list-item:hover {
-  background-color: var(--color-surface);
-  border-color: var(--color-border);
+  background-color: var(--color-amber-surface);
+  border-inline-start-color: var(--color-border-strong);
 }
 
 .service-list-item--active {
-  background-color: var(--color-surface);
-  border-color: var(--color-border-strong);
-}
-
-.service-list-item--active::before {
-  opacity: 1;
+  background-color: var(--color-amber-surface);
+  border-inline-start-color: var(--color-accent);
 }
 
 
-/* ── Item Number ── */
-
+/* Number */
 .service-list-item__number {
   font-family: var(--font-primary);
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
   letter-spacing: var(--ls-wider);
   color: var(--color-text-muted);
-  min-width: 1.8rem;
-  transition: color var(--transition-fast);
+  min-width: 2ch;
+  flex-shrink: 0;
+  transition: color var(--transition-base);
 }
 
-.service-list-item--active .service-list-item__number,
-.service-list-item:hover    .service-list-item__number {
+.service-list-item--active .service-list-item__number {
+  color: var(--color-accent);
+}
+
+.service-list-item:hover .service-list-item__number {
   color: var(--color-accent);
 }
 
 
-/* ── Item Name ── */
-
+/* Name */
 .service-list-item__name {
   font-family: var(--font-primary);
   font-size: var(--fs-base);
   font-weight: var(--fw-medium);
   color: var(--color-text-muted);
   flex: 1;
-  transition: color var(--transition-fast);
+  transition: color var(--transition-base);
 }
 
-.service-list-item--active .service-list-item__name,
-.service-list-item:hover    .service-list-item__name {
+.service-list-item--active .service-list-item__name {
   color: var(--color-text-heading);
+  font-weight: var(--fw-semibold);
+}
+
+.service-list-item:hover .service-list-item__name {
+  color: var(--color-text-body);
 }
 
 
-/* ── Item Arrow ── */
-
+/* Arrow — shown on hover + active */
 .service-list-item__arrow {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   color: var(--color-text-muted);
   opacity: 0;
   transform: translateX(-6px);
   transition:
-    opacity   var(--transition-fast),
-    transform var(--transition-fast),
-    color     var(--transition-fast);
+    opacity   var(--transition-base),
+    transform var(--transition-base),
+    color     var(--transition-base);
   flex-shrink: 0;
 }
 
+[dir="rtl"] .service-list-item__arrow {
+  transform: translateX(6px) scaleX(-1);
+}
+
 .service-list-item--active .service-list-item__arrow,
-.service-list-item:hover    .service-list-item__arrow {
+.service-list-item:hover   .service-list-item__arrow {
   opacity: 1;
   transform: translateX(0);
   color: var(--color-accent);
 }
 
+[dir="rtl"] .service-list-item--active .service-list-item__arrow,
+[dir="rtl"] .service-list-item:hover   .service-list-item__arrow {
+  transform: translateX(0) scaleX(-1);
+}
+
 
 /* ════════════════════════════════════════
-   SERVICE DETAIL PANEL
+   SERVICE DETAIL PANEL (right column)
 ════════════════════════════════════════ */
 
 .service-detail-panel {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-xl);
-  padding: var(--space-8);
-  display: flex;
+  display: none;
   flex-direction: column;
-  gap: var(--space-6);
-  position: relative;
-  overflow: hidden;
-  min-height: 420px;
-  transition: box-shadow var(--transition-slow);
+  justify-content: space-between;
+  gap: var(--space-8);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-10);
+  min-height: 520px;
 }
 
-/* Ambient amber glow behind the detail panel */
-.service-detail-panel.glow::after {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: var(--radius-xl);
-  background: var(--color-amber-glow-sm);
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0.6;
+.service-detail-panel--active {
+  display: flex;
 }
-
-.service-detail-panel:hover {
-  box-shadow: var(--shadow-amber-sm);
-}
-
-
-/* ── Panel Top Content ── */
 
 .service-detail-panel__top {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  flex: 1;
+  gap: var(--space-5);
 }
 
 
-/* ── Service Icon ── */
+/* ── Icon — outlined box style ── */
 
 .service-detail-panel__icon {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 52px;
   height: 52px;
-  background-color: var(--color-amber-surface);
-  border: 1px solid var(--color-amber-border);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-lg);
-  color: var(--color-accent);
-  transition:
-    background-color var(--transition-base),
-    box-shadow       var(--transition-base);
+  color: var(--color-text-body);
+  flex-shrink: 0;
 }
 
 .service-detail-panel__icon .icon {
@@ -290,38 +279,33 @@
   height: 22px;
 }
 
-.service-detail-panel:hover .service-detail-panel__icon {
-  background-color: var(--color-amber-surface-2);
-  box-shadow: var(--shadow-amber-sm);
-}
 
-
-/* ── Service Name ── */
+/* ── Name ── */
 
 .service-detail-panel__name {
   font-family: var(--font-primary);
-  font-size: var(--fs-xl);
+  font-size: var(--fs-3xl);
   font-weight: var(--fw-bold);
   line-height: var(--lh-snug);
   letter-spacing: var(--ls-tight);
   color: var(--color-text-heading);
-  margin: 0;
 }
 
 
-/* ── Service Description ── */
+/* ── Description ── */
 
 .service-detail-panel__description {
   font-family: var(--font-primary);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   font-weight: var(--fw-regular);
   line-height: var(--lh-relaxed);
-  color: var(--color-text-body);
+  color: var(--color-text-muted);
+  max-width: 56ch;
   margin: 0;
 }
 
 
-/* ── Includes Title ── */
+/* ── Includes block ── */
 
 .service-detail-panel__includes-title {
   font-family: var(--font-primary);
@@ -331,12 +315,8 @@
   text-transform: uppercase;
   color: var(--color-text-muted);
   margin: 0;
-  padding-block-end: var(--space-2);
-  border-block-end: 1px solid var(--color-border-subtle);
+  margin-block-end: var(--space-3);
 }
-
-
-/* ── Includes List ── */
 
 .service-detail-panel__includes-list {
   list-style: none;
@@ -344,99 +324,92 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-3);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
 }
 
 .service-detail-panel__includes-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   font-family: var(--font-primary);
   font-size: var(--fs-sm);
   font-weight: var(--fw-regular);
   line-height: var(--lh-normal);
   color: var(--color-text-body);
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
 }
 
-/* Checkmark bullet */
+/* Checkmark icon via CSS — matches screenshot */
 .service-detail-panel__includes-list li::before {
   content: '';
-  width: 5px;
-  height: 5px;
-  border-radius: var(--radius-full);
-  background-color: var(--color-accent);
+  display: inline-flex;
   flex-shrink: 0;
-  opacity: 0.7;
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-amber-surface-2);
+  border: 1px solid var(--color-amber-border);
+  border-radius: var(--radius-sm);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23F59E0B' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 
-/* ── Tech Stack Tags ── */
+/* ── Tags ── */
 
 .service-detail-panel__tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  margin-block-start: var(--space-1);
 }
 
 .service-detail-panel__tag {
   font-family: var(--font-primary);
   font-size: var(--fs-xs);
   font-weight: var(--fw-medium);
-  letter-spacing: var(--ls-wider);
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  background-color: var(--color-surface-2);
-  border: 1px solid var(--color-border);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-accent);
+  background-color: transparent;
+  border: 1px solid var(--color-amber-border);
   border-radius: var(--radius-sm);
   padding: var(--space-1) var(--space-3);
   line-height: var(--lh-normal);
   transition:
-    color            var(--transition-fast),
     background-color var(--transition-fast),
     border-color     var(--transition-fast);
 }
 
 .service-detail-panel__tag:hover {
-  color: var(--color-accent);
   background-color: var(--color-amber-surface);
-  border-color: var(--color-amber-border);
 }
 
 
-/* ── Detail Panel CTA ── */
+/* ── CTA Button — full-width style from screenshot ── */
 
-.service-detail-panel .btn-primary {
-  align-self: flex-start;
-}
-
-
-/* ════════════════════════════════════════
-   DETAIL PANEL TRANSITION
-   — content fades on service switch
-════════════════════════════════════════ */
-
-.service-detail-panel__top {
-  transition: opacity var(--transition-base), transform var(--transition-base);
-}
-
-.service-detail-panel__top.is-animating {
-  opacity: 0;
-  transform: translateY(8px);
+/* btn-primary base defined in hero.css, extended here */
+.service-detail-panel > .btn-primary {
+  width: 100%;
+  justify-content: center;
+  padding-block: var(--space-4);
+  font-size: var(--fs-base);
+  border-radius: var(--radius-lg);
+  letter-spacing: var(--ls-normal);
 }
 
 
 /* ════════════════════════════════════════
-   MOBILE LAYOUT — Tabs
+   MOBILE LAYOUT — tabs
 ════════════════════════════════════════ */
 
-/* ── Tabs Nav Wrapper — horizontal scroll ── */
-
+/* Tabs nav — horizontally scrollable */
 .tabs-nav-wrapper {
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .tabs-nav-wrapper::-webkit-scrollbar {
@@ -447,40 +420,39 @@
   display: flex;
   gap: var(--space-2);
   padding-block-end: var(--space-1);
-  width: max-content;
+  min-width: max-content;
 }
 
-
-/* ── Tab Button ── */
-
 .tab-button {
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-primary);
   font-size: var(--fs-xs);
-  font-weight: var(--fw-semibold);
-  letter-spacing: var(--ls-wider);
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wide);
+  white-space: nowrap;
+  padding: var(--space-2) var(--space-5);
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
-  padding: var(--space-2) var(--space-4);
+  color: var(--color-text-muted);
   cursor: pointer;
-  white-space: nowrap;
   transition:
-    color            var(--transition-fast),
-    background-color var(--transition-fast),
-    border-color     var(--transition-fast);
+    background-color var(--transition-base),
+    border-color     var(--transition-base),
+    color            var(--transition-base);
+}
+
+.tab-button:hover {
+  color: var(--color-text-body);
+  border-color: var(--color-border-strong);
 }
 
 .tab-button--active {
-  color: var(--color-text-inverse);
   background-color: var(--color-accent);
   border-color: var(--color-accent);
-}
-
-.tab-button:not(.tab-button--active):hover {
-  color: var(--color-text-body);
-  border-color: var(--color-border-strong);
+  color: var(--color-text-inverse);
+  font-weight: var(--fw-semibold);
 }
 
 
@@ -498,51 +470,57 @@
   height: 6px;
   border-radius: var(--radius-full);
   background-color: var(--color-border-strong);
-  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  transition:
+    background-color var(--transition-base),
+    transform        var(--transition-base),
+    width            var(--transition-base);
 }
 
 .tab-dot--active {
   background-color: var(--color-accent);
-  transform: scale(1.3);
+  width: 18px;
 }
 
 
-/* ── Tab Panels Container ── */
+/* ── Tab Panels ── */
 
 .tab-panels {
   position: relative;
 }
-
-
-/* ── Tab Panel ── */
 
 .tab-panel {
   display: none;
   flex-direction: column;
   gap: var(--space-5);
   background-color: var(--color-surface);
-  border: 1px solid var(--color-border-strong);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   padding: var(--space-6);
+  animation: panel-in 350ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .tab-panel--active {
   display: flex;
 }
 
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
 
-/* ── Tab Panel Icon ── */
+
+/* ── Mobile Panel Icon ── */
 
 .tab-panel__icon {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 48px;
   height: 48px;
-  background-color: var(--color-amber-surface);
-  border: 1px solid var(--color-amber-border);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-lg);
-  color: var(--color-accent);
+  color: var(--color-text-body);
 }
 
 .tab-panel__icon .icon {
@@ -551,7 +529,7 @@
 }
 
 
-/* ── Tab Panel Heading ── */
+/* ── Mobile Panel Name ── */
 
 .tab-panel__name {
   font-family: var(--font-primary);
@@ -568,19 +546,18 @@
 }
 
 
-/* ── Tab Panel Description ── */
+/* ── Mobile Panel Description ── */
 
 .tab-panel__description {
   font-family: var(--font-primary);
   font-size: var(--fs-sm);
-  font-weight: var(--fw-regular);
   line-height: var(--lh-relaxed);
-  color: var(--color-text-body);
+  color: var(--color-text-muted);
   margin: 0;
 }
 
 
-/* ── Tab Panel Includes ── */
+/* ── Mobile Panel Includes ── */
 
 .tab-panel__includes {
   display: flex;
@@ -596,46 +573,74 @@
   text-transform: uppercase;
   color: var(--color-text-muted);
   margin: 0;
-  padding-block-end: var(--space-2);
-  border-block-end: 1px solid var(--color-border-subtle);
 }
 
 .tab-panel__includes-list {
   list-style: none;
-  padding: 0;
+  padding: var(--space-4) var(--space-5);
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-3);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
 }
 
 .tab-panel__includes-list li {
-  font-family: var(--font-primary);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-normal);
-  color: var(--color-text-body);
   display: flex;
   align-items: center;
   gap: var(--space-3);
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+  color: var(--color-text-body);
 }
 
+/* Checkmark — matches desktop + screenshot */
 .tab-panel__includes-list li::before {
   content: '';
-  width: 5px;
-  height: 5px;
-  border-radius: var(--radius-full);
-  background-color: var(--color-accent);
+  display: inline-flex;
   flex-shrink: 0;
-  opacity: 0.7;
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-amber-surface-2);
+  border: 1px solid var(--color-amber-border);
+  border-radius: var(--radius-sm);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23F59E0B' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 
-/* ── Tab Panel CTA ── */
+/* ── Mobile CTA Button ── */
 
-.tab-panel .btn-primary {
-  align-self: flex-start;
-  margin-block-start: var(--space-1);
+.tab-panel > .btn-primary {
+  width: 100%;
+  justify-content: center;
+  padding-block: var(--space-4);
+  border-radius: var(--radius-lg);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--ls-normal);
+}
+
+
+/* ════════════════════════════════════════
+   PANEL SWAP ANIMATION — JS controlled
+════════════════════════════════════════ */
+
+.service-detail-panel--leaving {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity   150ms ease,
+    transform 150ms ease;
+  pointer-events: none;
+}
+
+.service-detail-panel--entering {
+  animation: panel-in 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 
@@ -643,37 +648,50 @@
    LIGHT MODE OVERRIDES
 ════════════════════════════════════════ */
 
-[data-theme="light"] .service-list-item:hover,
+[data-theme="light"] .service-list-item:hover {
+  background-color: var(--color-amber-surface);
+}
+
 [data-theme="light"] .service-list-item--active {
-  background-color: var(--color-surface);
-  border-color: var(--color-border);
+  background-color: var(--color-amber-surface);
+  border-inline-start-color: var(--color-accent);
 }
 
 [data-theme="light"] .service-detail-panel {
   background-color: var(--color-surface);
-  border-color: var(--color-border-strong);
+  border-color: var(--color-border);
+}
+
+[data-theme="light"] .service-detail-panel__includes-list {
+  background-color: var(--color-surface-2);
+  border-color: var(--color-border);
 }
 
 [data-theme="light"] .service-detail-panel__tag {
-  background-color: var(--color-surface-2);
-  border-color: var(--color-border);
-  color: var(--color-text-muted);
-}
-
-[data-theme="light"] .service-detail-panel__tag:hover {
   color: var(--color-accent);
-  background-color: var(--color-amber-surface);
   border-color: var(--color-amber-border);
 }
 
 [data-theme="light"] .tab-button {
-  background-color: var(--color-surface-2);
+  background-color: var(--color-surface);
   border-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+
+[data-theme="light"] .tab-button--active {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
 }
 
 [data-theme="light"] .tab-panel {
   background-color: var(--color-surface);
-  border-color: var(--color-border-strong);
+  border-color: var(--color-border);
+}
+
+[data-theme="light"] .tab-panel__includes-list {
+  background-color: var(--color-surface-2);
+  border-color: var(--color-border);
 }
 
 
@@ -681,33 +699,24 @@
    RESPONSIVE
 ════════════════════════════════════════ */
 
-/* Tablet — collapse panels slightly */
-@media (max-width: 1024px) {
-  .services-section .section-title {
-    font-size: var(--fs-3xl);
-  }
-
+/* Large tablet — tighten gap */
+@media (max-width: 1100px) {
   .desktop-layout {
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-4);
+    gap: var(--space-5);
   }
 
-  .service-list-item {
-    padding: var(--space-4) var(--space-5);
+  .service-detail-panel {
+    padding: var(--space-8);
+  }
+
+  .service-detail-panel__name {
+    font-size: var(--fs-2xl);
   }
 }
 
-/* Mobile — switch to tab layout */
+/* Switch to mobile layout */
 @media (max-width: 768px) {
-  .services-section {
-    padding-block: var(--space-16);
-  }
-
-  .services-inner {
-    padding-inline: var(--space-4);
-    gap: var(--space-10);
-  }
-
   .desktop-layout {
     display: none;
   }
@@ -717,8 +726,25 @@
     flex-direction: column;
     gap: var(--space-4);
   }
+}
 
-  .services-section .section-title {
-    font-size: var(--fs-2xl);
+/* Mobile tweaks */
+@media (max-width: 640px) {
+  .services-section {
+    padding-block: var(--space-16);
+  }
+
+  .services-inner {
+    padding-inline: var(--space-4);
+    gap: var(--space-10);
+  }
+
+  .tab-panel {
+    padding: var(--space-5);
+    gap: var(--space-4);
+  }
+
+  .section-title {
+    font-size: var(--fs-3xl);
   }
 }

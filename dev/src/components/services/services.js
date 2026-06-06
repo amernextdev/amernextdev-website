@@ -1,338 +1,232 @@
 /* ═══════════════════════════════════════════════════
    services.js
-   Services Section — Interactive Logic
-   Desktop: list → detail panel switch
-   Mobile:  tabs → panel switch + dots
+   1. Desktop — service list → detail panel switching
+   2. Mobile  — tab buttons → tab panel switching (+ swipe)
+   3. Scroll reveal — header + list items staggered
 ═══════════════════════════════════════════════════ */
 
 (function () {
   'use strict';
 
-  /* ──────────────────────────────────────────────
-     DATA — محتوى كل خدمة
-     بيتحمّل هنا عشان JS يتحكم في الـ detail panel
-     على الـ desktop بدون reload
-  ──────────────────────────────────────────────── */
-  const SERVICES = [
-    {
-      icon: `<svg class="icon icon--building" aria-hidden="true"><use href="/sprites/solid.svg#building"></use></svg>`,
-      name: 'Business Website',
-      nameKey: 'services.item1.name',
-      description: 'Your website is often the first thing a client sees. It needs to be fast, clear, and work on every device.',
-      descKey: 'services.item1.description',
-      includesKey: [
-        'services.item1.include1',
-        'services.item1.include2',
-        'services.item1.include3',
-        'services.item1.include4',
-        'services.item1.include5',
-      ],
-      includes: [
-        'Responsive design for all devices',
-        'SEO-ready structure',
-        'Fast load times',
-        'Contact form integration',
-        'CMS setup (optional)',
-      ],
-      tags: ['HTML/CSS', 'React', 'CMS'],
+  /* ─────────────────────────────────────────────────
+     CONFIG
+  ───────────────────────────────────────────────── */
+  const CONFIG = {
+    panel: {
+      leaveDuration: 150,   /* ms — old panel fade out */
     },
-    {
-      icon: `<svg class="icon icon--rocket" aria-hidden="true"><use href="/sprites/solid.svg#rocket"></use></svg>`,
-      name: 'Landing Page',
-      nameKey: 'services.item2.name',
-      description: 'One page, one goal — built to turn visitors into customers.',
-      descKey: 'services.item2.description',
-      includesKey: [
-        'services.item2.include1',
-        'services.item2.include2',
-        'services.item2.include3',
-        'services.item2.include4',
-        'services.item2.include5',
-      ],
-      includes: [
-        'Custom animations & interactions',
-        'Conversion-focused layout',
-        'A/B test ready structure',
-        'Analytics integration',
-        'Mobile-first design',
-      ],
-      tags: ['React', 'GSAP', 'Analytics'],
+    reveal: {
+      stagger:    70,       /* ms between each element */
+      duration:   500,
+      easing:     'cubic-bezier(0.22, 1, 0.36, 1)',
+      rootMargin: '0px 0px -60px 0px',
     },
-    {
-      icon: `<svg class="icon icon--display" aria-hidden="true"><use href="/sprites/solid.svg#display"></use></svg>`,
-      name: 'Web Application',
-      nameKey: 'services.item3.name',
-      description: 'Complex needs, clean solutions. Web apps built to scale and easy to maintain.',
-      descKey: 'services.item3.description',
-      includesKey: [
-        'services.item3.include1',
-        'services.item3.include2',
-        'services.item3.include3',
-        'services.item3.include4',
-        'services.item3.include5',
-      ],
-      includes: [
-        'Authentication & authorization',
-        'REST / GraphQL API integration',
-        'State management',
-        'Database design',
-        'Deployment & CI/CD',
-      ],
-      tags: ['React', 'Node.js', 'PostgreSQL'],
-    },
-    {
-      icon: `<svg class="icon icon--palette" aria-hidden="true"><use href="/sprites/solid.svg#palette"></use></svg>`,
-      name: 'Frontend UI',
-      nameKey: 'services.item4.name',
-      description: 'A precise interface built from your design or from scratch — clean, compatible, and fast.',
-      descKey: 'services.item4.description',
-      includesKey: [
-        'services.item4.include1',
-        'services.item4.include2',
-        'services.item4.include3',
-        'services.item4.include4',
-        'services.item4.include5',
-      ],
-      includes: [
-        'Component-based architecture',
-        'Design system implementation',
-        'Cross-browser compatibility',
-        'Figma to code',
-        'Performance optimization',
-      ],
-      tags: ['React', 'TypeScript', 'Figma'],
-    },
-    {
-      icon: `<svg class="icon icon--wrench" aria-hidden="true"><use href="/sprites/solid.svg#wrench"></use></svg>`,
-      name: 'Website Maintenance',
-      nameKey: 'services.item5.name',
-      description: 'Your existing site fixed, updated, or improved — without breaking what already works.',
-      descKey: 'services.item5.description',
-      includesKey: [
-        'services.item5.include1',
-        'services.item5.include2',
-        'services.item5.include3',
-        'services.item5.include4',
-        'services.item5.include5',
-      ],
-      includes: [
-        'Bug fixing & debugging',
-        'Performance improvements',
-        'Content updates',
-        'Security patches',
-        'Feature additions',
-      ],
-      tags: ['Debugging', 'Optimization', 'Updates'],
-    },
-  ];
+  };
 
-  /* ──────────────────────────────────────────────
-     DESKTOP — List ↔ Detail Panel
-  ──────────────────────────────────────────────── */
+
+  /* ═══════════════════════════════════════════════
+     1. DESKTOP — list / panel switching
+  ═══════════════════════════════════════════════ */
 
   function initDesktop() {
-    const list        = document.getElementById('svc-list');
-    const detailTop   = document.getElementById('svc-detail-content');
-    const iconEl      = document.getElementById('svc-icon');
-    const nameEl      = document.getElementById('svc-name');
-    const descEl      = document.getElementById('svc-desc');
-    const includesEl  = document.getElementById('svc-includes');
-    const tagsEl      = document.getElementById('svc-tags');
+    const list = document.getElementById('svc-list');
+    if (!list) return;
 
-    if (!list || !detailTop) return;
+    const buttons = Array.from(list.querySelectorAll('.service-list-item'));
+    const panels  = buttons.map((btn) =>
+      document.getElementById(`panel-${btn.dataset.index}`)
+    ).filter(Boolean);
 
-    const items = list.querySelectorAll('.service-list-item');
+    if (!buttons.length || !panels.length) return;
 
     let activeIndex = 0;
-    let animating   = false;
+    let switching   = false;
 
-    function activateItem(index) {
-      if (index === activeIndex || animating) return;
-      animating = true;
+    function switchTo(index) {
+      if (index === activeIndex || switching) return;
+      switching = true;
 
-      /* Remove active class from old item */
-      items[activeIndex].classList.remove('service-list-item--active');
+      const prevPanel = panels[activeIndex];
+      const nextPanel = panels[index];
+      const prevBtn   = buttons[activeIndex];
+      const nextBtn   = buttons[index];
 
-      /* Animate detail panel out */
-      detailTop.classList.add('is-animating');
+      /* Deactivate old button */
+      prevBtn.classList.remove('service-list-item--active');
+      prevBtn.setAttribute('aria-pressed', 'false');
 
-      setTimeout(function () {
+      /* Fade out old panel */
+      prevPanel.classList.add('service-detail-panel--leaving');
+
+      setTimeout(() => {
+        prevPanel.classList.remove('service-detail-panel--active');
+        prevPanel.classList.remove('service-detail-panel--leaving');
+
+        /* Show new panel */
+        nextPanel.classList.add('service-detail-panel--active');
+        nextPanel.classList.add('service-detail-panel--entering');
+
+        /* Activate new button */
+        nextBtn.classList.add('service-list-item--active');
+        nextBtn.setAttribute('aria-pressed', 'true');
+
         activeIndex = index;
+        switching   = false;
 
-        /* Update detail panel content */
-        const svc = SERVICES[index];
+        setTimeout(() => {
+          nextPanel.classList.remove('service-detail-panel--entering');
+        }, 420);
 
-        iconEl.innerHTML     = svc.icon;
-        nameEl.textContent   = svc.name;
-        if (nameEl.dataset.i18nText) nameEl.dataset.i18nText = svc.nameKey;
-
-        descEl.textContent   = svc.description;
-        if (descEl.dataset.i18nText) descEl.dataset.i18nText = svc.descKey;
-
-        /* Rebuild includes list */
-        includesEl.innerHTML = svc.includes
-          .map(function (item, i) {
-            return '<li data-i18n-text="' + svc.includesKey[i] + '">' + item + '</li>';
-          })
-          .join('');
-
-        /* Rebuild tags */
-        tagsEl.innerHTML = svc.tags
-          .map(function (tag) {
-            return '<span class="service-detail-panel__tag">' + tag + '</span>';
-          })
-          .join('');
-
-        /* Animate detail panel back in */
-        detailTop.classList.remove('is-animating');
-        animating = false;
-
-        /* Set new item active */
-        items[activeIndex].classList.add('service-list-item--active');
-
-        /* Re-run i18n if available */
-        if (window.__i18n && typeof window.__i18n.applyTranslations === 'function') {
-          window.__i18n.applyTranslations();
-        }
-
-      }, 200); /* match --transition-base: 250ms, slightly shorter for snappiness */
+      }, CONFIG.panel.leaveDuration);
     }
 
-    items.forEach(function (item, index) {
-      item.addEventListener('click', function () {
-        activateItem(index);
-      });
-
-      /* Keyboard accessibility */
-      item.setAttribute('role', 'button');
-      item.setAttribute('tabindex', '0');
-      item.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          activateItem(index);
-        }
-        /* Arrow keys navigation */
-        if (e.key === 'ArrowDown') {
-          e.preventDefault();
-          const next = (index + 1) % items.length;
-          items[next].focus();
-          activateItem(next);
-        }
-        if (e.key === 'ArrowUp') {
-          e.preventDefault();
-          const prev = (index - 1 + items.length) % items.length;
-          items[prev].focus();
-          activateItem(prev);
-        }
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        switchTo(parseInt(btn.dataset.index, 10));
       });
     });
   }
 
-  /* ──────────────────────────────────────────────
-     MOBILE — Tabs ↔ Panels + Dots
-  ──────────────────────────────────────────────── */
+
+  /* ═══════════════════════════════════════════════
+     2. MOBILE — tab / panel switching + swipe
+  ═══════════════════════════════════════════════ */
 
   function initMobile() {
-    const tabsNav   = document.getElementById('tabs-nav');
-    const tabDots   = document.getElementById('tab-dots');
-    const tabPanels = document.getElementById('tab-panels');
+    const tabsNav  = document.getElementById('tabs-nav');
+    const tabDots  = document.getElementById('tab-dots');
+    const panelsCt = document.getElementById('tab-panels');
 
-    if (!tabsNav || !tabPanels) return;
+    if (!tabsNav || !panelsCt) return;
 
-    const buttons = tabsNav.querySelectorAll('.tab-button');
-    const panels  = tabPanels.querySelectorAll('.tab-panel');
-    const dots    = tabDots ? tabDots.querySelectorAll('.tab-dot') : [];
+    const tabBtns   = Array.from(tabsNav.querySelectorAll('.tab-button'));
+    const tabPanels = Array.from(panelsCt.querySelectorAll('.tab-panel'));
+    const dots      = tabDots ? Array.from(tabDots.querySelectorAll('.tab-dot')) : [];
+
+    if (!tabBtns.length || !tabPanels.length) return;
 
     let activeTab = 0;
 
     function activateTab(index) {
       if (index === activeTab) return;
 
-      /* Deactivate current */
-      buttons[activeTab].classList.remove('tab-button--active');
-      panels[activeTab].classList.remove('tab-panel--active');
-      if (dots[activeTab]) dots[activeTab].classList.remove('tab-dot--active');
+      /* Buttons */
+      tabBtns[activeTab].classList.remove('tab-button--active');
+      tabBtns[index].classList.add('tab-button--active');
 
-      /* Activate new */
+      /* Dots */
+      if (dots.length) {
+        dots[activeTab].classList.remove('tab-dot--active');
+        dots[index].classList.add('tab-dot--active');
+      }
+
+      /* Panels */
+      tabPanels[activeTab].classList.remove('tab-panel--active');
+      tabPanels[index].classList.add('tab-panel--active');
+
       activeTab = index;
-      buttons[activeTab].classList.add('tab-button--active');
-      panels[activeTab].classList.add('tab-panel--active');
-      if (dots[activeTab]) dots[activeTab].classList.add('tab-dot--active');
 
-      /* Scroll tab button into view */
-      buttons[activeTab].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      /* Scroll active tab into view */
+      tabBtns[index].scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
     }
 
-    buttons.forEach(function (btn, index) {
-      btn.addEventListener('click', function () {
-        activateTab(index);
+    tabBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activateTab(parseInt(btn.dataset.tab, 10));
       });
     });
 
-    /* Optional: swipe support on tab-panels */
+    /* ── Swipe support ── */
     let touchStartX = 0;
-    let touchEndX   = 0;
+    let touchStartY = 0;
 
-    tabPanels.addEventListener('touchstart', function (e) {
-      touchStartX = e.changedTouches[0].screenX;
+    panelsCt.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
     }, { passive: true });
 
-    tabPanels.addEventListener('touchend', function (e) {
-      touchEndX = e.changedTouches[0].screenX;
-      const diff = touchStartX - touchEndX;
+    panelsCt.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
 
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) {
-          /* Swiped left → next tab */
-          activateTab(Math.min(activeTab + 1, buttons.length - 1));
-        } else {
-          /* Swiped right → prev tab */
-          activateTab(Math.max(activeTab - 1, 0));
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        const isRtl  = document.documentElement.dir === 'rtl'
+                    || document.body.getAttribute('dir') === 'rtl';
+        const goNext = isRtl ? dx > 0 : dx < 0;
+
+        if (goNext && activeTab < tabBtns.length - 1) {
+          activateTab(activeTab + 1);
+        } else if (!goNext && activeTab > 0) {
+          activateTab(activeTab - 1);
         }
       }
     }, { passive: true });
   }
 
-  /* ──────────────────────────────────────────────
-     SCROLL REVEAL — mirrors hero/about pattern
-     uses data-reveal on the section itself
-  ──────────────────────────────────────────────── */
+
+  /* ═══════════════════════════════════════════════
+     3. SCROLL REVEAL — staggered fade-up
+  ═══════════════════════════════════════════════ */
 
   function initReveal() {
-    const section = document.querySelector('.services-section[data-reveal]');
+    const section = document.getElementById('services');
     if (!section) return;
 
-    if (!('IntersectionObserver' in window)) {
-      section.style.opacity = '1';
-      section.style.transform = 'none';
-      return;
+    /* Collect elements in reveal order */
+    const headerEls = Array.from(
+      section.querySelectorAll('.section-eyebrow, .section-title, .section-description')
+    );
+    const listItems = Array.from(section.querySelectorAll('.service-list-item'));
+    const mobileEls = Array.from(
+      section.querySelectorAll('.tabs-nav-wrapper, .tab-dots, .tab-panels')
+    );
+
+    const allTargets = [...headerEls, ...listItems, ...mobileEls];
+    if (!allTargets.length) return;
+
+    /* Lock initial hidden state */
+    allTargets.forEach((el) => {
+      el.style.opacity    = '0';
+      el.style.transform  = 'translateY(14px)';
+      el.style.transition = `
+        opacity   ${CONFIG.reveal.duration}ms ${CONFIG.reveal.easing},
+        transform ${CONFIG.reveal.duration}ms ${CONFIG.reveal.easing}
+      `;
+    });
+
+    function revealAll() {
+      allTargets.forEach((el, i) => {
+        setTimeout(() => {
+          el.style.opacity   = '1';
+          el.style.transform = 'translateY(0)';
+        }, i * CONFIG.reveal.stagger);
+      });
     }
 
-    /* Initial hidden state */
-    section.style.opacity    = '0';
-    section.style.transform  = 'translateY(24px)';
-    section.style.transition = 'opacity var(--transition-slower), transform var(--transition-slower)';
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            revealAll();
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: CONFIG.reveal.rootMargin }
+    );
 
-    const delay = parseInt(section.dataset.revealDelay || '0', 10);
-
-    const observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          setTimeout(function () {
-            section.style.opacity   = '1';
-            section.style.transform = 'none';
-          }, delay);
-          observer.unobserve(section);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    observer.observe(section);
+    const trigger = section.querySelector('.section-eyebrow') || section;
+    observer.observe(trigger);
   }
 
-  /* ──────────────────────────────────────────────
+
+  /* ═══════════════════════════════════════════════
      INIT
-  ──────────────────────────────────────────────── */
+  ═══════════════════════════════════════════════ */
 
   function init() {
     initDesktop();
@@ -340,7 +234,6 @@
     initReveal();
   }
 
-  /* Run after DOM is ready */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
