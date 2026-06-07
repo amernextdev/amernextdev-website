@@ -57,12 +57,18 @@
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
   color: var(--color-accent);
-  text-align: center;
+  text-align: start;
 }
 
-/* Reuse section-title from work.css — override to center */
+/* Reuse section-title from work.css — override to start */
+.contact-inner .section-header {
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
 .contact-inner .section-title {
-  text-align: center;
+  text-align: start;
   font-size: var(--fs-4xl);
   margin: 0;
 }
@@ -78,7 +84,7 @@
   font-weight: var(--fw-regular);
   line-height: var(--lh-normal);
   color: var(--color-text-muted);
-  text-align: center;
+  text-align: start;
   max-width: 38ch;
 }
 
