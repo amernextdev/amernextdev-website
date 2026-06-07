@@ -1018,51 +1018,43 @@
     padding-inline: var(--space-4);
   }
 
-  /* Default (not scrolled): logo centred */
+  /* Logo always in normal flow on the left (same as old scrolled state) */
   .header__logo-wrapper {
-    position:           absolute;
-    inset-inline-start: 50%;
-    border-radius:      25%;
-    transform:          translateX(-50%);
-    transition:         all var(--transition-slow);
+    position: relative;
   }
 
   .header__logo img {
     border:        2px solid var(--color-accent);
     border-radius: 50%;
-    margin-top:    150px;
-    width:         150px;
-    height:        150px;
-    transition:
-      width         400ms ease,
-      height        400ms ease,
-      margin-top    400ms ease,
-      border-radius 400ms ease,
-      border-color  400ms ease,
-      box-shadow    400ms ease;
+    margin-top:    5px;
+    width:         46px;
+    height:        46px;
+    box-shadow:    var(--shadow-amber-sm);
   }
 
-  .hero-inner {
-    margin-top: 50px;
-  }
-
-  /* Burger hidden until scrolled */
+  /* Burger always visible */
   .header__burger-button {
     display:        flex;
-    opacity:        0;
-    pointer-events: none;
-    transform:      translateY(-4px);
-    transition:
-      opacity   var(--transition-slow),
-      transform var(--transition-slow);
-    will-change: opacity, transform;
+    opacity:        1;
+    pointer-events: auto;
   }
 
-  /* Scrolled: logo left, burger & CTA appear */
+  /* CTA always visible */
+  .header__cta-link {
+    display:        inline-flex;
+    padding-inline: var(--space-4);
+    font-size:      var(--fs-xs);
+  }
+
+  .header__controls {
+    display:     flex;
+    align-items: center;
+    gap:         var(--space-2);
+  }
+
+  /* is-scrolled state no longer needs to override anything for layout */
   #site-header.is-scrolled .header__logo-wrapper {
-    position:           relative;
-    inset-inline-start: 0;
-    transform:          translateX(0);
+    position: relative;
   }
 
   #site-header.is-scrolled .header__logo img {
@@ -1071,14 +1063,12 @@
     margin-top:    5px;
     width:         46px;
     height:        46px;
-    transform:     translateX(0);
     box-shadow:    var(--shadow-amber-sm);
   }
 
   #site-header.is-scrolled .header__burger-button {
     opacity:        1;
     pointer-events: auto;
-    transform:      translateY(0);
   }
 
   #site-header.is-scrolled .header__cta-link {
