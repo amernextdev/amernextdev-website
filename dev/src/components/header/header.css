@@ -965,7 +965,8 @@
     display: none !important;
   }
 
-  .header__burger-button {
+  .header__burger-button,
+  .header__mobile-controls {
     display: none !important;
   }
 
@@ -1008,9 +1009,21 @@
   /* Hide desktop-only nav and controls */
   .header__nav,
   .header__theme-toggle-button,
-  .header__lang-toggle-button,
   .header__cta-link {
-    display: none;
+    display: none !important;
+  }
+
+  /* Hide original lang toggle inside header__controls */
+  .header__lang-toggle-button:not(.header__lang-toggle-mobile) {
+    display: none !important;
+  }
+
+  /* Mobile controls group — lang + burger side by side */
+  .header__mobile-controls {
+    display:     flex;
+    align-items: center;
+    gap:         var(--space-2);
+    flex-shrink: 0;
   }
 
   .header-inner {
@@ -1150,5 +1163,18 @@
   #mobile-nav.is-open {
     display:   flex;
     transform: none !important;
+  }
+}
+
+
+
+/* Mobile-only lang toggle — hidden on desktop */
+.header__lang-toggle-mobile {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .header__lang-toggle-mobile {
+    display: flex;
   }
 }
