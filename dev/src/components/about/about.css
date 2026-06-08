@@ -206,13 +206,6 @@
 .skill-tag[data-order="9"]  { animation-delay: 0.45s; }
 .skill-tag[data-order="10"] { animation-delay: 0.50s; }
 
-@keyframes tag-reveal {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .skill-tag:hover {
   color: var(--color-text-heading);
   background-color: var(--color-surface-3);

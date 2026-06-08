@@ -503,12 +503,6 @@
   display: flex;
 }
 
-@keyframes panel-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0);   }
-}
-
-
 /* ── Mobile Panel Icon ── */
 
 .tab-panel__icon {
@@ -748,3 +742,4 @@
     font-size: var(--fs-3xl);
   }
 }
+

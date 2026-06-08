@@ -25,42 +25,6 @@
 }
 
 
-/* ════════════════════════════════════════
-   SECTION HEADER
-════════════════════════════════════════ */
-
-.section-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-6);
-}
-
-.section-label {
-  font-family: var(--font-primary);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
-  color: var(--color-accent);
-  letter-spacing: var(--ls-wider);
-  text-transform: uppercase;
-  margin-block-end: var(--space-3);
-}
-
-.section-title {
-  font-family: var(--font-primary);
-  font-size: var(--fs-4xl);
-  font-weight: var(--fw-bold);
-  line-height: var(--lh-tight);
-  letter-spacing: var(--ls-tight);
-  color: var(--color-text-heading);
-  margin: 0;
-}
-
-.section-title .outline {
-  -webkit-text-stroke: 1.5px var(--color-text-heading);
-  color: transparent;
-}
-
 
 /* ════════════════════════════════════════
    PROJECTS GRID
@@ -185,12 +149,6 @@
   animation: pulse-dot 2s ease-in-out infinite;
 }
 
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1;   transform: scale(1); }
-  50%       { opacity: 0.5; transform: scale(0.75); }
-}
-
-
 /* ── Card Body ── */
 
 .project-card__body {
@@ -310,35 +268,6 @@
   display: flex;
   justify-content: center;
   padding-block-start: var(--space-4);
-}
-
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-primary);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
-  letter-spacing: var(--ls-wide);
-  color: var(--color-text-body);
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-full);
-  padding: var(--space-3) var(--space-6);
-  text-decoration: none;
-  transition: color var(--transition-base),
-              border-color var(--transition-base),
-              box-shadow var(--transition-base);
-}
-
-.btn-outline:hover {
-  color: var(--color-accent);
-  border-color: var(--color-amber-border);
-  box-shadow: var(--shadow-amber-sm);
-}
-
-.btn-outline .icon {
-  width: 14px;
-  height: 14px;
 }
 
 

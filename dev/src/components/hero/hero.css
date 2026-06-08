@@ -2,25 +2,6 @@
 /* Values marked with "no matching variable" have no equivalent in variables.css */
 
 /* ================================================
-   RESET & BASE
-   ================================================ */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* ================================================
-   MAIN CONTENT — ensures sections fill correctly
-   ================================================ */
-#main-content {
-  display: flex;
-  flex-direction: column;
-}
-
-/* ================================================
    HERO SECTION
    ================================================ */
 .hero {
@@ -114,64 +95,6 @@
   margin-top: var(--space-3); /* ↑ كان --space-2 — تنفس أكثر بعد الـ description */
 }
 
-/* Primary button */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  background-color: var(--color-accent);
-  color: var(--color-text-inverse);
-  font-family: var(--font-primary);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-bold);
-  padding: var(--space-3) var(--space-6); /* ↑ استبدال hardcoded بالـ scale */
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  border: 2px solid var(--color-accent); /* no matching variable for 2px */
-  transition: var(--transition-base);
-  letter-spacing: var(--ls-wide);
-}
-
-.btn-primary:hover {
-  background-color: var(--color-accent-active);
-  border-color: var(--color-accent-active);
-  transform: translateY(-1px); /* no matching variable */
-}
-
-.btn-primary:active {
-  transform: translateY(0); /* no matching variable */
-}
-
-/* Ghost button */
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  background: transparent;
-  color: var(--color-text-muted);
-  font-family: var(--font-primary);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
-  padding: var(--space-3) var(--space-1); /* ↑ استبدال hardcoded بالـ scale */
-  text-decoration: none;
-  border: none;
-  border-bottom: 1px solid transparent; /* no matching variable */
-  transition: var(--transition-base);
-  letter-spacing: var(--ls-wide);
-}
-
-.btn-ghost:hover {
-  color: var(--color-text-heading);
-  border-bottom-color: var(--color-text-muted);
-}
-
-/* Icon sizing */
-.icon {
-  width: 0.85em; /* no matching variable */
-  height: 0.85em; /* no matching variable */
-  flex-shrink: 0;
-}
-
 /* ================================================
    HERO TERMINAL — Code panel (right column)
    ================================================ */
@@ -262,11 +185,6 @@
   border-radius: 1px; /* no matching variable */
   animation: blink 1.1s step-end infinite; /* no matching variable */
   margin-left: 1px; /* no matching variable */
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
 }
 
 /* ================================================

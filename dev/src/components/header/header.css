@@ -36,26 +36,6 @@
  */
 
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   § 00 — BASE & RESET
-═══════════════════════════════════════════════════════════════════════════ */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Shared icon sizing used throughout header */
-.icon {
-  display:        inline-block;
-  width:          1em;
-  height:         1em;
-  fill:           currentColor;
-  vertical-align: middle;
-  flex-shrink:    0;
-}
-
 
 /* ═══════════════════════════════════════════════════════════════════════════
    § 01 — HEADER BASE
@@ -1131,40 +1111,6 @@
 }
 
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   § 16 — REDUCED MOTION  (@prefers-reduced-motion)
-═══════════════════════════════════════════════════════════════════════════ */
-
-@media (prefers-reduced-motion: reduce) {
-  #site-header,
-  .header__logo,
-  .header__logo-wrapper,
-  .header__burger-button,
-  .header__cta-link,
-  .header__theme-toggle-button,
-  .header__lang-toggle-button,
-  #mobile-nav,
-  #mobile-nav::before,
-  .mobile-nav__close-button,
-  .mobile__cta-link,
-  .nav__link,
-  .nav__link::after,
-  .m-n-s-link {
-    transition: none;
-    animation:  none;
-    transform:  none !important;
-  }
-
-  #mobile-nav {
-    display:    none;
-    visibility: visible;
-  }
-
-  #mobile-nav.is-open {
-    display:   flex;
-    transform: none !important;
-  }
-}
 
 
 
