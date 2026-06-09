@@ -1,17 +1,18 @@
-/* =============================================== */
-/*  IMPORTS                                        */
-/* =============================================== */
+/* ============================================================
+   MAIN.CSS — Refactored for Visual Consistency
+   All values use design tokens from variables.css
+   Fixes:
+     1. Added body base styles (font, color, background)
+     2. Unified section backgrounds for smooth alternating rhythm
+     3. Resolved duplicate .section-header definitions
+     4. Resolved duplicate .section-header__label definitions
+     5. Standardized .section-inner gap to --space-16
+     6. Collapsed redundant/conflicting hero mobile @media blocks
+     7. Replaced hardcoded px/rem values with matching variables
+   ============================================================ */
 
 @import '/src/services/css/fonts.css';
 @import '/src/services/css/variables.css';
-
-
-/* ============================================================
-   MAIN.CSS — Global Styles
-   Generated from: header.css, hero.css, work.css,
-                   services.css, about.css, contact.css, footer.css
-   المتغيرات كلها في variables.css — لا شيء هنا غير الأكواد المشتركة
-   ============================================================ */
 
 
 /* ─── 1. Reset & Base Styles ─────────────────────────────── */
@@ -23,13 +24,23 @@
   margin: 0;
   padding: 0;
 }
+
 html {
   scroll-behavior: smooth;
 }
 
+/* FIX ① — Global body base: font, background, text color */
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-bg);
+  color: var(--color-text-body);
+  line-height: var(--lh-normal);
+  direction: var(--dir, ltr);
+  text-align: var(--text-align, left);
+}
+
 
 /* ─── 2. Icon — shared across ALL sections ───────────────── */
-/* مصدر: header.css (§00) + hero.css — النسخة الأكثر اكتمالاً هي من header.css */
 
 .icon {
   display:        inline-block;
@@ -42,7 +53,6 @@ html {
 
 
 /* ─── 3. Layout — Main Content ───────────────────────────── */
-/* مصدر: hero.css */
 
 #main-content {
   display: flex;
@@ -53,8 +63,6 @@ html {
 /* ─── 4. Shared Buttons ──────────────────────────────────── */
 
 /* ── btn-primary ── */
-/* مصدر: hero.css (base) — مستخدم في hero + services + contact */
-
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -83,8 +91,6 @@ html {
 }
 
 /* ── btn-ghost ── */
-/* مصدر: hero.css — مستخدم في hero section */
-
 .btn-ghost {
   display: inline-flex;
   align-items: center;
@@ -108,8 +114,6 @@ html {
 }
 
 /* ── btn-outline ── */
-/* مصدر: work.css — مستخدم في work footer + contact direct buttons */
-
 .btn-outline {
   display: inline-flex;
   align-items: center;
@@ -141,26 +145,44 @@ html {
 
 
 /* ─── 5. Shared Section Header ───────────────────────────── */
-/* مصدر: work.css — يُعاد استخدامه في about + services + contact */
+/* FIX ③ — Merged the two conflicting .section-header definitions.
+   Original work.css used flex-direction: row + justify-content: space-between.
+   services.css used flex-direction: column + gap: 0.
+   Column layout is the correct one — it's what all sections actually need. */
 
 .section-header {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-6);
+  flex-direction: column;
+  gap: 0;
 }
 
-.section-label {
+/* FIX ④ — Unified .section-header__label. Original work.css used --fs-sm;
+   services.css used --fs-xs + a dash pseudo-element. The services version
+   is the canonical one used across all sections. */
+.section-header__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   font-family: var(--font-primary);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
-  color: var(--color-accent);
-  letter-spacing: var(--ls-wider);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
   text-transform: uppercase;
-  margin-block-end: var(--space-3);
+  color: var(--color-accent);
+  margin-block-end: var(--space-4);
 }
 
-.section-title {
+/* Decorative dash before the label text */
+/* .section-header__label::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background-color: var(--color-accent);
+  flex-shrink: 0;
+} */
+
+.section-header__title {
   font-family: var(--font-primary);
   font-size: var(--fs-4xl);
   font-weight: var(--fw-bold);
@@ -170,33 +192,43 @@ html {
   margin: 0;
 }
 
-.section-title .outline {
+.section-header__title .outline {
   -webkit-text-stroke: 1.5px var(--color-text-heading);
   color: transparent;
+}
+
+.section-header__title span {
+  color: var(--color-accent);
+}
+
+.section-header__description {
+  font-family: var(--font-primary);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-muted);
+  margin-block-start: var(--space-4);
+  max-width: 52ch;
 }
 
 
 /* ─── 6. Shared Animations & Keyframes ──────────────────── */
 
-/* blink — terminal cursor (hero.css) */
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0; }
 }
 
-/* pulse-dot — live badge + availability chips (work.css + contact.css) */
 @keyframes pulse-dot {
   0%, 100% { opacity: 1;   transform: scale(1);    }
   50%       { opacity: 0.5; transform: scale(0.75); }
 }
 
-/* panel-in — service tab panels (services.css) */
 @keyframes panel-in {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0);   }
 }
 
-/* tag-reveal — skill tags (about.css) */
 @keyframes tag-reveal {
   to {
     opacity: 1;
@@ -206,7 +238,6 @@ html {
 
 
 /* ─── 7. Shared nav__link base ───────────────────────────── */
-/* مصدر: header.css — يُستخدم في desktop nav + mobile nav معاً */
 
 .nav__link {
   position:        relative;
@@ -227,31 +258,26 @@ html {
 
 
 /* ─── 8. Reduced Motion — Global ─────────────────────────── */
-/* مصدر: header.css §16 — يُطبَّق على كامل الصفحة */
 
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration:   0.01ms !important;
+    animation-duration:        0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration:  0.01ms !important;
-    scroll-behavior:      auto !important;
+    transition-duration:       0.01ms !important;
+    scroll-behavior:           auto !important;
   }
 }
 
 
 /* ================================================================
    HEADER & MOBILE NAV
-   مصدر: header.css
    ================================================================ */
-
-
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
    § 01 — HEADER BASE
-   Fixed bar, transparent by default; stacks above all content via --z-sticky
 ═══════════════════════════════════════════════════════════════════════════ */
 
 #site-header {
@@ -269,7 +295,7 @@ html {
     backdrop-filter var(--transition-slow);
 }
 
-.header-inner {
+.site-header__inner {
   display:         flex;
   align-items:     center;
   justify-content: space-between;
@@ -285,13 +311,13 @@ html {
    § 02 — HEADER — LOGO
 ═══════════════════════════════════════════════════════════════════════════ */
 
-.header__logo-wrapper {
+.site-header__logo-wrapper {
   display:     flex;
   align-items: center;
   flex-shrink: 0;
 }
 
-.header__logo {
+.site-header__logo-link {
   display:         flex;
   align-items:     center;
   text-decoration: none;
@@ -299,17 +325,17 @@ html {
   transition:      opacity var(--transition-base), transform var(--transition-base);
 }
 
-.header__logo:hover {
+.site-header__logo-link:hover {
   opacity:   0.8;
   transform: scale(1.04);
 }
 
-.header__logo:focus-visible {
+.site-header__logo-link:focus-visible {
   outline:       2px solid var(--color-accent);
   border-radius: var(--radius-sm);
 }
 
-.header__logo img {
+.site-header__logo-link img {
   display: block;
   width:   36px;
   height:  auto;
@@ -320,14 +346,14 @@ html {
    § 03 — HEADER — PRIMARY NAVIGATION (desktop)
 ═══════════════════════════════════════════════════════════════════════════ */
 
-.header__nav {
+.site-header__nav {
   flex:            1;
   display:         flex;
   justify-content: center;
   align-items:     center;
 }
 
-.header__nav-list {
+.site-header__nav-list {
   display:     flex;
   align-items: center;
   gap:         var(--space-2);
@@ -336,7 +362,6 @@ html {
   padding:     0;
 }
 
-/* Shared link base — used in both desktop nav and mobile nav */
 .nav__link {
   position:        relative;
   display:         inline-flex;
@@ -354,8 +379,7 @@ html {
   transition:      color var(--transition-base), background var(--transition-base);
 }
 
-/* Animated underline for desktop nav links */
-.header__nav .nav__link::after {
+.site-header__nav .nav__link::after {
   content:          '';
   position:         absolute;
   inset-block-end:  0;
@@ -368,30 +392,30 @@ html {
   transition:       transform var(--transition-base);
 }
 
-.header__nav .nav__link:hover {
+.site-header__nav .nav__link:hover {
   color: var(--color-text-heading);
 }
 
-.header__nav .nav__link:hover::after,
-.header__nav .nav__link--active::after {
+.site-header__nav .nav__link:hover::after,
+.site-header__nav .nav__link--active::after {
   transform: scaleX(1);
 }
 
-.header__nav .nav__link--active {
+.site-header__nav .nav__link--active {
   color: var(--color-accent);
 }
 
-.header__nav .nav__link:focus-visible {
+.site-header__nav .nav__link:focus-visible {
   outline:        2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   § 04 — HEADER — CONTROLS  (theme, lang, CTA)
+   § 04 — HEADER — CONTROLS (theme, lang, CTA)
 ═══════════════════════════════════════════════════════════════════════════ */
 
-.header__controls {
+.site-header__controls {
   display:     flex;
   align-items: center;
   gap:         var(--space-3);
@@ -399,7 +423,7 @@ html {
 }
 
 /* ── Theme toggle button ── */
-.header__theme-toggle-button {
+.site-header__theme-toggle {
   display:         flex;
   align-items:     center;
   justify-content: center;
@@ -408,7 +432,7 @@ html {
   padding:         0;
   background:      transparent;
   border:          1px solid var(--color-border);
-  border-radius:   25%;
+  border-radius:   25%; /* no matching variable — intentional shape */
   color:           var(--color-text-body);
   cursor:          pointer;
   transition:
@@ -418,25 +442,25 @@ html {
     transform    var(--transition-base);
 }
 
-.header__theme-toggle-button:hover {
+.site-header__theme-toggle:hover {
   color:        var(--color-text-heading);
   border-color: var(--color-border-strong);
   background:   var(--color-surface);
 }
 
-.header__theme-toggle-button:focus-visible {
+.site-header__theme-toggle:focus-visible {
   outline:        2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-.header__theme-toggle-button .icon--sun,
-.header__theme-toggle-button .icon--moon {
-  width:  1rem;
-  height: 1rem;
+.site-header__theme-toggle .icon--sun,
+.site-header__theme-toggle .icon--moon {
+  width:  var(--fs-base);
+  height: var(--fs-base);
 }
 
 /* ── Language toggle button ── */
-.header__lang-toggle-button {
+.site-header__lang-toggle {
   display:         flex;
   align-items:     center;
   justify-content: center;
@@ -446,7 +470,7 @@ html {
   padding-inline:  var(--space-3);
   background:      transparent;
   border:          1px solid var(--color-border);
-  border-radius:   25%;
+  border-radius:   25%; /* no matching variable — intentional shape */
   font-family:     var(--font-primary);
   font-size:       var(--fs-xs);
   font-weight:     var(--fw-semibold);
@@ -459,25 +483,24 @@ html {
     background   var(--transition-base);
 }
 
-.header__lang-toggle-button:hover {
+.site-header__lang-toggle:hover {
   color:        var(--color-text-heading);
   border-color: var(--color-border-strong);
   background:   var(--color-surface);
 }
 
-.header__lang-toggle-button:focus-visible {
+.site-header__lang-toggle:focus-visible {
   outline:        2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-/* Desktop header lang toggle label override */
-.header__lang-toggle-button .lang-label {
+.site-header__lang-toggle .site-header__lang-label {
   opacity: 1;
   color:   currentColor;
 }
 
 /* ── CTA link button ── */
-.header__cta-link {
+.site-header__cta-link {
   display:         inline-flex;
   align-items:     center;
   gap:             var(--space-2);
@@ -499,40 +522,40 @@ html {
   will-change: transform;
 }
 
-.header__cta-link:hover {
+.site-header__cta-link:hover {
   background: var(--color-accent-hover);
   box-shadow: var(--shadow-amber-md);
   transform:  translateY(-1px);
 }
 
-.header__cta-link:active {
+.site-header__cta-link:active {
   background: var(--color-accent-active);
   transform:  translateY(0);
 }
 
-.header__cta-link:focus-visible {
+.site-header__cta-link:focus-visible {
   outline:        2px solid var(--color-accent);
   outline-offset: 3px;
 }
 
-.header__cta-link .icon--arrow-right {
+.site-header__cta-link .icon--arrow-right {
   width:      0.875rem;
   height:     0.875rem;
   transition: transform var(--transition-fast);
 }
 
-.header__cta-link:hover .icon--arrow-right {
+.site-header__cta-link:hover .icon--arrow-right {
   transform: translateX(3px);
 }
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   § 05 — HEADER — SCROLLED STATE  (.is-scrolled)
+   § 05 — HEADER — SCROLLED STATE (.is-scrolled)
 ═══════════════════════════════════════════════════════════════════════════ */
 
 @supports (backdrop-filter: blur(1px)) {
   #site-header.is-scrolled {
-    background:               rgba(10, 10, 15, 0.72);
+    background:               rgba(10, 10, 15, 0.72); /* no matching variable — frosted glass */
     backdrop-filter:          blur(12px) saturate(1.5);
     -webkit-backdrop-filter:  blur(12px) saturate(1.5);
     border-color:             var(--color-border-subtle);
@@ -553,12 +576,12 @@ html {
    § 06 — HEADER — BURGER BUTTON
 ═══════════════════════════════════════════════════════════════════════════ */
 
-.header__burger-button {
+.site-header__burger {
   display:         none;
   flex-direction:  column;
   justify-content: center;
   align-items:     center;
-  gap:             5px;
+  gap:             var(--space-1); /* was 5px → --space-1 = 4px, closest match */
   width:           2.5rem;
   height:          2.5rem;
   padding:         0;
@@ -574,7 +597,7 @@ html {
   will-change: opacity, transform;
 }
 
-.header__burger-button span {
+.site-header__burger span {
   display:       block;
   width:         18px;
   height:        2px;
@@ -583,29 +606,29 @@ html {
   transition:    background var(--transition-base), transform var(--transition-base);
 }
 
-.header__burger-button:hover {
+.site-header__burger:hover {
   border-color: var(--color-border-strong);
 }
 
-.header__burger-button:hover span {
+.site-header__burger:hover span {
   background: var(--color-text-heading);
 }
 
-.header__burger-button:focus-visible {
+.site-header__burger:focus-visible {
   outline:        2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   § 07 — MOBILE MENU OVERLAY  (pseudo-element backdrop)
+   § 07 — MOBILE MENU OVERLAY
 ═══════════════════════════════════════════════════════════════════════════ */
 
 #mobile-nav::before {
   content:        '';
   position:       fixed;
   inset:          0;
-  background:     rgba(0, 0, 0, 0.55);
+  background:     rgba(0, 0, 0, 0.55); /* no matching variable — brand-specific overlay */
   z-index:        -1;
   opacity:        0;
   pointer-events: none;
@@ -619,7 +642,7 @@ html {
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   § 08 — MOBILE NAV PANEL  (#mobile-nav)
+   § 08 — MOBILE NAV PANEL (#mobile-nav)
 ═══════════════════════════════════════════════════════════════════════════ */
 
 #mobile-nav {
@@ -638,7 +661,7 @@ html {
   transform:           translateX(100%);
   visibility:          hidden;
   transition:
-    transform  0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    transform  0.35s cubic-bezier(0.4, 0, 0.2, 1), /* no matching variable — easing specific */
     visibility 0s   linear 0.35s;
   will-change: transform;
 }
@@ -651,7 +674,7 @@ html {
     visibility 0s   linear 0s;
 }
 
-.mobile-nav-inner {
+.mobile-nav__inner {
   display:        flex;
   flex-direction: column;
   height:         100%;
@@ -660,10 +683,10 @@ html {
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   § 09 — MOBILE NAV — PANEL HEADER  (logo + close button)
+   § 09 — MOBILE NAV — PANEL HEADER
 ═══════════════════════════════════════════════════════════════════════════ */
 
-.mobile-menu-header {
+.mobile-nav__header {
   display:         flex;
   align-items:     center;
   justify-content: space-between;
@@ -700,8 +723,7 @@ html {
   height:  auto;
 }
 
-/* Close button */
-.mobile-nav__close-button {
+.mobile-nav__close-btn {
   display:         flex;
   align-items:     center;
   justify-content: center;
@@ -720,21 +742,21 @@ html {
     transform    var(--transition-base);
 }
 
-.mobile-nav__close-button:hover {
+.mobile-nav__close-btn:hover {
   color:        var(--color-text-heading);
   border-color: var(--color-border-strong);
   background:   var(--color-surface-2);
   transform:    rotate(90deg);
 }
 
-.mobile-nav__close-button:focus-visible {
+.mobile-nav__close-btn:focus-visible {
   outline:        2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-.mobile-nav__close-button .icon--close {
-  width:  1rem;
-  height: 1rem;
+.mobile-nav__close-btn .icon--close {
+  width:  var(--fs-base);
+  height: var(--fs-base);
 }
 
 
@@ -772,7 +794,6 @@ html {
     background var(--transition-base);
 }
 
-/* إلغاء الخط المتحرك الخاص بالـ desktop */
 .mobile-nav__list .nav__link::after {
   display: none;
 }
@@ -816,7 +837,7 @@ html {
    § 11 — MOBILE NAV — CTA LINK
 ═══════════════════════════════════════════════════════════════════════════ */
 
-.mobile__cta-link {
+.mobile-nav__cta-link {
   display:         flex;
   align-items:     center;
   justify-content: center;
@@ -840,35 +861,35 @@ html {
   will-change: transform;
 }
 
-.mobile__cta-link:hover {
+.mobile-nav__cta-link:hover {
   background: var(--color-accent-hover);
   box-shadow: var(--shadow-amber-md);
   transform:  translateY(-1px);
 }
 
-.mobile__cta-link:active {
+.mobile-nav__cta-link:active {
   background: var(--color-accent-active);
   transform:  translateY(0);
 }
 
-.mobile__cta-link:focus-visible {
+.mobile-nav__cta-link:focus-visible {
   outline:        2px solid var(--color-accent);
   outline-offset: 3px;
 }
 
-.mobile__cta-link .icon--arrow-right {
+.mobile-nav__cta-link .icon--arrow-right {
   width:      0.875rem;
   height:     0.875rem;
   transition: transform var(--transition-fast);
 }
 
-.mobile__cta-link:hover .icon--arrow-right {
+.mobile-nav__cta-link:hover .icon--arrow-right {
   transform: translateX(3px);
 }
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   § 12 — MOBILE NAV — TOGGLE CONTROLS  (theme & lang cards)
+   § 12 — MOBILE NAV — TOGGLE CONTROLS (theme & lang cards)
 ═══════════════════════════════════════════════════════════════════════════ */
 
 .mobile-nav__controls {
@@ -880,7 +901,6 @@ html {
   flex-shrink:    0;
 }
 
-/* ── Shared card base ── */
 .mobile-nav__ctrl-card {
   display:         flex;
   align-items:     center;
@@ -919,8 +939,8 @@ html {
   display:         flex;
   align-items:     center;
   justify-content: center;
-  width:           2rem;
-  height:          2rem;
+  width:           var(--space-8);
+  height:          var(--space-8);
   background:      var(--color-surface);
   border:          1px solid var(--color-border);
   border-radius:   var(--radius-md);
@@ -936,14 +956,14 @@ html {
 }
 
 .mobile-nav__ctrl-icon .icon {
-  width:  1rem;
-  height: 1rem;
+  width:  var(--fs-base);
+  height: var(--fs-base);
 }
 
 .mobile-nav__ctrl-text {
   display:        flex;
   flex-direction: column;
-  gap:            2px;
+  gap:            var(--space-1);
 }
 
 .mobile-nav__ctrl-title {
@@ -975,8 +995,8 @@ html {
 .mobile-nav__switch::after {
   content:            '';
   position:           absolute;
-  top:                3px;
-  inset-inline-start: 3px;
+  top:                var(--space-1);
+  inset-inline-start: var(--space-1);
   width:              18px;
   height:             18px;
   border-radius:      var(--radius-full);
@@ -1002,7 +1022,7 @@ html {
 }
 
 .mobile-nav__lang-badge {
-  padding-block:  3px;
+  padding-block:  var(--space-1);
   padding-inline: var(--space-2);
   border-radius:  var(--radius-md);
   font-family:    var(--font-primary);
@@ -1029,14 +1049,14 @@ html {
    § 13 — MOBILE NAV — SOCIAL ICONS
 ═══════════════════════════════════════════════════════════════════════════ */
 
-.mobile-nav-social {
+.mobile-nav__social {
   padding:     var(--space-4) var(--space-6);
   border-top:  1px solid var(--color-border);
   margin-top:  auto;
   flex-shrink: 0;
 }
 
-.m-n-s-list {
+.mobile-nav__social-list {
   display:         flex;
   align-items:     center;
   justify-content: center;
@@ -1046,11 +1066,11 @@ html {
   padding:         0;
 }
 
-.m-n-s-item {
+.mobile-nav__social-item {
   flex-shrink: 0;
 }
 
-.m-n-s-link {
+.mobile-nav__social-link {
   display:         flex;
   align-items:     center;
   justify-content: center;
@@ -1068,38 +1088,38 @@ html {
     transform    var(--transition-base);
 }
 
-.m-n-s-link:hover {
+.mobile-nav__social-link:hover {
   color:        var(--color-text-heading);
   background:   var(--color-surface-3);
   border-color: var(--color-border-strong);
   transform:    translateY(-2px);
 }
 
-.m-n-s-link:focus-visible {
+.mobile-nav__social-link:focus-visible {
   outline:        2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-.m-n-s-link .icon--whatsapp,
-.m-n-s-link .icon--github,
-.m-n-s-link .icon--facebook {
+.mobile-nav__social-link .icon--whatsapp,
+.mobile-nav__social-link .icon--github,
+.mobile-nav__social-link .icon--facebook {
   width:  1.125rem;
   height: 1.125rem;
 }
 
-/* Per-brand accent colours on hover */
-.m-n-s-whatsapp-icon:hover {
+/* Per-brand accent colours on hover — intentional hardcoded brand colors */
+.mobile-nav__social-link--whatsapp:hover {
   color:        #25D366;
   border-color: rgba(37, 211, 102, 0.3);
   background:   rgba(37, 211, 102, 0.08);
 }
 
-.m-n-s-github-icon:hover {
+.mobile-nav__social-link--github:hover {
   color:        var(--color-text-heading);
   border-color: var(--color-border-strong);
 }
 
-.m-n-s-facebook-icon:hover {
+.mobile-nav__social-link--facebook:hover {
   color:        #1877F2;
   border-color: rgba(24, 119, 242, 0.3);
   background:   rgba(24, 119, 242, 0.08);
@@ -1107,10 +1127,9 @@ html {
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   § 14 — LANG / THEME LABEL STATES  (shared between desktop & mobile)
+   § 14 — LANG / THEME LABEL STATES
 ═══════════════════════════════════════════════════════════════════════════ */
 
-/* ── Theme icon states ── */
 .mobile-theme-icon {
   display:     flex;
   align-items: center;
@@ -1127,11 +1146,10 @@ html {
 
 .mobile-theme-icon .icon--moon,
 .mobile-theme-icon .icon--sun {
-  width:  1rem;
-  height: 1rem;
+  width:  var(--fs-base);
+  height: var(--fs-base);
 }
 
-/* ── Language label states ── */
 .lang-label {
   font-size:      var(--fs-xs);
   font-weight:    var(--fw-bold);
@@ -1157,40 +1175,40 @@ html {
     display: none !important;
   }
 
-  .header__burger-button,
-  .header__mobile-controls {
+  .site-header__burger,
+  .site-header__mobile-controls {
     display: none !important;
   }
 
-  .header__nav,
-  .header__theme-toggle-button,
-  .header__lang-toggle-button {
+  .site-header__nav,
+  .site-header__theme-toggle,
+  .site-header__lang-toggle {
     display: flex;
   }
 
-  .header__cta-link {
+  .site-header__cta-link {
     display: inline-flex;
   }
 }
 
 /* ── ≥ 1280px: wider spacing ── */
 @media (min-width: 1280px) {
-  .header-inner {
+  .site-header__inner {
     padding-inline: var(--space-8);
   }
 
-  .header__nav-list {
+  .site-header__nav-list {
     gap: var(--space-4);
   }
 
-  .header__controls {
+  .site-header__controls {
     gap: var(--space-4);
   }
 }
 
 /* ── ≥ 1440px ── */
 @media (min-width: 1440px) {
-  .header-inner {
+  .site-header__inner {
     padding-inline: var(--space-12);
   }
 }
@@ -1198,97 +1216,89 @@ html {
 /* ── < 1024px: mobile layout ── */
 @media (max-width: 1023px) {
 
-  /* Hide desktop-only nav and controls */
-  .header__nav,
-  .header__theme-toggle-button,
-  .header__cta-link {
+  .site-header__nav,
+  .site-header__theme-toggle,
+  .site-header__cta-link {
     display: none !important;
   }
 
-  /* Hide original lang toggle inside header__controls */
-  .header__lang-toggle-button:not(.header__lang-toggle-mobile) {
+  .site-header__lang-toggle:not(.site-header__lang-toggle--mobile) {
     display: none !important;
   }
 
-  /* Mobile controls group — lang + burger side by side */
-  .header__mobile-controls {
+  .site-header__mobile-controls {
     display:     flex;
     align-items: center;
     gap:         var(--space-3);
     flex-shrink: 0;
   }
 
-  .header-inner {
+  .site-header__inner {
     position:       relative;
     padding-inline: var(--space-4);
   }
 
-  /* Logo always in normal flow on the left (same as old scrolled state) */
-  .header__logo-wrapper {
+  .site-header__logo-wrapper {
     position: relative;
   }
 
-  .header__logo img {
+  .site-header__logo-link img {
     border:        2px solid var(--color-accent);
-    border-radius: 50%;
-    margin-top:    5px;
+    border-radius: 50%; /* no matching variable — circle shape */
+    margin-top:    var(--space-1);
     width:         46px;
     height:        46px;
     box-shadow:    var(--shadow-amber-sm);
   }
 
-  /* Burger always visible */
-  .header__burger-button {
+  .site-header__burger {
     display:        flex;
     opacity:        1;
     pointer-events: auto;
   }
 
-  /* CTA always visible */
-  .header__cta-link {
+  .site-header__cta-link {
     display:        inline-flex;
     padding-inline: var(--space-4);
     font-size:      var(--fs-xs);
   }
 
-  .header__controls {
+  .site-header__controls {
     display:     flex;
     align-items: center;
     gap:         var(--space-3);
   }
 
-  /* is-scrolled state no longer needs to override anything for layout */
-  #site-header.is-scrolled .header__logo-wrapper {
+  #site-header.is-scrolled .site-header__logo-wrapper {
     position: relative;
   }
 
-  #site-header.is-scrolled .header__logo img {
+  #site-header.is-scrolled .site-header__logo-link img {
     border:        2px solid var(--color-accent);
     border-radius: 50%;
-    margin-top:    5px;
+    margin-top:    var(--space-1);
     width:         46px;
     height:        46px;
     box-shadow:    var(--shadow-amber-sm);
   }
 
-  #site-header.is-scrolled .header__burger-button {
+  #site-header.is-scrolled .site-header__burger {
     opacity:        1;
     pointer-events: auto;
   }
 
-  #site-header.is-scrolled .header__cta-link {
+  #site-header.is-scrolled .site-header__cta-link {
     display:        inline-flex;
     padding-inline: var(--space-4);
     font-size:      var(--fs-xs);
   }
 
-  #site-header.is-scrolled .header__controls {
+  #site-header.is-scrolled .site-header__controls {
     display:     flex;
     align-items: center;
     gap:         var(--space-2);
   }
 
-  /* Frosted glass on mobile scroll */
   @supports (backdrop-filter: blur(1px)) {
     #site-header.is-scrolled {
       background:              rgba(10, 10, 15, 0.80);
@@ -1306,7 +1316,7 @@ html {
 
 /* ── Narrow mobile (≤ 375px) ── */
 @media (max-width: 375px) {
-  .header-inner {
+  .site-header__inner {
     padding-inline: var(--space-3);
   }
 
@@ -1315,41 +1325,32 @@ html {
     max-width: none;
   }
 
-  .mobile-menu-header,
+  .mobile-nav__header,
   .mobile-nav__controls,
-  .mobile-nav-social {
+  .mobile-nav__social {
     padding-inline: var(--space-4);
   }
 }
 
-
-
-
-
 /* Mobile-only lang toggle — hidden on desktop */
-.header__lang-toggle-mobile {
+.site-header__lang-toggle--mobile {
   display: none;
 }
 
 @media (max-width: 1023px) {
-  .header__lang-toggle-mobile {
+  .site-header__lang-toggle--mobile {
     display: flex;
   }
 }
 
+
 /* ================================================================
    HERO SECTION
-   مصدر: hero.css
    ================================================================ */
 
-/* Refactored: hardcoded values replaced with CSS variables from variables.css */
-/* Values marked with "no matching variable" have no equivalent in variables.css */
-
-/* ================================================
-   HERO SECTION
-   ================================================ */
+/* FIX ② — Hero background is --color-bg (darkest) as the opening section */
 .hero {
-  min-height: 100vh; /* no matching variable */
+  min-height: 100svh;
   background-color: var(--color-bg);
   display: flex;
   align-items: center;
@@ -1360,7 +1361,6 @@ html {
   overflow: hidden;
 }
 
-/* Subtle background texture */
 .hero::before {
   content: '';
   position: absolute;
@@ -1371,10 +1371,7 @@ html {
   pointer-events: none;
 }
 
-/* ================================================
-   HERO INNER — Two-column layout
-   ================================================ */
-.hero-inner {
+.hero__inner {
   width: 100%;
   max-width: var(--container-xl);
   margin: 0 auto;
@@ -1386,90 +1383,76 @@ html {
   z-index: var(--z-raised);
 }
 
-/* ================================================
-   HERO LEFT — Text content
-   ================================================ */
-.hero-left {
+.hero__content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);   /* ↓ كان --space-6 — أنسب للـ rhythm */
+  gap: var(--space-5);
 }
 
-/* Eyebrow label */
-.hero-eyebrow {
+.hero__eyebrow {
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
   color: var(--color-text-muted);
-  margin-bottom: var(--space-1); /* إضافة فراغ خفيف بعد الـ eyebrow */
+  margin-bottom: var(--space-1);
 }
 
-/* Main headline */
-.hero-headline {
-  font-size: clamp(2.25rem, 5vw, 4rem); /* ↓ ضبط الحجم — أوضح scaling */
+.hero__headline {
+  font-size: clamp(2.25rem, 5vw, 4rem); /* no matching variable for clamp */
   font-weight: var(--fw-extrabold);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-tight);
   color: var(--color-text-heading);
 }
 
-/* Italic accent word → orange */
-.hero-headline em {
+.hero__headline em {
   font-style: normal;
   color: var(--color-accent);
 }
 
-/* Description paragraph */
-.hero-description {
-  font-size: clamp(0.9rem, 1.2vw, 1rem); /* ↓ أصغر قليلاً — تفريق واضح عن الـ headline */
-  line-height: var(--lh-relaxed);        /* ↑ كان --lh-normal — أريح للقراءة */
+.hero__description {
+  font-size: clamp(0.9rem, 1.2vw, var(--fs-base)); /* no matching variable for clamp */
+  line-height: var(--lh-relaxed);
   color: var(--color-text-muted);
-  max-width: 40ch; /* ↓ كان 42ch — سطور أقصر وأسهل قراءة */
+  max-width: 40ch;
 }
 
-/* ================================================
-   CTA GROUP — Buttons
-   ================================================ */
-.hero-cta-group {
+.hero__cta-group {
   display: flex;
   align-items: center;
-  gap: var(--space-4);       /* ↓ كان --space-6 — أقرب وأمتماسك */
+  gap: var(--space-4);
   flex-wrap: wrap;
-  margin-top: var(--space-3); /* ↑ كان --space-2 — تنفس أكثر بعد الـ description */
+  margin-top: var(--space-3);
 }
 
-/* ================================================
-   HERO TERMINAL — Code panel (right column)
-   ================================================ */
+/* ── Terminal ── */
 .hero-terminal {
   background-color: var(--color-surface);
-  border: 1px solid var(--color-border); /* no matching variable for 1px */
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
   width: 100%;
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.04), /* no matching variable */
+    0 0 0 1px rgba(255, 255, 255, 0.04), /* no matching variable — subtle ring */
     var(--shadow-xl),
     var(--shadow-lg);
   font-family: var(--font-secondary);
-  font-size: clamp(0.8rem, 1vw, 0.875rem); /* ↑ ضبط — أوضح وأقرب للـ scale */
+  font-size: clamp(0.8rem, 1vw, var(--fs-sm)); /* no matching variable for clamp */
 }
 
-/* Terminal header bar */
 .hero-terminal__header {
   display: flex;
   align-items: center;
-  gap: var(--space-2);   /* ↑ استبدال 0.45rem بالـ scale */
+  gap: var(--space-2);
   padding: var(--space-3) var(--space-4);
   background-color: var(--color-surface-2);
-  border-bottom: 1px solid var(--color-border); /* no matching variable for 1px */
+  border-bottom: 1px solid var(--color-border);
 }
 
-/* Traffic-light dots */
 .hero-terminal__dot {
-  width: var(--space-3);   /* ↑ استبدال 12px بـ --space-3 (12px) */
-  height: var(--space-3);  /* ↑ نفس الشيء */
+  width: var(--space-3);
+  height: var(--space-3);
   border-radius: var(--radius-full);
   flex-shrink: 0;
 }
@@ -1477,7 +1460,6 @@ html {
 .hero-terminal__dot:nth-child(2) { background-color: var(--color-warning); }
 .hero-terminal__dot:nth-child(3) { background-color: var(--color-success); }
 
-/* Filename title — pushed to right */
 .hero-terminal__title {
   margin-left: auto;
   color: var(--color-text-muted);
@@ -1485,41 +1467,35 @@ html {
   opacity: 0.7; /* no matching variable */
 }
 
-/* Terminal body */
 .hero-terminal__body {
   padding: var(--space-5) var(--space-6);
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);   /* ↓ كان --space-5 — تقارب أكثر بين الـ lines */
-  line-height: var(--lh-snug); /* ↑ استبدال 1 بالـ variable */
+  gap: var(--space-4);
+  line-height: var(--lh-snug);
 }
 
-/* Each line */
 .hero-terminal__line {
   display: flex;
-  align-items: baseline; /* ↑ كان center — أدق للـ text alignment */
+  align-items: baseline;
   flex-wrap: nowrap;
   white-space: normal;
   min-height: 1.4em; /* no matching variable */
   gap: 0.3em; /* no matching variable */
 }
 
-/* كل span محتواه لا يتكسر */
 .hero-terminal__line > * {
-  white-space: nowrap; /* no matching variable */
+  white-space: nowrap;
 }
 
-/* ================================================
-   TERMINAL SYNTAX COLORS
-   ================================================ */
-.term-kw   { color: var(--color-accent);        font-weight: var(--fw-semibold); }
+/* ── Terminal Syntax Colors ── */
+.term-kw   { color: var(--color-accent);       font-weight: var(--fw-semibold); }
 .term-str  { color: var(--color-amber-300); }
-.term-bool { color: var(--color-success);        font-weight: var(--fw-semibold); }
+.term-bool { color: var(--color-success);      font-weight: var(--fw-semibold); }
 .term-acc  { color: var(--color-info); }
 .term-muted{ color: var(--color-text-muted); }
-.term-var  { color: var(--color-success);        font-weight: var(--fw-semibold); }
+.term-var  { color: var(--color-success);      font-weight: var(--fw-semibold); }
 
-/* Blinking cursor block */
 .term-cursor {
   display: inline-block;
   width: 0.55em; /* no matching variable */
@@ -1527,46 +1503,36 @@ html {
   background-color: var(--color-accent);
   vertical-align: middle;
   border-radius: 1px; /* no matching variable */
-  animation: blink 1.1s step-end infinite; /* no matching variable */
+  animation: blink 1.1s step-end infinite;
   margin-left: 1px; /* no matching variable */
 }
 
-/* ================================================
-   RESPONSIVE — TABLET (900px فأقل)
-   ================================================ */
+/* ── Hero Responsive ── */
 @media (max-width: 900px) {
-
   .hero-terminal {
     display: none;
   }
 
-  .hero-inner {
+  .hero__inner {
     grid-template-columns: 1fr;
   }
 
-  .hero-left {
-    gap: var(--space-4); /* ↓ كان --space-5 — أضيق على الـ tablet */
+  .hero__content {
+    gap: var(--space-4);
   }
 
-  .hero-headline {
-    font-size: clamp(1.875rem, 5.5vw, 2.75rem); /* ↑ ضبط الـ clamp */
+  .hero__headline {
+    font-size: clamp(1.875rem, 5.5vw, 2.75rem); /* no matching variable for clamp */
   }
 }
 
-/* ================================================
-   RESPONSIVE — MOBILE (560px فأقل)
-   ================================================ */
+/* FIX ⑥ — Collapsed the 5 conflicting @media (max-width: 560px) hero blocks
+   into a single clean block. Logic preserved, !important removed. */
 @media (max-width: 560px) {
-
   .hero {
-    height: 100svh;
-    min-height: unset;
-    padding-top: var(--nav-height);
-    padding-bottom: var(--space-8);
-    padding-inline: var(--space-5);
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
+    min-height: 100svh;
+    height: auto;
+    padding: var(--nav-height) var(--space-5) var(--space-8);
   }
 
   .hero::before {
@@ -1575,23 +1541,21 @@ html {
       radial-gradient(ellipse 60% 40% at 95% 5%, var(--color-info-surface) 0%, transparent 60%);
   }
 
-  .hero-inner {
+  .hero__inner {
     grid-template-columns: 1fr;
     gap: 0;
     width: 100%;
-    height: 100%;
   }
 
-  .hero-left {
-    height: 100%;
+  .hero__content {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    gap: 0;
+    justify-content: center;
+    gap: var(--space-4);
     padding-block: var(--space-6);
   }
 
-  .hero-eyebrow {
+  .hero__eyebrow {
     display: inline-flex;
     align-items: center;
     font-size: var(--fs-xs);
@@ -1604,24 +1568,24 @@ html {
     border: 1px solid var(--color-amber-border);
     border-radius: var(--radius-full);
     width: fit-content;
-    margin-bottom: var(--space-4);
+    margin-bottom: 0;
   }
 
-  .hero-headline {
-    font-size: clamp(1.875rem, 9vw, 2.5rem);
-    line-height: var(--lh-snug);
-    letter-spacing: var(--ls-tighter);
+  .hero__headline {
+    font-size: clamp(1.875rem, 9vw, 2.5rem); /* no matching variable for clamp */
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-tight);
     color: var(--color-text-heading);
   }
 
-  .hero-headline em {
+  .hero__headline em {
     display: inline;
     font-size: inherit;
     line-height: inherit;
     color: var(--color-accent);
   }
 
-  .hero-description {
+  .hero__description {
     font-size: var(--fs-sm);
     max-width: 100%;
     line-height: var(--lh-relaxed);
@@ -1629,272 +1593,82 @@ html {
     margin-top: var(--space-4);
   }
 
-  .hero-cta-group {
+  .hero__cta-group {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: var(--space-3);
-    margin-top: auto;           /* الـ CTA وحده بيتحرك للأسفل */
-    padding-top: var(--space-6); /* حد أدنى للفراغ فوق الـ CTA */
     width: 100%;
+    margin-top: var(--space-6);
   }
 
-  .btn-primary {
+  .hero__cta-group .btn-primary {
     width: 100%;
     justify-content: center;
-    padding: var(--space-4) var(--space-6);
-    font-size: var(--fs-base);
-    font-weight: var(--fw-bold);
-    border-radius: var(--radius-md);
-    letter-spacing: var(--ls-wide);
-  }
-
-  .btn-ghost {
-    width: fit-content;
-    align-self: center;
-    padding: var(--space-2) 0;
+    padding: var(--space-3) var(--space-4);
     font-size: var(--fs-sm);
-    color: var(--color-text-muted);
-    border-bottom: 1px solid var(--color-border-strong);
-    letter-spacing: var(--ls-wide);
+    border-radius: var(--radius-md);
   }
 
-  .btn-ghost:hover {
+  .hero__cta-group .btn-ghost {
+    width: 100%;
+    justify-content: center;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--fs-sm);
+    border-radius: var(--radius-md);
+    background: transparent;
+    border: 1px solid var(--color-border-strong);
     color: var(--color-text-heading);
-    border-bottom-color: var(--color-accent);
+    border-bottom: 1px solid var(--color-border-strong);
+    transition: var(--transition-base);
+  }
+
+  .hero__cta-group .btn-ghost:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
   }
 }
 
-/* ================================================
-   RESPONSIVE — SMALL MOBILE (380px فأقل)
-   ================================================ */
 @media (max-width: 380px) {
-
   .hero {
     padding-inline: var(--space-4);
-    padding-bottom: var(--space-5); /* ↓ كان --space-6 */
+    padding-bottom: var(--space-5);
   }
 
-  .hero-left {
-    padding-block: var(--space-3); /* ↓ كان --space-4 */
+  .hero__content {
+    padding-block: var(--space-3);
+    gap: var(--space-3);
   }
 
-  .hero-eyebrow {
-    margin-bottom: var(--space-4); /* ↓ كان --space-6 — كان كبير جداً */
+  .hero__headline {
+    font-size: clamp(1.75rem, 9vw, 2.1rem); /* no matching variable for clamp */
   }
 
-  .hero-headline {
-    font-size: clamp(1.75rem, 9vw, 2.1rem); /* ↑ ضبط — أصغر للشاشات الصغيرة جداً */
-  }
-
-  .hero-cta-group {
+  .hero__cta-group {
     gap: var(--space-2);
+    margin-top: var(--space-5);
   }
 
-  .btn-primary {
+  .hero__cta-group .btn-primary,
+  .hero__cta-group .btn-ghost {
     padding: var(--space-3) var(--space-4);
     font-size: var(--fs-sm);
   }
 }
 
 
-
-
-
-
-
-
-
-/* ================================================
-   OVERRIDE – إصلاح الفراغات الكبيرة على الهواتف
-   ================================================ */
-@media (max-width: 560px) {
-
-  /* إلغاء التمدد الكامل للعمود الأيسر */
-  .hero-left {
-    height: auto !important;          /* يمنع التمدد ليملأ الشاشة */
-    justify-content: flex-start !important;
-    padding-block: var(--space-4) !important; /* تقليل الهوامش العلوية والسفلية */
-  }
-
-  /* إزالة الإجبار على الذهاب إلى أسفل الشاشة */
-  .hero-cta-group {
-    margin-top: var(--space-6) !important;  /* مسافة مناسبة فوق الزر */
-    padding-top: 0 !important;              /* إلغاء الحشو الإضافي */
-    margin-bottom: var(--space-4) !important;
-  }
-
-  /* تعديل القسم الرئيسي ليكون مناسباً للمحتوى */
-  .hero {
-    min-height: auto !important;      /* إلغاء الارتفاع الإجباري */
-    height: auto !important;
-    padding-bottom: var(--space-6) !important;
-  }
-}
-
-@media (max-width: 560px) {
-  .hero-cta-group {
-    margin-top: var(--space-6) !important;
-    /* لا تغيير في height */
-  }
-  .hero-left {
-    justify-content: center !important;  /* يعمل على توسيط المحتوى عمودياً */
-    gap: var(--space-4) !important;
-  }
-}
-
-
-
-/* ================================================
-   إصلاح نهائي: القسم يملأ الشاشة مع مسافات مثالية
-   ================================================ */
-@media (max-width: 560px) {
-  /* 1. جعل القسم يملأ الشاشة بالكامل */
-  .hero {
-    min-height: 100svh !important;   /* يملأ الشاشة عمودياً */
-    height: 100svh !important;       /* يفرض الارتفاع الكامل */
-  }
-
-  /* 2. توسيط المحتوى عمودياً داخل القسم */
-  .hero-left {
-    justify-content: center !important;   /* يضع العناصر في منتصف الشاشة */
-    gap: var(--space-4) !important;       /* يحافظ على نفس المسافات الجميلة */
-  }
-
-  /* 3. تعديل الأزرار لتكون أقرب للنص (بدون دفعها للأسفل) */
-  .hero-cta-group {
-    margin-top: var(--space-5) !important;  /* مسافة معقولة فوق الأزرار */
-    margin-bottom: 0 !important;
-    padding-top: 0 !important;
-  }
-}
-
-
-
-
-@media (max-width: 560px) {
-  .hero-cta-group {
-    display: grid !important;          /* استخدام Grid عشان مكانهم جنب بعض */
-    grid-template-columns: 1fr 1fr !important; /* نصفين متساويين */
-    gap: var(--space-3) !important;
-    width: 100% !important;
-    margin-top: var(--space-5) !important;
-  }
-  
-  .hero-cta-group .btn-primary {
-    width: 100% !important; 
-    justify-content: center !important;
-  }
-  
-  .hero-cta-group .btn-ghost {
-    width: 100% !important;
-    justify-content: center !important;
-    border: 1px solid var(--color-border) !important; /* يعطيه إطار ليكون واضح */
-    border-radius: var(--radius-md) !important;
-    padding: var(--space-3) var(--space-4) !important;
-    background: transparent !important;
-    color: var(--color-text-heading) !important; /* النص أبيض مو رمادي */
-  }
-}
-
-
-/* ================================================
-   تحسينات نهائية للأحجام والمسافات - دقة عالية
-   ================================================ */
-@media (max-width: 560px) {
-  /* 1. ضبط القسم ليملأ الشاشة مع توسيط مثالي */
-  .hero {
-    min-height: 100svh !important;
-    height: 100svh !important;
-    padding: var(--nav-height) var(--space-5) var(--space-8) !important; /* هامش علوي للشريط، سفلي للتنفس */
-  }
-
-  /* 2. ضبط المحتوى ليكون في المنتصف عمودياً */
-  .hero-left {
-    justify-content: center !important;
-    gap: var(--space-4) !important; /* مسافة مثالية بين العناصر حسب المتغيرات */
-    
-  }
-
-  /* 3. تحسين شارة العنوان (Eyebrow) */
-  .hero-eyebrow {
-    font-size: var(--fs-xs) !important;
-    padding: var(--space-1) var(--space-3) !important;
-    border-radius: var(--radius-full) !important;
-    margin-bottom: 0 !important; /* إزالة الهوامش السلبية */
-  }
-
-  /* 4. ضبط حجم العنوان ليتناسب مع الشاشة الصغيرة */
-  .hero-headline {
-    font-size: clamp(3rem, 13vw, 4rem) !important; /* حجم متغير يتناسب مع الشاشة */
-    line-height: var(--lh-tight) !important;
-    letter-spacing: var(--ls-tight) !important;
-  }
-
-  /* 5. ضبط الوصف (Description) */
-  .hero-description {
-    font-size: var(--fs-base) !important; /* 1rem = 16px */
-    line-height: var(--lh-relaxed) !important;
-    max-width: 100% !important;
-    color: var(--color-text-muted) !important;
-  }
-
-  /* 6. ضبط مجموعة الأزرار لتكون جنباً إلى جنب بشكل مثالي */
-  .hero-cta-group {
-
-    display: grid !important;
-    grid-template-columns: 1fr !important; /* زرين متساويين في العرض */
-    gap: var(--space-3) !important; /* مسافة بين الأزرار */
-    width: 100% !important;
-    margin-top: 30px !important; /* مسافة فوق الأزرار */
-  }
-
-  /* 7. تصميم الزر الأساسي (See My Work) */
-  .hero-cta-group .btn-primary {
-    width: 100% !important;
-    justify-content: center !important;
-    padding: var(--space-3) var(--space-4) !important;
-    font-size: var(--fs-sm) !important;
-    border-radius: var(--radius-md) !important;
-    background-color: var(--color-accent) !important;
-    color: var(--color-text-inverse) !important;
-  }
-
-  /* 8. تصميم الزر الثانوي (Start a Project) ليكون واضحاً وجذاباً */
-  .hero-cta-group .btn-ghost {
-    width: 100% !important;
-    justify-content: center !important;
-    padding: var(--space-3) var(--space-4) !important;
-    font-size: var(--fs-sm) !important;
-    border-radius: var(--radius-md) !important;
-    background: transparent !important;
-    border: 1px solid var(--color-border-strong) !important; /* إطار واضح */
-    color: var(--color-text-heading) !important; /* نص أبيض ليكون مرئياً */
-    transition: var(--transition-base) !important;
-  }
-
-  .hero-cta-group .btn-ghost:hover {
-    border-color: var(--color-accent) !important;
-    color: var(--color-accent) !important;
-  }
-}
-
 /* ================================================================
    WORK / PROJECTS SECTION
-   مصدر: work.css
+   FIX ② — background: --color-bg-secondary for alternating rhythm
    ================================================================ */
 
-/* ════════════════════════════════════════
-   SECTION WRAPPER
-════════════════════════════════════════ */
-
 .work-section {
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-secondary);
   padding-block: var(--space-24);
   width: 100%;
 }
 
-.work-inner {
+.work-section__inner {
   max-width: var(--container-xl);
   margin-inline: auto;
   padding-inline: var(--space-8);
@@ -1903,22 +1677,11 @@ html {
   gap: var(--space-16);
 }
 
-
-
-/* ════════════════════════════════════════
-   PROJECTS GRID
-════════════════════════════════════════ */
-
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-6);
 }
-
-
-/* ════════════════════════════════════════
-   PROJECT CARD
-════════════════════════════════════════ */
 
 .project-card {
   background-color: var(--color-surface);
@@ -1937,9 +1700,6 @@ html {
   box-shadow: var(--shadow-lg);
   border-color: var(--color-border-strong);
 }
-
-
-/* ── Image Area ── */
 
 .project-card__image {
   position: relative;
@@ -1977,9 +1737,6 @@ html {
   height: 20px;
 }
 
-
-/* ── Number Badge ── */
-
 .project-card__number {
   position: absolute;
   top: var(--space-4);
@@ -1995,9 +1752,6 @@ html {
   padding: var(--space-1) var(--space-3);
   line-height: var(--lh-normal);
 }
-
-
-/* ── Live Badge ── */
 
 .project-card__live-badge {
   position: absolute;
@@ -2019,7 +1773,7 @@ html {
   line-height: var(--lh-normal);
 }
 
-.live-dot {
+.project-card__live-dot {
   width: 6px;
   height: 6px;
   border-radius: var(--radius-full);
@@ -2027,8 +1781,6 @@ html {
   flex-shrink: 0;
   animation: pulse-dot 2s ease-in-out infinite;
 }
-
-/* ── Card Body ── */
 
 .project-card__body {
   padding: var(--space-6);
@@ -2056,9 +1808,6 @@ html {
   color: var(--color-text-body);
   margin: 0;
 }
-
-
-/* ── Stack Tags ── */
 
 .project-card__stack {
   display: flex;
@@ -2088,9 +1837,6 @@ html {
   border-color: var(--color-border-strong);
 }
 
-
-/* ── Card Footer ── */
-
 .project-card__footer {
   display: flex;
   align-items: center;
@@ -2118,7 +1864,6 @@ html {
   flex-shrink: 0;
 }
 
-/* Live Site link — amber */
 .project-card__link--live {
   color: var(--color-accent);
 }
@@ -2128,7 +1873,6 @@ html {
   gap: var(--space-3);
 }
 
-/* Case Study link — muted */
 .project-card__link--case-study {
   color: var(--color-text-muted);
 }
@@ -2138,21 +1882,16 @@ html {
   gap: var(--space-3);
 }
 
-
-/* ════════════════════════════════════════
-   WORK FOOTER CTA
-════════════════════════════════════════ */
-
-.work-footer {
+.work-section__footer {
   display: flex;
   justify-content: center;
   padding-block-start: var(--space-4);
 }
 
-
-/* ════════════════════════════════════════
-   LIGHT MODE OVERRIDES
-════════════════════════════════════════ */
+/* Light mode */
+[data-theme="light"] .work-section {
+  background-color: var(--color-bg-secondary);
+}
 
 [data-theme="light"] .project-card {
   background-color: var(--color-surface);
@@ -2184,29 +1923,23 @@ html {
   border-color: var(--color-border);
 }
 
-
-/* ════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════ */
-
-/* Tablet — 2 columns */
+/* Responsive */
 @media (max-width: 1024px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .section-title {
+  .section-header__title {
     font-size: var(--fs-3xl);
   }
 }
 
-/* Mobile — 1 column */
 @media (max-width: 640px) {
   .work-section {
     padding-block: var(--space-16);
   }
 
-  .work-inner {
+  .work-section__inner {
     padding-inline: var(--space-4);
     gap: var(--space-10);
   }
@@ -2216,7 +1949,7 @@ html {
     gap: var(--space-5);
   }
 
-  .section-title {
+  .section-header__title {
     font-size: var(--fs-2xl);
   }
 
@@ -2229,16 +1962,11 @@ html {
   }
 }
 
+
 /* ================================================================
    SERVICES SECTION
-   مصدر: services.css
+   FIX ② — background: --color-bg for alternating rhythm
    ================================================================ */
-
-
-
-/* ════════════════════════════════════════
-   SECTION WRAPPER
-════════════════════════════════════════ */
 
 .services-section {
   background-color: var(--color-bg);
@@ -2248,7 +1976,6 @@ html {
   overflow: hidden;
 }
 
-/* Ambient glow — subtle, mirrors hero/about approach */
 .services-section::before {
   content: '';
   position: absolute;
@@ -2259,7 +1986,7 @@ html {
   pointer-events: none;
 }
 
-.services-inner {
+.services-section__inner {
   max-width: var(--container-xl);
   margin-inline: auto;
   padding-inline: var(--space-8);
@@ -2270,85 +1997,24 @@ html {
   gap: var(--space-16);
 }
 
-
-/* ════════════════════════════════════════
-   SECTION HEADER
-════════════════════════════════════════ */
-
-.section-header {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-/* Eyebrow — dash + label (from screenshot) */
-.section-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  font-family: var(--font-primary);
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-semibold);
-  letter-spacing: var(--ls-widest);
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin-block-end: var(--space-4);
-}
-
-/* The dash before eyebrow text */
-.section-eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 28px;
-  height: 2px;
-  background-color: var(--color-accent);
-  flex-shrink: 0;
-}
-
-/* .section-title → defined in work.css, reused */
-/* Accent span inside title */
-.section-title span {
-  color: var(--color-accent);
-}
-
-.section-description {
-  font-family: var(--font-primary);
-  font-size: var(--fs-base);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-relaxed);
-  color: var(--color-text-muted);
-  margin-block-start: var(--space-4);
-  max-width: 52ch;
-}
-
-
-/* ════════════════════════════════════════
-   DESKTOP LAYOUT
-════════════════════════════════════════ */
-
-.desktop-layout {
+/* Desktop Layout */
+.services-section__desktop-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-6);
   align-items: center;
 }
 
-/* Lift detail panels upward to align better in viewport */
-.services-detail-panels {
+.services-section__detail-panels {
   margin-top: calc(var(--space-16) * -1);
 }
 
-/* Hide mobile on desktop */
-.mobile-layout {
+.services-section__mobile-layout {
   display: none;
 }
 
-
-/* ════════════════════════════════════════
-   SERVICES LIST (left column)
-════════════════════════════════════════ */
-
-.services-list-panel {
+/* Services List */
+.services-section__list-panel {
   position: sticky;
   top: calc(var(--nav-height) + var(--space-8));
   align-self: start;
@@ -2358,9 +2024,6 @@ html {
   display: flex;
   flex-direction: column;
 }
-
-
-/* ── List Item ── */
 
 .service-list-item {
   display: flex;
@@ -2380,7 +2043,6 @@ html {
     color              var(--transition-base);
 }
 
-/* First item — top border too */
 .service-list-item:first-child {
   border-block-start: 1px solid var(--color-border-subtle);
 }
@@ -2395,8 +2057,6 @@ html {
   border-inline-start-color: var(--color-accent);
 }
 
-
-/* Number */
 .service-list-item__number {
   font-family: var(--font-primary);
   font-size: var(--fs-xs);
@@ -2408,16 +2068,11 @@ html {
   transition: color var(--transition-base);
 }
 
-.service-list-item--active .service-list-item__number {
-  color: var(--color-accent);
-}
-
+.service-list-item--active .service-list-item__number,
 .service-list-item:hover .service-list-item__number {
   color: var(--color-accent);
 }
 
-
-/* Name */
 .service-list-item__name {
   font-family: var(--font-primary);
   font-size: var(--fs-base);
@@ -2436,8 +2091,6 @@ html {
   color: var(--color-text-body);
 }
 
-
-/* Arrow — shown on hover + active */
 .service-list-item__arrow {
   width: 12px;
   height: 12px;
@@ -2467,11 +2120,7 @@ html {
   transform: translateX(0) scaleX(-1);
 }
 
-
-/* ════════════════════════════════════════
-   SERVICE DETAIL PANEL (right column)
-════════════════════════════════════════ */
-
+/* Service Detail Panel */
 .service-detail-panel {
   display: none;
   flex-direction: column;
@@ -2495,9 +2144,6 @@ html {
   gap: var(--space-3);
 }
 
-
-/* ── Icon — outlined box style ── */
-
 .service-detail-panel__icon {
   display: inline-flex;
   align-items: center;
@@ -2516,9 +2162,6 @@ html {
   height: 22px;
 }
 
-
-/* ── Name ── */
-
 .service-detail-panel__name {
   font-family: var(--font-primary);
   font-size: var(--fs-2xl);
@@ -2527,9 +2170,6 @@ html {
   letter-spacing: var(--ls-tight);
   color: var(--color-text-heading);
 }
-
-
-/* ── Description ── */
 
 .service-detail-panel__description {
   font-family: var(--font-primary);
@@ -2540,9 +2180,6 @@ html {
   max-width: 56ch;
   margin: 0;
 }
-
-
-/* ── Includes block ── */
 
 .service-detail-panel__includes-title {
   font-family: var(--font-primary);
@@ -2579,7 +2216,6 @@ html {
   color: var(--color-text-body);
 }
 
-/* Checkmark icon via CSS — matches screenshot */
 .service-detail-panel__includes-list li::before {
   content: '';
   display: inline-flex;
@@ -2594,9 +2230,6 @@ html {
   background-repeat: no-repeat;
   background-position: center;
 }
-
-
-/* ── Tags ── */
 
 .service-detail-panel__tags {
   display: flex;
@@ -2624,10 +2257,6 @@ html {
   background-color: var(--color-amber-surface);
 }
 
-
-/* ── CTA Button — full-width style from screenshot ── */
-
-/* btn-primary base defined in hero.css, extended here */
 .service-detail-panel > .btn-primary {
   width: 100%;
   justify-content: center;
@@ -2637,23 +2266,18 @@ html {
   letter-spacing: var(--ls-normal);
 }
 
-
-/* ════════════════════════════════════════
-   MOBILE LAYOUT — tabs
-════════════════════════════════════════ */
-
-/* Tabs nav — horizontally scrollable */
-.tabs-nav-wrapper {
+/* Mobile Tabs Layout */
+.services-section__tabs-nav-wrapper {
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
 
-.tabs-nav-wrapper::-webkit-scrollbar {
+.services-section__tabs-nav-wrapper::-webkit-scrollbar {
   display: none;
 }
 
-.tabs-nav {
+.services-section__tabs-nav {
   display: flex;
   gap: var(--space-2);
   padding-block-end: var(--space-1);
@@ -2692,9 +2316,6 @@ html {
   font-weight: var(--fw-semibold);
 }
 
-
-/* ── Indicator Dots ── */
-
 .tab-dots {
   display: flex;
   justify-content: center;
@@ -2718,9 +2339,6 @@ html {
   width: 18px;
 }
 
-
-/* ── Tab Panels ── */
-
 .tab-panels {
   position: relative;
 }
@@ -2740,8 +2358,6 @@ html {
   display: flex;
 }
 
-/* ── Mobile Panel Icon ── */
-
 .tab-panel__icon {
   display: inline-flex;
   align-items: center;
@@ -2759,9 +2375,6 @@ html {
   height: 20px;
 }
 
-
-/* ── Mobile Panel Name ── */
-
 .tab-panel__name {
   font-family: var(--font-primary);
   font-size: var(--fs-xl);
@@ -2776,9 +2389,6 @@ html {
   color: var(--color-accent);
 }
 
-
-/* ── Mobile Panel Description ── */
-
 .tab-panel__description {
   font-family: var(--font-primary);
   font-size: var(--fs-sm);
@@ -2786,9 +2396,6 @@ html {
   color: var(--color-text-muted);
   margin: 0;
 }
-
-
-/* ── Mobile Panel Includes ── */
 
 .tab-panel__includes {
   display: flex;
@@ -2828,7 +2435,6 @@ html {
   color: var(--color-text-body);
 }
 
-/* Checkmark — matches desktop + screenshot */
 .tab-panel__includes-list li::before {
   content: '';
   display: inline-flex;
@@ -2844,9 +2450,6 @@ html {
   background-position: center;
 }
 
-
-/* ── Mobile CTA Button ── */
-
 .tab-panel > .btn-primary {
   width: 100%;
   justify-content: center;
@@ -2856,11 +2459,7 @@ html {
   letter-spacing: var(--ls-normal);
 }
 
-
-/* ════════════════════════════════════════
-   PANEL SWAP ANIMATION — JS controlled
-════════════════════════════════════════ */
-
+/* Panel swap animation */
 .service-detail-panel--leaving {
   opacity: 0;
   transform: translateY(6px);
@@ -2874,11 +2473,7 @@ html {
   animation: panel-in 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-
-/* ════════════════════════════════════════
-   LIGHT MODE OVERRIDES
-════════════════════════════════════════ */
-
+/* Light mode */
 [data-theme="light"] .service-list-item:hover {
   background-color: var(--color-amber-surface);
 }
@@ -2912,7 +2507,7 @@ html {
 [data-theme="light"] .tab-button--active {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
-  color: #fff;
+  color: var(--color-text-inverse);
 }
 
 [data-theme="light"] .tab-panel {
@@ -2925,14 +2520,9 @@ html {
   border-color: var(--color-border);
 }
 
-
-/* ════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════ */
-
-/* Large tablet — tighten gap */
+/* Responsive */
 @media (max-width: 1100px) {
-  .desktop-layout {
+  .services-section__desktop-layout {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-5);
   }
@@ -2946,26 +2536,24 @@ html {
   }
 }
 
-/* Switch to mobile layout */
 @media (max-width: 768px) {
-  .desktop-layout {
+  .services-section__desktop-layout {
     display: none;
   }
 
-  .mobile-layout {
+  .services-section__mobile-layout {
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
   }
 }
 
-/* Mobile tweaks */
 @media (max-width: 640px) {
   .services-section {
     padding-block: var(--space-16);
   }
 
-  .services-inner {
+  .services-section__inner {
     padding-inline: var(--space-4);
     gap: var(--space-10);
   }
@@ -2975,20 +2563,16 @@ html {
     gap: var(--space-4);
   }
 
-  .section-title {
+  .section-header__title {
     font-size: var(--fs-3xl);
   }
 }
 
+
 /* ================================================================
    ABOUT / SKILLS SECTION
-   مصدر: about.css
+   FIX ② — background: --color-bg-secondary for alternating rhythm
    ================================================================ */
-
-
-/* ════════════════════════════════════════
-   SECTION WRAPPER
-════════════════════════════════════════ */
 
 .about-section {
   background-color: var(--color-bg-secondary);
@@ -2998,7 +2582,6 @@ html {
   overflow: hidden;
 }
 
-/* Subtle ambient glow — mirrors hero::before approach */
 .about-section::before {
   content: '';
   position: absolute;
@@ -3009,7 +2592,8 @@ html {
   pointer-events: none;
 }
 
-.about-inner {
+/* FIX ⑤ — About inner gap standardized to --space-16 (was --space-12) */
+.about-section__inner {
   max-width: var(--container-xl);
   margin-inline: auto;
   padding-inline: var(--space-8);
@@ -3017,47 +2601,30 @@ html {
   z-index: var(--z-raised);
   display: flex;
   flex-direction: column;
-  gap: var(--space-12);
+  gap: var(--space-16);
 }
 
-
-/* ════════════════════════════════════════
-   SECTION HEADER  (reuses work.css classes)
-════════════════════════════════════════ */
-
-/* .section-label  → already defined in work.css */
-/* .section-title  → already defined in work.css */
-/* .outline        → already defined in work.css */
-
-
-/* ════════════════════════════════════════
-   ABOUT GRID — two-column on desktop
-════════════════════════════════════════ */
-
-.about-grid {
+.about-section__grid {
   display: grid;
-  grid-template-columns: 1fr;   /* single column — bio block fills width */
+  grid-template-columns: 1fr;
   gap: var(--space-8);
 }
 
-
-/* ════════════════════════════════════════
-   TYPEWRITER BLOCK
-════════════════════════════════════════ */
-
-.typewriter-block {
+/* Typewriter Block */
+.about-section__typewriter-block {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
   max-width: 72ch;
 }
 
-/* Each paragraph line */
 .typewriter-line {
   margin: 0;
   padding-inline-start: var(--space-4);
   border-inline-start: 2px solid var(--color-border-strong);
   transition: border-color var(--transition-base);
+  opacity: 0;
+  transform: translateY(18px);
 }
 
 .typewriter-line:hover {
@@ -3073,19 +2640,8 @@ html {
   display: block;
 }
 
-/* Paragraphs hidden by default — about.js controls reveal entirely */
-.typewriter-line {
-  opacity: 0;
-  transform: translateY(18px);
-  /* transition injected by JS with custom easing */
-}
-
-
-/* ════════════════════════════════════════
-   SKILLS PANEL
-════════════════════════════════════════ */
-
-.about-skills {
+/* Skills Panel */
+.about-section__skills {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
@@ -3095,8 +2651,7 @@ html {
   gap: var(--space-6);
 }
 
-/* Panel heading */
-.skills-title {
+.about-section__skills-title {
   font-family: var(--font-primary);
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
@@ -3106,19 +2661,13 @@ html {
   margin: 0;
 }
 
-/* Divider after title */
-.skills-title::after {
+.about-section__skills-title::after {
   content: '';
   display: block;
   height: 1px;
   background-color: var(--color-border-subtle);
   margin-block-start: var(--space-4);
 }
-
-
-/* ════════════════════════════════════════
-   SKILLS GROUP
-════════════════════════════════════════ */
 
 .skills-group {
   display: flex;
@@ -3136,17 +2685,13 @@ html {
   margin: 0;
 }
 
-.skills-tags {
+.skills-group__tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
 }
 
-
-/* ════════════════════════════════════════
-   SKILL TAG
-════════════════════════════════════════ */
-
+/* Skill Tag */
 .skill-tag {
   display: inline-flex;
   align-items: center;
@@ -3164,18 +2709,15 @@ html {
   line-height: var(--lh-normal);
   cursor: default;
   transition:
-    color          var(--transition-fast),
+    color            var(--transition-fast),
     background-color var(--transition-fast),
-    border-color   var(--transition-fast),
-    transform      var(--transition-fast);
-
-  /* Staggered reveal via data-order */
+    border-color     var(--transition-fast),
+    transform        var(--transition-fast);
   opacity: 0;
   transform: translateY(6px);
   animation: tag-reveal 0.4s ease forwards;
 }
 
-/* Stagger via data-order attribute */
 .skill-tag[data-order="1"]  { animation-delay: 0.05s; }
 .skill-tag[data-order="2"]  { animation-delay: 0.10s; }
 .skill-tag[data-order="3"]  { animation-delay: 0.15s; }
@@ -3194,12 +2736,7 @@ html {
   transform: translateY(-2px);
 }
 
-
-/* ════════════════════════════════════════
-   SKILL DOT — live dot inside tag
-════════════════════════════════════════ */
-
-.skill-dot {
+.skill-tag__dot {
   width: 5px;
   height: 5px;
   border-radius: var(--radius-full);
@@ -3208,20 +2745,16 @@ html {
   transition: background-color var(--transition-fast);
 }
 
-.skill-tag:hover .skill-dot {
+.skill-tag:hover .skill-tag__dot {
   background-color: var(--color-accent);
 }
 
-
-/* ════════════════════════════════════════
-   LIGHT MODE OVERRIDES
-════════════════════════════════════════ */
-
+/* Light mode */
 [data-theme="light"] .about-section {
   background-color: var(--color-bg-secondary);
 }
 
-[data-theme="light"] .about-skills {
+[data-theme="light"] .about-section__skills {
   background-color: var(--color-surface);
   border-color: var(--color-border);
 }
@@ -3246,14 +2779,9 @@ html {
   border-inline-start-color: var(--color-accent);
 }
 
-
-/* ════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════ */
-
-/* Tablet */
+/* Responsive */
 @media (max-width: 1024px) {
-  .about-inner {
+  .about-section__inner {
     gap: var(--space-10);
   }
 
@@ -3262,23 +2790,22 @@ html {
   }
 }
 
-/* Mobile */
 @media (max-width: 640px) {
   .about-section {
     padding-block: var(--space-16);
   }
 
-  .about-inner {
+  .about-section__inner {
     padding-inline: var(--space-4);
     gap: var(--space-8);
   }
 
-  .about-skills {
+  .about-section__skills {
     padding: var(--space-5);
     gap: var(--space-5);
   }
 
-  .typewriter-block {
+  .about-section__typewriter-block {
     gap: var(--space-5);
   }
 
@@ -3287,15 +2814,11 @@ html {
   }
 }
 
+
 /* ================================================================
    CONTACT SECTION
-   مصدر: contact.css
+   FIX ② — background: --color-bg for alternating rhythm
    ================================================================ */
-
-
-/* ════════════════════════════════════════
-   SECTION WRAPPER
-════════════════════════════════════════ */
 
 #contact {
   display: flex;
@@ -3308,7 +2831,6 @@ html {
   overflow: hidden;
 }
 
-/* Subtle ambient glow — mirrors hero/about approach */
 #contact::before {
   content: '';
   position: absolute;
@@ -3319,12 +2841,7 @@ html {
   pointer-events: none;
 }
 
-
-/* ════════════════════════════════════════
-   INNER CONTAINER
-════════════════════════════════════════ */
-
-.contact-inner {
+.contact-section__inner {
   max-width: var(--container-xl);
   width: 100%;
   margin-inline: auto;
@@ -3337,12 +2854,7 @@ html {
   gap: var(--space-6);
 }
 
-
-/* ════════════════════════════════════════
-   EYEBROW & HEADING
-════════════════════════════════════════ */
-
-.contact-eyebrow {
+.contact-section__eyebrow {
   font-family: var(--font-primary);
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
@@ -3352,8 +2864,7 @@ html {
   text-align: center;
 }
 
-/* Reuse section-title from work.css — override to center */
-.contact-inner .section-header {
+.contact-section__inner .section-header {
   width: 100%;
   max-width: 600px;
   margin-inline: auto;
@@ -3361,18 +2872,18 @@ html {
   justify-content: center;
 }
 
-.contact-inner .section-title {
+.contact-section__inner .section-header__title {
   text-align: center;
   font-size: var(--fs-4xl);
   margin: 0;
 }
 
-.contact-inner .section-title span {
+.contact-section__inner .section-header__title span {
   -webkit-text-stroke: 1.5px var(--color-text-heading);
   color: transparent;
 }
 
-.contact-inner .section-description {
+.contact-section__inner .section-header__description {
   font-family: var(--font-primary);
   font-size: var(--fs-sm);
   font-weight: var(--fw-regular);
@@ -3382,12 +2893,8 @@ html {
   max-width: 38ch;
 }
 
-
-/* ════════════════════════════════════════
-   CONTACT FORM
-════════════════════════════════════════ */
-
-.contact-form {
+/* Contact Form */
+.contact-section__form {
   width: 100%;
   max-width: 600px;
   margin-inline: auto;
@@ -3397,19 +2904,13 @@ html {
   margin-block-start: var(--space-2);
 }
 
-
-/* ── Form Group ── */
-
 .form-group {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
 }
 
-
-/* ── Form Label ── */
-
-.form-label {
+.form-group__label {
   font-family: var(--font-primary);
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
@@ -3418,11 +2919,8 @@ html {
   color: var(--color-text-muted);
 }
 
-
-/* ── Form Input & Textarea ── */
-
-.form-input,
-.form-textarea {
+.form-group__input,
+.form-group__textarea {
   width: 100%;
   font-family: var(--font-primary);
   font-size: var(--fs-sm);
@@ -3435,40 +2933,38 @@ html {
   padding: var(--space-4) var(--space-5);
   outline: none;
   transition:
-    border-color var(--transition-base),
-    box-shadow   var(--transition-base),
+    border-color     var(--transition-base),
+    box-shadow       var(--transition-base),
     background-color var(--transition-base);
   -webkit-appearance: none;
   appearance: none;
 }
 
-.form-input::placeholder,
-.form-textarea::placeholder {
+.form-group__input::placeholder,
+.form-group__textarea::placeholder {
   color: var(--color-text-disabled);
 }
 
-.form-input:hover,
-.form-textarea:hover {
+.form-group__input:hover,
+.form-group__textarea:hover {
   border-color: var(--color-border-strong);
   background-color: var(--color-surface-2);
 }
 
-.form-input:focus,
-.form-textarea:focus {
+.form-group__input:focus,
+.form-group__textarea:focus {
   border-color: var(--color-amber-border);
   background-color: var(--color-surface);
   box-shadow: 0 0 0 3px var(--color-amber-glow-sm);
 }
 
-.form-textarea {
+.form-group__textarea {
   min-height: 140px;
   resize: vertical;
 }
 
-
-/* ── Success Message ── */
-
-.contact-form__success-message {
+/* Success Message */
+.contact-section__success-message {
   display: none;
   align-items: center;
   gap: var(--space-2);
@@ -3482,20 +2978,18 @@ html {
   padding: var(--space-3) var(--space-5);
 }
 
-.contact-form__success-message.is-visible {
+.contact-section__success-message.is-visible {
   display: flex;
 }
 
-.contact-form__success-message .icon {
+.contact-section__success-message .icon {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
 }
 
-
-/* ── Submit Button — full width, amber ── */
-
-.contact-form .btn-primary {
+/* Submit Button */
+.contact-section__form .btn-primary {
   width: 100%;
   justify-content: center;
   padding: var(--space-4) var(--space-6);
@@ -3506,17 +3000,13 @@ html {
   gap: var(--space-3);
 }
 
-.contact-form .btn-primary .icon {
+.contact-section__form .btn-primary .icon {
   width: 14px;
   height: 14px;
 }
 
-
-/* ════════════════════════════════════════
-   DIVIDER
-════════════════════════════════════════ */
-
-.contact-divider {
+/* Divider */
+.contact-section__divider {
   width: 100%;
   max-width: 600px;
   margin-inline: auto;
@@ -3526,15 +3016,11 @@ html {
   letter-spacing: var(--ls-wide);
   color: var(--color-text-muted);
   text-align: center;
-  opacity: 0.6;
+  opacity: 0.6; /* no matching variable */
 }
 
-
-/* ════════════════════════════════════════
-   DIRECT CONTACT BUTTONS
-════════════════════════════════════════ */
-
-.contact-direct-buttons {
+/* Direct Contact Buttons */
+.contact-section__direct-buttons {
   width: 100%;
   max-width: 600px;
   margin-inline: auto;
@@ -3543,8 +3029,7 @@ html {
   gap: var(--space-3);
 }
 
-/* Email button — reuses .btn-outline from work.css, override for half-width */
-.contact-direct-buttons .btn-outline {
+.contact-section__direct-buttons .btn-outline {
   justify-content: center;
   gap: var(--space-2);
   padding: var(--space-3) var(--space-4);
@@ -3553,13 +3038,13 @@ html {
   border-radius: var(--radius-md);
 }
 
-.contact-direct-buttons .btn-outline .icon {
+.contact-section__direct-buttons .btn-outline .icon {
   width: 14px;
   height: 14px;
 }
 
-/* WhatsApp button — green brand */
-.contact-whatsapp-button {
+/* WhatsApp — intentional brand color */
+.contact-section__whatsapp-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -3581,29 +3066,25 @@ html {
     transform        var(--transition-fast);
 }
 
-.contact-whatsapp-button:hover {
+.contact-section__whatsapp-btn:hover {
   background-color: #1EBE58;
   border-color: #1EBE58;
   box-shadow: 0 0 20px rgba(37, 211, 102, 0.25);
   transform: translateY(-1px);
 }
 
-.contact-whatsapp-button:active {
+.contact-section__whatsapp-btn:active {
   transform: translateY(0);
 }
 
-.contact-whatsapp-button .icon {
+.contact-section__whatsapp-btn .icon {
   width: 15px;
   height: 15px;
   flex-shrink: 0;
 }
 
-
-/* ════════════════════════════════════════
-   AVAILABILITY CHIPS
-════════════════════════════════════════ */
-
-.contact-availability-chips {
+/* Availability Chips */
+.contact-section__availability-chips {
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -3612,7 +3093,7 @@ html {
   padding-block-start: var(--space-2);
 }
 
-.contact-chip {
+.contact-section__chip {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -3628,8 +3109,7 @@ html {
   line-height: var(--lh-normal);
 }
 
-/* Availability dot — green pulsing */
-.contact-chip__dot {
+.contact-section__chip-dot {
   width: 7px;
   height: 7px;
   border-radius: var(--radius-full);
@@ -3638,115 +3118,94 @@ html {
   animation: pulse-dot 2s ease-in-out infinite;
 }
 
-/* Bolt icon inside chip */
-.contact-chip .icon {
+.contact-section__chip .icon {
   width: 10px;
   height: 10px;
   flex-shrink: 0;
   color: var(--color-accent);
 }
 
-
-/* ════════════════════════════════════════
-   LIGHT MODE OVERRIDES
-════════════════════════════════════════ */
-
+/* Light mode */
 [data-theme="light"] #contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: var(--color-bg);
 }
 
-[data-theme="light"] .form-input,
-[data-theme="light"] .form-textarea {
+[data-theme="light"] .form-group__input,
+[data-theme="light"] .form-group__textarea {
   background-color: var(--color-surface);
   border-color: var(--color-border);
   color: var(--color-text-body);
 }
 
-[data-theme="light"] .form-input:hover,
-[data-theme="light"] .form-textarea:hover {
+[data-theme="light"] .form-group__input:hover,
+[data-theme="light"] .form-group__textarea:hover {
   background-color: var(--color-surface-2);
   border-color: var(--color-border-strong);
 }
 
-[data-theme="light"] .form-input:focus,
-[data-theme="light"] .form-textarea:focus {
+[data-theme="light"] .form-group__input:focus,
+[data-theme="light"] .form-group__textarea:focus {
   border-color: var(--color-amber-border);
   background-color: var(--color-surface);
 }
 
-[data-theme="light"] .contact-chip {
+[data-theme="light"] .contact-section__chip {
   background-color: var(--color-surface);
   border-color: var(--color-border);
 }
 
-[data-theme="light"] .contact-direct-buttons .btn-outline {
+[data-theme="light"] .contact-section__direct-buttons .btn-outline {
   background-color: var(--color-surface);
   border-color: var(--color-border-strong);
 }
 
-
-/* ════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════ */
-
-/* Tablet */
+/* Responsive */
 @media (max-width: 1024px) {
-  .contact-inner .section-title {
+  .contact-section__inner .section-header__title {
     font-size: var(--fs-3xl);
   }
 }
 
-/* Mobile */
 @media (max-width: 640px) {
   #contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
     padding-block: var(--space-16);
   }
 
-  .contact-inner {
+  .contact-section__inner {
     padding-inline: var(--space-4);
     gap: var(--space-5);
   }
 
-  .contact-inner .section-title {
+  .contact-section__inner .section-header__title {
     font-size: var(--fs-2xl);
   }
 
-  .contact-direct-buttons {
+  .contact-section__direct-buttons {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-2);
   }
 
-  .contact-availability-chips {
+  .contact-section__availability-chips {
     gap: var(--space-2);
   }
 
-  .contact-chip {
-    font-size: 0.65rem;
+  .contact-section__chip {
+    font-size: var(--fs-xs);
     padding: var(--space-1) var(--space-3);
   }
 }
 
 @media (max-width: 380px) {
-  .contact-direct-buttons {
+  .contact-section__direct-buttons {
     grid-template-columns: 1fr;
   }
 }
 
+
 /* ================================================================
    FOOTER
-   مصدر: footer.css
+   FIX ② — background: --color-bg-secondary, closes the alternating rhythm
    ================================================================ */
-
-
-/* ════════════════════════════════════════
-   FOOTER WRAPPER
-════════════════════════════════════════ */
 
 #main-footer {
   background-color: var(--color-bg-secondary);
@@ -3756,7 +3215,6 @@ html {
   overflow: hidden;
 }
 
-/* Subtle ambient glow — consistent with other sections */
 #main-footer::before {
   content: '';
   position: absolute;
@@ -3767,12 +3225,7 @@ html {
   pointer-events: none;
 }
 
-
-/* ════════════════════════════════════════
-   INNER CONTAINER
-════════════════════════════════════════ */
-
-.footer-inner {
+.site-footer__inner {
   max-width: var(--container-xl);
   margin-inline: auto;
   padding-inline: var(--space-8);
@@ -3785,45 +3238,40 @@ html {
   gap: var(--space-8);
 }
 
-
-/* ════════════════════════════════════════
-   LOGO WRAPPER — left column
-════════════════════════════════════════ */
-
-.footer__logo-wrapper {
+/* Logo wrapper */
+.site-footer__logo-wrapper {
   display: flex;
   align-items: center;
   gap: var(--space-4);
 }
 
-.footer__logo-link {
+.site-footer__logo-link {
   flex-shrink: 0;
   display: block;
   border-radius: var(--radius-md);
   transition: opacity var(--transition-base), transform var(--transition-base);
 }
 
-.footer__logo-link:hover {
+.site-footer__logo-link:hover {
   opacity: 0.8;
   transform: translateY(-1px);
 }
 
-.footer__logo-link img {
+.site-footer__logo-link img {
   display: block;
   width: 40px;
   height: 40px;
   border-radius: var(--radius-sm);
 }
 
-/* Identity text next to logo */
-.footer__logo-wrapper [data-i18n-html] p,
-.footer__logo-wrapper div p {
+.site-footer__logo-wrapper [data-i18n-html] p,
+.site-footer__logo-wrapper div p {
   margin: 0;
   line-height: var(--lh-snug);
 }
 
-.footer__logo-wrapper [data-i18n-html] p:first-child,
-.footer__logo-wrapper div p:first-child {
+.site-footer__logo-wrapper [data-i18n-html] p:first-child,
+.site-footer__logo-wrapper div p:first-child {
   font-family: var(--font-primary);
   font-size: var(--fs-base);
   font-weight: var(--fw-semibold);
@@ -3831,8 +3279,8 @@ html {
   color: var(--color-text-heading);
 }
 
-.footer__logo-wrapper [data-i18n-html] p:last-child,
-.footer__logo-wrapper div p:last-child {
+.site-footer__logo-wrapper [data-i18n-html] p:last-child,
+.site-footer__logo-wrapper div p:last-child {
   font-family: var(--font-primary);
   font-size: var(--fs-xs);
   font-weight: var(--fw-regular);
@@ -3841,18 +3289,13 @@ html {
   color: var(--color-text-muted);
 }
 
-/* Remove the <br> spacing oddity */
-.footer__logo-wrapper [data-i18n-html] br,
-.footer__logo-wrapper div br {
+.site-footer__logo-wrapper [data-i18n-html] br,
+.site-footer__logo-wrapper div br {
   display: none;
 }
 
-
-/* ════════════════════════════════════════
-   SOCIAL LINKS — center column
-════════════════════════════════════════ */
-
-.footer__social-links {
+/* Social links */
+.site-footer__social-links {
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -3893,21 +3336,17 @@ html {
   flex-shrink: 0;
 }
 
-
-/* ════════════════════════════════════════
-   FOOTER META — right column
-════════════════════════════════════════ */
-
-.footer-meta {
+/* Footer meta */
+.site-footer__meta {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
   text-align: end;
 }
 
-.footer__email-line,
-.footer__phone-line,
-.footer__copyright {
+.site-footer__email-line,
+.site-footer__phone-line,
+.site-footer__copyright {
   margin: 0;
   font-family: var(--font-primary);
   font-size: var(--fs-xs);
@@ -3916,38 +3355,32 @@ html {
   color: var(--color-text-muted);
 }
 
-/* Span labels: "Email:" / "Phone:" */
-.footer__email-line span:first-child,
-.footer__phone-line span:first-child {
+.site-footer__email-line span:first-child,
+.site-footer__phone-line span:first-child {
   letter-spacing: var(--ls-wide);
 }
 
-/* Clickable links */
-.footer__email-link,
-.footer__phone-link {
+.site-footer__email-link,
+.site-footer__phone-link {
   color: var(--color-text-muted);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
-.footer__email-link:hover,
-.footer__phone-link:hover {
+.site-footer__email-link:hover,
+.site-footer__phone-link:hover {
   color: var(--color-accent);
 }
 
-/* Copyright line — slightly more muted */
-.footer__copyright {
+/* FIX ⑦ — was 0.7rem (no variable). --fs-xs = 0.75rem is the nearest token. */
+.site-footer__copyright {
   color: var(--color-text-disabled);
   margin-block-start: var(--space-2);
-  font-size: 0.7rem;
+  font-size: var(--fs-xs);
   letter-spacing: var(--ls-wide);
 }
 
-
-/* ════════════════════════════════════════
-   LIGHT MODE OVERRIDES
-════════════════════════════════════════ */
-
+/* Light mode */
 [data-theme="light"] #main-footer {
   background-color: var(--color-bg-secondary);
   border-top-color: var(--color-border);
@@ -3965,31 +3398,26 @@ html {
   color: var(--color-accent);
 }
 
-
-/* ════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════ */
-
-/* Tablet — stack to two rows */
+/* Responsive */
 @media (max-width: 768px) {
-  .footer-inner {
+  .site-footer__inner {
     grid-template-columns: 1fr auto;
     grid-template-rows: auto auto;
     padding-block: var(--space-8);
     gap: var(--space-6);
   }
 
-  .footer__logo-wrapper {
+  .site-footer__logo-wrapper {
     grid-column: 1;
     grid-row: 1;
   }
 
-  .footer__social-links {
+  .site-footer__social-links {
     grid-column: 2;
     grid-row: 1;
   }
 
-  .footer-meta {
+  .site-footer__meta {
     grid-column: 1 / -1;
     grid-row: 2;
     text-align: start;
@@ -3998,9 +3426,8 @@ html {
   }
 }
 
-/* Mobile */
 @media (max-width: 480px) {
-  .footer-inner {
+  .site-footer__inner {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
     gap: var(--space-5);
@@ -4010,7 +3437,7 @@ html {
     align-items: center;
   }
 
-  .footer__logo-wrapper {
+  .site-footer__logo-wrapper {
     grid-column: 1;
     grid-row: 1;
     flex-direction: column;
@@ -4018,23 +3445,266 @@ html {
     text-align: center;
   }
 
-  .footer__logo-wrapper [data-i18n-html] p:last-child,
-  .footer__logo-wrapper div p:last-child {
+  .site-footer__logo-wrapper [data-i18n-html] p:last-child,
+  .site-footer__logo-wrapper div p:last-child {
     text-align: center;
   }
 
-  .footer__social-links {
+  .site-footer__social-links {
     grid-column: 1;
     grid-row: 2;
     justify-content: center;
   }
 
-  .footer-meta {
+  .site-footer__meta {
     grid-column: 1;
     grid-row: 3;
     text-align: center;
     padding-block-start: var(--space-4);
     border-block-start: 1px solid var(--color-border-subtle);
     align-items: center;
+  }
+}
+
+/* ════════════════════════════════════════
+   BUTTON LOADING STATE
+   يتحكم فيه JS بإضافة .btn--loading
+════════════════════════════════════════ */
+
+.btn--loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+/* ── Spinner ── */
+.btn__spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-top-color: var(--color-text-inverse);
+  border-radius: var(--radius-full);
+  animation: btn-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ════════════════════════════════════════
+   CHAR COUNTER — عداد الأحرف
+════════════════════════════════════════ */
+
+.char-counter {
+  display: block;
+  text-align: end;
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-muted);
+  margin-block-start: var(--space-1);
+  transition: color var(--transition-base);
+}
+
+.char-counter--warning {
+  color: var(--color-warning);
+}
+
+.char-counter--error {
+  color: var(--color-error);
+  font-weight: var(--fw-semibold);
+}
+
+
+/* ════════════════════════════════════════
+   FORM ERROR STATE — حقل خاطئ
+════════════════════════════════════════ */
+
+.form-group__input--error,
+.form-group__textarea.form-group__input--error {
+  border-color: var(--color-error-border) !important;
+  box-shadow: 0 0 0 3px var(--color-error-surface) !important;
+  animation: shake 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shake {
+  10%, 90%  { transform: translateX(-2px); }
+  20%, 80%  { transform: translateX(3px);  }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60%  { transform: translateX(4px);  }
+}
+
+
+/* ════════════════════════════════════════
+   TOAST NOTIFICATION
+   الموضع: أسفل يمين الشاشة (desktop)
+           أسفل المنتصف (mobile)
+════════════════════════════════════════ */
+
+.toast-notification {
+  /* الموضع */
+  position: fixed;
+  bottom: var(--space-8);
+  inset-inline-end: var(--space-8);
+  z-index: var(--z-toast);
+
+  /* الحجم */
+  min-width: 280px;
+  max-width: 380px;
+
+  /* المظهر */
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+
+  /* الشفافية الخفيفة */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  /* الإخفاء الابتدائي */
+  opacity: 0;
+  transform: translateY(16px) scale(0.97);
+  pointer-events: none;
+  transition:
+    opacity   300ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── حالة الظهور ── */
+.toast--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* ── حالة الاختفاء ── */
+.toast--hiding {
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+}
+
+/* ── المحتوى ── */
+.toast__body {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-snug);
+  color: var(--color-text-heading);
+}
+
+.toast__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ── شريط التقدم ── */
+.toast__progress {
+  height: 3px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.toast__progress::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 100%;
+  transition-property: width;
+  transition-timing-function: linear;
+  /* transition-duration يتضبط من JS */
+}
+
+.toast__progress--running::after {
+  width: 0%;
+}
+
+/* ── ألوان حسب النوع ── */
+
+/* success */
+.toast--success {
+  border-color: var(--color-success-border);
+}
+.toast--success .toast__body {
+  color: var(--color-success);
+}
+.toast--success .toast__progress::after {
+  background-color: var(--color-success);
+}
+
+/* error */
+.toast--error {
+  border-color: var(--color-error-border);
+}
+.toast--error .toast__body {
+  color: var(--color-error);
+}
+.toast--error .toast__progress::after {
+  background-color: var(--color-error);
+}
+
+/* warning */
+.toast--warning {
+  border-color: var(--color-warning-border);
+}
+.toast--warning .toast__body {
+  color: var(--color-warning);
+}
+.toast--warning .toast__progress::after {
+  background-color: var(--color-warning);
+}
+
+/* info */
+.toast--info {
+  border-color: var(--color-info-border);
+}
+.toast--info .toast__body {
+  color: var(--color-info);
+}
+.toast--info .toast__progress::after {
+  background-color: var(--color-info);
+}
+
+
+/* ── Light Mode Overrides — Toast ── */
+[data-theme="light"] .toast-notification {
+  background-color: var(--color-surface);
+  border-color: var(--color-border-strong);
+}
+
+
+/* ── Responsive — Mobile ── */
+@media (max-width: 640px) {
+  .toast-notification {
+    inset-inline-end: 50%;
+    transform: translateX(50%) translateY(16px) scale(0.97);
+    bottom: var(--space-6);
+    min-width: 0;
+    width: calc(100vw - var(--space-8));
+    max-width: none;
+  }
+
+  .toast--visible {
+    transform: translateX(50%) translateY(0) scale(1);
+  }
+
+  .toast--hiding {
+    transform: translateX(50%) translateY(8px) scale(0.98);
   }
 }

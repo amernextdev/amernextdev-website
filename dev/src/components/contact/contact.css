@@ -449,3 +449,246 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ════════════════════════════════════════
+   BUTTON LOADING STATE
+   يتحكم فيه JS بإضافة .btn--loading
+════════════════════════════════════════ */
+
+.btn--loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+/* ── Spinner ── */
+.btn__spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-top-color: var(--color-text-inverse);
+  border-radius: var(--radius-full);
+  animation: btn-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ════════════════════════════════════════
+   CHAR COUNTER — عداد الأحرف
+════════════════════════════════════════ */
+
+.char-counter {
+  display: block;
+  text-align: end;
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-muted);
+  margin-block-start: var(--space-1);
+  transition: color var(--transition-base);
+}
+
+.char-counter--warning {
+  color: var(--color-warning);
+}
+
+.char-counter--error {
+  color: var(--color-error);
+  font-weight: var(--fw-semibold);
+}
+
+
+/* ════════════════════════════════════════
+   FORM ERROR STATE — حقل خاطئ
+════════════════════════════════════════ */
+
+.form-group__input--error,
+.form-group__textarea.form-group__input--error {
+  border-color: var(--color-error-border) !important;
+  box-shadow: 0 0 0 3px var(--color-error-surface) !important;
+  animation: shake 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shake {
+  10%, 90%  { transform: translateX(-2px); }
+  20%, 80%  { transform: translateX(3px);  }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60%  { transform: translateX(4px);  }
+}
+
+
+/* ════════════════════════════════════════
+   TOAST NOTIFICATION
+   الموضع: أسفل يمين الشاشة (desktop)
+           أسفل المنتصف (mobile)
+════════════════════════════════════════ */
+
+.toast-notification {
+  /* الموضع */
+  position: fixed;
+  bottom: var(--space-8);
+  inset-inline-end: var(--space-8);
+  z-index: var(--z-toast);
+
+  /* الحجم */
+  min-width: 280px;
+  max-width: 380px;
+
+  /* المظهر */
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+
+  /* الشفافية الخفيفة */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  /* الإخفاء الابتدائي */
+  opacity: 0;
+  transform: translateY(16px) scale(0.97);
+  pointer-events: none;
+  transition:
+    opacity   300ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── حالة الظهور ── */
+.toast--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* ── حالة الاختفاء ── */
+.toast--hiding {
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+}
+
+/* ── المحتوى ── */
+.toast__body {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-snug);
+  color: var(--color-text-heading);
+}
+
+.toast__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ── شريط التقدم ── */
+.toast__progress {
+  height: 3px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.toast__progress::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 100%;
+  transition-property: width;
+  transition-timing-function: linear;
+  /* transition-duration يتضبط من JS */
+}
+
+.toast__progress--running::after {
+  width: 0%;
+}
+
+/* ── ألوان حسب النوع ── */
+
+/* success */
+.toast--success {
+  border-color: var(--color-success-border);
+}
+.toast--success .toast__body {
+  color: var(--color-success);
+}
+.toast--success .toast__progress::after {
+  background-color: var(--color-success);
+}
+
+/* error */
+.toast--error {
+  border-color: var(--color-error-border);
+}
+.toast--error .toast__body {
+  color: var(--color-error);
+}
+.toast--error .toast__progress::after {
+  background-color: var(--color-error);
+}
+
+/* warning */
+.toast--warning {
+  border-color: var(--color-warning-border);
+}
+.toast--warning .toast__body {
+  color: var(--color-warning);
+}
+.toast--warning .toast__progress::after {
+  background-color: var(--color-warning);
+}
+
+/* info */
+.toast--info {
+  border-color: var(--color-info-border);
+}
+.toast--info .toast__body {
+  color: var(--color-info);
+}
+.toast--info .toast__progress::after {
+  background-color: var(--color-info);
+}
+
+
+/* ── Light Mode Overrides — Toast ── */
+[data-theme="light"] .toast-notification {
+  background-color: var(--color-surface);
+  border-color: var(--color-border-strong);
+}
+
+
+/* ── Responsive — Mobile ── */
+@media (max-width: 640px) {
+  .toast-notification {
+    inset-inline-end: 50%;
+    transform: translateX(50%) translateY(16px) scale(0.97);
+    bottom: var(--space-6);
+    min-width: 0;
+    width: calc(100vw - var(--space-8));
+    max-width: none;
+  }
+
+  .toast--visible {
+    transform: translateX(50%) translateY(0) scale(1);
+  }
+
+  .toast--hiding {
+    transform: translateX(50%) translateY(8px) scale(0.98);
+  }
+}
