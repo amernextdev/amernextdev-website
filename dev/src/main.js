@@ -3,7 +3,9 @@
 // ===============================================
 
 // === STYLES ===
-import './style.css';
+// import './style.css';
+import './main.css';
+
 
 // === LOGIC ===
 // - Services
