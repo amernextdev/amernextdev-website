@@ -1,863 +1,986 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
-  <head>
-  <!-- CORE -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Amer - Front-End Developer</title>
-  <meta name="description" content="I build websites that work, load fast, and represent your business clearly." />
-  <meta name="keywords" content="Front end Developer, Web Developer, React Specialist, Modern UI/UX, State Management, JavaScript (ES6+), Responsive Design." />
-  <meta name="author" content="Amer Abdelfattah" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://amerdev.pages.dev/" />
+	<head>
+	<!-- ====== البيانات الأساسية للصفحة ====== -->
+	<!-- charset أولاً لضمان تفسير صحيح لكل ما يليه من بيانات وصفية -->
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Amer - Front-End Developer</title>
+	<meta name="description" content="I build websites that work, load fast, and represent your business clearly." />
+	<meta name="keywords" content="Front end Developer, Web Developer, React Specialist, Modern UI/UX, State Management, JavaScript (ES6+), Responsive Design." />
+	<meta name="author" content="Amer Abdelfattah" />
+	<meta name="robots" content="index, follow" />
+	<link rel="canonical" href="https://amerdev.pages.dev/" />
 
-  <!-- SEO STRUCTURED DATA -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Amer Abdelfattah",
-    "jobTitle": "Front End Developer",
-    "url": "https://amerdev.pages.dev/",
-    "email": "mailto:iamamer030@gmail.com",
-    "image": "https://amerdev.pages.dev/profile.jpg",
-    "description": "Front-End Developer who builds interfaces that load fast, look clear, and feel intentional.",
-    "knowsAbout": [
-      "Web Development",
-      "Front End Development",
-      "HTML5",
-      "CSS3",
-      "JavaScript",
-      "React.js",
-      "Next.js",
-      "Tailwind CSS",
-      "Responsive Design"
-    ],
-    "sameAs": [
-      "https://linkedin.com",
-      "https://github.com"
-    ]
-  }
-  </script>
+	<!-- ====== البيانات البنيوية لمحركات البحث (Schema.org) ====== -->
+	<!-- تُعرِّف هذه البيانات بصاحب الموقع كشخص مهني لتحسين ظهوره في نتائج البحث -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Person",
+		"name": "Amer Abdelfattah",
+		"jobTitle": "Front End Developer",
+		"url": "https://amerdev.pages.dev/",
+		"email": "mailto:iamamer030@gmail.com",
+		"image": "https://amerdev.pages.dev/profile.jpg",
+		"description": "Front-End Developer who builds interfaces that load fast, look clear, and feel intentional.",
+		"knowsAbout": [
+			"Web Development",
+			"Front End Development",
+			"HTML5",
+			"CSS3",
+			"JavaScript",
+			"React.js",
+			"Next.js",
+			"Tailwind CSS",
+			"Responsive Design"
+		],
+		"sameAs": [
+			"https://linkedin.com",
+			"https://github.com"
+		]
+	}
+	</script>
 
-  <!-- OPEN GRAPH -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://amerdev.pages.dev/" />
-  <meta property="og:title" content="Amer — Front End Developer" />
-  <meta property="og:description" content="I build interfaces that represent your brand and work for your users." />
-  <meta property="og:image" content="/og-image.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Amer — Front End Developer" />
-  <meta property="og:locale" content="ar_EG" />
-  <meta property="og:locale:alternate" content="en_US" />
-  <meta property="og:site_name" content="Amer developer" />
+	<!-- ====== بطاقة Open Graph لمشاركة الموقع على الشبكات الاجتماعية ====== -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://amerdev.pages.dev/" />
+	<meta property="og:title" content="Amer — Front End Developer" />
+	<meta property="og:description" content="I build interfaces that represent your brand and work for your users." />
+	<meta property="og:image" content="/og-image.jpg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content="Amer — Front End Developer" />
+	<meta property="og:locale" content="ar_EG" />
+	<meta property="og:locale:alternate" content="en_US" />
+	<meta property="og:site_name" content="Amer developer" />
 
-  <!-- TWITTER CARD -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://amerdev.pages.dev/" />
-  <meta name="twitter:title" content="Amer — Front End Developer" />
-  <meta name="twitter:description" content="I build interfaces that represent your brand and work for your users." />
-  <meta name="twitter:image" content="/og-image.jpg" />
+	<!-- ====== بطاقة Twitter Card لمشاركة الموقع على منصة تويتر/إكس ====== -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content="https://amerdev.pages.dev/" />
+	<meta name="twitter:title" content="Amer — Front End Developer" />
+	<meta name="twitter:description" content="I build interfaces that represent your brand and work for your users." />
+	<meta name="twitter:image" content="/og-image.jpg" />
 
-  <!-- FAVICON -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <meta name="theme-color" content="#F59E0B" />
-  </head>
-  <body>
-      <!-- ========== SITE HEADER ========== -->
-    <header id="site-header">
-    <div class="header-inner">
-        <!-- Logo -->
-        <div class="header__logo-wrapper">
-          <a href="#" class="header__logo" aria-label="Amer — Front End Developer" data-i18n-aria="header.logo.aria-label">
-            <picture>
-              <source srcset="/src/assets/images/amer_logo/logo_icon.avif" type="image/avif">
-              <source srcset="/src/assets/images/amer_logo/logo_icon.webp" type="image/webp">
-              <img src="/src/assets/images/amer_logo/logo_icon.png" alt="Amer logo" data-i18n-alt="logo.alt" width="60px" height="60px"/>
-            </picture>
-          </a>
-        </div>
+	<!-- ====== أيقونات الموقع بصيغ متعددة لضمان التوافق مع جميع المنصات ====== -->
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+	<link rel="manifest" href="/site.webmanifest" />
+	<meta name="theme-color" content="#F59E0B" />
+	</head>
+	<body>
 
-        <!-- Primary Navigation -->
-        <nav class="header__nav" aria-label="Main navigation" data-i18n-aria="header.nav.aria-label">
-          <ul class="header__nav-list">
-            <li><a class="nav__link nav__link--active" href="#hero"     data-i18n-text="nav.link.home">Home</a></li>
-            <li><a class="nav__link" href="#work" data-i18n-text="nav.link.work">Work</a></li>
-            <li><a class="nav__link" href="#services" data-i18n-text="nav.link.services">Services</a></li>
-            <li><a class="nav__link" href="#about" data-i18n-text="nav.link.about">About</a></li>
-            <li><a class="nav__link" href="#contact" data-i18n-text="nav.link.contact">Contact</a></li>
-          </ul>
-        </nav>
+		<!-- ========== رأس الموقع الرئيسي ========== -->
+		<!-- id="site-header" يُستخدم من JS لرصد التمرير وإضافة تأثير الـ sticky -->
+		<header id="site-header" class="site-header">
+			<div class="site-header__inner">
 
-        <!-- Header Controls -->
-        <div class="header__controls">
+				<!-- شعار الموقع — رابط يعود بالمستخدم إلى أعلى الصفحة -->
+				<div class="site-header__logo-wrapper">
+					<a href="#" class="site-header__logo-link" aria-label="الصفحة الرئيسية — عامر مطوّر واجهات أمامية" data-i18n-aria="header.logo.aria-label">
+						<picture>
+							<source srcset="/src/assets/images/amer_logo/logo_icon.avif" type="image/avif">
+							<source srcset="/src/assets/images/amer_logo/logo_icon.webp" type="image/webp">
+							<!-- alt وصفي لأن الشعار هنا يحمل اسم الشخص وهويته المهنية -->
+							<img src="/src/assets/images/amer_logo/logo_icon.png" alt="شعار عامر" data-i18n-alt="logo.alt" width="60" height="60" />
+						</picture>
+					</a>
+				</div>
 
-          <!-- Theme Toggle -->
-          <button class="header__theme-toggle-button" id="theme-toggle" aria-label="Switch theme" data-i18n-aria="header.controls.theme-toggle.aria-label">
-            <span id="theme-icon" aria-hidden="true">
-              <svg class="icon icon--sun"><use href="/sprites/solid.svg#sun"></use></svg>
-            </span>
-          </button>
+				<!-- التنقل الرئيسي — aria-label يميّزه عن أي nav آخر في الصفحة -->
+				<nav class="site-header__nav" aria-label="التنقل الرئيسي" data-i18n-aria="header.nav.aria-label">
+					<ul class="site-header__nav-list">
+						<li><a class="nav__link nav__link--active" href="#hero"     data-i18n-text="nav.link.home">Home</a></li>
+						<li><a class="nav__link"                   href="#work"     data-i18n-text="nav.link.work">Work</a></li>
+						<li><a class="nav__link"                   href="#services" data-i18n-text="nav.link.services">Services</a></li>
+						<li><a class="nav__link"                   href="#about"    data-i18n-text="nav.link.about">About</a></li>
+						<li><a class="nav__link"                   href="#contact"  data-i18n-text="nav.link.contact">Contact</a></li>
+					</ul>
+				</nav>
 
-          <!-- Language Toggle -->
-          <button class="header__lang-toggle-button lang-toggle" id="lang-toggle" aria-label="Switch language" data-i18n-aria="header.controls.lang-toggle.aria-label">
-            <span class="lang-label">AR</span>
-          </button>
+				<!-- أدوات التحكم — تجميع زر السمة وزر اللغة وزر الدعوة لاتخاذ إجراء -->
+				<div class="site-header__controls">
 
-          <!-- CTA Button -->
-          <a href="#contact" class="header__cta-link" id="header-cta">
-            <span class="header__cta-label" data-i18n-text="header.cta.label">Let's Talk</span>
-            <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
-          </a>
+					<!-- زر تبديل السمة (فاتح/داكن) — يحتوي على أيقونة فقط لذا aria-label إلزامي -->
+					<button class="site-header__theme-toggle" id="theme-toggle" aria-label="تبديل سمة العرض" data-i18n-aria="header.controls.theme-toggle.aria-label">
+						<span id="theme-icon" aria-hidden="true">
+							<svg class="icon icon--sun"><use href="/sprites/solid.svg#sun"></use></svg>
+						</span>
+					</button>
 
-        </div>
-        <div class="header__mobile-controls">
-          <!-- Language Toggle (mobile) -->
-        <button class="header__lang-toggle-button header__lang-toggle-mobile lang-toggle" aria-label="Switch language" data-i18n-aria="header.controls.lang-toggle.aria-label">
-          <span class="lang-label">AR</span>
-        </button>
-        <!-- Mobile Menu Trigger -->
-        <button class="header__burger-button" id="burger-btn" aria-label="Open navigation" data-i18n-aria="header.burger.aria-label" aria-expanded="false" aria-controls="mobile-nav">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </button></div>
-    </div>
-  </header>
-    <!-- ========== MOBILE NAVIGATION ========== -->
-  <aside id="mobile-nav" aria-label="Mobile navigation" data-i18n-aria="mobile-nav.aria-label" aria-hidden="true">
-<div class="mobile-nav-inner">
-    <div class="mobile-menu-header">
-        <!-- Logo -->
-        <div class="mobile-nav__logo-wrapper">
-        <a href="#" class="mobile-nav__logo-link" aria-label="Amer — Front end Developer" data-i18n-aria="mobile-nav.logo.aria-label">
-          <picture>
-              <source srcset="/src/assets/images/amer_logo/logo_icon.avif" type="image/avif">
-              <source srcset="/src/assets/images/amer_logo/logomm_icon.webp" type="image/webp">
-              <img src="/src/assets/images/amer_logo/logo_icon.png" alt="Amer logo" data-i18n-alt="logo.alt" width="60px" height="60px"/>
-            </picture>
-        </a>
-        </div>
+					<!-- زر تبديل اللغة — يحتوي على نص مختصر (AR/EN) لذا aria-label يوضح الغرض كاملاً -->
+					<button class="site-header__lang-toggle lang-toggle" id="lang-toggle" aria-label="تبديل لغة الموقع" data-i18n-aria="header.controls.lang-toggle.aria-label">
+						<span class="site-header__lang-label">AR</span>
+					</button>
 
-        <!-- Close Button -->
-        <button class="mobile-nav__close-button" id="mobile-nav-close" aria-label="Close navigation" data-i18n-aria="mobile-nav.close-button.aria-label">
-        <svg class="icon icon--close" aria-hidden="true"><use href="/sprites/solid.svg#xmark"></use></svg>
-        </button>
-    </div>
-    <!-- Mobile Navigation Links -->
-    <nav class="mobile-nav__nav" aria-label="Navigation links" data-i18n-aria="mobile-nav.nav.aria-label">
-      <ul class="mobile-nav__list">
-        <li><a class="nav__link nav__link--active" href="#hero"     data-i18n-text="nav.link.home">Home <svg class="icon icon--chevron" aria-hidden="true"><use href="/sprites/solid.svg#chevron-right"></use></svg></a></li>
-        <li><a class="nav__link"                   href="#work"     data-i18n-text="nav.link.work">Work <svg class="icon icon--chevron" aria-hidden="true"><use href="/sprites/solid.svg#chevron-right"></use></svg></a></li>
-        <li><a class="nav__link"                   href="#services" data-i18n-text="nav.link.services">Services <svg class="icon icon--chevron" aria-hidden="true"><use href="/sprites/solid.svg#chevron-right"></use></svg></a></li>
-        <li><a class="nav__link"                   href="#about"    data-i18n-text="nav.link.about">About <svg class="icon icon--chevron" aria-hidden="true"><use href="/sprites/solid.svg#chevron-right"></use></svg></a></li>
-        <li><a class="nav__link"                   href="#contact"  data-i18n-text="nav.link.contact">Contact <svg class="icon icon--chevron" aria-hidden="true"><use href="/sprites/solid.svg#chevron-right"></use></svg></a></li>
-      </ul>
-    </nav>
-          <a href="#contact" class="mobile__cta-link" id="mobile-cta">
-        <span class="mobile__cta-label" data-i18n-text="mobile.cta.label">Let's Talk</span>
-        <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
-      </a>
+					<!-- زر الدعوة لاتخاذ إجراء — يقود المستخدم مباشرةً إلى قسم التواصل -->
+					<a href="#contact" class="site-header__cta-link" id="header-cta">
+						<span class="site-header__cta-label" data-i18n-text="header.cta.label">Let's Talk</span>
+						<svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+					</a>
 
-    <!-- Mobile Controls -->
-    <div class="mobile-nav__controls">
+				</div>
 
-      <!-- Theme Toggle Card -->
-      <button class="mobile-nav__ctrl-card" id="mobile-theme-toggle" aria-label="Switch theme" data-i18n-aria="mobile-nav.controls.theme-toggle.aria-label">
-        <div class="mobile-nav__ctrl-card-left">
-          <span class="mobile-nav__ctrl-icon" aria-hidden="true" id="mobile-theme-icon">
-            <svg class="icon icon--moon"><use href="/sprites/solid.svg#moon"></use></svg>
-          </span>
-          <div class="mobile-nav__ctrl-text">
-            <span class="mobile-nav__ctrl-title" data-i18n-text="mobile-nav.controls.theme-toggle.label">Theme</span>
-            <span class="mobile-nav__ctrl-sub" id="mobile-theme-sub" data-i18n-text="mobile-nav.controls.theme-toggle.sub">Dark mode</span>
-          </div>
-        </div>
-        <!-- CSS-only toggle switch; JS adds .is-on to this span -->
-        <span class="mobile-nav__switch" id="mobile-theme-switch" aria-hidden="true"></span>
-      </button>
+				<!-- أدوات التحكم على الجوّال — ظاهرة فقط على الشاشات الصغيرة -->
+				<div class="site-header__mobile-controls">
 
-      <!-- Language Toggle Card -->
-      <button class="mobile-nav__ctrl-card lang-toggle" id="mobile-lang-toggle" aria-label="Switch language" data-i18n-aria="mobile-nav.controls.lang-toggle.aria-label">
-        <div class="mobile-nav__ctrl-card-left">
-          <span class="mobile-nav__ctrl-icon" aria-hidden="true">
-            <svg class="icon icon--globe"><use href="/sprites/solid.svg#globe"></use></svg>
-          </span>
-          <div class="mobile-nav__ctrl-text">
-            <span class="mobile-nav__ctrl-title" data-i18n-text="mobile-nav.controls.lang-toggle.label">Language</span>
-            <span class="mobile-nav__ctrl-sub" id="mobile-lang-sub">Arabic / العربية</span>
-          </div>
-        </div>
-        <div class="mobile-nav__lang-badges">
-          <span class="mobile-nav__lang-badge" id="mobile-lang-badge-ar" data-lang="ar">AR</span>
-          <span class="mobile-nav__lang-badge" id="mobile-lang-badge-en" data-lang="en">EN</span>
-        </div>
-      </button>
+					<!-- زر تبديل اللغة (نسخة الجوّال) -->
+					<button class="site-header__lang-toggle site-header__lang-toggle--mobile lang-toggle" aria-label="تبديل لغة الموقع" data-i18n-aria="header.controls.lang-toggle.aria-label">
+						<span class="site-header__lang-label">AR</span>
+					</button>
 
-    </div>
-    <div class="mobile-nav-social">
-        <ul class="m-n-s-list">
-            <li class="m-n-s-item"><a href="https://wa.me/201280787721" class="m-n-s-link m-n-s-whatsapp-icon" aria-label="Contact Amer on WhatsApp" data-i18n-aria="mobile-nav.social.whatsapp.aria-label"><svg class="icon icon--whatsapp" aria-hidden="true"><use href="/sprites/brands.svg#whatsapp"></use></svg></a></li>
-            <li class="m-n-s-item"><a href="https://github.com/amer-developer0" class="m-n-s-link m-n-s-github-icon" aria-label="Visit Amer on GitHub" data-i18n-aria="mobile-nav.social.github.aria-label"><svg class="icon icon--github" aria-hidden="true"><use href="/sprites/brands.svg#github"></use></svg></a></li>
-            <li class="m-n-s-item"><a href="https://www.facebook.com/share/1HDT2VKw3a/" class="m-n-s-link m-n-s-facebook-icon" aria-label="Visit Amer on Facebook" data-i18n-aria="mobile-nav.social.facebook.aria-label"><svg class="icon icon--facebook" aria-hidden="true"><use href="/sprites/brands.svg#facebook"></use></svg></a></li>
-        </ul>
-    </div>
+					<!-- زر فتح قائمة الجوّال — aria-expanded يُحدَّث بواسطة JS عند فتح القائمة وإغلاقها -->
+					<button class="site-header__burger" id="burger-btn" aria-label="فتح قائمة التنقل" data-i18n-aria="header.burger.aria-label" aria-expanded="false" aria-controls="mobile-nav">
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</button>
 
-</div> 
-</aside>
-  <main id="main-content">
-        <!-- ========== HERO SECTION ========== -->
-    <section id="hero" class="hero">
-      <div class="hero-inner">
-        <div class="hero-left">
-          <p class="hero-eyebrow" data-i18n-text="hero.eyebrow">Front End Developer</p>
-          <h1 class="hero-headline" data-i18n-html="hero.headline">Websites that<br><em>work</em><br>for you.</h1>
-          <p class="hero-description" data-i18n-text="hero.description">Front-End focused — I build things that load fast, look right, and feel solid.</p>
-          <div class="hero-cta-group">
-            <a href="#work"    class="btn-primary" data-i18n-text="hero.cta.work">See My Work <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
-            <a href="#contact" class="btn-ghost"   data-i18n-text="hero.cta.contact">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
-          </div>
-        </div>
+				</div>
 
-        <div class="hero-terminal" dir="ltr">
-          <div class="hero-terminal__header">
-            <span class="hero-terminal__dot"></span>
-            <span class="hero-terminal__dot"></span>
-            <span class="hero-terminal__dot"></span>
-            <span class="hero-terminal__title">amer.sh</span>
-          </div>
-          <div class="hero-terminal__body">
-            <div class="hero-terminal__line">
-              <span class="term-var">$</span> <span class="term-kw">amer</span> <span class="term-str">--status</span>
-            </div>
-            <div class="hero-terminal__line">
-              <span class="term-bool">[INFO]</span> <span class="term-muted" data-i18n-text="hero.terminal.loading">Loading profile...</span>
-            </div>
-            <div class="hero-terminal__line">
-              <span class="term-kw">●</span> <span class="term-muted" data-i18n-text="hero.terminal.role-label">Role:</span> <span class="term-acc" data-i18n-text="hero.terminal.role-value">Front End Developer</span>
-            </div>
-            <div class="hero-terminal__line">
-              <span class="term-kw">●</span> <span class="term-muted" data-i18n-text="hero.terminal.stack-label">Stack:</span> <span class="term-str" data-i18n-text="hero.terminal.stack-value">[React, Next.js, Tailwind]</span>
-            </div>
-            <div class="hero-terminal__line">
-              <span class="term-kw">●</span> <span class="term-muted" data-i18n-text="hero.terminal.location-label">Location:</span> <span class="term-acc" data-i18n-text="hero.terminal.location-value">Cairo, Egypt</span>
-            </div>
-            <div class="hero-terminal__line">
-              <span class="term-kw">●</span> <span class="term-muted" data-i18n-text="hero.terminal.availability-label">Availability:</span> <span class="term-acc" data-i18n-text="hero.terminal.availability-value">Open to new projects</span>
-            </div>
-            <div class="hero-terminal__line">&nbsp;</div>
-            <div class="hero-terminal__line">
-              <span class="term-var">$</span> <span class="term-cursor"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-        <!-- ========== WORK SECTION ========== -->
-    <section class="work-section" id="work">
-      <div class="work-inner">
+			</div>
+		</header>
 
-        <!-- Section Header -->
-        <div class="section-header">
-          <div>
-            <p class="section-label" data-i18n-text="work.section-label">Selected Work</p>
-            <h2 class="section-title">
-              <span data-i18n-text="work.section-title.line1">Projects that</span><br>
-              <span class="outline" data-i18n-text="work.section-title.line2">got things done.</span>
-            </h2>
-          </div>
-        </div>
+		<!-- ========== قائمة التنقل على الجوّال ========== -->
+		<!-- aside لأنها محتوى تكميلي يُعرض عند الطلب وليس جزءاً من تدفق الصفحة الرئيسي -->
+		<!-- aria-hidden="true" مبدئياً لأن القائمة مخفية؛ يُعكسها JS عند الفتح -->
+		<aside id="mobile-nav" class="mobile-nav" aria-label="قائمة التنقل على الجوّال" data-i18n-aria="mobile-nav.aria-label" aria-hidden="true">
+			<div class="mobile-nav__inner">
 
-        <!-- Projects Grid -->
-        <div class="projects-grid">
+				<div class="mobile-nav__header">
 
-          <!-- Card 1 -->
-          <article class="project-card">
-            <div class="project-card__image">
-              <div class="project-card__image-placeholder">
-                <div class="project-card__placeholder-icon">
-                  <svg class="icon icon--table-columns" aria-hidden="true"><use href="/sprites/solid.svg#table-columns"></use></svg>
-                </div>
-              </div>
-              <span class="project-card__number">01</span>
-              <span class="project-card__live-badge"><span class="live-dot"></span><span data-i18n-text="work.card.live-badge">Live</span></span>
-            </div>
-            <div class="project-card__body">
-              <h3 class="project-card__title" data-i18n-text="work.card1.title">Project Name</h3>
-              <p class="project-card__description" data-i18n-text="work.card1.description">One sentence that describes what the project does and who it's for.</p>
-              <div class="project-card__stack">
-                <span class="stack-tag">React</span>
-                <span class="stack-tag">Node.js</span>
-                <span class="stack-tag">MongoDB</span>
-              </div>
-            </div>
-            <div class="project-card__footer">
-              <a href="#" class="project-card__link project-card__link--live" target="_blank" rel="noopener">
-                <span data-i18n-text="work.card.link.live-site">Live Site</span>
-                <svg class="icon icon--arrow-up-right-from-square" aria-hidden="true"><use href="/sprites/solid.svg#arrow-up-right-from-square"></use></svg>
-              </a>
-              <a href="/work/project-slug" class="project-card__link project-card__link--case-study">
-                <span data-i18n-text="work.card.link.case-study">Case Study</span>
-                <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
-              </a>
-            </div>
-          </article>
+					<!-- شعار الموقع داخل القائمة الجوّالة -->
+					<div class="mobile-nav__logo-wrapper">
+						<a href="#" class="mobile-nav__logo-link" aria-label="الصفحة الرئيسية — عامر مطوّر واجهات أمامية" data-i18n-aria="mobile-nav.logo.aria-label">
+							<picture>
+								<source srcset="/src/assets/images/amer_logo/logo_icon.avif" type="image/avif">
+								<source srcset="/src/assets/images/amer_logo/logomm_icon.webp" type="image/webp">
+								<img src="/src/assets/images/amer_logo/logo_icon.png" alt="شعار عامر" data-i18n-alt="logo.alt" width="60" height="60" />
+							</picture>
+						</a>
+					</div>
 
-          <!-- Card 2 -->
-          <article class="project-card">
-            <div class="project-card__image">
-              <div class="project-card__image-placeholder">
-                <div class="project-card__placeholder-icon">
-                  <svg class="icon icon--table-columns" aria-hidden="true"><use href="/sprites/solid.svg#table-columns"></use></svg>
-                </div>
-              </div>
-              <span class="project-card__number">02</span>
-              <span class="project-card__live-badge"><span class="live-dot"></span><span data-i18n-text="work.card.live-badge">Live</span></span>
-            </div>
-            <div class="project-card__body">
-              <h3 class="project-card__title" data-i18n-text="work.card2.title">Project Name</h3>
-              <p class="project-card__description" data-i18n-text="work.card2.description">One sentence that describes what the project does and who it's for.</p>
-              <div class="project-card__stack">
-                <span class="stack-tag">HTML</span>
-                <span class="stack-tag">CSS</span>
-                <span class="stack-tag">JavaScript</span>
-              </div>
-            </div>
-            <div class="project-card__footer">
-              <a href="#" class="project-card__link project-card__link--live" target="_blank" rel="noopener">
-                <span data-i18n-text="work.card.link.live-site">Live Site</span>
-                <svg class="icon icon--arrow-up-right-from-square" aria-hidden="true"><use href="/sprites/solid.svg#arrow-up-right-from-square"></use></svg>
-              </a>
-              <a href="/work/project-slug" class="project-card__link project-card__link--case-study">
-                <span data-i18n-text="work.card.link.case-study">Case Study</span>
-                <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
-              </a>
-            </div>
-          </article>
+					<!-- زر إغلاق القائمة — أيقونة فقط لذا aria-label إلزامي -->
+					<button class="mobile-nav__close-btn" id="mobile-nav-close" aria-label="إغلاق قائمة التنقل" data-i18n-aria="mobile-nav.close-button.aria-label">
+						<svg class="icon icon--close" aria-hidden="true"><use href="/sprites/solid.svg#xmark"></use></svg>
+					</button>
 
-          <!-- Card 3 -->
-          <article class="project-card">
-            <div class="project-card__image">
-              <div class="project-card__image-placeholder">
-                <div class="project-card__placeholder-icon">
-                  <svg class="icon icon--table-columns" aria-hidden="true"><use href="/sprites/solid.svg#table-columns"></use></svg>
-                </div>
-              </div>
-              <span class="project-card__number">03</span>
-              <span class="project-card__live-badge"><span class="live-dot"></span><span data-i18n-text="work.card.live-badge">Live</span></span>
-            </div>
-            <div class="project-card__body">
-              <h3 class="project-card__title" data-i18n-text="work.card3.title">Project Name</h3>
-              <p class="project-card__description" data-i18n-text="work.card3.description">One sentence that describes what the project does and who it's for.</p>
-              <div class="project-card__stack">
-                <span class="stack-tag">Python</span>
-                <span class="stack-tag">Tailwind</span>
-                <span class="stack-tag">REST API</span>
-              </div>
-            </div>
-            <div class="project-card__footer">
-              <a href="#" class="project-card__link project-card__link--live" target="_blank" rel="noopener">
-                <span data-i18n-text="work.card.link.live-site">Live Site</span>
-                <svg class="icon icon--arrow-up-right-from-square" aria-hidden="true"><use href="/sprites/solid.svg#arrow-up-right-from-square"></use></svg>
-              </a>
-              <a href="/work/project-slug" class="project-card__link project-card__link--case-study">
-                <span data-i18n-text="work.card.link.case-study">Case Study</span>
-                <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
-              </a>
-            </div>
-          </article>
+				</div>
 
-        </div>
+				<!-- روابط التنقل داخل قائمة الجوّال -->
+				<nav class="mobile-nav__nav" aria-label="روابط التنقل" data-i18n-aria="mobile-nav.nav.aria-label">
+					<ul class="mobile-nav__list">
+						<li><a class="nav__link nav__link--active" href="#hero"     data-i18n-text="nav.link.home">Home <svg class="icon icon--chevron" aria-hidden="true"><use href="/sprites/solid.svg#chevron-right"></use></svg></a></li>
+						<li><a class="nav__link"                   href="#work"     data-i18n-text="nav.link.work">Work <svg class="icon icon--chevron" aria-hidden="true"><use href="/sprites/solid.svg#chevron-right"></use></svg></a></li>
+						<li><a class="nav__link"                   href="#services" data-i18n-text="nav.link.services">Services <svg class="icon icon--chevron" aria-hidden="true"><use href="/sprites/solid.svg#chevron-right"></use></svg></a></li>
+						<li><a class="nav__link"                   href="#about"    data-i18n-text="nav.link.about">About <svg class="icon icon--chevron" aria-hidden="true"><use href="/sprites/solid.svg#chevron-right"></use></svg></a></li>
+						<li><a class="nav__link"                   href="#contact"  data-i18n-text="nav.link.contact">Contact <svg class="icon icon--chevron" aria-hidden="true"><use href="/sprites/solid.svg#chevron-right"></use></svg></a></li>
+					</ul>
+				</nav>
 
-        <!-- Footer CTA
-        <div class="work-footer">
-          <a href="/work" class="btn-outline">
-            <span data-i18n-text="work.footer.view-all-projects">All Projects</span>
-            <svg width="14" height="14" class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
-          </a>
-        </div> -->
+				<!-- زر الدعوة لاتخاذ إجراء داخل القائمة الجوّالة -->
+				<a href="#contact" class="mobile-nav__cta-link" id="mobile-cta">
+					<span class="mobile-nav__cta-label" data-i18n-text="mobile.cta.label">Let's Talk</span>
+					<svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+				</a>
 
-      </div>
-    </section>
+				<!-- أدوات التحكم داخل القائمة الجوّالة (السمة واللغة) -->
+				<div class="mobile-nav__controls">
 
-<!-- ========== SERVICES SECTION ========== -->
-<section class="services-section" id="services">
-  <div class="services-inner">
- 
-    <!-- Section Header -->
-    <div class="section-header">
-      <div>
-        <p class="section-label" data-i18n-text="services.section-eyebrow">Services</p>
-        <h2 class="section-title" data-i18n-html="services.section-title">What I <span class="outline">build</span></h2>
-      </div>
-    </div>
- 
-    <!-- Desktop Layout -->
-    <div class="desktop-layout">
- 
-      <!-- Service List -->
-      <div class="services-list-panel">
-        <div class="services-list" id="svc-list">
- 
-          <button class="service-list-item service-list-item--active" data-index="0" aria-pressed="true">
-            <span class="service-list-item__number">01</span>
-            <span class="service-list-item__name" data-i18n-text="services.item1.name">Business Website</span>
-            <svg class="icon icon--arrow-right service-list-item__arrow" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
-          </button>
- 
-          <button class="service-list-item" data-index="1" aria-pressed="false">
-            <span class="service-list-item__number">02</span>
-            <span class="service-list-item__name" data-i18n-text="services.item2.name">Landing Page</span>
-            <svg class="icon icon--arrow-right service-list-item__arrow" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
-          </button>
- 
-          <button class="service-list-item" data-index="2" aria-pressed="false">
-            <span class="service-list-item__number">03</span>
-            <span class="service-list-item__name" data-i18n-text="services.item3.name">Web Application</span>
-            <svg class="icon icon--arrow-right service-list-item__arrow" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
-          </button>
- 
-          <button class="service-list-item" data-index="3" aria-pressed="false">
-            <span class="service-list-item__number">04</span>
-            <span class="service-list-item__name" data-i18n-text="services.item4.name">Frontend UI</span>
-            <svg class="icon icon--arrow-right service-list-item__arrow" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
-          </button>
- 
-          <button class="service-list-item" data-index="4" aria-pressed="false">
-            <span class="service-list-item__number">05</span>
-            <span class="service-list-item__name" data-i18n-text="services.item5.name">Website Maintenance</span>
-            <svg class="icon icon--arrow-right service-list-item__arrow" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
-          </button>
- 
-        </div>
-      </div>
- 
-      <!-- Detail Panels -->
- <div class="services-detail-panels">
+					<!-- بطاقة تبديل السمة — تعرض الحالة الحالية كنص مساعد -->
+					<button class="mobile-nav__ctrl-card" id="mobile-theme-toggle" aria-label="تبديل سمة العرض" data-i18n-aria="mobile-nav.controls.theme-toggle.aria-label">
+						<div class="mobile-nav__ctrl-card-left">
+							<span class="mobile-nav__ctrl-icon" aria-hidden="true" id="mobile-theme-icon">
+								<svg class="icon icon--moon"><use href="/sprites/solid.svg#moon"></use></svg>
+							</span>
+							<div class="mobile-nav__ctrl-text">
+								<span class="mobile-nav__ctrl-title" data-i18n-text="mobile-nav.controls.theme-toggle.label">Theme</span>
+								<!-- النص الفرعي يُحدَّث بواسطة JS ليعكس الوضع الحالي (داكن/فاتح) -->
+								<span class="mobile-nav__ctrl-sub" id="mobile-theme-sub" data-i18n-text="mobile-nav.controls.theme-toggle.sub">Dark mode</span>
+							</div>
+						</div>
+						<!-- مفتاح التبديل مخفي عن قارئات الشاشة لأن الزر الأب هو المتحكم الفعلي -->
+						<span class="mobile-nav__switch" id="mobile-theme-switch" aria-hidden="true"></span>
+					</button>
 
+					<!-- بطاقة تبديل اللغة — تعرض الشارات (AR/EN) للإشارة إلى اللغة النشطة -->
+					<button class="mobile-nav__ctrl-card lang-toggle" id="mobile-lang-toggle" aria-label="تبديل لغة الموقع" data-i18n-aria="mobile-nav.controls.lang-toggle.aria-label">
+						<div class="mobile-nav__ctrl-card-left">
+							<span class="mobile-nav__ctrl-icon" aria-hidden="true">
+								<svg class="icon icon--globe"><use href="/sprites/solid.svg#globe"></use></svg>
+							</span>
+							<div class="mobile-nav__ctrl-text">
+								<span class="mobile-nav__ctrl-title" data-i18n-text="mobile-nav.controls.lang-toggle.label">Language</span>
+								<span class="mobile-nav__ctrl-sub" id="mobile-lang-sub">Arabic / العربية</span>
+							</div>
+						</div>
+						<div class="mobile-nav__lang-badges">
+							<span class="mobile-nav__lang-badge" id="mobile-lang-badge-ar" data-lang="ar">AR</span>
+							<span class="mobile-nav__lang-badge" id="mobile-lang-badge-en" data-lang="en">EN</span>
+						</div>
+					</button>
 
-      <!-- 01 — Business Website -->
-      <div class="service-detail-panel service-detail-panel--active" id="panel-0">
-        <div class="service-detail-panel__top">
-          <span class="service-detail-panel__icon">
-            <svg class="icon icon--building" aria-hidden="true"><use href="/sprites/solid.svg#building"></use></svg>
-          </span>
-          <div class="service-detail-panel__name" data-i18n-text="services.item1.name">Business Website</div>
-          <p class="service-detail-panel__description" data-i18n-text="services.item1.description">
-            Your website is often the first thing a client sees. It needs to be fast, clear, and work on every device.
-          </p>
-          <p class="service-detail-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
-          <ul class="service-detail-panel__includes-list">
-            <li data-i18n-text="services.item1.include1">Responsive design for all devices</li>
-            <li data-i18n-text="services.item1.include2">SEO-ready structure</li>
-            <li data-i18n-text="services.item1.include3">Fast load times</li>
-            <li data-i18n-text="services.item1.include4">Contact form integration</li>
-            <li data-i18n-text="services.item1.include5">CMS setup (optional)</li>
-          </ul>
-          <div class="service-detail-panel__tags">
-            <span class="service-detail-panel__tag">HTML/CSS</span>
-            <span class="service-detail-panel__tag">React</span>
-            <span class="service-detail-panel__tag">CMS</span>
-          </div>
-        </div>
-        <a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">
-          Start a Project
-          <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
-        </a>
-      </div>
- 
-      <!-- 02 — Landing Page -->
-      <div class="service-detail-panel" id="panel-1">
-        <div class="service-detail-panel__top">
-          <span class="service-detail-panel__icon">
-            <svg class="icon icon--rocket" aria-hidden="true"><use href="/sprites/solid.svg#rocket"></use></svg>
-          </span>
-          <div class="service-detail-panel__name" data-i18n-text="services.item2.name">Landing Page</div>
-          <p class="service-detail-panel__description" data-i18n-text="services.item2.description">
-            One page, one goal — built to turn visitors into customers.
-          </p>
-          <p class="service-detail-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
-          <ul class="service-detail-panel__includes-list">
-            <li data-i18n-text="services.item2.include1">Custom animations &amp; interactions</li>
-            <li data-i18n-text="services.item2.include2">Conversion-focused layout</li>
-            <li data-i18n-text="services.item2.include3">A/B test ready structure</li>
-            <li data-i18n-text="services.item2.include4">Analytics integration</li>
-            <li data-i18n-text="services.item2.include5">Mobile-first design</li>
-          </ul>
-          <div class="service-detail-panel__tags">
-            <span class="service-detail-panel__tag">React</span>
-            <span class="service-detail-panel__tag">GSAP</span>
-            <span class="service-detail-panel__tag">Analytics</span>
-          </div>
-        </div>
-        <a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">
-          Start a Project
-          <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
-        </a>
-      </div>
- 
-      <!-- 03 — Web Application -->
-      <div class="service-detail-panel" id="panel-2">
-        <div class="service-detail-panel__top">
-          <span class="service-detail-panel__icon">
-            <svg class="icon icon--display" aria-hidden="true"><use href="/sprites/solid.svg#display"></use></svg>
-          </span>
-          <div class="service-detail-panel__name" data-i18n-text="services.item3.name">Web Application</div>
-          <p class="service-detail-panel__description" data-i18n-text="services.item3.description">
-            Complex needs, clean solutions. Web apps built to scale and easy to maintain.
-          </p>
-          <p class="service-detail-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
-          <ul class="service-detail-panel__includes-list">
-            <li data-i18n-text="services.item3.include1">Authentication &amp; authorization</li>
-            <li data-i18n-text="services.item3.include2">REST / GraphQL API integration</li>
-            <li data-i18n-text="services.item3.include3">State management</li>
-            <li data-i18n-text="services.item3.include4">Database design</li>
-            <li data-i18n-text="services.item3.include5">Deployment &amp; CI/CD</li>
-          </ul>
-          <div class="service-detail-panel__tags">
-            <span class="service-detail-panel__tag">React</span>
-            <span class="service-detail-panel__tag">Node.js</span>
-            <span class="service-detail-panel__tag">PostgreSQL</span>
-          </div>
-        </div>
-        <a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">
-          Start a Project
-          <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
-        </a>
-      </div>
- 
-      <!-- 04 — Frontend UI -->
-      <div class="service-detail-panel" id="panel-3">
-        <div class="service-detail-panel__top">
-          <span class="service-detail-panel__icon">
-            <svg class="icon icon--palette" aria-hidden="true"><use href="/sprites/solid.svg#palette"></use></svg>
-          </span>
-          <div class="service-detail-panel__name" data-i18n-text="services.item4.name">Frontend UI</div>
-          <p class="service-detail-panel__description" data-i18n-text="services.item4.description">
-            A precise interface built from your design or from scratch — clean, compatible, and fast.
-          </p>
-          <p class="service-detail-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
-          <ul class="service-detail-panel__includes-list">
-            <li data-i18n-text="services.item4.include1">Component-based architecture</li>
-            <li data-i18n-text="services.item4.include2">Design system implementation</li>
-            <li data-i18n-text="services.item4.include3">Cross-browser compatibility</li>
-            <li data-i18n-text="services.item4.include4">Figma to code</li>
-            <li data-i18n-text="services.item4.include5">Performance optimization</li>
-          </ul>
-          <div class="service-detail-panel__tags">
-            <span class="service-detail-panel__tag">React</span>
-            <span class="service-detail-panel__tag">TypeScript</span>
-            <span class="service-detail-panel__tag">Figma</span>
-          </div>
-        </div>
-        <a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">
-          Start a Project
-          <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
-        </a>
-      </div>
- 
-      <!-- 05 — Website Maintenance -->
-      <div class="service-detail-panel" id="panel-4">
-        <div class="service-detail-panel__top">
-          <span class="service-detail-panel__icon">
-            <svg class="icon icon--wrench" aria-hidden="true"><use href="/sprites/solid.svg#wrench"></use></svg>
-          </span>
-          <div class="service-detail-panel__name" data-i18n-text="services.item5.name">Website Maintenance</div>
-          <p class="service-detail-panel__description" data-i18n-text="services.item5.description">
-            Your existing site fixed, updated, or improved — without breaking what already works.
-          </p>
-          <p class="service-detail-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
-          <ul class="service-detail-panel__includes-list">
-            <li data-i18n-text="services.item5.include1">Bug fixing &amp; debugging</li>
-            <li data-i18n-text="services.item5.include2">Performance improvements</li>
-            <li data-i18n-text="services.item5.include3">Content updates</li>
-            <li data-i18n-text="services.item5.include4">Security patches</li>
-            <li data-i18n-text="services.item5.include5">Feature additions</li>
-          </ul>
-          <div class="service-detail-panel__tags">
-            <span class="service-detail-panel__tag">Debugging</span>
-            <span class="service-detail-panel__tag">Optimization</span>
-            <span class="service-detail-panel__tag">Updates</span>
-          </div>
-        </div>
-        <a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">
-          Start a Project
-          <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
-        </a>
-      </div>
-  </div>
-    </div><!-- /desktop-layout -->
- 
-    <!-- Mobile Layout -->
-    <div class="mobile-layout">
- 
-      <!-- Tabs Navigation -->
-      <div class="tabs-nav-wrapper">
-        <div class="tabs-nav" id="tabs-nav">
-          <button class="tab-button tab-button--active" data-tab="0" data-i18n-text="services.tab1.short-name">Business Site</button>
-          <button class="tab-button" data-tab="1" data-i18n-text="services.tab2.short-name">Landing Page</button>
-          <button class="tab-button" data-tab="2" data-i18n-text="services.tab3.short-name">Web App</button>
-          <button class="tab-button" data-tab="3" data-i18n-text="services.tab4.short-name">Frontend UI</button>
-          <button class="tab-button" data-tab="4" data-i18n-text="services.tab5.short-name">Maintenance</button>
-        </div>
-      </div>
- 
-      <!-- Indicator Dots -->
-      <div class="tab-dots" id="tab-dots">
-        <div class="tab-dot tab-dot--active"></div>
-        <div class="tab-dot"></div>
-        <div class="tab-dot"></div>
-        <div class="tab-dot"></div>
-        <div class="tab-dot"></div>
-      </div>
- 
-      <!-- Tab Panels -->
-      <div class="tab-panels" id="tab-panels">
- 
-        <div class="tab-panel tab-panel--active">
-          <span class="tab-panel__icon"><svg class="icon icon--building" aria-hidden="true"><use href="/sprites/solid.svg#building"></use></svg></span>
-          <h3 class="tab-panel__name" data-i18n-html="services.tab1.heading">Business <span>Website</span></h3>
-          <p class="tab-panel__description" data-i18n-text="services.item1.description">Your website is often the first thing a client sees. It needs to be fast, clear, and work on every device.</p>
-          <div class="tab-panel__includes">
-            <p class="tab-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
-            <ul class="tab-panel__includes-list">
-              <li data-i18n-text="services.item1.include1">Responsive design for all devices</li>
-              <li data-i18n-text="services.item1.include2">SEO-ready structure</li>
-              <li data-i18n-text="services.item1.include3">Fast load times</li>
-              <li data-i18n-text="services.item1.include4">Contact form integration</li>
-              <li data-i18n-text="services.item1.include5">CMS setup (optional)</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
-        </div>
- 
-        <div class="tab-panel">
-          <span class="tab-panel__icon"><svg class="icon icon--rocket" aria-hidden="true"><use href="/sprites/solid.svg#rocket"></use></svg></span>
-          <h3 class="tab-panel__name" data-i18n-html="services.tab2.heading">Landing <span>Page</span></h3>
-          <p class="tab-panel__description" data-i18n-text="services.item2.description">One page, one goal — built to turn visitors into customers.</p>
-          <div class="tab-panel__includes">
-            <p class="tab-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
-            <ul class="tab-panel__includes-list">
-              <li data-i18n-text="services.item2.include1">Custom animations &amp; interactions</li>
-              <li data-i18n-text="services.item2.include2">Conversion-focused layout</li>
-              <li data-i18n-text="services.item2.include3">A/B test ready structure</li>
-              <li data-i18n-text="services.item2.include4">Analytics integration</li>
-              <li data-i18n-text="services.item2.include5">Mobile-first design</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
-        </div>
- 
-        <div class="tab-panel">
-          <span class="tab-panel__icon"><svg class="icon icon--display" aria-hidden="true"><use href="/sprites/solid.svg#display"></use></svg></span>
-          <h3 class="tab-panel__name" data-i18n-html="services.tab3.heading">Web <span>Application</span></h3>
-          <p class="tab-panel__description" data-i18n-text="services.item3.description">Complex needs, clean solutions. Web apps built to scale and easy to maintain.</p>
-          <div class="tab-panel__includes">
-            <p class="tab-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
-            <ul class="tab-panel__includes-list">
-              <li data-i18n-text="services.item3.include1">Authentication &amp; authorization</li>
-              <li data-i18n-text="services.item3.include2">REST / GraphQL API integration</li>
-              <li data-i18n-text="services.item3.include3">State management</li>
-              <li data-i18n-text="services.item3.include4">Database design</li>
-              <li data-i18n-text="services.item3.include5">Deployment &amp; CI/CD</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
-        </div>
- 
-        <div class="tab-panel">
-          <span class="tab-panel__icon"><svg class="icon icon--palette" aria-hidden="true"><use href="/sprites/solid.svg#palette"></use></svg></span>
-          <h3 class="tab-panel__name" data-i18n-html="services.tab4.heading">Frontend <span>UI</span></h3>
-          <p class="tab-panel__description" data-i18n-text="services.item4.description">A precise interface built from your design or from scratch — clean, compatible, and fast.</p>
-          <div class="tab-panel__includes">
-            <p class="tab-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
-            <ul class="tab-panel__includes-list">
-              <li data-i18n-text="services.item4.include1">Component-based architecture</li>
-              <li data-i18n-text="services.item4.include2">Design system implementation</li>
-              <li data-i18n-text="services.item4.include3">Cross-browser compatibility</li>
-              <li data-i18n-text="services.item4.include4">Figma to code</li>
-              <li data-i18n-text="services.item4.include5">Performance optimization</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
-        </div>
- 
-        <div class="tab-panel">
-          <span class="tab-panel__icon"><svg class="icon icon--wrench" aria-hidden="true"><use href="/sprites/solid.svg#wrench"></use></svg></span>
-          <h3 class="tab-panel__name" data-i18n-html="services.tab5.heading">Website <span>Maintenance</span></h3>
-          <p class="tab-panel__description" data-i18n-text="services.item5.description">Your existing site fixed, updated, or improved — without breaking what already works.</p>
-          <div class="tab-panel__includes">
-            <p class="tab-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
-            <ul class="tab-panel__includes-list">
-              <li data-i18n-text="services.item5.include1">Bug fixing &amp; debugging</li>
-              <li data-i18n-text="services.item5.include2">Performance improvements</li>
-              <li data-i18n-text="services.item5.include3">Content updates</li>
-              <li data-i18n-text="services.item5.include4">Security patches</li>
-              <li data-i18n-text="services.item5.include5">Feature additions</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
-        </div>
- 
-      </div><!-- /tab-panels -->
-    </div><!-- /mobile-layout -->
- 
-  </div>
-</section>
-     <!-- ========== ABOUT SECTION ========== -->
-    <section class="about-section" id="about" >
-      <div class="about-inner">
-        <div class="section-header">
-          <div>
-            <p class="section-label" data-i18n-text="about.section-label">About</p>
-            <h2 class="section-title">
-              <span data-i18n-text="about.section-title.line1">The person</span><br>
-              <span class="outline" data-i18n-text="about.section-title.line2">behind the work.</span>
-            </h2>
-          </div>
-        </div>
+				</div>
 
-        <div class="about-grid">
-          <div class="typewriter-block">
+				<!-- روابط التواصل الاجتماعي داخل القائمة الجوّالة -->
+				<!-- كل رابط يحتوي أيقونة فقط لذا aria-label على كل منها إلزامي -->
+				<div class="mobile-nav__social">
+					<ul class="mobile-nav__social-list">
+						<li class="mobile-nav__social-item">
+							<a href="https://wa.me/201280787721" class="mobile-nav__social-link mobile-nav__social-link--whatsapp" aria-label="تواصل مع عامر على واتساب" data-i18n-aria="mobile-nav.social.whatsapp.aria-label">
+								<svg class="icon icon--whatsapp" aria-hidden="true"><use href="/sprites/brands.svg#whatsapp"></use></svg>
+							</a>
+						</li>
+						<li class="mobile-nav__social-item">
+							<a href="https://github.com/amer-developer0" class="mobile-nav__social-link mobile-nav__social-link--github" aria-label="زيارة صفحة عامر على GitHub" data-i18n-aria="mobile-nav.social.github.aria-label">
+								<svg class="icon icon--github" aria-hidden="true"><use href="/sprites/brands.svg#github"></use></svg>
+							</a>
+						</li>
+						<li class="mobile-nav__social-item">
+							<a href="https://www.facebook.com/share/1HDT2VKw3a/" class="mobile-nav__social-link mobile-nav__social-link--facebook" aria-label="زيارة صفحة عامر على Facebook" data-i18n-aria="mobile-nav.social.facebook.aria-label">
+								<svg class="icon icon--facebook" aria-hidden="true"><use href="/sprites/brands.svg#facebook"></use></svg>
+							</a>
+						</li>
+					</ul>
+				</div>
 
-            <p class="typewriter-line" id="p1">
-              <span class="typewriter-line__text" data-i18n-text="about.bio.paragraph1">
-                I'm Amer — a Front-End developer based in Cairo. I build interfaces from scratch, with clean code and real attention to detail.
-              </span>
-            </p>
+			</div>
+		</aside>
 
-            <p class="typewriter-line" id="p2">
-              <span class="typewriter-line__text" data-i18n-text="about.bio.paragraph2">
-                I care about the things most people skip — readable code, obvious interfaces, and deadlines that mean something.
-              </span>
-            </p>
+		<main id="main-content">
 
-            <p class="typewriter-line" id="p3">
-              <span class="typewriter-line__text" data-i18n-text="about.bio.paragraph3">
-                When I'm not building, I'm learning. The web moves fast — staying current is part of the job.
-              </span>
-            </p>
+			<!-- ========== قسم الـ Hero ========== -->
+			<section id="hero" class="hero">
+				<div class="hero__inner">
 
-          </div>
-        </div>
+					<!-- المحتوى النصي الرئيسي لقسم الـ Hero -->
+					<div class="hero__content">
+						<p class="hero__eyebrow" data-i18n-text="hero.eyebrow">Front End Developer</p>
+						<!-- data-i18n-html لأن العنوان يحتوي وسم <em> متداخل -->
+						<h1 class="hero__headline" data-i18n-html="hero.headline">Websites that<br><em>work</em><br>for you.</h1>
+						<p class="hero__description" data-i18n-text="hero.description">Front-End focused — I build things that load fast, look right, and feel solid.</p>
+						<div class="hero__cta-group">
+							<a href="#work"    class="btn-primary" data-i18n-text="hero.cta.work">See My Work <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
+							<a href="#contact" class="btn-ghost"   data-i18n-text="hero.cta.contact">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
+						</div>
+					</div>
 
-        <!-- Skills -->
-        <div class="about-skills" id="skills-panel">
+					<!-- ======================================================= -->
+					<!-- تحذير: هذا العنصر التيرمنالي محظورة إضافة أي سمة ترجمة  -->
+					<!-- عليه أو على أي عنصر بداخله — هو عنصر تصميمي بحت          -->
+					<!-- ======================================================= -->
+					<div class="hero-terminal" dir="ltr">
+						<div class="hero-terminal__header">
+							<span class="hero-terminal__dot"></span>
+							<span class="hero-terminal__dot"></span>
+							<span class="hero-terminal__dot"></span>
+							<span class="hero-terminal__title">amer.sh</span>
+						</div>
+						<div class="hero-terminal__body">
+							<div class="hero-terminal__line">
+								<span class="term-var">$</span> <span class="term-kw">amer</span> <span class="term-str">--status</span>
+							</div>
+							<div class="hero-terminal__line">
+								<span class="term-bool">[INFO]</span> <span class="term-muted">Loading profile...</span>
+							</div>
+							<div class="hero-terminal__line">
+								<span class="term-kw">●</span> <span class="term-muted">Role:</span> <span class="term-acc">Front End Developer</span>
+							</div>
+							<div class="hero-terminal__line">
+								<span class="term-kw">●</span> <span class="term-muted">Stack:</span> <span class="term-str">[React, Next.js, Tailwind]</span>
+							</div>
+							<div class="hero-terminal__line">
+								<span class="term-kw">●</span> <span class="term-muted">Location:</span> <span class="term-acc">Cairo, Egypt</span>
+							</div>
+							<div class="hero-terminal__line">
+								<span class="term-kw">●</span> <span class="term-muted">Availability:</span> <span class="term-acc">Open to new projects</span>
+							</div>
+							<div class="hero-terminal__line">&nbsp;</div>
+							<div class="hero-terminal__line">
+								<span class="term-var">$</span> <span class="term-cursor"></span>
+							</div>
+						</div>
+					</div>
 
-          <p class="skills-title" data-i18n-text="about.skills.heading">Tech Stack</p>
+				</div>
+			</section>
 
-          <!-- Frontend -->
-          <div class="skills-group">
-            <p class="skills-group__label" data-i18n-text="about.skills.group.frontend">Frontend</p>
-            <div class="skills-tags">
-              <span class="skill-tag" data-order="1"><span class="skill-dot"></span>HTML</span>
-              <span class="skill-tag" data-order="2"><span class="skill-dot"></span>CSS</span>
-              <span class="skill-tag" data-order="3"><span class="skill-dot"></span>JS ES6</span>
-              <span class="skill-tag" data-order="4"><span class="skill-dot"></span>React</span>
-              <span class="skill-tag" data-order="5"><span class="skill-dot"></span>Next.js</span>
-              <span class="skill-tag" data-order="6"><span class="skill-dot"></span>Tailwind CSS</span>
-            </div>
-          </div>
+			<!-- ========== قسم الأعمال ========== -->
+			<section class="work-section" id="work">
+				<div class="work-section__inner">
 
-          <!-- Tools -->
-          <div class="skills-group">
-            <p class="skills-group__label" data-i18n-text="about.skills.group.tools">Tools</p>
-            <div class="skills-tags">
-              <span class="skill-tag" data-order="7"><span class="skill-dot"></span>Git</span>
-              <span class="skill-tag" data-order="8"><span class="skill-dot"></span>GitHub</span>
-              <span class="skill-tag" data-order="9"><span class="skill-dot"></span>Vite</span>
-              <span class="skill-tag" data-order="10"><span class="skill-dot"></span>Docker</span>
-            </div>
-          </div>
+					<!-- رأس القسم -->
+					<div class="section-header">
+						<div>
+							<p class="section-header__label" data-i18n-text="work.section-label">Selected Work</p>
+							<h2 class="section-header__title">
+								<span data-i18n-text="work.section-title.line1">Projects that</span><br>
+								<span class="outline" data-i18n-text="work.section-title.line2">got things done.</span>
+							</h2>
+						</div>
+					</div>
 
-        </div>
-      </div>
-    </section>
-        <!-- ========== CONTACT SECTION ========== -->
-    <section id="contact">
+					<!-- شبكة بطاقات المشاريع -->
+					<div class="projects-grid">
 
-      <div class="contact-inner">
-        <div class="section-header">
-            <p class="section-label" data-i18n-text="contact.eyebrow">Contact</p>
-            <h2 class="section-title" data-i18n-html="contact.section-title">Start a project <span class="outline">today</span></h2>
-        <p class="section-description" data-i18n-text="contact.section-description">Have something in mind? I reply within 24 hours.</p>
-        </div>
+						<!-- بطاقة المشروع الأول -->
+						<article class="project-card">
+							<div class="project-card__image">
+								<div class="project-card__image-placeholder">
+									<div class="project-card__placeholder-icon">
+										<svg class="icon icon--table-columns" aria-hidden="true"><use href="/sprites/solid.svg#table-columns"></use></svg>
+									</div>
+								</div>
+								<span class="project-card__number">01</span>
+								<span class="project-card__live-badge">
+									<span class="project-card__live-dot"></span>
+									<span data-i18n-text="work.card.live-badge">Live</span>
+								</span>
+							</div>
+							<div class="project-card__body">
+								<h3 class="project-card__title" data-i18n-text="work.card1.title">Project Name</h3>
+								<p class="project-card__description" data-i18n-text="work.card1.description">One sentence that describes what the project does and who it's for.</p>
+								<div class="project-card__stack">
+									<span class="stack-tag">React</span>
+									<span class="stack-tag">Node.js</span>
+									<span class="stack-tag">MongoDB</span>
+								</div>
+							</div>
+							<div class="project-card__footer">
+								<!-- روابط المشروع تحتوي على نص مقروء لذا لا تحتاج aria-label إضافياً -->
+								<a href="#" class="project-card__link project-card__link--live" target="_blank" rel="noopener">
+									<span data-i18n-text="work.card.link.live-site">Live Site</span>
+									<svg class="icon icon--arrow-up-right-from-square" aria-hidden="true"><use href="/sprites/solid.svg#arrow-up-right-from-square"></use></svg>
+								</a>
+								<a href="/work/project-slug" class="project-card__link project-card__link--case-study">
+									<span data-i18n-text="work.card.link.case-study">Case Study</span>
+									<svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+								</a>
+							</div>
+						</article>
 
-        <form class="contact-form">
-          <div class="form-group">
-            <label class="form-label" data-i18n-text="contact.form.name-label">Name</label>
-            <input class="form-input" type="text" placeholder="Your name" data-i18n-aria="contact.form.name-input.aria-label" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label" data-i18n-text="contact.form.email-label">Email</label>
-            <input class="form-input" type="email" placeholder="your@email.com" data-i18n-aria="contact.form.email-input.aria-label" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label" data-i18n-text="contact.form.message-label">Message</label>
-            <textarea class="form-textarea" placeholder="Describe your project briefly" data-i18n-aria="contact.form.message-textarea.aria-label"></textarea>
-          </div>
-          <div class="contact-form__success-message" id="contact-success" data-i18n-text="contact.form.success-message"><svg class="icon icon--circle-check" aria-hidden="true"><use href="/sprites/solid.svg#circle-check"></use></svg> Sent. I'll get back to you within 24 hours.</div>
-          <button type="submit" class="btn-primary" data-i18n-text="contact.form.submit-button">Send <svg class="icon icon--paper-plane" aria-hidden="true"><use href="/sprites/solid.svg#paper-plane"></use></svg></button>
-        </form>
+						<!-- بطاقة المشروع الثاني -->
+						<article class="project-card">
+							<div class="project-card__image">
+								<div class="project-card__image-placeholder">
+									<div class="project-card__placeholder-icon">
+										<svg class="icon icon--table-columns" aria-hidden="true"><use href="/sprites/solid.svg#table-columns"></use></svg>
+									</div>
+								</div>
+								<span class="project-card__number">02</span>
+								<span class="project-card__live-badge">
+									<span class="project-card__live-dot"></span>
+									<span data-i18n-text="work.card.live-badge">Live</span>
+								</span>
+							</div>
+							<div class="project-card__body">
+								<h3 class="project-card__title" data-i18n-text="work.card2.title">Project Name</h3>
+								<p class="project-card__description" data-i18n-text="work.card2.description">One sentence that describes what the project does and who it's for.</p>
+								<div class="project-card__stack">
+									<span class="stack-tag">HTML</span>
+									<span class="stack-tag">CSS</span>
+									<span class="stack-tag">JavaScript</span>
+								</div>
+							</div>
+							<div class="project-card__footer">
+								<a href="#" class="project-card__link project-card__link--live" target="_blank" rel="noopener">
+									<span data-i18n-text="work.card.link.live-site">Live Site</span>
+									<svg class="icon icon--arrow-up-right-from-square" aria-hidden="true"><use href="/sprites/solid.svg#arrow-up-right-from-square"></use></svg>
+								</a>
+								<a href="/work/project-slug" class="project-card__link project-card__link--case-study">
+									<span data-i18n-text="work.card.link.case-study">Case Study</span>
+									<svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+								</a>
+							</div>
+						</article>
 
-        <div class="contact-divider" data-i18n-text="contact.divider">or write directly</div>
+						<!-- بطاقة المشروع الثالث -->
+						<article class="project-card">
+							<div class="project-card__image">
+								<div class="project-card__image-placeholder">
+									<div class="project-card__placeholder-icon">
+										<svg class="icon icon--table-columns" aria-hidden="true"><use href="/sprites/solid.svg#table-columns"></use></svg>
+									</div>
+								</div>
+								<span class="project-card__number">03</span>
+								<span class="project-card__live-badge">
+									<span class="project-card__live-dot"></span>
+									<span data-i18n-text="work.card.live-badge">Live</span>
+								</span>
+							</div>
+							<div class="project-card__body">
+								<h3 class="project-card__title" data-i18n-text="work.card3.title">Project Name</h3>
+								<p class="project-card__description" data-i18n-text="work.card3.description">One sentence that describes what the project does and who it's for.</p>
+								<div class="project-card__stack">
+									<span class="stack-tag">Python</span>
+									<span class="stack-tag">Tailwind</span>
+									<span class="stack-tag">REST API</span>
+								</div>
+							</div>
+							<div class="project-card__footer">
+								<a href="#" class="project-card__link project-card__link--live" target="_blank" rel="noopener">
+									<span data-i18n-text="work.card.link.live-site">Live Site</span>
+									<svg class="icon icon--arrow-up-right-from-square" aria-hidden="true"><use href="/sprites/solid.svg#arrow-up-right-from-square"></use></svg>
+								</a>
+								<a href="/work/project-slug" class="project-card__link project-card__link--case-study">
+									<span data-i18n-text="work.card.link.case-study">Case Study</span>
+									<svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+								</a>
+							</div>
+						</article>
 
-        <div class="contact-direct-buttons">
-          <a href="mailto:iamamer030@gmail.com" class="btn-outline" data-i18n-text="contact.direct.email-button"><svg class="icon icon--envelope" aria-hidden="true"><use href="/sprites/solid.svg#envelope"></use></svg> Email</a>
-          <a href="https://wa.me/201280787721" class="contact-whatsapp-button" target="_blank" data-i18n-text="contact.direct.whatsapp-button">
-            <svg class="icon icon--whatsapp" aria-hidden="true"><use href="/sprites/brands.svg#whatsapp"></use></svg>
-            WhatsApp
-          </a>
-        </div>
+					</div><!-- /projects-grid -->
 
-        <div class="contact-availability-chips">
-          <span class="contact-chip"><span class="contact-chip__dot"></span><span data-i18n-text="contact.chip.availability">Available for projects</span></span>
-          <span class="contact-chip" data-i18n-text="contact.chip.response-time"><svg class="icon icon--bolt" aria-hidden="true"><use href="/sprites/solid.svg#bolt"></use></svg> Replies within 24h</span>
-        </div>
-      </div>
-    </section>
-  </main>
-    <footer id="main-footer">
-    <div class="footer-inner">
+					<!-- زر عرض جميع المشاريع — معطّل حالياً لحين اكتمال صفحة الأعمال
+					<div class="work-section__footer">
+						<a href="/work" class="btn-outline">
+							<span data-i18n-text="work.footer.view-all-projects">All Projects</span>
+							<svg width="14" height="14" class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+						</a>
+					</div> -->
 
-      <!-- Logo -->
-      <div class="footer__logo-wrapper">
-        <a href="#" class="footer__logo-link" aria-label="Amer — Frontend Developer" data-i18n-aria="footer.logo.aria-label">
-                      <source srcset="/src/assets/images/amer_logo/logo_icon.avif" type="image/avif">
-              <source srcset="/src/assets/images/amer_logo/logo_icon.webp" type="image/webp">
-              <img src="/src/assets/images/amer_logo/logo_icon.png" alt="Amer logo" data-i18n-alt="logo.alt" width="60px" height="60px"/>
-        </a>
-        <div data-i18n-html="footer.identity"><p>Amer</p><br/><p>Front End Developer</p></div>
-      </div>
+				</div>
+			</section>
 
-      <!-- Social Media Links -->
-      <div class="footer__social-links">
-        <a href="https://wa.me/201280787721" class="social-link" aria-label="Contact Amer on WhatsApp" data-i18n-aria="footer.social.whatsapp.aria-label" target="_blank" rel="noopener noreferrer">
-          <svg class="icon icon--whatsapp" aria-hidden="true"><use href="/sprites/brands.svg#whatsapp"></use></svg>
-        </a>   
-        <a href="https://github.com/amer-developer0" class="social-link" aria-label="Visit Amer on GitHub" data-i18n-aria="footer.social.github.aria-label" target="_blank" rel="noopener noreferrer">
-          <svg class="icon icon--github" aria-hidden="true"><use href="/sprites/brands.svg#github"></use></svg>
-        </a>           
+			<!-- ========== قسم الخدمات ========== -->
+			<section class="services-section" id="services">
+				<div class="services-section__inner">
 
-        <a href="https://www.facebook.com/share/1HDT2VKw3a/" class="social-link" aria-label="Visit Amer on Facebook" data-i18n-aria="footer.social.facebook.aria-label" target="_blank" rel="noopener noreferrer">
-          <svg class="icon icon--facebook" aria-hidden="true"><use href="/sprites/brands.svg#facebook"></use></svg>
-        </a>
-      </div>
+					<!-- رأس القسم -->
+					<div class="section-header">
+						<div>
+							<p class="section-header__label" data-i18n-text="services.section-eyebrow">Services</p>
+							<!-- data-i18n-html لأن العنوان يحتوي <span class="outline"> متداخل -->
+							<h2 class="section-header__title" data-i18n-html="services.section-title">What I <span class="outline">build</span></h2>
+						</div>
+					</div>
 
-      <div class="footer-meta">
-        <p class="footer__email-line"><span data-i18n-text="footer.meta.email-prefix">Email:</span> <span><a href="mailto:iamamer030@gmail.com" class="footer__email-link">iamamer030@gmail.com</a></span></p>
-        <p class="footer__phone-line"><span data-i18n-text="footer.meta.phone-prefix">Phone:</span> <span><a href="https://wa.me/201280787721" class="footer__phone-link">201280787721</a></span></p>
-        <p class="footer__copyright" data-i18n-text="footer.meta.copyright">© 2025 Amer. All rights reserved.</p>
-      </div>
+					<!-- التخطيط المكتبي — قائمة الخدمات + لوحة التفاصيل جنباً إلى جنب -->
+					<div class="services-section__desktop-layout">
 
-    </div>
-  </footer>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+						<!-- قائمة اختيار الخدمة -->
+						<div class="services-section__list-panel">
+							<div class="services-list" id="svc-list">
+
+								<!-- aria-pressed يُشير إلى العنصر النشط حالياً ويُحدَّث بواسطة JS -->
+								<button class="service-list-item service-list-item--active" data-index="0" aria-pressed="true">
+									<span class="service-list-item__number">01</span>
+									<span class="service-list-item__name" data-i18n-text="services.item1.name">Business Website</span>
+									<svg class="icon icon--arrow-right service-list-item__arrow" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+								</button>
+
+								<button class="service-list-item" data-index="1" aria-pressed="false">
+									<span class="service-list-item__number">02</span>
+									<span class="service-list-item__name" data-i18n-text="services.item2.name">Landing Page</span>
+									<svg class="icon icon--arrow-right service-list-item__arrow" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+								</button>
+
+								<button class="service-list-item" data-index="2" aria-pressed="false">
+									<span class="service-list-item__number">03</span>
+									<span class="service-list-item__name" data-i18n-text="services.item3.name">Web Application</span>
+									<svg class="icon icon--arrow-right service-list-item__arrow" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+								</button>
+
+								<button class="service-list-item" data-index="3" aria-pressed="false">
+									<span class="service-list-item__number">04</span>
+									<span class="service-list-item__name" data-i18n-text="services.item4.name">Frontend UI</span>
+									<svg class="icon icon--arrow-right service-list-item__arrow" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+								</button>
+
+								<button class="service-list-item" data-index="4" aria-pressed="false">
+									<span class="service-list-item__number">05</span>
+									<span class="service-list-item__name" data-i18n-text="services.item5.name">Website Maintenance</span>
+									<svg class="icon icon--arrow-right service-list-item__arrow" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+								</button>
+
+							</div>
+						</div>
+
+						<!-- لوحات تفاصيل الخدمات — تُظهر JS اللوحة المقابلة للعنصر المحدد -->
+						<div class="services-section__detail-panels">
+
+							<!-- لوحة 01 — موقع تجاري -->
+							<div class="service-detail-panel service-detail-panel--active" id="panel-0">
+								<div class="service-detail-panel__top">
+									<span class="service-detail-panel__icon">
+										<svg class="icon icon--building" aria-hidden="true"><use href="/sprites/solid.svg#building"></use></svg>
+									</span>
+									<div class="service-detail-panel__name" data-i18n-text="services.item1.name">Business Website</div>
+									<p class="service-detail-panel__description" data-i18n-text="services.item1.description">
+										Your website is often the first thing a client sees. It needs to be fast, clear, and work on every device.
+									</p>
+									<p class="service-detail-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
+									<ul class="service-detail-panel__includes-list">
+										<li data-i18n-text="services.item1.include1">Responsive design for all devices</li>
+										<li data-i18n-text="services.item1.include2">SEO-ready structure</li>
+										<li data-i18n-text="services.item1.include3">Fast load times</li>
+										<li data-i18n-text="services.item1.include4">Contact form integration</li>
+										<li data-i18n-text="services.item1.include5">CMS setup (optional)</li>
+									</ul>
+									<div class="service-detail-panel__tags">
+										<span class="service-detail-panel__tag">HTML/CSS</span>
+										<span class="service-detail-panel__tag">React</span>
+										<span class="service-detail-panel__tag">CMS</span>
+									</div>
+								</div>
+								<a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">
+									Start a Project
+									<svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+								</a>
+							</div>
+
+							<!-- لوحة 02 — صفحة هبوط -->
+							<div class="service-detail-panel" id="panel-1">
+								<div class="service-detail-panel__top">
+									<span class="service-detail-panel__icon">
+										<svg class="icon icon--rocket" aria-hidden="true"><use href="/sprites/solid.svg#rocket"></use></svg>
+									</span>
+									<div class="service-detail-panel__name" data-i18n-text="services.item2.name">Landing Page</div>
+									<p class="service-detail-panel__description" data-i18n-text="services.item2.description">
+										One page, one goal — built to turn visitors into customers.
+									</p>
+									<p class="service-detail-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
+									<ul class="service-detail-panel__includes-list">
+										<li data-i18n-text="services.item2.include1">Custom animations &amp; interactions</li>
+										<li data-i18n-text="services.item2.include2">Conversion-focused layout</li>
+										<li data-i18n-text="services.item2.include3">A/B test ready structure</li>
+										<li data-i18n-text="services.item2.include4">Analytics integration</li>
+										<li data-i18n-text="services.item2.include5">Mobile-first design</li>
+									</ul>
+									<div class="service-detail-panel__tags">
+										<span class="service-detail-panel__tag">React</span>
+										<span class="service-detail-panel__tag">GSAP</span>
+										<span class="service-detail-panel__tag">Analytics</span>
+									</div>
+								</div>
+								<a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">
+									Start a Project
+									<svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+								</a>
+							</div>
+
+							<!-- لوحة 03 — تطبيق ويب -->
+							<div class="service-detail-panel" id="panel-2">
+								<div class="service-detail-panel__top">
+									<span class="service-detail-panel__icon">
+										<svg class="icon icon--display" aria-hidden="true"><use href="/sprites/solid.svg#display"></use></svg>
+									</span>
+									<div class="service-detail-panel__name" data-i18n-text="services.item3.name">Web Application</div>
+									<p class="service-detail-panel__description" data-i18n-text="services.item3.description">
+										Complex needs, clean solutions. Web apps built to scale and easy to maintain.
+									</p>
+									<p class="service-detail-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
+									<ul class="service-detail-panel__includes-list">
+										<li data-i18n-text="services.item3.include1">Authentication &amp; authorization</li>
+										<li data-i18n-text="services.item3.include2">REST / GraphQL API integration</li>
+										<li data-i18n-text="services.item3.include3">State management</li>
+										<li data-i18n-text="services.item3.include4">Database design</li>
+										<li data-i18n-text="services.item3.include5">Deployment &amp; CI/CD</li>
+									</ul>
+									<div class="service-detail-panel__tags">
+										<span class="service-detail-panel__tag">React</span>
+										<span class="service-detail-panel__tag">Node.js</span>
+										<span class="service-detail-panel__tag">PostgreSQL</span>
+									</div>
+								</div>
+								<a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">
+									Start a Project
+									<svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+								</a>
+							</div>
+
+							<!-- لوحة 04 — واجهة مستخدم -->
+							<div class="service-detail-panel" id="panel-3">
+								<div class="service-detail-panel__top">
+									<span class="service-detail-panel__icon">
+										<svg class="icon icon--palette" aria-hidden="true"><use href="/sprites/solid.svg#palette"></use></svg>
+									</span>
+									<div class="service-detail-panel__name" data-i18n-text="services.item4.name">Frontend UI</div>
+									<p class="service-detail-panel__description" data-i18n-text="services.item4.description">
+										A precise interface built from your design or from scratch — clean, compatible, and fast.
+									</p>
+									<p class="service-detail-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
+									<ul class="service-detail-panel__includes-list">
+										<li data-i18n-text="services.item4.include1">Component-based architecture</li>
+										<li data-i18n-text="services.item4.include2">Design system implementation</li>
+										<li data-i18n-text="services.item4.include3">Cross-browser compatibility</li>
+										<li data-i18n-text="services.item4.include4">Figma to code</li>
+										<li data-i18n-text="services.item4.include5">Performance optimization</li>
+									</ul>
+									<div class="service-detail-panel__tags">
+										<span class="service-detail-panel__tag">React</span>
+										<span class="service-detail-panel__tag">TypeScript</span>
+										<span class="service-detail-panel__tag">Figma</span>
+									</div>
+								</div>
+								<a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">
+									Start a Project
+									<svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+								</a>
+							</div>
+
+							<!-- لوحة 05 — صيانة المواقع -->
+							<div class="service-detail-panel" id="panel-4">
+								<div class="service-detail-panel__top">
+									<span class="service-detail-panel__icon">
+										<svg class="icon icon--wrench" aria-hidden="true"><use href="/sprites/solid.svg#wrench"></use></svg>
+									</span>
+									<div class="service-detail-panel__name" data-i18n-text="services.item5.name">Website Maintenance</div>
+									<p class="service-detail-panel__description" data-i18n-text="services.item5.description">
+										Your existing site fixed, updated, or improved — without breaking what already works.
+									</p>
+									<p class="service-detail-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
+									<ul class="service-detail-panel__includes-list">
+										<li data-i18n-text="services.item5.include1">Bug fixing &amp; debugging</li>
+										<li data-i18n-text="services.item5.include2">Performance improvements</li>
+										<li data-i18n-text="services.item5.include3">Content updates</li>
+										<li data-i18n-text="services.item5.include4">Security patches</li>
+										<li data-i18n-text="services.item5.include5">Feature additions</li>
+									</ul>
+									<div class="service-detail-panel__tags">
+										<span class="service-detail-panel__tag">Debugging</span>
+										<span class="service-detail-panel__tag">Optimization</span>
+										<span class="service-detail-panel__tag">Updates</span>
+									</div>
+								</div>
+								<a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">
+									Start a Project
+									<svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
+								</a>
+							</div>
+
+						</div><!-- /services-section__detail-panels -->
+
+					</div><!-- /services-section__desktop-layout -->
+
+					<!-- التخطيط الجوّالي — نظام تبويبات أفقية قابلة للتمرير -->
+					<div class="services-section__mobile-layout">
+
+						<!-- شريط التنقل بين التبويبات -->
+						<div class="services-section__tabs-nav-wrapper">
+							<div class="services-section__tabs-nav" id="tabs-nav">
+								<button class="tab-button tab-button--active" data-tab="0" data-i18n-text="services.tab1.short-name">Business Site</button>
+								<button class="tab-button" data-tab="1" data-i18n-text="services.tab2.short-name">Landing Page</button>
+								<button class="tab-button" data-tab="2" data-i18n-text="services.tab3.short-name">Web App</button>
+								<button class="tab-button" data-tab="3" data-i18n-text="services.tab4.short-name">Frontend UI</button>
+								<button class="tab-button" data-tab="4" data-i18n-text="services.tab5.short-name">Maintenance</button>
+							</div>
+						</div>
+
+						<!-- نقاط مؤشر التبويب النشط -->
+						<div class="tab-dots" id="tab-dots">
+							<div class="tab-dot tab-dot--active"></div>
+							<div class="tab-dot"></div>
+							<div class="tab-dot"></div>
+							<div class="tab-dot"></div>
+							<div class="tab-dot"></div>
+						</div>
+
+						<!-- لوحات محتوى التبويبات الجوّالية -->
+						<div class="tab-panels" id="tab-panels">
+
+							<!-- لوحة التبويب 01 — موقع تجاري -->
+							<div class="tab-panel tab-panel--active">
+								<span class="tab-panel__icon"><svg class="icon icon--building" aria-hidden="true"><use href="/sprites/solid.svg#building"></use></svg></span>
+								<!-- data-i18n-html لأن العنوان يحتوي <span> متداخل -->
+								<h3 class="tab-panel__name" data-i18n-html="services.tab1.heading">Business <span>Website</span></h3>
+								<p class="tab-panel__description" data-i18n-text="services.item1.description">Your website is often the first thing a client sees. It needs to be fast, clear, and work on every device.</p>
+								<div class="tab-panel__includes">
+									<p class="tab-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
+									<ul class="tab-panel__includes-list">
+										<li data-i18n-text="services.item1.include1">Responsive design for all devices</li>
+										<li data-i18n-text="services.item1.include2">SEO-ready structure</li>
+										<li data-i18n-text="services.item1.include3">Fast load times</li>
+										<li data-i18n-text="services.item1.include4">Contact form integration</li>
+										<li data-i18n-text="services.item1.include5">CMS setup (optional)</li>
+									</ul>
+								</div>
+								<a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
+							</div>
+
+							<!-- لوحة التبويب 02 — صفحة هبوط -->
+							<div class="tab-panel">
+								<span class="tab-panel__icon"><svg class="icon icon--rocket" aria-hidden="true"><use href="/sprites/solid.svg#rocket"></use></svg></span>
+								<h3 class="tab-panel__name" data-i18n-html="services.tab2.heading">Landing <span>Page</span></h3>
+								<p class="tab-panel__description" data-i18n-text="services.item2.description">One page, one goal — built to turn visitors into customers.</p>
+								<div class="tab-panel__includes">
+									<p class="tab-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
+									<ul class="tab-panel__includes-list">
+										<li data-i18n-text="services.item2.include1">Custom animations &amp; interactions</li>
+										<li data-i18n-text="services.item2.include2">Conversion-focused layout</li>
+										<li data-i18n-text="services.item2.include3">A/B test ready structure</li>
+										<li data-i18n-text="services.item2.include4">Analytics integration</li>
+										<li data-i18n-text="services.item2.include5">Mobile-first design</li>
+									</ul>
+								</div>
+								<a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
+							</div>
+
+							<!-- لوحة التبويب 03 — تطبيق ويب -->
+							<div class="tab-panel">
+								<span class="tab-panel__icon"><svg class="icon icon--display" aria-hidden="true"><use href="/sprites/solid.svg#display"></use></svg></span>
+								<h3 class="tab-panel__name" data-i18n-html="services.tab3.heading">Web <span>Application</span></h3>
+								<p class="tab-panel__description" data-i18n-text="services.item3.description">Complex needs, clean solutions. Web apps built to scale and easy to maintain.</p>
+								<div class="tab-panel__includes">
+									<p class="tab-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
+									<ul class="tab-panel__includes-list">
+										<li data-i18n-text="services.item3.include1">Authentication &amp; authorization</li>
+										<li data-i18n-text="services.item3.include2">REST / GraphQL API integration</li>
+										<li data-i18n-text="services.item3.include3">State management</li>
+										<li data-i18n-text="services.item3.include4">Database design</li>
+										<li data-i18n-text="services.item3.include5">Deployment &amp; CI/CD</li>
+									</ul>
+								</div>
+								<a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
+							</div>
+
+							<!-- لوحة التبويب 04 — واجهة مستخدم -->
+							<div class="tab-panel">
+								<span class="tab-panel__icon"><svg class="icon icon--palette" aria-hidden="true"><use href="/sprites/solid.svg#palette"></use></svg></span>
+								<h3 class="tab-panel__name" data-i18n-html="services.tab4.heading">Frontend <span>UI</span></h3>
+								<p class="tab-panel__description" data-i18n-text="services.item4.description">A precise interface built from your design or from scratch — clean, compatible, and fast.</p>
+								<div class="tab-panel__includes">
+									<p class="tab-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
+									<ul class="tab-panel__includes-list">
+										<li data-i18n-text="services.item4.include1">Component-based architecture</li>
+										<li data-i18n-text="services.item4.include2">Design system implementation</li>
+										<li data-i18n-text="services.item4.include3">Cross-browser compatibility</li>
+										<li data-i18n-text="services.item4.include4">Figma to code</li>
+										<li data-i18n-text="services.item4.include5">Performance optimization</li>
+									</ul>
+								</div>
+								<a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
+							</div>
+
+							<!-- لوحة التبويب 05 — صيانة المواقع -->
+							<div class="tab-panel">
+								<span class="tab-panel__icon"><svg class="icon icon--wrench" aria-hidden="true"><use href="/sprites/solid.svg#wrench"></use></svg></span>
+								<h3 class="tab-panel__name" data-i18n-html="services.tab5.heading">Website <span>Maintenance</span></h3>
+								<p class="tab-panel__description" data-i18n-text="services.item5.description">Your existing site fixed, updated, or improved — without breaking what already works.</p>
+								<div class="tab-panel__includes">
+									<p class="tab-panel__includes-title" data-i18n-text="services.includes-heading">What's included</p>
+									<ul class="tab-panel__includes-list">
+										<li data-i18n-text="services.item5.include1">Bug fixing &amp; debugging</li>
+										<li data-i18n-text="services.item5.include2">Performance improvements</li>
+										<li data-i18n-text="services.item5.include3">Content updates</li>
+										<li data-i18n-text="services.item5.include4">Security patches</li>
+										<li data-i18n-text="services.item5.include5">Feature additions</li>
+									</ul>
+								</div>
+								<a href="#contact" class="btn-primary" data-i18n-text="services.detail.cta">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
+							</div>
+
+						</div><!-- /tab-panels -->
+
+					</div><!-- /services-section__mobile-layout -->
+
+				</div>
+			</section>
+
+			<!-- ========== قسم نبذة شخصية ========== -->
+			<section class="about-section" id="about">
+				<div class="about-section__inner">
+
+					<!-- رأس القسم -->
+					<div class="section-header">
+						<div>
+							<p class="section-header__label" data-i18n-text="about.section-label">About</p>
+							<h2 class="section-header__title">
+								<span data-i18n-text="about.section-title.line1">The person</span><br>
+								<span class="outline" data-i18n-text="about.section-title.line2">behind the work.</span>
+							</h2>
+						</div>
+					</div>
+
+					<!-- شبكة المحتوى الرئيسي للقسم -->
+					<div class="about-section__grid">
+
+						<!-- كتلة الفقرات التعريفية بتأثير الطابعة الآلية -->
+						<div class="about-section__typewriter-block">
+
+							<p class="typewriter-line" id="p1">
+								<span class="typewriter-line__text" data-i18n-text="about.bio.paragraph1">
+									I'm Amer — a Front-End developer based in Cairo. I build interfaces from scratch, with clean code and real attention to detail.
+								</span>
+							</p>
+
+							<p class="typewriter-line" id="p2">
+								<span class="typewriter-line__text" data-i18n-text="about.bio.paragraph2">
+									I care about the things most people skip — readable code, obvious interfaces, and deadlines that mean something.
+								</span>
+							</p>
+
+							<p class="typewriter-line" id="p3">
+								<span class="typewriter-line__text" data-i18n-text="about.bio.paragraph3">
+									When I'm not building, I'm learning. The web moves fast — staying current is part of the job.
+								</span>
+							</p>
+
+						</div>
+
+					</div>
+
+					<!-- قسم المهارات التقنية -->
+					<!-- id="skills-panel" يُستخدم من JS لتشغيل انيميشن ظهور الـ tags -->
+					<div class="about-section__skills" id="skills-panel">
+
+						<p class="about-section__skills-title" data-i18n-text="about.skills.heading">Tech Stack</p>
+
+						<!-- مجموعة مهارات الواجهة الأمامية -->
+						<div class="skills-group">
+							<p class="skills-group__label" data-i18n-text="about.skills.group.frontend">Frontend</p>
+							<div class="skills-group__tags">
+								<span class="skill-tag" data-order="1"><span class="skill-tag__dot"></span>HTML</span>
+								<span class="skill-tag" data-order="2"><span class="skill-tag__dot"></span>CSS</span>
+								<span class="skill-tag" data-order="3"><span class="skill-tag__dot"></span>JS ES6</span>
+								<span class="skill-tag" data-order="4"><span class="skill-tag__dot"></span>React</span>
+								<span class="skill-tag" data-order="5"><span class="skill-tag__dot"></span>Next.js</span>
+								<span class="skill-tag" data-order="6"><span class="skill-tag__dot"></span>Tailwind CSS</span>
+							</div>
+						</div>
+
+						<!-- مجموعة أدوات التطوير -->
+						<div class="skills-group">
+							<p class="skills-group__label" data-i18n-text="about.skills.group.tools">Tools</p>
+							<div class="skills-group__tags">
+								<span class="skill-tag" data-order="7"><span class="skill-tag__dot"></span>Git</span>
+								<span class="skill-tag" data-order="8"><span class="skill-tag__dot"></span>GitHub</span>
+								<span class="skill-tag" data-order="9"><span class="skill-tag__dot"></span>Vite</span>
+								<span class="skill-tag" data-order="10"><span class="skill-tag__dot"></span>Docker</span>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+
+			<!-- ========== قسم التواصل ========== -->
+			<section id="contact" class="contact-section">
+				<div class="contact-section__inner">
+
+					<!-- رأس القسم -->
+					<div class="section-header">
+						<p class="section-header__label" data-i18n-text="contact.eyebrow">Contact</p>
+						<!-- data-i18n-html لأن العنوان يحتوي <span class="outline"> متداخل -->
+						<h2 class="section-header__title" data-i18n-html="contact.section-title">Start a project <span class="outline">today</span></h2>
+						<p class="section-header__description" data-i18n-text="contact.section-description">Have something in mind? I reply within 24 hours.</p>
+					</div>
+
+					<!-- نموذج التواصل -->
+					<form class="contact-section__form">
+
+						<div class="form-group">
+							<label class="form-group__label" data-i18n-text="contact.form.name-label">Name</label>
+							<!-- aria-label على حقل الإدخال يصف وظيفته لقارئات الشاشة حين لا يكون الـ label مرتبطاً بـ for/id -->
+							<input class="form-group__input" type="text" placeholder="Your name" aria-label="اسمك الكامل" data-i18n-aria="contact.form.name-input.aria-label" required />
+						</div>
+
+						<div class="form-group">
+							<label class="form-group__label" data-i18n-text="contact.form.email-label">Email</label>
+							<input class="form-group__input" type="email" placeholder="your@email.com" aria-label="عنوان بريدك الإلكتروني" data-i18n-aria="contact.form.email-input.aria-label" required />
+						</div>
+
+						<div class="form-group">
+							<label class="form-group__label" data-i18n-text="contact.form.message-label">Message</label>
+							<textarea class="form-group__textarea" placeholder="Describe your project briefly" aria-label="رسالتك أو وصف مشروعك" data-i18n-aria="contact.form.message-textarea.aria-label"></textarea>
+						</div>
+
+						<!-- رسالة النجاح — مخفية بالـ CSS وتظهر بعد إرسال النموذج بنجاح -->
+						<div class="contact-section__success-message" id="contact-success" data-i18n-text="contact.form.success-message">
+							<svg class="icon icon--circle-check" aria-hidden="true"><use href="/sprites/solid.svg#circle-check"></use></svg> Sent. I'll get back to you within 24 hours.
+						</div>
+
+						<button type="submit" class="btn-primary" data-i18n-text="contact.form.submit-button">
+							Send <svg class="icon icon--paper-plane" aria-hidden="true"><use href="/sprites/solid.svg#paper-plane"></use></svg>
+						</button>
+
+					</form>
+
+					<!-- فاصل بديل للتواصل المباشر -->
+					<div class="contact-section__divider" data-i18n-text="contact.divider">or write directly</div>
+
+					<!-- أزرار التواصل المباشر (البريد الإلكتروني والواتساب) -->
+					<div class="contact-section__direct-buttons">
+						<a href="mailto:iamamer030@gmail.com" class="btn-outline" data-i18n-text="contact.direct.email-button">
+							<svg class="icon icon--envelope" aria-hidden="true"><use href="/sprites/solid.svg#envelope"></use></svg> Email
+						</a>
+						<a href="https://wa.me/201280787721" class="contact-section__whatsapp-btn" target="_blank" rel="noopener noreferrer" data-i18n-text="contact.direct.whatsapp-button">
+							<svg class="icon icon--whatsapp" aria-hidden="true"><use href="/sprites/brands.svg#whatsapp"></use></svg>
+							WhatsApp
+						</a>
+					</div>
+
+					<!-- شارات التوافر والوقت المستغرق للرد -->
+					<div class="contact-section__availability-chips">
+						<!-- الشارة الأولى تحتوي نقطة خضراء + نص، لذا نستخدم data-i18n-html لأنها بنية هجينة -->
+						<span class="contact-section__chip">
+							<span class="contact-section__chip-dot"></span>
+							<span data-i18n-text="contact.chip.availability">Available for projects</span>
+						</span>
+						<!-- الشارة الثانية تحتوي أيقونة + نص، وهي بنية هجينة أيضاً -->
+						<span class="contact-section__chip" data-i18n-html="contact.chip.response-time">
+							<svg class="icon icon--bolt" aria-hidden="true"><use href="/sprites/solid.svg#bolt"></use></svg> Replies within 24h
+						</span>
+					</div>
+
+				</div>
+			</section>
+
+		</main>
+
+		<!-- ========== تذييل الموقع ========== -->
+		<footer id="main-footer" class="site-footer">
+			<div class="site-footer__inner">
+
+				<!-- هوية المطور — شعار + اسم + المسمى الوظيفي -->
+				<div class="site-footer__logo-wrapper">
+					<a href="#" class="site-footer__logo-link" aria-label="الصفحة الرئيسية — عامر مطوّر واجهات أمامية" data-i18n-aria="footer.logo.aria-label">
+						<picture>
+							<source srcset="/src/assets/images/amer_logo/logo_icon.avif" type="image/avif">
+							<source srcset="/src/assets/images/amer_logo/logo_icon.webp" type="image/webp">
+							<img src="/src/assets/images/amer_logo/logo_icon.png" alt="شعار عامر" data-i18n-alt="logo.alt" width="60" height="60" />
+						</picture>
+					</a>
+					<!-- data-i18n-html لأن المحتوى يحتوي وسوم <p> و <br> متداخلة -->
+					<div data-i18n-html="footer.identity"><p>Amer</p><br/><p>Front End Developer</p></div>
+				</div>
+
+				<!-- روابط التواصل الاجتماعي — كل رابط يحتوي أيقونة فقط لذا aria-label على كل منها إلزامي -->
+				<div class="site-footer__social-links">
+					<a href="https://wa.me/201280787721" class="social-link" aria-label="تواصل مع عامر على واتساب" data-i18n-aria="footer.social.whatsapp.aria-label" target="_blank" rel="noopener noreferrer">
+						<svg class="icon icon--whatsapp" aria-hidden="true"><use href="/sprites/brands.svg#whatsapp"></use></svg>
+					</a>
+					<a href="https://github.com/amer-developer0" class="social-link" aria-label="زيارة صفحة عامر على GitHub" data-i18n-aria="footer.social.github.aria-label" target="_blank" rel="noopener noreferrer">
+						<svg class="icon icon--github" aria-hidden="true"><use href="/sprites/brands.svg#github"></use></svg>
+					</a>
+					<a href="https://www.facebook.com/share/1HDT2VKw3a/" class="social-link" aria-label="زيارة صفحة عامر على Facebook" data-i18n-aria="footer.social.facebook.aria-label" target="_blank" rel="noopener noreferrer">
+						<svg class="icon icon--facebook" aria-hidden="true"><use href="/sprites/brands.svg#facebook"></use></svg>
+					</a>
+				</div>
+
+				<!-- البيانات الوصفية للتذييل — بريد إلكتروني، هاتف، حقوق النشر -->
+				<div class="site-footer__meta">
+					<!-- البريد الإلكتروني: النص يحتوي جزءاً ثابتاً ("Email:") + رابط، لذا نُقسّمه إلى span منفصلين -->
+					<p class="site-footer__email-line">
+						<span data-i18n-text="footer.meta.email-prefix">Email:</span>
+						<span><a href="mailto:iamamer030@gmail.com" class="site-footer__email-link">iamamer030@gmail.com</a></span>
+					</p>
+					<p class="site-footer__phone-line">
+						<span data-i18n-text="footer.meta.phone-prefix">Phone:</span>
+						<span><a href="https://wa.me/201280787721" class="site-footer__phone-link">201280787721</a></span>
+					</p>
+					<p class="site-footer__copyright" data-i18n-text="footer.meta.copyright">© 2025 Amer. All rights reserved.</p>
+				</div>
+
+			</div>
+		</footer>
+
+		<!-- وحدة JavaScript الرئيسية — تُحمَّل كـ module لدعم الـ ES6 imports -->
+		<script type="module" src="/src/main.js"></script>
+
+	</body>
 </html>
