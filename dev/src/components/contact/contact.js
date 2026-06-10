@@ -17,40 +17,24 @@
 
   /* ═══════════════════════════════════════════════
      ١. CONFIG — القيم القابلة للتعديل
-     ══════════════════════════════════════════════
-     غيّر هذه القيم فقط عند تفعيل الخدمة
   ═══════════════════════════════════════════════ */
 
   const CONFIG = {
-    /* ── CallMeBot ── */
-    PHONE:          'YOUR_PHONE_NUMBER',   /* مثال: 201XXXXXXXXX */
-    API_KEY:        'YOUR_CALLMEBOT_KEY',  /* المفتاح من رسالة التفعيل */
-
-    /* ── Rate Limiting ── */
-    RATE_LIMIT_MS:  120_000,   /* دقيقتان بين كل إرسالين */
-
-    /* ── Validation ── */
+    PHONE:          '201037454618',
+    API_KEY:        '9915359',
+    RATE_LIMIT_MS:  120_000,
     MSG_MIN_CHARS:  10,
     MSG_MAX_CHARS:  500,
-
-    /* ── Toast ── */
-    TOAST_DURATION_MS:     4_000,   /* مدة ظهور الـ toast */
-    TOAST_PROGRESS_MS:     3_800,   /* مدة شريط التقدم (أقل قليلاً للتناسق) */
-
-    /* ── localStorage key ── */
+    TOAST_DURATION_MS:     4_000,
+    TOAST_PROGRESS_MS:     3_800,
     RATE_KEY: 'contact_last_sent',
   };
 
 
   /* ═══════════════════════════════════════════════
-     ٢. MESSAGES — قاموس الرسائل الثنائي اللغة
-     ══════════════════════════════════════════════
-     كل رسالة: { en, ar, type }
-     type: 'success' | 'error' | 'warning'
-     الأيقونات: SVG sprite من /sprites/solid.svg
+     ٢. MESSAGES
   ═══════════════════════════════════════════════ */
 
-  /* ── أيقونات مُعاد استخدامها ── */
   const ICONS = {
     success: `<svg class="icon toast__icon" aria-hidden="true"><use href="/sprites/solid.svg#circle-check"></use></svg>`,
     error:   `<svg class="icon toast__icon" aria-hidden="true"><use href="/sprites/solid.svg#circle-xmark"></use></svg>`,
@@ -59,30 +43,29 @@
   };
 
   const MESSAGES = {
-
-    /* ── نجاح الإرسال ── */
     success: {
-      en: `${ICONS.success} Message sent! I'll get back to you within 24 hours.`,
-      ar: `${ICONS.success} تم الإرسال! سأرد عليك خلال ٢٤ ساعة.`,
+      en: `${ICONS.success} Thank you! I read every message and will get back to you soon.`,
+      ar: `${ICONS.success} شكراً لك! أنا أقرأ كل رسالة وسأرد عليك قريباً.`,
       type: 'success',
     },
-
-    /* ── أخطاء التحقق ── */
     error_name_empty: {
       en: `${ICONS.error} Please enter your name.`,
       ar: `${ICONS.error} من فضلك أدخل اسمك.`,
       type: 'error',
     },
-    error_email_empty: {
-      en: `${ICONS.error} Please enter your email address.`,
-      ar: `${ICONS.error} من فضلك أدخل بريدك الإلكتروني.`,
+
+    /* ── تعديل: رسائل الحقل الثاني (إيميل أو موبايل) ── */
+    error_contact_empty: {
+      en: `${ICONS.error} Please enter your email or phone number.`,
+      ar: `${ICONS.error} من فضلك أدخل بريدك الإلكتروني أو رقم موبايلك.`,
       type: 'error',
     },
-    error_email_invalid: {
-      en: `${ICONS.error} Please enter a valid email address.`,
-      ar: `${ICONS.error} صيغة البريد الإلكتروني غير صحيحة.`,
+    error_contact_invalid: {
+      en: `${ICONS.error} Please enter a valid email address or phone number.`,
+      ar: `${ICONS.error} أدخل بريداً إلكترونياً صحيحاً أو رقم موبايل صحيح.`,
       type: 'error',
     },
+
     error_message_empty: {
       en: `${ICONS.error} Please write your message.`,
       ar: `${ICONS.error} من فضلك اكتب رسالتك.`,
@@ -98,15 +81,11 @@
       ar: `${ICONS.warning} الرسالة طويلة جداً. الحد الأقصى ${CONFIG.MSG_MAX_CHARS} حرفاً.`,
       type: 'warning',
     },
-
-    /* ── Rate Limit ── */
     error_rate_limit: {
       en: `${ICONS.info} Please wait a moment before sending again.`,
       ar: `${ICONS.info} انتظر لحظة قبل الإرسال مجدداً.`,
       type: 'warning',
     },
-
-    /* ── أخطاء الشبكة والـ API ── */
     error_network: {
       en: `${ICONS.error} No internet connection. Please check your network.`,
       ar: `${ICONS.error} لا يوجد اتصال بالإنترنت. تحقق من الشبكة.`,
@@ -129,51 +108,55 @@
      ٣. DOM REFERENCES
   ═══════════════════════════════════════════════ */
 
-  const form          = document.querySelector('.contact-section__form');
-  const submitBtn     = form?.querySelector('button[type="submit"]');
-  const nameInput     = form?.querySelector('input[type="text"]');
-  const emailInput    = form?.querySelector('input[type="email"]');
-  const msgTextarea   = form?.querySelector('.form-group__textarea');
-  const toastEl       = document.querySelector('.toast-notification');
+  const form        = document.querySelector('.contact-section__form');
+  const submitBtn   = form?.querySelector('button[type="submit"]');
+  const nameInput   = form?.querySelector('input[type="text"]:first-of-type');
+  /* تعديل: contactInput بدل emailInput — يستهدف الحقل الثاني بـ nth-of-type */
+  const contactInput = form?.querySelectorAll('input[type="text"]')[1];
+  const msgTextarea = form?.querySelector('.form-group__textarea');
+  const toastEl     = document.querySelector('.toast-notification');
 
-  /* الخروج الصامت لو القسم مش موجود في الصفحة */
-  if (!form || !submitBtn || !nameInput || !emailInput || !msgTextarea || !toastEl) return;
+  if (!form || !submitBtn || !nameInput || !contactInput || !msgTextarea || !toastEl) return;
 
 
   /* ═══════════════════════════════════════════════
      ٤. HELPERS
   ═══════════════════════════════════════════════ */
 
-  /* ── تحديد اللغة الحالية ── */
   function getLang() {
     return document.documentElement.lang === 'ar' ? 'ar' : 'en';
   }
 
-  /* ── صيغة الإيميل ── */
   const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  /* رقم الموبايل: يقبل صيغ دولية مثل +20..., 010..., 00201... */
+  const PHONE_REGEX = /^\+?[\d\s\-().]{7,15}$/;
+
+  /* يكتشف نوع الإدخال ويرجع 'email' | 'phone' | 'invalid' */
+  function detectContactType(value) {
+    if (EMAIL_REGEX.test(value))   return 'email';
+    if (PHONE_REGEX.test(value))   return 'phone';
+    return 'invalid';
+  }
 
 
   /* ═══════════════════════════════════════════════
      ٥. validateForm()
-     ══════════════════════════════════════════════
-     تتحقق من المدخلات بالترتيب وترجع:
-     { valid: true }  ← كل شيء صح
-     { valid: false, field: el, errorKey: string } ← خطأ
   ═══════════════════════════════════════════════ */
 
   function validateForm() {
     const name    = nameInput.value.trim();
-    const email   = emailInput.value.trim();
+    const contact = contactInput.value.trim();
     const message = msgTextarea.value.trim();
 
     if (!name) {
       return { valid: false, field: nameInput, errorKey: 'error_name_empty' };
     }
-    if (!email) {
-      return { valid: false, field: emailInput, errorKey: 'error_email_empty' };
+    if (!contact) {
+      return { valid: false, field: contactInput, errorKey: 'error_contact_empty' };
     }
-    if (!EMAIL_REGEX.test(email)) {
-      return { valid: false, field: emailInput, errorKey: 'error_email_invalid' };
+    if (detectContactType(contact) === 'invalid') {
+      return { valid: false, field: contactInput, errorKey: 'error_contact_invalid' };
     }
     if (!message) {
       return { valid: false, field: msgTextarea, errorKey: 'error_message_empty' };
@@ -190,22 +173,13 @@
 
 
   /* ═══════════════════════════════════════════════
-     ٦. checkRateLimit()
-     ══════════════════════════════════════════════
-     يقرأ timestamp آخر إرسال من localStorage.
-     يرجع:
-     { allowed: true }
-     { allowed: false, remainingMs: number }
+     ٦. checkRateLimit / updateRateLimit
   ═══════════════════════════════════════════════ */
 
   function checkRateLimit() {
     const lastSent = parseInt(localStorage.getItem(CONFIG.RATE_KEY) || '0', 10);
     const elapsed  = Date.now() - lastSent;
-
-    if (elapsed >= CONFIG.RATE_LIMIT_MS) {
-      return { allowed: true };
-    }
-
+    if (elapsed >= CONFIG.RATE_LIMIT_MS) return { allowed: true };
     return { allowed: false, remainingMs: CONFIG.RATE_LIMIT_MS - elapsed };
   }
 
@@ -216,10 +190,6 @@
 
   /* ═══════════════════════════════════════════════
      ٧. setButtonLoading(isLoading)
-     ══════════════════════════════════════════════
-     true  → يضيف btn--loading + disabled
-             يحفظ النص الأصلي ويستبدله بـ spinner
-     false → يعيد الزر لحالته الطبيعية
   ═══════════════════════════════════════════════ */
 
   let originalBtnHTML = '';
@@ -242,13 +212,7 @@
 
 
   /* ═══════════════════════════════════════════════
-     ٨. showToast(messageKey)
-     ══════════════════════════════════════════════
-     - يقرأ اللغة الحالية
-     - يحقن الـ HTML المناسب في .toast-notification
-     - يضيف class النوع (success/error/warning)
-     - يُشغّل شريط التقدم
-     - يختفي تلقائياً بعد TOAST_DURATION_MS
+     ٨. showToast / hideToast
   ═══════════════════════════════════════════════ */
 
   let toastTimer    = null;
@@ -260,22 +224,18 @@
     const text = msg[lang];
     const type = msg.type;
 
-    /* إلغاء أي toast سابق */
     clearTimeout(toastTimer);
     clearTimeout(progressTimer);
     toastEl.className = 'toast-notification';
     toastEl.innerHTML = '';
 
-    /* بناء المحتوى */
     toastEl.innerHTML = `
       <div class="toast__body">${text}</div>
       <div class="toast__progress" role="progressbar"></div>
     `;
 
-    /* تطبيق الـ type */
     toastEl.classList.add(`toast--${type}`, 'toast--visible');
 
-    /* تشغيل شريط التقدم بعد frame واحد لضمان الـ animation */
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         const bar = toastEl.querySelector('.toast__progress');
@@ -286,7 +246,6 @@
       });
     });
 
-    /* الإخفاء التلقائي */
     toastTimer = setTimeout(() => hideToast(), CONFIG.TOAST_DURATION_MS);
   }
 
@@ -303,29 +262,32 @@
   /* ═══════════════════════════════════════════════
      ٩. buildWhatsAppMessage(data)
      ══════════════════════════════════════════════
-     يبني نص الرسالة بالتنسيق الرسمي المنظم (الخيار أ)
-     مع مراعاة اللغة الحالية للموقع
+     تعديل: يعرض "Email" أو "Phone" حسب نوع الإدخال
   ═══════════════════════════════════════════════ */
 
   function buildWhatsAppMessage(data) {
-    const isAr = getLang() === 'ar';
+    const isAr        = getLang() === 'ar';
+    const contactType = detectContactType(data.contact);
+    const isEmail     = contactType === 'email';
 
     if (isAr) {
+      const contactLabel = isEmail ? 'الإيميل' : 'الموبايل';
       return [
         '📋 استفسار مشروع جديد',
         '──────────────────',
-        `الاسم:    ${data.name}`,
-        `الإيميل:  ${data.email}`,
+        `الاسم:       ${data.name}`,
+        `${contactLabel}: ${data.contact}`,
         '──────────────────',
         data.message,
       ].join('\n');
     }
 
+    const contactLabel = isEmail ? 'Email' : 'Phone';
     return [
       '📋 New Project Inquiry',
       '──────────────────',
       `Name:    ${data.name}`,
-      `Email:   ${data.email}`,
+      `${contactLabel}: ${data.contact}`,
       '──────────────────',
       data.message,
     ].join('\n');
@@ -334,16 +296,9 @@
 
   /* ═══════════════════════════════════════════════
      ١٠. sendToCallMeBot(data)
-     ══════════════════════════════════════════════
-     يبني الـ URL ويرسل الـ fetch request.
-     CallMeBot API:
-     GET https://api.callmebot.com/whatsapp.php
-         ?phone=PHONE&text=TEXT&apikey=KEY
-     يرجع: Promise<{ ok: boolean, errorKey?: string }>
   ═══════════════════════════════════════════════ */
 
   async function sendToCallMeBot(data) {
-    /* التحقق من الإنترنت أولاً */
     if (!navigator.onLine) {
       return { ok: false, errorKey: 'error_network' };
     }
@@ -355,23 +310,10 @@
     url.searchParams.set('text',   message);
 
     try {
-      const response = await fetch(url.toString(), {
-        method: 'GET',
-        mode:   'no-cors',   /* CallMeBot لا يرسل CORS headers */
-      });
-
-      /*
-       * no-cors يرجع دائماً response.type = 'opaque'
-       * لا نقدر نقرأ status — نفترض النجاح إذا لم يُرمَ خطأ
-       * هذا هو القيد الطبيعي لـ CallMeBot من الـ browser
-       */
+      await fetch(url.toString(), { method: 'GET', mode: 'no-cors' });
       return { ok: true };
-
-    } catch (err) {
-      /* fetch فشل = مشكلة شبكة أو CORS أو timeout */
-      if (!navigator.onLine) {
-        return { ok: false, errorKey: 'error_network' };
-      }
+    } catch {
+      if (!navigator.onLine) return { ok: false, errorKey: 'error_network' };
       return { ok: false, errorKey: 'error_api' };
     }
   }
@@ -379,9 +321,6 @@
 
   /* ═══════════════════════════════════════════════
      ١١. highlightField(el)
-     ══════════════════════════════════════════════
-     يضيف class خطأ على الحقل ويركز عليه
-     ويزيله عند أول تعديل
   ═══════════════════════════════════════════════ */
 
   function highlightField(el) {
@@ -397,10 +336,7 @@
 
 
   /* ═══════════════════════════════════════════════
-     ١٢. CHAR COUNTER — عداد الأحرف الحي
-     ══════════════════════════════════════════════
-     يُنشئ عنصر العداد ديناميكياً تحت الـ textarea
-     ويتحدث مع كل ضغطة
+     ١٢. CHAR COUNTER
   ═══════════════════════════════════════════════ */
 
   function initCharCounter() {
@@ -408,7 +344,7 @@
     if (!wrapper) return;
 
     const counter = document.createElement('span');
-    counter.className   = 'char-counter';
+    counter.className = 'char-counter';
     counter.setAttribute('aria-live', 'polite');
     wrapper.appendChild(counter);
 
@@ -416,26 +352,22 @@
       const len       = msgTextarea.value.length;
       const remaining = CONFIG.MSG_MAX_CHARS - len;
       counter.textContent = `${len} / ${CONFIG.MSG_MAX_CHARS}`;
-
-      /* تحذير لما يتبقى أقل من 50 حرف */
       counter.classList.toggle('char-counter--warning', remaining < 50 && remaining >= 0);
-      /* خطأ لما يتجاوز الحد */
       counter.classList.toggle('char-counter--error', remaining < 0);
     }
 
     msgTextarea.addEventListener('input', update);
-    update(); /* الحالة الابتدائية */
+    update();
   }
 
 
   /* ═══════════════════════════════════════════════
-     ١٣. FORM SUBMIT — السيناريو الكامل
+     ١٣. FORM SUBMIT
   ═══════════════════════════════════════════════ */
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    /* ── ١. التحقق من المدخلات ── */
     const validation = validateForm();
     if (!validation.valid) {
       highlightField(validation.field);
@@ -443,24 +375,21 @@
       return;
     }
 
-    /* ── ٢. Rate Limit ── */
     const rateCheck = checkRateLimit();
     if (!rateCheck.allowed) {
       showToast('error_rate_limit');
       return;
     }
 
-    /* ── ٣. تجهيز البيانات ── */
+    /* تعديل: contact بدل email */
     const data = {
       name:    nameInput.value.trim(),
-      email:   emailInput.value.trim(),
+      contact: contactInput.value.trim(),
       message: msgTextarea.value.trim(),
     };
 
-    /* ── ٤. Loading ── */
     setButtonLoading(true);
 
-    /* ── ٥. الإرسال ── */
     let result;
     try {
       result = await sendToCallMeBot(data);
@@ -468,15 +397,12 @@
       result = { ok: false, errorKey: 'error_unknown' };
     }
 
-    /* ── ٦. استعادة الزر ── */
     setButtonLoading(false);
 
-    /* ── ٧. النتيجة ── */
     if (result.ok) {
       updateRateLimit();
       showToast('success');
       form.reset();
-      /* تحديث العداد بعد الـ reset */
       msgTextarea.dispatchEvent(new Event('input'));
     } else {
       showToast(result.errorKey || 'error_unknown');
