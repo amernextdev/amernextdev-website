@@ -3,9 +3,10 @@
 // ===============================================
 
 // === STYLES ===
-// import './style.css';
-import './main.css';
+import '/src/style.css';
 
+// === LIBS ==
+import '/src/assets/libs/scroll-reveal/scroll-reveal.js';
 
 // === LOGIC ===
 // - Services

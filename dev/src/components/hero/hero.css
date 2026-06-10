@@ -30,7 +30,7 @@
 /* ================================================
    HERO INNER — Two-column layout
    ================================================ */
-.hero-inner {
+.hero__inner {
   width: 100%;
   max-width: var(--container-xl);
   margin: 0 auto;
@@ -43,27 +43,27 @@
 }
 
 /* ================================================
-   HERO LEFT — Text content
+   HERO CONTENT — Text content (was .hero-left)
    ================================================ */
-.hero-left {
+.hero__content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);   /* ↓ كان --space-6 — أنسب للـ rhythm */
+  gap: var(--space-5);   /* rhythm */
 }
 
 /* Eyebrow label */
-.hero-eyebrow {
+.hero__eyebrow {
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
   color: var(--color-text-muted);
-  margin-bottom: var(--space-1); /* إضافة فراغ خفيف بعد الـ eyebrow */
+  margin-bottom: var(--space-1);
 }
 
 /* Main headline */
-.hero-headline {
-  font-size: clamp(2.25rem, 5vw, 4rem); /* ↓ ضبط الحجم — أوضح scaling */
+.hero__headline {
+  font-size: clamp(2.25rem, 5vw, 4rem);
   font-weight: var(--fw-extrabold);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-tight);
@@ -71,28 +71,28 @@
 }
 
 /* Italic accent word → orange */
-.hero-headline em {
+.hero__headline em {
   font-style: normal;
   color: var(--color-accent);
 }
 
 /* Description paragraph */
-.hero-description {
-  font-size: clamp(0.9rem, 1.2vw, 1rem); /* ↓ أصغر قليلاً — تفريق واضح عن الـ headline */
-  line-height: var(--lh-relaxed);        /* ↑ كان --lh-normal — أريح للقراءة */
+.hero__description {
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: var(--lh-relaxed);
   color: var(--color-text-muted);
-  max-width: 40ch; /* ↓ كان 42ch — سطور أقصر وأسهل قراءة */
+  max-width: 40ch;
 }
 
 /* ================================================
    CTA GROUP — Buttons
    ================================================ */
-.hero-cta-group {
+.hero__cta-group {
   display: flex;
   align-items: center;
-  gap: var(--space-4);       /* ↓ كان --space-6 — أقرب وأمتماسك */
+  gap: var(--space-4);
   flex-wrap: wrap;
-  margin-top: var(--space-3); /* ↑ كان --space-2 — تنفس أكثر بعد الـ description */
+  margin-top: var(--space-3);
 }
 
 /* ================================================
@@ -109,14 +109,14 @@
     var(--shadow-xl),
     var(--shadow-lg);
   font-family: var(--font-secondary);
-  font-size: clamp(0.8rem, 1vw, 0.875rem); /* ↑ ضبط — أوضح وأقرب للـ scale */
+  font-size: clamp(0.8rem, 1vw, 0.875rem);
 }
 
 /* Terminal header bar */
 .hero-terminal__header {
   display: flex;
   align-items: center;
-  gap: var(--space-2);   /* ↑ استبدال 0.45rem بالـ scale */
+  gap: var(--space-2);
   padding: var(--space-3) var(--space-4);
   background-color: var(--color-surface-2);
   border-bottom: 1px solid var(--color-border); /* no matching variable for 1px */
@@ -124,8 +124,8 @@
 
 /* Traffic-light dots */
 .hero-terminal__dot {
-  width: var(--space-3);   /* ↑ استبدال 12px بـ --space-3 (12px) */
-  height: var(--space-3);  /* ↑ نفس الشيء */
+  width: var(--space-3);
+  height: var(--space-3);
   border-radius: var(--radius-full);
   flex-shrink: 0;
 }
@@ -146,14 +146,14 @@
   padding: var(--space-5) var(--space-6);
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);   /* ↓ كان --space-5 — تقارب أكثر بين الـ lines */
-  line-height: var(--lh-snug); /* ↑ استبدال 1 بالـ variable */
+  gap: var(--space-4);
+  line-height: var(--lh-snug);
 }
 
 /* Each line */
 .hero-terminal__line {
   display: flex;
-  align-items: baseline; /* ↑ كان center — أدق للـ text alignment */
+  align-items: baseline;
   flex-wrap: nowrap;
   white-space: normal;
   min-height: 1.4em; /* no matching variable */
@@ -196,16 +196,16 @@
     display: none;
   }
 
-  .hero-inner {
+  .hero__inner {
     grid-template-columns: 1fr;
   }
 
-  .hero-left {
-    gap: var(--space-4); /* ↓ كان --space-5 — أضيق على الـ tablet */
+  .hero__content {
+    gap: var(--space-4);
   }
 
-  .hero-headline {
-    font-size: clamp(1.875rem, 5.5vw, 2.75rem); /* ↑ ضبط الـ clamp */
+  .hero__headline {
+    font-size: clamp(1.875rem, 5.5vw, 2.75rem);
   }
 }
 
@@ -231,14 +231,14 @@
       radial-gradient(ellipse 60% 40% at 95% 5%, var(--color-info-surface) 0%, transparent 60%);
   }
 
-  .hero-inner {
+  .hero__inner {
     grid-template-columns: 1fr;
     gap: 0;
     width: 100%;
     height: 100%;
   }
 
-  .hero-left {
+  .hero__content {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -247,7 +247,7 @@
     padding-block: var(--space-6);
   }
 
-  .hero-eyebrow {
+  .hero__eyebrow {
     display: inline-flex;
     align-items: center;
     font-size: var(--fs-xs);
@@ -263,21 +263,21 @@
     margin-bottom: var(--space-4);
   }
 
-  .hero-headline {
+  .hero__headline {
     font-size: clamp(1.875rem, 9vw, 2.5rem);
     line-height: var(--lh-snug);
     letter-spacing: var(--ls-tighter);
     color: var(--color-text-heading);
   }
 
-  .hero-headline em {
+  .hero__headline em {
     display: inline;
     font-size: inherit;
     line-height: inherit;
     color: var(--color-accent);
   }
 
-  .hero-description {
+  .hero__description {
     font-size: var(--fs-sm);
     max-width: 100%;
     line-height: var(--lh-relaxed);
@@ -285,13 +285,13 @@
     margin-top: var(--space-4);
   }
 
-  .hero-cta-group {
+  .hero__cta-group {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: var(--space-3);
-    margin-top: auto;           /* الـ CTA وحده بيتحرك للأسفل */
-    padding-top: var(--space-6); /* حد أدنى للفراغ فوق الـ CTA */
+    margin-top: auto;
+    padding-top: var(--space-6);
     width: 100%;
   }
 
@@ -328,22 +328,22 @@
 
   .hero {
     padding-inline: var(--space-4);
-    padding-bottom: var(--space-5); /* ↓ كان --space-6 */
+    padding-bottom: var(--space-5);
   }
 
-  .hero-left {
-    padding-block: var(--space-3); /* ↓ كان --space-4 */
+  .hero__content {
+    padding-block: var(--space-3);
   }
 
-  .hero-eyebrow {
-    margin-bottom: var(--space-4); /* ↓ كان --space-6 — كان كبير جداً */
+  .hero__eyebrow {
+    margin-bottom: var(--space-4);
   }
 
-  .hero-headline {
-    font-size: clamp(1.75rem, 9vw, 2.1rem); /* ↑ ضبط — أصغر للشاشات الصغيرة جداً */
+  .hero__headline {
+    font-size: clamp(1.75rem, 9vw, 2.1rem);
   }
 
-  .hero-cta-group {
+  .hero__cta-group {
     gap: var(--space-2);
   }
 
@@ -353,53 +353,42 @@
   }
 }
 
-
-
-
-
-
-
-
-
 /* ================================================
    OVERRIDE – إصلاح الفراغات الكبيرة على الهواتف
    ================================================ */
 @media (max-width: 560px) {
 
   /* إلغاء التمدد الكامل للعمود الأيسر */
-  .hero-left {
-    height: auto !important;          /* يمنع التمدد ليملأ الشاشة */
+  .hero__content {
+    height: auto !important;
     justify-content: flex-start !important;
-    padding-block: var(--space-4) !important; /* تقليل الهوامش العلوية والسفلية */
+    padding-block: var(--space-4) !important;
   }
 
   /* إزالة الإجبار على الذهاب إلى أسفل الشاشة */
-  .hero-cta-group {
-    margin-top: var(--space-6) !important;  /* مسافة مناسبة فوق الزر */
-    padding-top: 0 !important;              /* إلغاء الحشو الإضافي */
+  .hero__cta-group {
+    margin-top: var(--space-6) !important;
+    padding-top: 0 !important;
     margin-bottom: var(--space-4) !important;
   }
 
   /* تعديل القسم الرئيسي ليكون مناسباً للمحتوى */
   .hero {
-    min-height: auto !important;      /* إلغاء الارتفاع الإجباري */
+    min-height: auto !important;
     height: auto !important;
     padding-bottom: var(--space-6) !important;
   }
 }
 
 @media (max-width: 560px) {
-  .hero-cta-group {
+  .hero__cta-group {
     margin-top: var(--space-6) !important;
-    /* لا تغيير في height */
   }
-  .hero-left {
-    justify-content: center !important;  /* يعمل على توسيط المحتوى عمودياً */
+  .hero__content {
+    justify-content: center !important;
     gap: var(--space-4) !important;
   }
 }
-
-
 
 /* ================================================
    إصلاح نهائي: القسم يملأ الشاشة مع مسافات مثالية
@@ -407,52 +396,48 @@
 @media (max-width: 560px) {
   /* 1. جعل القسم يملأ الشاشة بالكامل */
   .hero {
-    min-height: 100svh !important;   /* يملأ الشاشة عمودياً */
-    height: 100svh !important;       /* يفرض الارتفاع الكامل */
+    min-height: 100svh !important;
+    height: 100svh !important;
   }
 
   /* 2. توسيط المحتوى عمودياً داخل القسم */
-  .hero-left {
-    justify-content: center !important;   /* يضع العناصر في منتصف الشاشة */
-    gap: var(--space-4) !important;       /* يحافظ على نفس المسافات الجميلة */
+  .hero__content {
+    justify-content: center !important;
+    gap: var(--space-4) !important;
   }
 
   /* 3. تعديل الأزرار لتكون أقرب للنص (بدون دفعها للأسفل) */
-  .hero-cta-group {
-    margin-top: var(--space-5) !important;  /* مسافة معقولة فوق الأزرار */
+  .hero__cta-group {
+    margin-top: var(--space-5) !important;
     margin-bottom: 0 !important;
     padding-top: 0 !important;
   }
 }
 
-
-
-
 @media (max-width: 560px) {
-  .hero-cta-group {
-    display: grid !important;          /* استخدام Grid عشان مكانهم جنب بعض */
-    grid-template-columns: 1fr 1fr !important; /* نصفين متساويين */
+  .hero__cta-group {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
     gap: var(--space-3) !important;
     width: 100% !important;
     margin-top: var(--space-5) !important;
   }
   
-  .hero-cta-group .btn-primary {
+  .hero__cta-group .btn-primary {
     width: 100% !important; 
     justify-content: center !important;
   }
   
-  .hero-cta-group .btn-ghost {
+  .hero__cta-group .btn-ghost {
     width: 100% !important;
     justify-content: center !important;
-    border: 1px solid var(--color-border) !important; /* يعطيه إطار ليكون واضح */
+    border: 1px solid var(--color-border) !important;
     border-radius: var(--radius-md) !important;
     padding: var(--space-3) var(--space-4) !important;
     background: transparent !important;
-    color: var(--color-text-heading) !important; /* النص أبيض مو رمادي */
+    color: var(--color-text-heading) !important;
   }
 }
-
 
 /* ================================================
    تحسينات نهائية للأحجام والمسافات - دقة عالية
@@ -462,51 +447,49 @@
   .hero {
     min-height: 100svh !important;
     height: 100svh !important;
-    padding: var(--nav-height) var(--space-5) var(--space-8) !important; /* هامش علوي للشريط، سفلي للتنفس */
+    padding: var(--nav-height) var(--space-5) var(--space-8) !important;
   }
 
   /* 2. ضبط المحتوى ليكون في المنتصف عمودياً */
-  .hero-left {
+  .hero__content {
     justify-content: center !important;
-    gap: var(--space-4) !important; /* مسافة مثالية بين العناصر حسب المتغيرات */
-    
+    gap: var(--space-4) !important;
   }
 
   /* 3. تحسين شارة العنوان (Eyebrow) */
-  .hero-eyebrow {
+  .hero__eyebrow {
     font-size: var(--fs-xs) !important;
     padding: var(--space-1) var(--space-3) !important;
     border-radius: var(--radius-full) !important;
-    margin-bottom: 0 !important; /* إزالة الهوامش السلبية */
+    margin-bottom: 0 !important;
   }
 
   /* 4. ضبط حجم العنوان ليتناسب مع الشاشة الصغيرة */
-  .hero-headline {
-    font-size: clamp(3rem, 13vw, 4rem) !important; /* حجم متغير يتناسب مع الشاشة */
+  .hero__headline {
+    font-size: clamp(3rem, 13vw, 4rem) !important;
     line-height: var(--lh-tight) !important;
     letter-spacing: var(--ls-tight) !important;
   }
 
   /* 5. ضبط الوصف (Description) */
-  .hero-description {
-    font-size: var(--fs-base) !important; /* 1rem = 16px */
+  .hero__description {
+    font-size: var(--fs-base) !important;
     line-height: var(--lh-relaxed) !important;
     max-width: 100% !important;
     color: var(--color-text-muted) !important;
   }
 
-  /* 6. ضبط مجموعة الأزرار لتكون جنباً إلى جنب بشكل مثالي */
-  .hero-cta-group {
-
+  /* 6. ضبط مجموعة الأزرار */
+  .hero__cta-group {
     display: grid !important;
-    grid-template-columns: 1fr !important; /* زرين متساويين في العرض */
-    gap: var(--space-3) !important; /* مسافة بين الأزرار */
+    grid-template-columns: 1fr !important;
+    gap: var(--space-3) !important;
     width: 100% !important;
-    margin-top: 30px !important; /* مسافة فوق الأزرار */
+    margin-top: 30px !important;
   }
 
-  /* 7. تصميم الزر الأساسي (See My Work) */
-  .hero-cta-group .btn-primary {
+  /* 7. تصميم الزر الأساسي */
+  .hero__cta-group .btn-primary {
     width: 100% !important;
     justify-content: center !important;
     padding: var(--space-3) var(--space-4) !important;
@@ -516,21 +499,27 @@
     color: var(--color-text-inverse) !important;
   }
 
-  /* 8. تصميم الزر الثانوي (Start a Project) ليكون واضحاً وجذاباً */
-  .hero-cta-group .btn-ghost {
+  /* 8. تصميم الزر الثانوي */
+  .hero__cta-group .btn-ghost {
     width: 100% !important;
     justify-content: center !important;
     padding: var(--space-3) var(--space-4) !important;
     font-size: var(--fs-sm) !important;
     border-radius: var(--radius-md) !important;
     background: transparent !important;
-    border: 1px solid var(--color-border-strong) !important; /* إطار واضح */
-    color: var(--color-text-heading) !important; /* نص أبيض ليكون مرئياً */
+    border: 1px solid var(--color-border-strong) !important;
+    color: var(--color-text-heading) !important;
     transition: var(--transition-base) !important;
   }
 
-  .hero-cta-group .btn-ghost:hover {
+  .hero__cta-group .btn-ghost:hover {
     border-color: var(--color-accent) !important;
     color: var(--color-accent) !important;
   }
+}
+
+/* Animation for blinking cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
