@@ -28,7 +28,7 @@
 @import '/src/assets/libs/scroll-reveal/scroll-reveal.css';
 
 /* === STYLES === */
-/* @import '/src/components/header/header.css'; */
+@import '/src/components/header/header.css';
 @import '/src/components/hero/hero.css';
 /* @import '/src/components/work/work.css'; */
 /* @import '/src/components/services/services.css'; */
