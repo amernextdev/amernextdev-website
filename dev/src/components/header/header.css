@@ -1,45 +1,12 @@
-/**
- * header-and-mobile-nav.css
- * ─────────────────────────────────────────────────────────────────────────────
- * مستخلص من: style.css
- * يتضمن:
- *   1. SITE HEADER  (#site-header)
- *   2. MOBILE NAVIGATION  (#mobile-nav)
- *
- * الاعتماديات: variables.css (يجب تحميله قبل هذا الملف)
- *
- * JS-toggled classes:
- *  .is-scrolled  → تُطبَّق على #site-header عند التمرير
- *  .is-open      → تُطبَّق على #mobile-nav عند فتح القائمة
- *  .nav__link--active → للرابط النشط حالياً
- * ─────────────────────────────────────────────────────────────────────────────
- *
- * فهرس المحتوى:
- *  § 00 — Base & Reset
- *  § 01 — Header Base  (#site-header, .header-inner)
- *  § 02 — Header — Logo
- *  § 03 — Header — Primary Nav (desktop)
- *  § 04 — Header — Controls (theme, lang, CTA)
- *  § 05 — Header — Scrolled State  (.is-scrolled)
- *  § 06 — Header — Burger Button
- *  § 07 — Mobile Nav Overlay (backdrop)
- *  § 08 — Mobile Nav Panel  (#mobile-nav)
- *  § 09 — Mobile Nav — Header (logo + close)
- *  § 10 — Mobile Nav — Nav List
- *  § 11 — Mobile Nav — CTA Link
- *  § 12 — Mobile Nav — Toggle Controls (theme & lang cards)
- *  § 13 — Mobile Nav — Social Icons
- *  § 14 — Lang / Theme label states (shared)
- *  § 15 — Responsive Overrides (@media)
- *  § 16 — Reduced Motion
- * ─────────────────────────────────────────────────────────────────────────────
- */
+/* GLOBAL STYLES — see main.css for global utilities */
 
+/* ================================================================
+   HEADER & MOBILE NAV
+   ================================================================ */
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
    § 01 — HEADER BASE
-   Fixed bar, transparent by default; stacks above all content via --z-sticky
 ═══════════════════════════════════════════════════════════════════════════ */
 
 #site-header {
@@ -57,7 +24,7 @@
     backdrop-filter var(--transition-slow);
 }
 
-.header-inner {
+.site-header__inner {
   display:         flex;
   align-items:     center;
   justify-content: space-between;
@@ -73,13 +40,13 @@
    § 02 — HEADER — LOGO
 ═══════════════════════════════════════════════════════════════════════════ */
 
-.header__logo-wrapper {
+.site-header__logo-wrapper {
   display:     flex;
   align-items: center;
   flex-shrink: 0;
 }
 
-.header__logo {
+.site-header__logo-link {
   display:         flex;
   align-items:     center;
   text-decoration: none;
@@ -87,17 +54,17 @@
   transition:      opacity var(--transition-base), transform var(--transition-base);
 }
 
-.header__logo:hover {
+.site-header__logo-link:hover {
   opacity:   0.8;
   transform: scale(1.04);
 }
 
-.header__logo:focus-visible {
+.site-header__logo-link:focus-visible {
   outline:       2px solid var(--color-accent);
   border-radius: var(--radius-sm);
 }
 
-.header__logo img {
+.site-header__logo-link img {
   display: block;
   width:   36px;
   height:  auto;
@@ -108,14 +75,14 @@
    § 03 — HEADER — PRIMARY NAVIGATION (desktop)
 ═══════════════════════════════════════════════════════════════════════════ */
 
-.header__nav {
+.site-header__nav {
   flex:            1;
   display:         flex;
   justify-content: center;
   align-items:     center;
 }
 
-.header__nav-list {
+.site-header__nav-list {
   display:     flex;
   align-items: center;
   gap:         var(--space-2);
@@ -124,26 +91,7 @@
   padding:     0;
 }
 
-/* Shared link base — used in both desktop nav and mobile nav */
-.nav__link {
-  position:        relative;
-  display:         inline-flex;
-  align-items:     center;
-  gap:             var(--space-2);
-  padding-block:   var(--space-2);
-  padding-inline:  var(--space-3);
-  font-family:     var(--font-primary);
-  font-size:       var(--fs-sm);
-  font-weight:     var(--fw-medium);
-  color:           var(--color-text-body);
-  text-decoration: none;
-  letter-spacing:  var(--ls-wide);
-  border-radius:   var(--radius-sm);
-  transition:      color var(--transition-base), background var(--transition-base);
-}
-
-/* Animated underline for desktop nav links */
-.header__nav .nav__link::after {
+.site-header__nav .nav__link::after {
   content:          '';
   position:         absolute;
   inset-block-end:  0;
@@ -156,30 +104,30 @@
   transition:       transform var(--transition-base);
 }
 
-.header__nav .nav__link:hover {
+.site-header__nav .nav__link:hover {
   color: var(--color-text-heading);
 }
 
-.header__nav .nav__link:hover::after,
-.header__nav .nav__link--active::after {
+.site-header__nav .nav__link:hover::after,
+.site-header__nav .nav__link--active::after {
   transform: scaleX(1);
 }
 
-.header__nav .nav__link--active {
+.site-header__nav .nav__link--active {
   color: var(--color-accent);
 }
 
-.header__nav .nav__link:focus-visible {
+.site-header__nav .nav__link:focus-visible {
   outline:        2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   § 04 — HEADER — CONTROLS  (theme, lang, CTA)
+   § 04 — HEADER — CONTROLS (theme, lang, CTA)
 ═══════════════════════════════════════════════════════════════════════════ */
 
-.header__controls {
+.site-header__controls {
   display:     flex;
   align-items: center;
   gap:         var(--space-3);
@@ -187,7 +135,7 @@
 }
 
 /* ── Theme toggle button ── */
-.header__theme-toggle-button {
+.site-header__theme-toggle {
   display:         flex;
   align-items:     center;
   justify-content: center;
@@ -196,7 +144,7 @@
   padding:         0;
   background:      transparent;
   border:          1px solid var(--color-border);
-  border-radius:   25%;
+  border-radius:   25%; /* no matching variable — intentional shape */
   color:           var(--color-text-body);
   cursor:          pointer;
   transition:
@@ -206,25 +154,25 @@
     transform    var(--transition-base);
 }
 
-.header__theme-toggle-button:hover {
+.site-header__theme-toggle:hover {
   color:        var(--color-text-heading);
   border-color: var(--color-border-strong);
   background:   var(--color-surface);
 }
 
-.header__theme-toggle-button:focus-visible {
+.site-header__theme-toggle:focus-visible {
   outline:        2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-.header__theme-toggle-button .icon--sun,
-.header__theme-toggle-button .icon--moon {
-  width:  1rem;
-  height: 1rem;
+.site-header__theme-toggle .icon--sun,
+.site-header__theme-toggle .icon--moon {
+  width:  var(--fs-base);
+  height: var(--fs-base);
 }
 
 /* ── Language toggle button ── */
-.header__lang-toggle-button {
+.site-header__lang-toggle {
   display:         flex;
   align-items:     center;
   justify-content: center;
@@ -234,7 +182,7 @@
   padding-inline:  var(--space-3);
   background:      transparent;
   border:          1px solid var(--color-border);
-  border-radius:   25%;
+  border-radius:   25%; /* no matching variable — intentional shape */
   font-family:     var(--font-primary);
   font-size:       var(--fs-xs);
   font-weight:     var(--fw-semibold);
@@ -247,25 +195,24 @@
     background   var(--transition-base);
 }
 
-.header__lang-toggle-button:hover {
+.site-header__lang-toggle:hover {
   color:        var(--color-text-heading);
   border-color: var(--color-border-strong);
   background:   var(--color-surface);
 }
 
-.header__lang-toggle-button:focus-visible {
+.site-header__lang-toggle:focus-visible {
   outline:        2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-/* Desktop header lang toggle label override */
-.header__lang-toggle-button .lang-label {
+.site-header__lang-toggle .site-header__lang-label {
   opacity: 1;
   color:   currentColor;
 }
 
 /* ── CTA link button ── */
-.header__cta-link {
+.site-header__cta-link {
   display:         inline-flex;
   align-items:     center;
   gap:             var(--space-2);
@@ -287,40 +234,40 @@
   will-change: transform;
 }
 
-.header__cta-link:hover {
+.site-header__cta-link:hover {
   background: var(--color-accent-hover);
   box-shadow: var(--shadow-amber-md);
   transform:  translateY(-1px);
 }
 
-.header__cta-link:active {
+.site-header__cta-link:active {
   background: var(--color-accent-active);
   transform:  translateY(0);
 }
 
-.header__cta-link:focus-visible {
+.site-header__cta-link:focus-visible {
   outline:        2px solid var(--color-accent);
   outline-offset: 3px;
 }
 
-.header__cta-link .icon--arrow-right {
+.site-header__cta-link .icon--arrow-right {
   width:      0.875rem;
   height:     0.875rem;
   transition: transform var(--transition-fast);
 }
 
-.header__cta-link:hover .icon--arrow-right {
+.site-header__cta-link:hover .icon--arrow-right {
   transform: translateX(3px);
 }
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   § 05 — HEADER — SCROLLED STATE  (.is-scrolled)
+   § 05 — HEADER — SCROLLED STATE (.is-scrolled)
 ═══════════════════════════════════════════════════════════════════════════ */
 
 @supports (backdrop-filter: blur(1px)) {
   #site-header.is-scrolled {
-    background:               rgba(10, 10, 15, 0.72);
+    background:               rgba(10, 10, 15, 0.72); /* no matching variable — frosted glass */
     backdrop-filter:          blur(12px) saturate(1.5);
     -webkit-backdrop-filter:  blur(12px) saturate(1.5);
     border-color:             var(--color-border-subtle);
@@ -341,12 +288,12 @@
    § 06 — HEADER — BURGER BUTTON
 ═══════════════════════════════════════════════════════════════════════════ */
 
-.header__burger-button {
+.site-header__burger {
   display:         none;
   flex-direction:  column;
   justify-content: center;
   align-items:     center;
-  gap:             5px;
+  gap:             var(--space-1); /* was 5px → --space-1 = 4px, closest match */
   width:           2.5rem;
   height:          2.5rem;
   padding:         0;
@@ -362,7 +309,7 @@
   will-change: opacity, transform;
 }
 
-.header__burger-button span {
+.site-header__burger span {
   display:       block;
   width:         18px;
   height:        2px;
@@ -371,29 +318,29 @@
   transition:    background var(--transition-base), transform var(--transition-base);
 }
 
-.header__burger-button:hover {
+.site-header__burger:hover {
   border-color: var(--color-border-strong);
 }
 
-.header__burger-button:hover span {
+.site-header__burger:hover span {
   background: var(--color-text-heading);
 }
 
-.header__burger-button:focus-visible {
+.site-header__burger:focus-visible {
   outline:        2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   § 07 — MOBILE MENU OVERLAY  (pseudo-element backdrop)
+   § 07 — MOBILE MENU OVERLAY
 ═══════════════════════════════════════════════════════════════════════════ */
 
 #mobile-nav::before {
   content:        '';
   position:       fixed;
   inset:          0;
-  background:     rgba(0, 0, 0, 0.55);
+  background:     rgba(0, 0, 0, 0.55); /* no matching variable — brand-specific overlay */
   z-index:        -1;
   opacity:        0;
   pointer-events: none;
@@ -407,7 +354,7 @@
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   § 08 — MOBILE NAV PANEL  (#mobile-nav)
+   § 08 — MOBILE NAV PANEL (#mobile-nav)
 ═══════════════════════════════════════════════════════════════════════════ */
 
 #mobile-nav {
@@ -426,7 +373,7 @@
   transform:           translateX(100%);
   visibility:          hidden;
   transition:
-    transform  0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    transform  0.35s cubic-bezier(0.4, 0, 0.2, 1), /* no matching variable — easing specific */
     visibility 0s   linear 0.35s;
   will-change: transform;
 }
@@ -439,7 +386,7 @@
     visibility 0s   linear 0s;
 }
 
-.mobile-nav-inner {
+.mobile-nav__inner {
   display:        flex;
   flex-direction: column;
   height:         100%;
@@ -448,10 +395,10 @@
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   § 09 — MOBILE NAV — PANEL HEADER  (logo + close button)
+   § 09 — MOBILE NAV — PANEL HEADER
 ═══════════════════════════════════════════════════════════════════════════ */
 
-.mobile-menu-header {
+.mobile-nav__header {
   display:         flex;
   align-items:     center;
   justify-content: space-between;
@@ -488,8 +435,7 @@
   height:  auto;
 }
 
-/* Close button */
-.mobile-nav__close-button {
+.mobile-nav__close-btn {
   display:         flex;
   align-items:     center;
   justify-content: center;
@@ -508,21 +454,21 @@
     transform    var(--transition-base);
 }
 
-.mobile-nav__close-button:hover {
+.mobile-nav__close-btn:hover {
   color:        var(--color-text-heading);
   border-color: var(--color-border-strong);
   background:   var(--color-surface-2);
   transform:    rotate(90deg);
 }
 
-.mobile-nav__close-button:focus-visible {
+.mobile-nav__close-btn:focus-visible {
   outline:        2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-.mobile-nav__close-button .icon--close {
-  width:  1rem;
-  height: 1rem;
+.mobile-nav__close-btn .icon--close {
+  width:  var(--fs-base);
+  height: var(--fs-base);
 }
 
 
@@ -560,7 +506,6 @@
     background var(--transition-base);
 }
 
-/* إلغاء الخط المتحرك الخاص بالـ desktop */
 .mobile-nav__list .nav__link::after {
   display: none;
 }
@@ -604,7 +549,7 @@
    § 11 — MOBILE NAV — CTA LINK
 ═══════════════════════════════════════════════════════════════════════════ */
 
-.mobile__cta-link {
+.mobile-nav__cta-link {
   display:         flex;
   align-items:     center;
   justify-content: center;
@@ -628,35 +573,35 @@
   will-change: transform;
 }
 
-.mobile__cta-link:hover {
+.mobile-nav__cta-link:hover {
   background: var(--color-accent-hover);
   box-shadow: var(--shadow-amber-md);
   transform:  translateY(-1px);
 }
 
-.mobile__cta-link:active {
+.mobile-nav__cta-link:active {
   background: var(--color-accent-active);
   transform:  translateY(0);
 }
 
-.mobile__cta-link:focus-visible {
+.mobile-nav__cta-link:focus-visible {
   outline:        2px solid var(--color-accent);
   outline-offset: 3px;
 }
 
-.mobile__cta-link .icon--arrow-right {
+.mobile-nav__cta-link .icon--arrow-right {
   width:      0.875rem;
   height:     0.875rem;
   transition: transform var(--transition-fast);
 }
 
-.mobile__cta-link:hover .icon--arrow-right {
+.mobile-nav__cta-link:hover .icon--arrow-right {
   transform: translateX(3px);
 }
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   § 12 — MOBILE NAV — TOGGLE CONTROLS  (theme & lang cards)
+   § 12 — MOBILE NAV — TOGGLE CONTROLS (theme & lang cards)
 ═══════════════════════════════════════════════════════════════════════════ */
 
 .mobile-nav__controls {
@@ -668,7 +613,6 @@
   flex-shrink:    0;
 }
 
-/* ── Shared card base ── */
 .mobile-nav__ctrl-card {
   display:         flex;
   align-items:     center;
@@ -707,8 +651,8 @@
   display:         flex;
   align-items:     center;
   justify-content: center;
-  width:           2rem;
-  height:          2rem;
+  width:           var(--space-8);
+  height:          var(--space-8);
   background:      var(--color-surface);
   border:          1px solid var(--color-border);
   border-radius:   var(--radius-md);
@@ -724,14 +668,14 @@
 }
 
 .mobile-nav__ctrl-icon .icon {
-  width:  1rem;
-  height: 1rem;
+  width:  var(--fs-base);
+  height: var(--fs-base);
 }
 
 .mobile-nav__ctrl-text {
   display:        flex;
   flex-direction: column;
-  gap:            2px;
+  gap:            var(--space-1);
 }
 
 .mobile-nav__ctrl-title {
@@ -763,8 +707,8 @@
 .mobile-nav__switch::after {
   content:            '';
   position:           absolute;
-  top:                3px;
-  inset-inline-start: 3px;
+  top:                var(--space-1);
+  inset-inline-start: var(--space-1);
   width:              18px;
   height:             18px;
   border-radius:      var(--radius-full);
@@ -790,7 +734,7 @@
 }
 
 .mobile-nav__lang-badge {
-  padding-block:  3px;
+  padding-block:  var(--space-1);
   padding-inline: var(--space-2);
   border-radius:  var(--radius-md);
   font-family:    var(--font-primary);
@@ -817,14 +761,14 @@
    § 13 — MOBILE NAV — SOCIAL ICONS
 ═══════════════════════════════════════════════════════════════════════════ */
 
-.mobile-nav-social {
+.mobile-nav__social {
   padding:     var(--space-4) var(--space-6);
   border-top:  1px solid var(--color-border);
   margin-top:  auto;
   flex-shrink: 0;
 }
 
-.m-n-s-list {
+.mobile-nav__social-list {
   display:         flex;
   align-items:     center;
   justify-content: center;
@@ -834,11 +778,11 @@
   padding:         0;
 }
 
-.m-n-s-item {
+.mobile-nav__social-item {
   flex-shrink: 0;
 }
 
-.m-n-s-link {
+.mobile-nav__social-link {
   display:         flex;
   align-items:     center;
   justify-content: center;
@@ -856,38 +800,38 @@
     transform    var(--transition-base);
 }
 
-.m-n-s-link:hover {
+.mobile-nav__social-link:hover {
   color:        var(--color-text-heading);
   background:   var(--color-surface-3);
   border-color: var(--color-border-strong);
   transform:    translateY(-2px);
 }
 
-.m-n-s-link:focus-visible {
+.mobile-nav__social-link:focus-visible {
   outline:        2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-.m-n-s-link .icon--whatsapp,
-.m-n-s-link .icon--github,
-.m-n-s-link .icon--facebook {
+.mobile-nav__social-link .icon--whatsapp,
+.mobile-nav__social-link .icon--github,
+.mobile-nav__social-link .icon--facebook {
   width:  1.125rem;
   height: 1.125rem;
 }
 
-/* Per-brand accent colours on hover */
-.m-n-s-whatsapp-icon:hover {
+/* Per-brand accent colours on hover — intentional hardcoded brand colors */
+.mobile-nav__social-link--whatsapp:hover {
   color:        #25D366;
   border-color: rgba(37, 211, 102, 0.3);
   background:   rgba(37, 211, 102, 0.08);
 }
 
-.m-n-s-github-icon:hover {
+.mobile-nav__social-link--github:hover {
   color:        var(--color-text-heading);
   border-color: var(--color-border-strong);
 }
 
-.m-n-s-facebook-icon:hover {
+.mobile-nav__social-link--facebook:hover {
   color:        #1877F2;
   border-color: rgba(24, 119, 242, 0.3);
   background:   rgba(24, 119, 242, 0.08);
@@ -895,10 +839,9 @@
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   § 14 — LANG / THEME LABEL STATES  (shared between desktop & mobile)
+   § 14 — LANG / THEME LABEL STATES
 ═══════════════════════════════════════════════════════════════════════════ */
 
-/* ── Theme icon states ── */
 .mobile-theme-icon {
   display:     flex;
   align-items: center;
@@ -915,11 +858,10 @@
 
 .mobile-theme-icon .icon--moon,
 .mobile-theme-icon .icon--sun {
-  width:  1rem;
-  height: 1rem;
+  width:  var(--fs-base);
+  height: var(--fs-base);
 }
 
-/* ── Language label states ── */
 .lang-label {
   font-size:      var(--fs-xs);
   font-weight:    var(--fw-bold);
@@ -945,40 +887,40 @@
     display: none !important;
   }
 
-  .header__burger-button,
-  .header__mobile-controls {
+  .site-header__burger,
+  .site-header__mobile-controls {
     display: none !important;
   }
 
-  .header__nav,
-  .header__theme-toggle-button,
-  .header__lang-toggle-button {
+  .site-header__nav,
+  .site-header__theme-toggle,
+  .site-header__lang-toggle {
     display: flex;
   }
 
-  .header__cta-link {
+  .site-header__cta-link {
     display: inline-flex;
   }
 }
 
 /* ── ≥ 1280px: wider spacing ── */
 @media (min-width: 1280px) {
-  .header-inner {
+  .site-header__inner {
     padding-inline: var(--space-8);
   }
 
-  .header__nav-list {
+  .site-header__nav-list {
     gap: var(--space-4);
   }
 
-  .header__controls {
+  .site-header__controls {
     gap: var(--space-4);
   }
 }
 
 /* ── ≥ 1440px ── */
 @media (min-width: 1440px) {
-  .header-inner {
+  .site-header__inner {
     padding-inline: var(--space-12);
   }
 }
@@ -986,97 +928,89 @@
 /* ── < 1024px: mobile layout ── */
 @media (max-width: 1023px) {
 
-  /* Hide desktop-only nav and controls */
-  .header__nav,
-  .header__theme-toggle-button,
-  .header__cta-link {
+  .site-header__nav,
+  .site-header__theme-toggle,
+  .site-header__cta-link {
     display: none !important;
   }
 
-  /* Hide original lang toggle inside header__controls */
-  .header__lang-toggle-button:not(.header__lang-toggle-mobile) {
+  .site-header__lang-toggle:not(.site-header__lang-toggle--mobile) {
     display: none !important;
   }
 
-  /* Mobile controls group — lang + burger side by side */
-  .header__mobile-controls {
+  .site-header__mobile-controls {
     display:     flex;
     align-items: center;
     gap:         var(--space-3);
     flex-shrink: 0;
   }
 
-  .header-inner {
+  .site-header__inner {
     position:       relative;
     padding-inline: var(--space-4);
   }
 
-  /* Logo always in normal flow on the left (same as old scrolled state) */
-  .header__logo-wrapper {
+  .site-header__logo-wrapper {
     position: relative;
   }
 
-  .header__logo img {
+  .site-header__logo-link img {
     border:        2px solid var(--color-accent);
-    border-radius: 50%;
-    margin-top:    5px;
+    border-radius: 50%; /* no matching variable — circle shape */
+    margin-top:    var(--space-1);
     width:         46px;
     height:        46px;
     box-shadow:    var(--shadow-amber-sm);
   }
 
-  /* Burger always visible */
-  .header__burger-button {
+  .site-header__burger {
     display:        flex;
     opacity:        1;
     pointer-events: auto;
   }
 
-  /* CTA always visible */
-  .header__cta-link {
+  .site-header__cta-link {
     display:        inline-flex;
     padding-inline: var(--space-4);
     font-size:      var(--fs-xs);
   }
 
-  .header__controls {
+  .site-header__controls {
     display:     flex;
     align-items: center;
     gap:         var(--space-3);
   }
 
-  /* is-scrolled state no longer needs to override anything for layout */
-  #site-header.is-scrolled .header__logo-wrapper {
+  #site-header.is-scrolled .site-header__logo-wrapper {
     position: relative;
   }
 
-  #site-header.is-scrolled .header__logo img {
+  #site-header.is-scrolled .site-header__logo-link img {
     border:        2px solid var(--color-accent);
     border-radius: 50%;
-    margin-top:    5px;
+    margin-top:    var(--space-1);
     width:         46px;
     height:        46px;
     box-shadow:    var(--shadow-amber-sm);
   }
 
-  #site-header.is-scrolled .header__burger-button {
+  #site-header.is-scrolled .site-header__burger {
     opacity:        1;
     pointer-events: auto;
   }
 
-  #site-header.is-scrolled .header__cta-link {
+  #site-header.is-scrolled .site-header__cta-link {
     display:        inline-flex;
     padding-inline: var(--space-4);
     font-size:      var(--fs-xs);
   }
 
-  #site-header.is-scrolled .header__controls {
+  #site-header.is-scrolled .site-header__controls {
     display:     flex;
     align-items: center;
     gap:         var(--space-2);
   }
 
-  /* Frosted glass on mobile scroll */
   @supports (backdrop-filter: blur(1px)) {
     #site-header.is-scrolled {
       background:              rgba(10, 10, 15, 0.80);
@@ -1094,7 +1028,7 @@
 
 /* ── Narrow mobile (≤ 375px) ── */
 @media (max-width: 375px) {
-  .header-inner {
+  .site-header__inner {
     padding-inline: var(--space-3);
   }
 
@@ -1103,24 +1037,20 @@
     max-width: none;
   }
 
-  .mobile-menu-header,
+  .mobile-nav__header,
   .mobile-nav__controls,
-  .mobile-nav-social {
+  .mobile-nav__social {
     padding-inline: var(--space-4);
   }
 }
 
-
-
-
-
 /* Mobile-only lang toggle — hidden on desktop */
-.header__lang-toggle-mobile {
+.site-header__lang-toggle--mobile {
   display: none;
 }
 
 @media (max-width: 1023px) {
-  .header__lang-toggle-mobile {
+  .site-header__lang-toggle--mobile {
     display: flex;
   }
 }
