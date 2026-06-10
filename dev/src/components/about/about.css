@@ -1,13 +1,7 @@
-/* ═══════════════════════════════════════════════════
-   about.css
-   About / Skills Section Styles
-   كل القيم بتيجي من variables.css
-═══════════════════════════════════════════════════ */
-
-
-/* ════════════════════════════════════════
-   SECTION WRAPPER
-════════════════════════════════════════ */
+/* ================================================================
+   ABOUT / SKILLS SECTION
+   FIX ② — background: --color-bg-secondary for alternating rhythm
+   ================================================================ */
 
 .about-section {
   background-color: var(--color-bg-secondary);
@@ -17,7 +11,6 @@
   overflow: hidden;
 }
 
-/* Subtle ambient glow — mirrors hero::before approach */
 .about-section::before {
   content: '';
   position: absolute;
@@ -28,7 +21,8 @@
   pointer-events: none;
 }
 
-.about-inner {
+/* FIX ⑤ — About inner gap standardized to --space-16 (was --space-12) */
+.about-section__inner {
   max-width: var(--container-xl);
   margin-inline: auto;
   padding-inline: var(--space-8);
@@ -36,42 +30,23 @@
   z-index: var(--z-raised);
   display: flex;
   flex-direction: column;
-  gap: var(--space-12);
+  gap: var(--space-16);
 }
 
-
-/* ════════════════════════════════════════
-   SECTION HEADER  (reuses work.css classes)
-════════════════════════════════════════ */
-
-/* .section-label  → already defined in work.css */
-/* .section-title  → already defined in work.css */
-/* .outline        → already defined in work.css */
-
-
-/* ════════════════════════════════════════
-   ABOUT GRID — two-column on desktop
-════════════════════════════════════════ */
-
-.about-grid {
+.about-section__grid {
   display: grid;
-  grid-template-columns: 1fr;   /* single column — bio block fills width */
+  grid-template-columns: 1fr;
   gap: var(--space-8);
 }
 
-
-/* ════════════════════════════════════════
-   TYPEWRITER BLOCK
-════════════════════════════════════════ */
-
-.typewriter-block {
+/* Typewriter Block */
+.about-section__typewriter-block {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
   max-width: 72ch;
 }
 
-/* Each paragraph line */
 .typewriter-line {
   margin: 0;
   padding-inline-start: var(--space-4);
@@ -92,19 +67,8 @@
   display: block;
 }
 
-/* Paragraphs hidden by default — about.js controls reveal entirely */
-.typewriter-line {
-  opacity: 0;
-  transform: translateY(18px);
-  /* transition injected by JS with custom easing */
-}
-
-
-/* ════════════════════════════════════════
-   SKILLS PANEL
-════════════════════════════════════════ */
-
-.about-skills {
+/* Skills Panel */
+.about-section__skills {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
@@ -114,8 +78,7 @@
   gap: var(--space-6);
 }
 
-/* Panel heading */
-.skills-title {
+.about-section__skills-title {
   font-family: var(--font-primary);
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
@@ -125,19 +88,13 @@
   margin: 0;
 }
 
-/* Divider after title */
-.skills-title::after {
+.about-section__skills-title::after {
   content: '';
   display: block;
   height: 1px;
   background-color: var(--color-border-subtle);
   margin-block-start: var(--space-4);
 }
-
-
-/* ════════════════════════════════════════
-   SKILLS GROUP
-════════════════════════════════════════ */
 
 .skills-group {
   display: flex;
@@ -155,17 +112,13 @@
   margin: 0;
 }
 
-.skills-tags {
+.skills-group__tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
 }
 
-
-/* ════════════════════════════════════════
-   SKILL TAG
-════════════════════════════════════════ */
-
+/* Skill Tag */
 .skill-tag {
   display: inline-flex;
   align-items: center;
@@ -183,28 +136,13 @@
   line-height: var(--lh-normal);
   cursor: default;
   transition:
-    color          var(--transition-fast),
+    color            var(--transition-fast),
     background-color var(--transition-fast),
-    border-color   var(--transition-fast),
-    transform      var(--transition-fast);
-
-  /* Staggered reveal via data-order */
-  opacity: 0;
-  transform: translateY(6px);
-  animation: tag-reveal 0.4s ease forwards;
+    border-color     var(--transition-fast),
+    transform        var(--transition-fast);
+  opacity: 1;
+  transform: none;
 }
-
-/* Stagger via data-order attribute */
-.skill-tag[data-order="1"]  { animation-delay: 0.05s; }
-.skill-tag[data-order="2"]  { animation-delay: 0.10s; }
-.skill-tag[data-order="3"]  { animation-delay: 0.15s; }
-.skill-tag[data-order="4"]  { animation-delay: 0.20s; }
-.skill-tag[data-order="5"]  { animation-delay: 0.25s; }
-.skill-tag[data-order="6"]  { animation-delay: 0.30s; }
-.skill-tag[data-order="7"]  { animation-delay: 0.35s; }
-.skill-tag[data-order="8"]  { animation-delay: 0.40s; }
-.skill-tag[data-order="9"]  { animation-delay: 0.45s; }
-.skill-tag[data-order="10"] { animation-delay: 0.50s; }
 
 .skill-tag:hover {
   color: var(--color-text-heading);
@@ -213,12 +151,7 @@
   transform: translateY(-2px);
 }
 
-
-/* ════════════════════════════════════════
-   SKILL DOT — live dot inside tag
-════════════════════════════════════════ */
-
-.skill-dot {
+.skill-tag__dot {
   width: 5px;
   height: 5px;
   border-radius: var(--radius-full);
@@ -227,20 +160,16 @@
   transition: background-color var(--transition-fast);
 }
 
-.skill-tag:hover .skill-dot {
+.skill-tag:hover .skill-tag__dot {
   background-color: var(--color-accent);
 }
 
-
-/* ════════════════════════════════════════
-   LIGHT MODE OVERRIDES
-════════════════════════════════════════ */
-
+/* Light mode */
 [data-theme="light"] .about-section {
   background-color: var(--color-bg-secondary);
 }
 
-[data-theme="light"] .about-skills {
+[data-theme="light"] .about-section__skills {
   background-color: var(--color-surface);
   border-color: var(--color-border);
 }
@@ -265,14 +194,9 @@
   border-inline-start-color: var(--color-accent);
 }
 
-
-/* ════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════ */
-
-/* Tablet */
+/* Responsive */
 @media (max-width: 1024px) {
-  .about-inner {
+  .about-section__inner {
     gap: var(--space-10);
   }
 
@@ -281,23 +205,22 @@
   }
 }
 
-/* Mobile */
 @media (max-width: 640px) {
   .about-section {
     padding-block: var(--space-16);
   }
 
-  .about-inner {
+  .about-section__inner {
     padding-inline: var(--space-4);
     gap: var(--space-8);
   }
 
-  .about-skills {
+  .about-section__skills {
     padding: var(--space-5);
     gap: var(--space-5);
   }
 
-  .typewriter-block {
+  .about-section__typewriter-block {
     gap: var(--space-5);
   }
 

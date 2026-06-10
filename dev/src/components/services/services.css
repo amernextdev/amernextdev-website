@@ -1,14 +1,7 @@
-/* ═══════════════════════════════════════════════════
-   services.css
-   Services Section Styles — Design Transfer
-   Visual reference: screenshot (desktop + mobile)
-   كل القيم بتيجي من variables.css
-═══════════════════════════════════════════════════ */
-
-
-/* ════════════════════════════════════════
-   SECTION WRAPPER
-════════════════════════════════════════ */
+/* ================================================================
+   SERVICES SECTION
+   FIX ② — background: --color-bg for alternating rhythm
+   ================================================================ */
 
 .services-section {
   background-color: var(--color-bg);
@@ -18,7 +11,6 @@
   overflow: hidden;
 }
 
-/* Ambient glow — subtle, mirrors hero/about approach */
 .services-section::before {
   content: '';
   position: absolute;
@@ -29,7 +21,7 @@
   pointer-events: none;
 }
 
-.services-inner {
+.services-section__inner {
   max-width: var(--container-xl);
   margin-inline: auto;
   padding-inline: var(--space-8);
@@ -40,85 +32,24 @@
   gap: var(--space-16);
 }
 
-
-/* ════════════════════════════════════════
-   SECTION HEADER
-════════════════════════════════════════ */
-
-.section-header {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-/* Eyebrow — dash + label (from screenshot) */
-.section-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  font-family: var(--font-primary);
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-semibold);
-  letter-spacing: var(--ls-widest);
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin-block-end: var(--space-4);
-}
-
-/* The dash before eyebrow text */
-.section-eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 28px;
-  height: 2px;
-  background-color: var(--color-accent);
-  flex-shrink: 0;
-}
-
-/* .section-title → defined in work.css, reused */
-/* Accent span inside title */
-.section-title span {
-  color: var(--color-accent);
-}
-
-.section-description {
-  font-family: var(--font-primary);
-  font-size: var(--fs-base);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-relaxed);
-  color: var(--color-text-muted);
-  margin-block-start: var(--space-4);
-  max-width: 52ch;
-}
-
-
-/* ════════════════════════════════════════
-   DESKTOP LAYOUT
-════════════════════════════════════════ */
-
-.desktop-layout {
+/* Desktop Layout */
+.services-section__desktop-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-6);
   align-items: center;
 }
 
-/* Lift detail panels upward to align better in viewport */
-.services-detail-panels {
+.services-section__detail-panels {
   margin-top: calc(var(--space-16) * -1);
 }
 
-/* Hide mobile on desktop */
-.mobile-layout {
+.services-section__mobile-layout {
   display: none;
 }
 
-
-/* ════════════════════════════════════════
-   SERVICES LIST (left column)
-════════════════════════════════════════ */
-
-.services-list-panel {
+/* Services List */
+.services-section__list-panel {
   position: sticky;
   top: calc(var(--nav-height) + var(--space-8));
   align-self: start;
@@ -128,9 +59,6 @@
   display: flex;
   flex-direction: column;
 }
-
-
-/* ── List Item ── */
 
 .service-list-item {
   display: flex;
@@ -150,7 +78,6 @@
     color              var(--transition-base);
 }
 
-/* First item — top border too */
 .service-list-item:first-child {
   border-block-start: 1px solid var(--color-border-subtle);
 }
@@ -165,8 +92,6 @@
   border-inline-start-color: var(--color-accent);
 }
 
-
-/* Number */
 .service-list-item__number {
   font-family: var(--font-primary);
   font-size: var(--fs-xs);
@@ -178,16 +103,11 @@
   transition: color var(--transition-base);
 }
 
-.service-list-item--active .service-list-item__number {
-  color: var(--color-accent);
-}
-
+.service-list-item--active .service-list-item__number,
 .service-list-item:hover .service-list-item__number {
   color: var(--color-accent);
 }
 
-
-/* Name */
 .service-list-item__name {
   font-family: var(--font-primary);
   font-size: var(--fs-base);
@@ -206,8 +126,6 @@
   color: var(--color-text-body);
 }
 
-
-/* Arrow — shown on hover + active */
 .service-list-item__arrow {
   width: 12px;
   height: 12px;
@@ -237,11 +155,7 @@
   transform: translateX(0) scaleX(-1);
 }
 
-
-/* ════════════════════════════════════════
-   SERVICE DETAIL PANEL (right column)
-════════════════════════════════════════ */
-
+/* Service Detail Panel */
 .service-detail-panel {
   display: none;
   flex-direction: column;
@@ -265,9 +179,6 @@
   gap: var(--space-3);
 }
 
-
-/* ── Icon — outlined box style ── */
-
 .service-detail-panel__icon {
   display: inline-flex;
   align-items: center;
@@ -286,9 +197,6 @@
   height: 22px;
 }
 
-
-/* ── Name ── */
-
 .service-detail-panel__name {
   font-family: var(--font-primary);
   font-size: var(--fs-2xl);
@@ -297,9 +205,6 @@
   letter-spacing: var(--ls-tight);
   color: var(--color-text-heading);
 }
-
-
-/* ── Description ── */
 
 .service-detail-panel__description {
   font-family: var(--font-primary);
@@ -310,9 +215,6 @@
   max-width: 56ch;
   margin: 0;
 }
-
-
-/* ── Includes block ── */
 
 .service-detail-panel__includes-title {
   font-family: var(--font-primary);
@@ -349,7 +251,6 @@
   color: var(--color-text-body);
 }
 
-/* Checkmark icon via CSS — matches screenshot */
 .service-detail-panel__includes-list li::before {
   content: '';
   display: inline-flex;
@@ -364,9 +265,6 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-
-
-/* ── Tags ── */
 
 .service-detail-panel__tags {
   display: flex;
@@ -394,10 +292,6 @@
   background-color: var(--color-amber-surface);
 }
 
-
-/* ── CTA Button — full-width style from screenshot ── */
-
-/* btn-primary base defined in hero.css, extended here */
 .service-detail-panel > .btn-primary {
   width: 100%;
   justify-content: center;
@@ -407,23 +301,18 @@
   letter-spacing: var(--ls-normal);
 }
 
-
-/* ════════════════════════════════════════
-   MOBILE LAYOUT — tabs
-════════════════════════════════════════ */
-
-/* Tabs nav — horizontally scrollable */
-.tabs-nav-wrapper {
+/* Mobile Tabs Layout */
+.services-section__tabs-nav-wrapper {
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
 
-.tabs-nav-wrapper::-webkit-scrollbar {
+.services-section__tabs-nav-wrapper::-webkit-scrollbar {
   display: none;
 }
 
-.tabs-nav {
+.services-section__tabs-nav {
   display: flex;
   gap: var(--space-2);
   padding-block-end: var(--space-1);
@@ -462,9 +351,6 @@
   font-weight: var(--fw-semibold);
 }
 
-
-/* ── Indicator Dots ── */
-
 .tab-dots {
   display: flex;
   justify-content: center;
@@ -488,9 +374,6 @@
   width: 18px;
 }
 
-
-/* ── Tab Panels ── */
-
 .tab-panels {
   position: relative;
 }
@@ -510,8 +393,6 @@
   display: flex;
 }
 
-/* ── Mobile Panel Icon ── */
-
 .tab-panel__icon {
   display: inline-flex;
   align-items: center;
@@ -529,9 +410,6 @@
   height: 20px;
 }
 
-
-/* ── Mobile Panel Name ── */
-
 .tab-panel__name {
   font-family: var(--font-primary);
   font-size: var(--fs-xl);
@@ -546,9 +424,6 @@
   color: var(--color-accent);
 }
 
-
-/* ── Mobile Panel Description ── */
-
 .tab-panel__description {
   font-family: var(--font-primary);
   font-size: var(--fs-sm);
@@ -556,9 +431,6 @@
   color: var(--color-text-muted);
   margin: 0;
 }
-
-
-/* ── Mobile Panel Includes ── */
 
 .tab-panel__includes {
   display: flex;
@@ -598,7 +470,6 @@
   color: var(--color-text-body);
 }
 
-/* Checkmark — matches desktop + screenshot */
 .tab-panel__includes-list li::before {
   content: '';
   display: inline-flex;
@@ -614,9 +485,6 @@
   background-position: center;
 }
 
-
-/* ── Mobile CTA Button ── */
-
 .tab-panel > .btn-primary {
   width: 100%;
   justify-content: center;
@@ -627,28 +495,8 @@
 }
 
 
-/* ════════════════════════════════════════
-   PANEL SWAP ANIMATION — JS controlled
-════════════════════════════════════════ */
 
-.service-detail-panel--leaving {
-  opacity: 0;
-  transform: translateY(6px);
-  transition:
-    opacity   150ms ease,
-    transform 150ms ease;
-  pointer-events: none;
-}
-
-.service-detail-panel--entering {
-  animation: panel-in 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-
-/* ════════════════════════════════════════
-   LIGHT MODE OVERRIDES
-════════════════════════════════════════ */
-
+/* Light mode */
 [data-theme="light"] .service-list-item:hover {
   background-color: var(--color-amber-surface);
 }
@@ -682,7 +530,7 @@
 [data-theme="light"] .tab-button--active {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
-  color: #fff;
+  color: var(--color-text-inverse);
 }
 
 [data-theme="light"] .tab-panel {
@@ -695,14 +543,9 @@
   border-color: var(--color-border);
 }
 
-
-/* ════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════ */
-
-/* Large tablet — tighten gap */
+/* Responsive */
 @media (max-width: 1100px) {
-  .desktop-layout {
+  .services-section__desktop-layout {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-5);
   }
@@ -716,26 +559,24 @@
   }
 }
 
-/* Switch to mobile layout */
 @media (max-width: 768px) {
-  .desktop-layout {
+  .services-section__desktop-layout {
     display: none;
   }
 
-  .mobile-layout {
+  .services-section__mobile-layout {
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
   }
 }
 
-/* Mobile tweaks */
 @media (max-width: 640px) {
   .services-section {
     padding-block: var(--space-16);
   }
 
-  .services-inner {
+  .services-section__inner {
     padding-inline: var(--space-4);
     gap: var(--space-10);
   }
@@ -745,7 +586,7 @@
     gap: var(--space-4);
   }
 
-  .section-title {
+  .section-header__title {
     font-size: var(--fs-3xl);
   }
 }

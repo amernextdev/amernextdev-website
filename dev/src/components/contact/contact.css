@@ -1,13 +1,7 @@
-/* ═══════════════════════════════════════════════════
-   contact.css
-   Contact Section Styles
-   كل القيم بتيجي من variables.css
-═══════════════════════════════════════════════════ */
-
-
-/* ════════════════════════════════════════
-   SECTION WRAPPER
-════════════════════════════════════════ */
+/* ================================================================
+   CONTACT SECTION
+   FIX ② — background: --color-bg for alternating rhythm
+   ================================================================ */
 
 #contact {
   display: flex;
@@ -20,7 +14,6 @@
   overflow: hidden;
 }
 
-/* Subtle ambient glow — mirrors hero/about approach */
 #contact::before {
   content: '';
   position: absolute;
@@ -31,12 +24,7 @@
   pointer-events: none;
 }
 
-
-/* ════════════════════════════════════════
-   INNER CONTAINER
-════════════════════════════════════════ */
-
-.contact-inner {
+.contact-section__inner {
   max-width: var(--container-xl);
   width: 100%;
   margin-inline: auto;
@@ -49,12 +37,7 @@
   gap: var(--space-6);
 }
 
-
-/* ════════════════════════════════════════
-   EYEBROW & HEADING
-════════════════════════════════════════ */
-
-.contact-eyebrow {
+.contact-section__eyebrow {
   font-family: var(--font-primary);
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
@@ -64,8 +47,7 @@
   text-align: center;
 }
 
-/* Reuse section-title from work.css — override to center */
-.contact-inner .section-header {
+.contact-section__inner .section-header {
   width: 100%;
   max-width: 600px;
   margin-inline: auto;
@@ -73,18 +55,18 @@
   justify-content: center;
 }
 
-.contact-inner .section-title {
+.contact-section__inner .section-header__title {
   text-align: center;
   font-size: var(--fs-4xl);
   margin: 0;
 }
 
-.contact-inner .section-title span {
+.contact-section__inner .section-header__title span {
   -webkit-text-stroke: 1.5px var(--color-text-heading);
   color: transparent;
 }
 
-.contact-inner .section-description {
+.contact-section__inner .section-header__description {
   font-family: var(--font-primary);
   font-size: var(--fs-sm);
   font-weight: var(--fw-regular);
@@ -94,12 +76,8 @@
   max-width: 38ch;
 }
 
-
-/* ════════════════════════════════════════
-   CONTACT FORM
-════════════════════════════════════════ */
-
-.contact-form {
+/* Contact Form */
+.contact-section__form {
   width: 100%;
   max-width: 600px;
   margin-inline: auto;
@@ -109,19 +87,13 @@
   margin-block-start: var(--space-2);
 }
 
-
-/* ── Form Group ── */
-
 .form-group {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
 }
 
-
-/* ── Form Label ── */
-
-.form-label {
+.form-group__label {
   font-family: var(--font-primary);
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
@@ -130,11 +102,8 @@
   color: var(--color-text-muted);
 }
 
-
-/* ── Form Input & Textarea ── */
-
-.form-input,
-.form-textarea {
+.form-group__input,
+.form-group__textarea {
   width: 100%;
   font-family: var(--font-primary);
   font-size: var(--fs-sm);
@@ -147,40 +116,38 @@
   padding: var(--space-4) var(--space-5);
   outline: none;
   transition:
-    border-color var(--transition-base),
-    box-shadow   var(--transition-base),
+    border-color     var(--transition-base),
+    box-shadow       var(--transition-base),
     background-color var(--transition-base);
   -webkit-appearance: none;
   appearance: none;
 }
 
-.form-input::placeholder,
-.form-textarea::placeholder {
+.form-group__input::placeholder,
+.form-group__textarea::placeholder {
   color: var(--color-text-disabled);
 }
 
-.form-input:hover,
-.form-textarea:hover {
+.form-group__input:hover,
+.form-group__textarea:hover {
   border-color: var(--color-border-strong);
   background-color: var(--color-surface-2);
 }
 
-.form-input:focus,
-.form-textarea:focus {
+.form-group__input:focus,
+.form-group__textarea:focus {
   border-color: var(--color-amber-border);
   background-color: var(--color-surface);
   box-shadow: 0 0 0 3px var(--color-amber-glow-sm);
 }
 
-.form-textarea {
+.form-group__textarea {
   min-height: 140px;
   resize: vertical;
 }
 
-
-/* ── Success Message ── */
-
-.contact-form__success-message {
+/* Success Message */
+.contact-section__success-message {
   display: none;
   align-items: center;
   gap: var(--space-2);
@@ -194,20 +161,18 @@
   padding: var(--space-3) var(--space-5);
 }
 
-.contact-form__success-message.is-visible {
+.contact-section__success-message.is-visible {
   display: flex;
 }
 
-.contact-form__success-message .icon {
+.contact-section__success-message .icon {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
 }
 
-
-/* ── Submit Button — full width, amber ── */
-
-.contact-form .btn-primary {
+/* Submit Button */
+.contact-section__form .btn-primary {
   width: 100%;
   justify-content: center;
   padding: var(--space-4) var(--space-6);
@@ -218,17 +183,13 @@
   gap: var(--space-3);
 }
 
-.contact-form .btn-primary .icon {
+.contact-section__form .btn-primary .icon {
   width: 14px;
   height: 14px;
 }
 
-
-/* ════════════════════════════════════════
-   DIVIDER
-════════════════════════════════════════ */
-
-.contact-divider {
+/* Divider */
+.contact-section__divider {
   width: 100%;
   max-width: 600px;
   margin-inline: auto;
@@ -238,15 +199,11 @@
   letter-spacing: var(--ls-wide);
   color: var(--color-text-muted);
   text-align: center;
-  opacity: 0.6;
+  opacity: 0.6; /* no matching variable */
 }
 
-
-/* ════════════════════════════════════════
-   DIRECT CONTACT BUTTONS
-════════════════════════════════════════ */
-
-.contact-direct-buttons {
+/* Direct Contact Buttons */
+.contact-section__direct-buttons {
   width: 100%;
   max-width: 600px;
   margin-inline: auto;
@@ -255,8 +212,7 @@
   gap: var(--space-3);
 }
 
-/* Email button — reuses .btn-outline from work.css, override for half-width */
-.contact-direct-buttons .btn-outline {
+.contact-section__direct-buttons .btn-outline {
   justify-content: center;
   gap: var(--space-2);
   padding: var(--space-3) var(--space-4);
@@ -265,57 +221,55 @@
   border-radius: var(--radius-md);
 }
 
-.contact-direct-buttons .btn-outline .icon {
+.contact-section__direct-buttons .btn-outline .icon {
   width: 14px;
   height: 14px;
 }
 
-/* WhatsApp button — green brand */
-.contact-whatsapp-button {
+/* WhatsApp — outline style, green icon only */
+.contact-section__whatsapp-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
   font-family: var(--font-primary);
   font-size: var(--fs-sm);
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-medium);
   letter-spacing: var(--ls-wide);
-  color: #FFFFFF;
-  background-color: #25D366;
-  border: 1px solid #25D366;
+  color: var(--color-text-body);
+  background-color: transparent;
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
   padding: var(--space-3) var(--space-4);
   text-decoration: none;
   transition:
+    color            var(--transition-base),
     background-color var(--transition-base),
     border-color     var(--transition-base),
-    box-shadow       var(--transition-base),
     transform        var(--transition-fast);
 }
 
-.contact-whatsapp-button:hover {
-  background-color: #1EBE58;
-  border-color: #1EBE58;
-  box-shadow: 0 0 20px rgba(37, 211, 102, 0.25);
+.contact-section__whatsapp-btn:hover {
+  color: var(--color-text-heading);
+  background-color: var(--color-surface-2);
+  border-color: #25D366;
   transform: translateY(-1px);
 }
 
-.contact-whatsapp-button:active {
+.contact-section__whatsapp-btn:active {
   transform: translateY(0);
 }
 
-.contact-whatsapp-button .icon {
+/* الأيقونة خضراء دايماً — تدل على WhatsApp */
+.contact-section__whatsapp-btn .icon {
   width: 15px;
   height: 15px;
   flex-shrink: 0;
+  color: #25D366;
 }
 
-
-/* ════════════════════════════════════════
-   AVAILABILITY CHIPS
-════════════════════════════════════════ */
-
-.contact-availability-chips {
+/* Availability Chips */
+.contact-section__availability-chips {
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -324,7 +278,7 @@
   padding-block-start: var(--space-2);
 }
 
-.contact-chip {
+.contact-section__chip {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -333,15 +287,16 @@
   font-weight: var(--fw-medium);
   letter-spacing: var(--ls-wide);
   color: var(--color-text-muted);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-full);
+  background-color: var(--color-amber-surface);
+  border: 1px solid var(--color-amber-border);
+  border-radius: var(--radius-md);
   padding: var(--space-2) var(--space-4);
   line-height: var(--lh-normal);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/* Availability dot — green pulsing */
-.contact-chip__dot {
+.contact-section__chip-dot {
   width: 7px;
   height: 7px;
   border-radius: var(--radius-full);
@@ -350,345 +305,95 @@
   animation: pulse-dot 2s ease-in-out infinite;
 }
 
-/* Bolt icon inside chip */
-.contact-chip .icon {
+.contact-section__chip .icon {
   width: 10px;
   height: 10px;
   flex-shrink: 0;
   color: var(--color-accent);
 }
 
-
-/* ════════════════════════════════════════
-   LIGHT MODE OVERRIDES
-════════════════════════════════════════ */
-
+/* Light mode */
 [data-theme="light"] #contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: var(--color-bg);
 }
 
-[data-theme="light"] .form-input,
-[data-theme="light"] .form-textarea {
+[data-theme="light"] .form-group__input,
+[data-theme="light"] .form-group__textarea {
   background-color: var(--color-surface);
   border-color: var(--color-border);
   color: var(--color-text-body);
 }
 
-[data-theme="light"] .form-input:hover,
-[data-theme="light"] .form-textarea:hover {
+[data-theme="light"] .form-group__input:hover,
+[data-theme="light"] .form-group__textarea:hover {
   background-color: var(--color-surface-2);
   border-color: var(--color-border-strong);
 }
 
-[data-theme="light"] .form-input:focus,
-[data-theme="light"] .form-textarea:focus {
+[data-theme="light"] .form-group__input:focus,
+[data-theme="light"] .form-group__textarea:focus {
   border-color: var(--color-amber-border);
   background-color: var(--color-surface);
 }
 
-[data-theme="light"] .contact-chip {
-  background-color: var(--color-surface);
-  border-color: var(--color-border);
+[data-theme="light"] .contact-section__chip {
+  background-color: var(--color-amber-surface);
+  border-color: var(--color-amber-border);
 }
 
-[data-theme="light"] .contact-direct-buttons .btn-outline {
+[data-theme="light"] .contact-section__direct-buttons .btn-outline {
   background-color: var(--color-surface);
   border-color: var(--color-border-strong);
 }
 
+[data-theme="light"] .contact-section__whatsapp-btn {
+  color: var(--color-text-body);
+  border-color: var(--color-border-strong);
+}
 
-/* ════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════ */
+[data-theme="light"] .contact-section__whatsapp-btn:hover {
+  background-color: var(--color-surface-2);
+  border-color: #25D366;
+}
 
-/* Tablet */
+/* Responsive */
 @media (max-width: 1024px) {
-  .contact-inner .section-title {
+  .contact-section__inner .section-header__title {
     font-size: var(--fs-3xl);
   }
 }
 
-/* Mobile */
 @media (max-width: 640px) {
   #contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
     padding-block: var(--space-16);
   }
 
-  .contact-inner {
+  .contact-section__inner {
     padding-inline: var(--space-4);
     gap: var(--space-5);
   }
 
-  .contact-inner .section-title {
+  .contact-section__inner .section-header__title {
     font-size: var(--fs-2xl);
   }
 
-  .contact-direct-buttons {
+  .contact-section__direct-buttons {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-2);
   }
 
-  .contact-availability-chips {
+  .contact-section__availability-chips {
     gap: var(--space-2);
   }
 
-  .contact-chip {
-    font-size: 0.65rem;
+  .contact-section__chip {
+    font-size: var(--fs-xs);
     padding: var(--space-1) var(--space-3);
   }
 }
 
 @media (max-width: 380px) {
-  .contact-direct-buttons {
+  .contact-section__direct-buttons {
     grid-template-columns: 1fr;
-  }
-}
-
-/* ════════════════════════════════════════
-   BUTTON LOADING STATE
-   يتحكم فيه JS بإضافة .btn--loading
-════════════════════════════════════════ */
-
-.btn--loading {
-  opacity: 0.7;
-  cursor: not-allowed;
-  pointer-events: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-3);
-}
-
-/* ── Spinner ── */
-.btn__spinner {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  border: 2px solid rgba(0, 0, 0, 0.25);
-  border-top-color: var(--color-text-inverse);
-  border-radius: var(--radius-full);
-  animation: btn-spin 0.7s linear infinite;
-  flex-shrink: 0;
-}
-
-@keyframes btn-spin {
-  to { transform: rotate(360deg); }
-}
-
-
-/* ════════════════════════════════════════
-   CHAR COUNTER — عداد الأحرف
-════════════════════════════════════════ */
-
-.char-counter {
-  display: block;
-  text-align: end;
-  font-family: var(--font-primary);
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-regular);
-  color: var(--color-text-muted);
-  margin-block-start: var(--space-1);
-  transition: color var(--transition-base);
-}
-
-.char-counter--warning {
-  color: var(--color-warning);
-}
-
-.char-counter--error {
-  color: var(--color-error);
-  font-weight: var(--fw-semibold);
-}
-
-
-/* ════════════════════════════════════════
-   FORM ERROR STATE — حقل خاطئ
-════════════════════════════════════════ */
-
-.form-group__input--error,
-.form-group__textarea.form-group__input--error {
-  border-color: var(--color-error-border) !important;
-  box-shadow: 0 0 0 3px var(--color-error-surface) !important;
-  animation: shake 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-}
-
-@keyframes shake {
-  10%, 90%  { transform: translateX(-2px); }
-  20%, 80%  { transform: translateX(3px);  }
-  30%, 50%, 70% { transform: translateX(-4px); }
-  40%, 60%  { transform: translateX(4px);  }
-}
-
-
-/* ════════════════════════════════════════
-   TOAST NOTIFICATION
-   الموضع: أسفل يمين الشاشة (desktop)
-           أسفل المنتصف (mobile)
-════════════════════════════════════════ */
-
-.toast-notification {
-  /* الموضع */
-  position: fixed;
-  bottom: var(--space-8);
-  inset-inline-end: var(--space-8);
-  z-index: var(--z-toast);
-
-  /* الحجم */
-  min-width: 280px;
-  max-width: 380px;
-
-  /* المظهر */
-  background-color: var(--color-surface-2);
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-xl);
-  overflow: hidden;
-
-  /* الشفافية الخفيفة */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  /* الإخفاء الابتدائي */
-  opacity: 0;
-  transform: translateY(16px) scale(0.97);
-  pointer-events: none;
-  transition:
-    opacity   300ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* ── حالة الظهور ── */
-.toast--visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
-}
-
-/* ── حالة الاختفاء ── */
-.toast--hiding {
-  opacity: 0;
-  transform: translateY(8px) scale(0.98);
-}
-
-/* ── المحتوى ── */
-.toast__body {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-4) var(--space-5);
-  font-family: var(--font-primary);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-snug);
-  color: var(--color-text-heading);
-}
-
-.toast__icon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-}
-
-/* ── شريط التقدم ── */
-.toast__progress {
-  height: 3px;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.08);
-  position: relative;
-  overflow: hidden;
-}
-
-.toast__progress::after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-  width: 100%;
-  transition-property: width;
-  transition-timing-function: linear;
-  /* transition-duration يتضبط من JS */
-}
-
-.toast__progress--running::after {
-  width: 0%;
-}
-
-/* ── ألوان حسب النوع ── */
-
-/* success */
-.toast--success {
-  border-color: var(--color-success-border);
-}
-.toast--success .toast__body {
-  color: var(--color-success);
-}
-.toast--success .toast__progress::after {
-  background-color: var(--color-success);
-}
-
-/* error */
-.toast--error {
-  border-color: var(--color-error-border);
-}
-.toast--error .toast__body {
-  color: var(--color-error);
-}
-.toast--error .toast__progress::after {
-  background-color: var(--color-error);
-}
-
-/* warning */
-.toast--warning {
-  border-color: var(--color-warning-border);
-}
-.toast--warning .toast__body {
-  color: var(--color-warning);
-}
-.toast--warning .toast__progress::after {
-  background-color: var(--color-warning);
-}
-
-/* info */
-.toast--info {
-  border-color: var(--color-info-border);
-}
-.toast--info .toast__body {
-  color: var(--color-info);
-}
-.toast--info .toast__progress::after {
-  background-color: var(--color-info);
-}
-
-
-/* ── Light Mode Overrides — Toast ── */
-[data-theme="light"] .toast-notification {
-  background-color: var(--color-surface);
-  border-color: var(--color-border-strong);
-}
-
-
-/* ── Responsive — Mobile ── */
-@media (max-width: 640px) {
-  .toast-notification {
-    inset-inline-end: 50%;
-    transform: translateX(50%) translateY(16px) scale(0.97);
-    bottom: var(--space-6);
-    min-width: 0;
-    width: calc(100vw - var(--space-8));
-    max-width: none;
-  }
-
-  .toast--visible {
-    transform: translateX(50%) translateY(0) scale(1);
-  }
-
-  .toast--hiding {
-    transform: translateX(50%) translateY(8px) scale(0.98);
   }
 }

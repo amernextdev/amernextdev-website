@@ -30,11 +30,11 @@
 /* === STYLES === */
 @import '/src/components/header/header.css';
 @import '/src/components/hero/hero.css';
-/* @import '/src/components/work/work.css'; */
-/* @import '/src/components/services/services.css'; */
-/* @import '/src/components/about/about.css'; */
-/* @import '/src/components/contact/contact.css'; */
-/* @import '/src/components/footer/footer.css'; */
+@import '/src/components/work/work.css';
+@import '/src/components/services/services.css';
+@import '/src/components/about/about.css';
+@import '/src/components/contact/contact.css';
+@import '/src/components/footer/footer.css';
 
 /* ─── 2. Reset & Base Styles ────────────────────────────────── */
 

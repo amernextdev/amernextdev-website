@@ -1,21 +1,15 @@
-/* ═══════════════════════════════════════════════════
-   work.css
-   Work / Projects Section Styles
-   كل القيم بتيجي من variables.css
-═══════════════════════════════════════════════════ */
-
-
-/* ════════════════════════════════════════
-   SECTION WRAPPER
-════════════════════════════════════════ */
+/* ================================================================
+   WORK / PROJECTS SECTION
+   FIX ② — background: --color-bg-secondary for alternating rhythm
+   ================================================================ */
 
 .work-section {
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-secondary);
   padding-block: var(--space-24);
   width: 100%;
 }
 
-.work-inner {
+.work-section__inner {
   max-width: var(--container-xl);
   margin-inline: auto;
   padding-inline: var(--space-8);
@@ -24,22 +18,11 @@
   gap: var(--space-16);
 }
 
-
-
-/* ════════════════════════════════════════
-   PROJECTS GRID
-════════════════════════════════════════ */
-
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-6);
 }
-
-
-/* ════════════════════════════════════════
-   PROJECT CARD
-════════════════════════════════════════ */
 
 .project-card {
   background-color: var(--color-surface);
@@ -58,9 +41,6 @@
   box-shadow: var(--shadow-lg);
   border-color: var(--color-border-strong);
 }
-
-
-/* ── Image Area ── */
 
 .project-card__image {
   position: relative;
@@ -98,9 +78,6 @@
   height: 20px;
 }
 
-
-/* ── Number Badge ── */
-
 .project-card__number {
   position: absolute;
   top: var(--space-4);
@@ -116,9 +93,6 @@
   padding: var(--space-1) var(--space-3);
   line-height: var(--lh-normal);
 }
-
-
-/* ── Live Badge ── */
 
 .project-card__live-badge {
   position: absolute;
@@ -140,7 +114,7 @@
   line-height: var(--lh-normal);
 }
 
-.live-dot {
+.project-card__live-dot {
   width: 6px;
   height: 6px;
   border-radius: var(--radius-full);
@@ -148,8 +122,6 @@
   flex-shrink: 0;
   animation: pulse-dot 2s ease-in-out infinite;
 }
-
-/* ── Card Body ── */
 
 .project-card__body {
   padding: var(--space-6);
@@ -177,9 +149,6 @@
   color: var(--color-text-body);
   margin: 0;
 }
-
-
-/* ── Stack Tags ── */
 
 .project-card__stack {
   display: flex;
@@ -209,9 +178,6 @@
   border-color: var(--color-border-strong);
 }
 
-
-/* ── Card Footer ── */
-
 .project-card__footer {
   display: flex;
   align-items: center;
@@ -239,7 +205,6 @@
   flex-shrink: 0;
 }
 
-/* Live Site link — amber */
 .project-card__link--live {
   color: var(--color-accent);
 }
@@ -249,7 +214,6 @@
   gap: var(--space-3);
 }
 
-/* Case Study link — muted */
 .project-card__link--case-study {
   color: var(--color-text-muted);
 }
@@ -259,21 +223,16 @@
   gap: var(--space-3);
 }
 
-
-/* ════════════════════════════════════════
-   WORK FOOTER CTA
-════════════════════════════════════════ */
-
-.work-footer {
+.work-section__footer {
   display: flex;
   justify-content: center;
   padding-block-start: var(--space-4);
 }
 
-
-/* ════════════════════════════════════════
-   LIGHT MODE OVERRIDES
-════════════════════════════════════════ */
+/* Light mode */
+[data-theme="light"] .work-section {
+  background-color: var(--color-bg-secondary);
+}
 
 [data-theme="light"] .project-card {
   background-color: var(--color-surface);
@@ -305,29 +264,19 @@
   border-color: var(--color-border);
 }
 
-
-/* ════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════ */
-
-/* Tablet — 2 columns */
+/* Responsive */
 @media (max-width: 1024px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .section-title {
-    font-size: var(--fs-3xl);
-  }
 }
 
-/* Mobile — 1 column */
 @media (max-width: 640px) {
   .work-section {
     padding-block: var(--space-16);
   }
 
-  .work-inner {
+  .work-section__inner {
     padding-inline: var(--space-4);
     gap: var(--space-10);
   }
@@ -335,10 +284,6 @@
   .projects-grid {
     grid-template-columns: 1fr;
     gap: var(--space-5);
-  }
-
-  .section-title {
-    font-size: var(--fs-2xl);
   }
 
   .project-card__body {
