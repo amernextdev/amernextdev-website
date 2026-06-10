@@ -2,7 +2,6 @@
    services.js
    1. Desktop — service list → detail panel switching
    2. Mobile  — tab buttons → tab panel switching (+ swipe)
-   3. Scroll reveal — header + list items staggered
 ═══════════════════════════════════════════════════ */
 
 (function () {
@@ -14,12 +13,6 @@
   const CONFIG = {
     panel: {
       leaveDuration: 150,   /* ms — old panel fade out */
-    },
-    reveal: {
-      stagger:    70,       /* ms between each element */
-      duration:   500,
-      easing:     'cubic-bezier(0.22, 1, 0.36, 1)',
-      rootMargin: '0px 0px -60px 0px',
     },
   };
 
@@ -55,29 +48,18 @@
       prevBtn.classList.remove('service-list-item--active');
       prevBtn.setAttribute('aria-pressed', 'false');
 
-      /* Fade out old panel */
-      prevPanel.classList.add('service-detail-panel--leaving');
+      /* Hide old panel */
+      prevPanel.classList.remove('service-detail-panel--active');
 
-      setTimeout(() => {
-        prevPanel.classList.remove('service-detail-panel--active');
-        prevPanel.classList.remove('service-detail-panel--leaving');
+      /* Show new panel */
+      nextPanel.classList.add('service-detail-panel--active');
 
-        /* Show new panel */
-        nextPanel.classList.add('service-detail-panel--active');
-        nextPanel.classList.add('service-detail-panel--entering');
+      /* Activate new button */
+      nextBtn.classList.add('service-list-item--active');
+      nextBtn.setAttribute('aria-pressed', 'true');
 
-        /* Activate new button */
-        nextBtn.classList.add('service-list-item--active');
-        nextBtn.setAttribute('aria-pressed', 'true');
-
-        activeIndex = index;
-        switching   = false;
-
-        setTimeout(() => {
-          nextPanel.classList.remove('service-detail-panel--entering');
-        }, 420);
-
-      }, CONFIG.panel.leaveDuration);
+      activeIndex = index;
+      switching   = false;
     }
 
     buttons.forEach((btn) => {
@@ -169,69 +151,12 @@
 
 
   /* ═══════════════════════════════════════════════
-     3. SCROLL REVEAL — staggered fade-up
-  ═══════════════════════════════════════════════ */
-
-  function initReveal() {
-    const section = document.getElementById('services');
-    if (!section) return;
-
-    /* Collect elements in reveal order */
-    const headerEls = Array.from(
-      section.querySelectorAll('.section-eyebrow, .section-title, .section-description')
-    );
-    const listItems = Array.from(section.querySelectorAll('.service-list-item'));
-    const mobileEls = Array.from(
-      section.querySelectorAll('.tabs-nav-wrapper, .tab-dots, .tab-panels')
-    );
-
-    const allTargets = [...headerEls, ...listItems, ...mobileEls];
-    if (!allTargets.length) return;
-
-    /* Lock initial hidden state */
-    allTargets.forEach((el) => {
-      el.style.opacity    = '0';
-      el.style.transform  = 'translateY(14px)';
-      el.style.transition = `
-        opacity   ${CONFIG.reveal.duration}ms ${CONFIG.reveal.easing},
-        transform ${CONFIG.reveal.duration}ms ${CONFIG.reveal.easing}
-      `;
-    });
-
-    function revealAll() {
-      allTargets.forEach((el, i) => {
-        setTimeout(() => {
-          el.style.opacity   = '1';
-          el.style.transform = 'translateY(0)';
-        }, i * CONFIG.reveal.stagger);
-      });
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            revealAll();
-            observer.disconnect();
-          }
-        });
-      },
-      { rootMargin: CONFIG.reveal.rootMargin }
-    );
-
-    const trigger = section.querySelector('.section-eyebrow') || section;
-    observer.observe(trigger);
-  }
-
-
-  /* ═══════════════════════════════════════════════
      INIT
   ═══════════════════════════════════════════════ */
 
   function init() {
     initDesktop();
     initMobile();
-    initReveal();
   }
 
   if (document.readyState === 'loading') {

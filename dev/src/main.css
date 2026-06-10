@@ -229,12 +229,7 @@ body {
   to   { opacity: 1; transform: translateY(0);   }
 }
 
-@keyframes tag-reveal {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+
 
 
 /* ─── 7. Shared nav__link base ───────────────────────────── */
@@ -2459,19 +2454,7 @@ body {
   letter-spacing: var(--ls-normal);
 }
 
-/* Panel swap animation */
-.service-detail-panel--leaving {
-  opacity: 0;
-  transform: translateY(6px);
-  transition:
-    opacity   150ms ease,
-    transform 150ms ease;
-  pointer-events: none;
-}
 
-.service-detail-panel--entering {
-  animation: panel-in 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
 
 /* Light mode */
 [data-theme="light"] .service-list-item:hover {
@@ -2623,8 +2606,6 @@ body {
   padding-inline-start: var(--space-4);
   border-inline-start: 2px solid var(--color-border-strong);
   transition: border-color var(--transition-base);
-  opacity: 0;
-  transform: translateY(18px);
 }
 
 .typewriter-line:hover {
@@ -2713,21 +2694,9 @@ body {
     background-color var(--transition-fast),
     border-color     var(--transition-fast),
     transform        var(--transition-fast);
-  opacity: 0;
-  transform: translateY(6px);
-  animation: tag-reveal 0.4s ease forwards;
+  opacity: 1;
+  transform: none;
 }
-
-.skill-tag[data-order="1"]  { animation-delay: 0.05s; }
-.skill-tag[data-order="2"]  { animation-delay: 0.10s; }
-.skill-tag[data-order="3"]  { animation-delay: 0.15s; }
-.skill-tag[data-order="4"]  { animation-delay: 0.20s; }
-.skill-tag[data-order="5"]  { animation-delay: 0.25s; }
-.skill-tag[data-order="6"]  { animation-delay: 0.30s; }
-.skill-tag[data-order="7"]  { animation-delay: 0.35s; }
-.skill-tag[data-order="8"]  { animation-delay: 0.40s; }
-.skill-tag[data-order="9"]  { animation-delay: 0.45s; }
-.skill-tag[data-order="10"] { animation-delay: 0.50s; }
 
 .skill-tag:hover {
   color: var(--color-text-heading);
