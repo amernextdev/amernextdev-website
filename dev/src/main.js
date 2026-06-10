@@ -5,9 +5,6 @@
 // === STYLES ===
 import '/src/style.css';
 
-// === LIBS ==
-import '/src/assets/libs/scroll-reveal/scroll-reveal.js';
-
 // === LOGIC ===
 // - Services
 import { initI18n, prefetchLocales } from '/src/services/js/i18n.js';

@@ -24,8 +24,6 @@
 @import '/src/services/css/fonts.css';
 @import '/src/services/css/variables.css';
 
-/* === LIBS === */
-@import '/src/assets/libs/scroll-reveal/scroll-reveal.css';
 
 /* === STYLES === */
 @import '/src/components/header/header.css';
