@@ -258,11 +258,11 @@
 
 					<!-- المحتوى النصي الرئيسي لقسم الـ Hero -->
 					<div class="hero__content">
-						<p class="hero__eyebrow" data-i18n-text="hero.eyebrow">Front End Developer</p>
+						<p class="hero__eyebrow" data-reveal="scale-up" data-duration="fast" data-i18n-text="hero.eyebrow">Front End Developer</p>
 						<!-- data-i18n-html لأن العنوان يحتوي وسم <em> متداخل -->
-						<h1 class="hero__headline" data-i18n-html="hero.headline">Websites that<br><em>work</em><br>for you.</h1>
-						<p class="hero__description" data-i18n-text="hero.description">Front-End focused — I build things that load fast, look right, and feel solid.</p>
-						<div class="hero__cta-group">
+						<h1 class="hero__headline" data-reveal="fade-up" data-delay="1" data-i18n-html="hero.headline">Websites that<br><em>work</em><br>for you.</h1>
+						<p class="hero__description" data-reveal="fade-up" data-delay="2" data-i18n-text="hero.description">Front-End focused — I build things that load fast, look right, and feel solid.</p>
+						<div class="hero__cta-group" data-reveal="fade-up" data-delay="3">
 							<a href="#work"    class="btn-primary" data-i18n-text="hero.cta.work">See My Work <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
 							<a href="#contact" class="btn-ghost"   data-i18n-text="hero.cta.contact">Start a Project <svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg></a>
 						</div>
@@ -272,7 +272,7 @@
 					<!-- تحذير: هذا العنصر التيرمنالي محظورة إضافة أي سمة ترجمة  -->
 					<!-- عليه أو على أي عنصر بداخله — هو عنصر تصميمي بحت          -->
 					<!-- ======================================================= -->
-					<div class="hero-terminal" dir="ltr">
+					<div class="hero-terminal" dir="ltr" data-reveal="slide-right" data-delay="2" data-duration="slow">
 						<div class="hero-terminal__header">
 							<span class="hero-terminal__dot"></span>
 							<span class="hero-terminal__dot"></span>
@@ -313,7 +313,7 @@
 				<div class="work-section__inner"  >
 
 					<!-- رأس القسم -->
-					<div class="section-header">
+					<div class="section-header" data-reveal="fade-up">
 						<div>
 							<p class="section-header__label" data-i18n-text="work.section-label">Selected Work</p>
 							<h2 class="section-header__title">
@@ -324,10 +324,10 @@
 					</div>
 
 					<!-- شبكة بطاقات المشاريع -->
-					<div class="projects-grid">
+					<div class="projects-grid" data-stagger>
 
 						<!-- بطاقة المشروع الأول -->
-						<article class="project-card">
+						<article class="project-card" data-reveal="fade-up">
 							<div class="project-card__image">
 								<div class="project-card__image-placeholder">
 									<div class="project-card__placeholder-icon">
@@ -363,7 +363,7 @@
 						</article>
 
 						<!-- بطاقة المشروع الثاني -->
-						<article class="project-card">
+						<article class="project-card" data-reveal="fade-up">
 							<div class="project-card__image">
 								<div class="project-card__image-placeholder">
 									<div class="project-card__placeholder-icon">
@@ -398,7 +398,7 @@
 						</article>
 
 						<!-- بطاقة المشروع الثالث -->
-						<article class="project-card">
+						<article class="project-card" data-reveal="fade-up">
 							<div class="project-card__image">
 								<div class="project-card__image-placeholder">
 									<div class="project-card__placeholder-icon">
@@ -450,7 +450,7 @@
 				<div class="services-section__inner"  >
 
 					<!-- رأس القسم -->
-					<div class="section-header">
+					<div class="section-header" data-reveal="fade-up">
 						<div>
 							<p class="section-header__label" data-i18n-text="services.section-eyebrow">Services</p>
 							<!-- data-i18n-html لأن العنوان يحتوي <span class="outline"> متداخل -->
@@ -462,7 +462,7 @@
 					<div class="services-section__desktop-layout">
 
 						<!-- قائمة اختيار الخدمة -->
-						<div class="services-section__list-panel">
+						<div class="services-section__list-panel" data-reveal="slide-left">
 							<div class="services-list" id="svc-list">
 
 								<!-- aria-pressed يُشير إلى العنصر النشط حالياً ويُحدَّث بواسطة JS -->
@@ -503,7 +503,7 @@
 						<div class="services-section__detail-panels">
 
 							<!-- لوحة 01 — موقع تجاري -->
-							<div class="service-detail-panel service-detail-panel--active" id="panel-0">
+							<div class="service-detail-panel service-detail-panel--active" id="panel-0" data-reveal="slide-right">
 								<div class="service-detail-panel__top">
 									<span class="service-detail-panel__icon">
 										<svg class="icon icon--building" aria-hidden="true"><use href="/sprites/solid.svg#building"></use></svg>
@@ -533,7 +533,7 @@
 							</div>
 
 							<!-- لوحة 02 — صفحة هبوط -->
-							<div class="service-detail-panel" id="panel-1">
+							<div class="service-detail-panel" id="panel-1" data-reveal="slide-right">
 								<div class="service-detail-panel__top">
 									<span class="service-detail-panel__icon">
 										<svg class="icon icon--rocket" aria-hidden="true"><use href="/sprites/solid.svg#rocket"></use></svg>
@@ -563,7 +563,7 @@
 							</div>
 
 							<!-- لوحة 03 — تطبيق ويب -->
-							<div class="service-detail-panel" id="panel-2">
+							<div class="service-detail-panel" id="panel-2" data-reveal="slide-right">
 								<div class="service-detail-panel__top">
 									<span class="service-detail-panel__icon">
 										<svg class="icon icon--display" aria-hidden="true"><use href="/sprites/solid.svg#display"></use></svg>
@@ -593,7 +593,7 @@
 							</div>
 
 							<!-- لوحة 04 — واجهة مستخدم -->
-							<div class="service-detail-panel" id="panel-3">
+							<div class="service-detail-panel" id="panel-3" data-reveal="slide-right">
 								<div class="service-detail-panel__top">
 									<span class="service-detail-panel__icon">
 										<svg class="icon icon--palette" aria-hidden="true"><use href="/sprites/solid.svg#palette"></use></svg>
@@ -623,7 +623,7 @@
 							</div>
 
 							<!-- لوحة 05 — صيانة المواقع -->
-							<div class="service-detail-panel" id="panel-4">
+							<div class="service-detail-panel" id="panel-4" data-reveal="slide-right">
 								<div class="service-detail-panel__top">
 									<span class="service-detail-panel__icon">
 										<svg class="icon icon--wrench" aria-hidden="true"><use href="/sprites/solid.svg#wrench"></use></svg>
@@ -660,7 +660,7 @@
 					<div class="services-section__mobile-layout">
 
 						<!-- شريط التنقل بين التبويبات -->
-						<div class="services-section__tabs-nav-wrapper">
+						<div class="services-section__tabs-nav-wrapper" data-reveal="fade-up">
 							<div class="services-section__tabs-nav" id="tabs-nav">
 								<button class="tab-button tab-button--active" data-tab="0" data-i18n-text="services.tab1.short-name">Business Site</button>
 								<button class="tab-button" data-tab="1" data-i18n-text="services.tab2.short-name">Landing Page</button>
@@ -680,7 +680,7 @@
 						</div>
 
 						<!-- لوحات محتوى التبويبات الجوّالية -->
-						<div class="tab-panels" id="tab-panels">
+						<div class="tab-panels" id="tab-panels" data-reveal="fade-up" data-delay="1">
 
 							<!-- لوحة التبويب 01 — موقع تجاري -->
 							<div class="tab-panel tab-panel--active">
@@ -785,7 +785,7 @@
 				<div class="about-section__inner"  >
 
 					<!-- رأس القسم -->
-					<div class="section-header">
+					<div class="section-header" data-reveal="fade-up">
 						<div>
 							<p class="section-header__label" data-i18n-text="about.section-label">About</p>
 							<h2 class="section-header__title">
@@ -799,21 +799,21 @@
 					<div class="about-section__grid">
 
 						<!-- كتلة الفقرات التعريفية بتأثير الطابعة الآلية -->
-						<div class="about-section__typewriter-block">
+						<div class="about-section__typewriter-block" data-stagger>
 
-							<p class="typewriter-line" id="p1">
+							<p class="typewriter-line" id="p1" data-reveal="fade-up">
 								<span class="typewriter-line__text" data-i18n-text="about.bio.paragraph1">
 									I'm Amer — a Front-End developer based in Cairo. I build interfaces from scratch, with clean code and real attention to detail.
 								</span>
 							</p>
 
-							<p class="typewriter-line" id="p2">
+							<p class="typewriter-line" id="p2" data-reveal="fade-up">
 								<span class="typewriter-line__text" data-i18n-text="about.bio.paragraph2">
 									I care about the things most people skip — readable code, obvious interfaces, and deadlines that mean something.
 								</span>
 							</p>
 
-							<p class="typewriter-line" id="p3">
+							<p class="typewriter-line" id="p3" data-reveal="fade-up">
 								<span class="typewriter-line__text" data-i18n-text="about.bio.paragraph3">
 									When I'm not building, I'm learning. The web moves fast — staying current is part of the job.
 								</span>
@@ -825,31 +825,31 @@
 
 					<!-- قسم المهارات التقنية -->
 					<!-- id="skills-panel" يُستخدم من JS لتشغيل انيميشن ظهور الـ tags -->
-					<div class="about-section__skills" id="skills-panel">
+					<div class="about-section__skills" id="skills-panel" data-reveal="slide-right" data-duration="slow">
 
 						<p class="about-section__skills-title" data-i18n-text="about.skills.heading">Tech Stack</p>
 
 						<!-- مجموعة مهارات الواجهة الأمامية -->
 						<div class="skills-group">
 							<p class="skills-group__label" data-i18n-text="about.skills.group.frontend">Frontend</p>
-							<div class="skills-group__tags">
-								<span class="skill-tag" data-order="1"><span class="skill-tag__dot"></span>HTML</span>
-								<span class="skill-tag" data-order="2"><span class="skill-tag__dot"></span>CSS</span>
-								<span class="skill-tag" data-order="3"><span class="skill-tag__dot"></span>JS ES6</span>
-								<span class="skill-tag" data-order="4"><span class="skill-tag__dot"></span>React</span>
-								<span class="skill-tag" data-order="5"><span class="skill-tag__dot"></span>Next.js</span>
-								<span class="skill-tag" data-order="6"><span class="skill-tag__dot"></span>Tailwind CSS</span>
+							<div class="skills-group__tags" data-stagger>
+								<span class="skill-tag" data-order="1" data-reveal="scale-up"><span class="skill-tag__dot"></span>HTML</span>
+								<span class="skill-tag" data-order="2" data-reveal="scale-up"><span class="skill-tag__dot"></span>CSS</span>
+								<span class="skill-tag" data-order="3" data-reveal="scale-up"><span class="skill-tag__dot"></span>JS ES6</span>
+								<span class="skill-tag" data-order="4" data-reveal="scale-up"><span class="skill-tag__dot"></span>React</span>
+								<span class="skill-tag" data-order="5" data-reveal="scale-up"><span class="skill-tag__dot"></span>Next.js</span>
+								<span class="skill-tag" data-order="6" data-reveal="scale-up"><span class="skill-tag__dot"></span>Tailwind CSS</span>
 							</div>
 						</div>
 
 						<!-- مجموعة أدوات التطوير -->
 						<div class="skills-group">
 							<p class="skills-group__label" data-i18n-text="about.skills.group.tools">Tools</p>
-							<div class="skills-group__tags">
-								<span class="skill-tag" data-order="7"><span class="skill-tag__dot"></span>Git</span>
-								<span class="skill-tag" data-order="8"><span class="skill-tag__dot"></span>GitHub</span>
-								<span class="skill-tag" data-order="9"><span class="skill-tag__dot"></span>Vite</span>
-								<span class="skill-tag" data-order="10"><span class="skill-tag__dot"></span>Docker</span>
+							<div class="skills-group__tags" data-stagger>
+								<span class="skill-tag" data-order="7" data-reveal="scale-up"><span class="skill-tag__dot"></span>Git</span>
+								<span class="skill-tag" data-order="8" data-reveal="scale-up"><span class="skill-tag__dot"></span>GitHub</span>
+								<span class="skill-tag" data-order="9" data-reveal="scale-up"><span class="skill-tag__dot"></span>Vite</span>
+								<span class="skill-tag" data-order="10" data-reveal="scale-up"><span class="skill-tag__dot"></span>Docker</span>
 							</div>
 						</div>
 
@@ -864,15 +864,15 @@
 				<div class="contact-section__inner"  >
 
 					<!-- رأس القسم -->
-					<div class="section-header">
-						<p class="section-header__label" data-i18n-text="contact.eyebrow">Contact</p>
+					<div class="section-header" data-reveal="fade-up" data-delay="1">
+						<p class="section-header__label" data-reveal="scale-up" data-duration="fast" data-i18n-text="contact.eyebrow">Contact</p>
 						<!-- data-i18n-html لأن العنوان يحتوي <span class="outline"> متداخل -->
 						<h2 class="section-header__title" data-i18n-html="contact.section-title">Start a project <span class="outline">today</span></h2>
 						<p class="section-header__description" data-i18n-text="contact.section-description">Have something in mind? I reply within 24 hours.</p>
 					</div>
 
 					<!-- نموذج التواصل -->
-					<form class="contact-section__form">
+					<form class="contact-section__form" data-reveal="fade-up" data-delay="2" data-duration="slow">
 
 						<div class="form-group">
 							<label class="form-group__label" data-i18n-text="contact.form.name-label">Name</label>
@@ -901,21 +901,21 @@
 					<div class="contact-section__divider" data-i18n-text="contact.divider">or write directly</div>
 
 					<!-- أزرار التواصل المباشر (البريد الإلكتروني والواتساب) -->
-					<div class="contact-section__direct-buttons">
-						<a href="mailto:amernext.dev@gmail.com" class="btn-outline" data-i18n-text="contact.direct.email-button">
+					<div class="contact-section__direct-buttons" data-stagger>
+						<a href="mailto:amernext.dev@gmail.com" class="btn-outline" data-reveal="fade-up" data-i18n-text="contact.direct.email-button">
 							<svg class="icon icon--envelope" aria-hidden="true"><use href="/sprites/solid.svg#envelope"></use></svg> Email
 						</a>
-						<a href="https://wa.me/201037454618" class="contact-section__whatsapp-btn" target="_blank" rel="noopener noreferrer" data-i18n-text="contact.direct.whatsapp-button">
+						<a href="https://wa.me/201037454618" class="contact-section__whatsapp-btn" data-reveal="fade-up" target="_blank" rel="noopener noreferrer" data-i18n-text="contact.direct.whatsapp-button">
 							<svg class="icon icon--whatsapp" aria-hidden="true"><use href="/sprites/brands.svg#whatsapp"></use></svg>
 							WhatsApp
 						</a>
 					</div>
 
 					<!-- شارات التوافر والوقت المستغرق للرد -->
-					<div class="contact-section__availability-chips">
+					<div class="contact-section__availability-chips" data-stagger>
 						<!-- الشارة الأولى تحتوي نقطة خضراء + نص، لذا نستخدم data-i18n-html لأنها بنية هجينة -->
 						<!-- الشارة الثانية تحتوي أيقونة + نص، وهي بنية هجينة أيضاً -->
-						<span class="contact-section__chip" data-i18n-html="contact.chip.response-time">
+						<span class="contact-section__chip" data-reveal="scale-up" data-i18n-html="contact.chip.response-time">
 							<svg class="icon icon--bolt" aria-hidden="true"><use href="/sprites/solid.svg#bolt"></use></svg> Faster than you think!
 						</span>
 					</div>
@@ -930,7 +930,7 @@
 			<div class="site-footer__inner"  >
 
 				<!-- هوية المطور — شعار + اسم + المسمى الوظيفي -->
-				<div class="site-footer__logo-wrapper">
+				<div class="site-footer__logo-wrapper" data-reveal="fade-up">
 					<a href="#" class="site-footer__logo-link" aria-label="الصفحة الرئيسية — عامر مطوّر واجهات أمامية" data-i18n-aria="footer.logo.aria-label">
 						<picture>
 							<source srcset="/src/assets/images/amer_logo/logo_icon.avif" type="image/avif">
@@ -943,20 +943,20 @@
 				</div>
 
 				<!-- روابط التواصل الاجتماعي — كل رابط يحتوي أيقونة فقط لذا aria-label على كل منها إلزامي -->
-				<div class="site-footer__social-links">
-					<a href="https://wa.me/201280787721" class="social-link" aria-label="تواصل مع عامر على واتساب" data-i18n-aria="footer.social.whatsapp.aria-label" target="_blank" rel="noopener noreferrer">
+				<div class="site-footer__social-links" data-stagger>
+					<a href="https://wa.me/201280787721" class="social-link" data-reveal="scale-up" aria-label="تواصل مع عامر على واتساب" data-i18n-aria="footer.social.whatsapp.aria-label" target="_blank" rel="noopener noreferrer">
 						<svg class="icon icon--whatsapp" aria-hidden="true"><use href="/sprites/brands.svg#whatsapp"></use></svg>
 					</a>
-					<a href="https://github.com/amer-developer0" class="social-link" aria-label="زيارة صفحة عامر على GitHub" data-i18n-aria="footer.social.github.aria-label" target="_blank" rel="noopener noreferrer">
+					<a href="https://github.com/amer-developer0" class="social-link" data-reveal="scale-up" aria-label="زيارة صفحة عامر على GitHub" data-i18n-aria="footer.social.github.aria-label" target="_blank" rel="noopener noreferrer">
 						<svg class="icon icon--github" aria-hidden="true"><use href="/sprites/brands.svg#github"></use></svg>
 					</a>
-					<a href="https://www.facebook.com/share/1HDT2VKw3a/" class="social-link" aria-label="زيارة صفحة عامر على Facebook" data-i18n-aria="footer.social.facebook.aria-label" target="_blank" rel="noopener noreferrer">
+					<a href="https://www.facebook.com/share/1HDT2VKw3a/" class="social-link" data-reveal="scale-up" aria-label="زيارة صفحة عامر على Facebook" data-i18n-aria="footer.social.facebook.aria-label" target="_blank" rel="noopener noreferrer">
 						<svg class="icon icon--facebook" aria-hidden="true"><use href="/sprites/brands.svg#facebook"></use></svg>
 					</a>
 				</div>
 
 				<!-- البيانات الوصفية للتذييل — بريد إلكتروني، هاتف، حقوق النشر -->
-				<div class="site-footer__meta">
+				<div class="site-footer__meta" data-reveal="fade-up" data-delay="2">
 					<!-- البريد الإلكتروني: النص يحتوي جزءاً ثابتاً ("Email:") + رابط، لذا نُقسّمه إلى span منفصلين -->
 					<p class="site-footer__email-line">
 						<span data-i18n-text="footer.meta.email-prefix">Email:</span>
