@@ -9,6 +9,8 @@ import '/src/style.css';
 // - Services
 import { initI18n, prefetchLocales } from '/src/services/js/i18n.js';
 import { initTheme } from '/src/services/js/theme.js';
+import '/src/services/js/reveal.js';
+
 // - Components
 import { initHeader } from '/src/components/header/header.js';
 import '/src/components/services/services.js';
