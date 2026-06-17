@@ -10,7 +10,7 @@
  */
 
 import { toggleLanguage, getCurrentLanguage } from '/src/services/js/i18n.js';
-import { toggleTheme, getCurrentTheme, isDarkMode } from '/src/services/js/theme.js';
+import { toggleTheme, isDarkMode } from '/src/services/js/theme.js';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 1. DOM References
@@ -22,7 +22,7 @@ const burgerBtn        = document.getElementById('burger-btn');
 const themeToggleBtn   = document.getElementById('theme-toggle');
 const themeIconSpan    = document.getElementById('theme-icon');
 const langToggleBtn    = document.getElementById('lang-toggle');
-const headerLangLabel  = langToggleBtn?.querySelector('.lang-label');
+const headerLangLabel  = langToggleBtn?.querySelector('.site-header__lang-label');
 
 // Mobile nav (sidebar / drawer)
 const mobileNav        = document.getElementById('mobile-nav');
@@ -31,7 +31,7 @@ const mobileThemeBtn   = document.getElementById('mobile-theme-toggle');
 const mobileThemeIcon  = document.getElementById('mobile-theme-icon');
 const mobileThemeSub   = document.getElementById('mobile-theme-sub');
 const mobileThemeSwitch = document.getElementById('mobile-theme-switch');
-const mobileLangBtn    = document.getElementById('mobile-lang-toggle');
+const mobileLangBtn    = document.querySelector('.site-header__lang-toggle--mobile');
 const mobileLangBadgeAr = document.getElementById('mobile-lang-badge-ar');
 const mobileLangBadgeEn = document.getElementById('mobile-lang-badge-en');
 const mobileLangSub    = document.getElementById('mobile-lang-sub');
@@ -62,7 +62,7 @@ const SWIPE_THRESHOLD = 60;  // px — minimum delta to trigger swipe close
 
 /** فتح القائمة الجانبية وتحديث ARIA ومنع تمرير الصفحة */
 function openSidebar() {
-  if (isOpen) return;
+  if (isOpen || !mobileNav) return;
   isOpen = true;
 
   mobileNav.setAttribute('aria-hidden', 'false');
@@ -73,7 +73,7 @@ function openSidebar() {
 
 /** إغلاق القائمة الجانبية واستعادة تمرير الصفحة */
 function closeSidebar() {
-  if (!isOpen) return;
+  if (!isOpen || !mobileNav) return;
   isOpen = false;
 
   mobileNav.setAttribute('aria-hidden', 'true');
