@@ -57,9 +57,30 @@ function _applyTranslations(locale) {
   const htmlMap  = locale['i18n-html']  ?? {};
   const ariaMap  = locale['i18n-aria']  ?? {};
   const altMap   = locale['i18n-alt']   ?? {};
+  const headMap  = locale['i18n-head']  ?? {};
 
-  // page <title> is a special text case
-  const pageTitle = textMap['page.title'];
+  // ── Head elements (i18n-head) ─────────────────────────────────────────────
+  // Handles <title> and <meta> tags annotated with data-i18n-head
+  // translation.json places page.title (and og/twitter/meta keys) here
+  document.querySelectorAll('[data-i18n-head]').forEach((el) => {
+    const key   = el.dataset.i18nHead;
+    const value = headMap[key];
+    if (value === undefined) {
+      console.warn(`[i18n] Missing head key: "${key}"`);
+      return;
+    }
+    if (el.tagName === 'TITLE') {
+      el.textContent = value;
+      document.title = value;          // keep document.title in sync
+    } else if (el.hasAttribute('content')) {
+      el.setAttribute('content', value);
+    } else {
+      el.textContent = value;
+    }
+  });
+
+  // page <title> legacy fallback — if locale still puts it under i18n-text
+  const pageTitle = headMap['page.title'] ?? textMap['page.title'];
   if (pageTitle) document.title = pageTitle;
 
   // Single querySelectorAll pass — union selector keeps it to one DOM traversal
@@ -120,7 +141,8 @@ function _applyTranslations(locale) {
  * @param {object} locale - The active locale object (used to read `_meta.dir`)
  */
 function _syncHtmlAttributes(lang, locale) {
-  const dir = locale?._meta?.dir ?? (lang === 'ar' ? 'rtl' : 'ltr');
+  // translation.json uses "_meta.direction"; older locales may use "_meta.dir" — support both
+  const dir = locale?._meta?.direction ?? locale?._meta?.dir ?? (lang === 'ar' ? 'rtl' : 'ltr');
   document.documentElement.lang = lang;
   document.documentElement.dir  = dir;
 }
@@ -189,7 +211,9 @@ export function isRTL(lang) {
   const target = lang ?? _currentLang;
   // Resolve from cache first; fall back to a simple "ar" heuristic
   const locale = _localeCache[target];
-  if (locale?._meta?.dir) return locale._meta.dir === 'rtl';
+  // support both "_meta.direction" (translation.json) and legacy "_meta.dir"
+  const metaDir = locale?._meta?.direction ?? locale?._meta?.dir;
+  if (metaDir) return metaDir === 'rtl';
   return target === 'ar';
 }
 
@@ -208,7 +232,7 @@ export function translate(key) {
     return key;
   }
 
-  const buckets = ['i18n-text', 'i18n-html', 'i18n-aria', 'i18n-alt'];
+  const buckets = ['i18n-text', 'i18n-html', 'i18n-aria', 'i18n-alt', 'i18n-head'];
   for (const bucket of buckets) {
     if (locale[bucket]?.[key] !== undefined) return locale[bucket][key];
   }
@@ -244,7 +268,7 @@ export async function toggleLanguage() {
  * @returns {object|null} The `_meta` object, or null if locale isn't loaded yet.
  *
  * @example
- * const { dir } = getLocaleMetadata('ar'); // { lang: "ar", dir: "rtl", ... }
+ * const { direction } = getLocaleMetadata('ar'); // { language: "ar", direction: "rtl", ... }
  */
 export function getLocaleMetadata(lang) {
   const target = lang ?? _currentLang;

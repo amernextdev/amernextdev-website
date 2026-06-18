@@ -31,7 +31,8 @@ const mobileThemeBtn   = document.getElementById('mobile-theme-toggle');
 const mobileThemeIcon  = document.getElementById('mobile-theme-icon');
 const mobileThemeSub   = document.getElementById('mobile-theme-sub');
 const mobileThemeSwitch = document.getElementById('mobile-theme-switch');
-const mobileLangBtn    = document.querySelector('.site-header__lang-toggle--mobile');
+const mobileLangBtn    = document.querySelector('.site-header__lang-toggle--mobile'); // زر اللغة في شريط الهيدر (موبايل)
+const mobileLangCard   = document.getElementById('mobile-lang-toggle');               // بطاقة اللغة داخل القائمة الجانبية
 const mobileLangBadgeAr = document.getElementById('mobile-lang-badge-ar');
 const mobileLangBadgeEn = document.getElementById('mobile-lang-badge-en');
 const mobileLangSub    = document.getElementById('mobile-lang-sub');
@@ -142,24 +143,21 @@ function onScroll() {
 /** تحديث أيقونة الهيدر والحالة البصرية لبطاقة الثيم في الموبايل */
 function syncThemeUI() {
   const dark = isDarkMode();
+  const lang = getCurrentLanguage();
 
-  // أيقونة الهيدر — شمس في الوضع الفاتح، قمر في الوضع الداكن
-  if (themeIconSpan) {
-    themeIconSpan.innerHTML = dark
-      ? `<svg class="icon icon--moon"><use href="/sprites/solid.svg#moon"></use></svg>`
-      : `<svg class="icon icon--sun"><use href="/sprites/solid.svg#sun"></use></svg>`;
-  }
+  // الأيقونة تعكس الوضع الحالي — قمر في الداكن، شمس في الفاتح (متسق في الهيدر والموبايل)
+  const moonSVG = `<svg class="icon icon--moon"><use href="/sprites/solid.svg#moon"></use></svg>`;
+  const sunSVG  = `<svg class="icon icon--sun"><use href="/sprites/solid.svg#sun"></use></svg>`;
+  const currentIcon = dark ? moonSVG : sunSVG;
 
-  // أيقونة + نص بطاقة الموبايل
-  if (mobileThemeIcon) {
-    mobileThemeIcon.innerHTML = dark
-      ? `<svg class="icon icon--moon"><use href="/sprites/solid.svg#moon"></use></svg>`
-      : `<svg class="icon icon--sun"><use href="/sprites/solid.svg#sun"></use></svg>`;
-  }
+  if (themeIconSpan)  themeIconSpan.innerHTML  = currentIcon;
+  if (mobileThemeIcon) mobileThemeIcon.innerHTML = currentIcon;
 
-  // النص الفرعي للبطاقة (Dark mode / Light mode)
+  // النص الفرعي يعكس الوضع الحالي ويراعي اللغة النشطة
   if (mobileThemeSub) {
-    mobileThemeSub.textContent = dark ? 'Dark mode' : 'Light mode';
+    const darkLabel  = lang === 'ar' ? 'الوضع الداكن'  : 'Dark mode';
+    const lightLabel = lang === 'ar' ? 'الوضع الفاتح' : 'Light mode';
+    mobileThemeSub.textContent = dark ? darkLabel : lightLabel;
   }
 
   // تفعيل / تعطيل الـ switch البصري
@@ -189,10 +187,10 @@ function syncLangUI() {
   if (mobileLangBadgeAr) mobileLangBadgeAr.classList.toggle('is-active', lang === 'ar');
   if (mobileLangBadgeEn) mobileLangBadgeEn.classList.toggle('is-active', lang === 'en');
 
-  // النص الفرعي لبطاقة اللغة
+  // النص الفرعي يعكس اللغة الحالية النشطة (مش اللي هتتحول إليها)
   if (mobileLangSub) {
     mobileLangSub.textContent =
-      lang === 'ar' ? 'English / الإنجليزية' : 'Arabic / العربية';
+      lang === 'ar' ? 'Arabic / العربية' : 'English / الإنجليزية';
   }
 }
 
@@ -200,6 +198,7 @@ function syncLangUI() {
 async function handleLangToggle() {
   await toggleLanguage();
   syncLangUI();
+  syncThemeUI(); // النص الفرعي للثيم يعتمد على اللغة الحالية — يُحدَّث معها
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -262,6 +261,7 @@ if (mobileThemeBtn)  mobileThemeBtn.addEventListener('click', handleThemeToggle)
 
 if (langToggleBtn)   langToggleBtn.addEventListener('click', handleLangToggle);
 if (mobileLangBtn)   mobileLangBtn.addEventListener('click', handleLangToggle);
+if (mobileLangCard)  mobileLangCard.addEventListener('click', handleLangToggle);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 5. Init
