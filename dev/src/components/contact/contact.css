@@ -265,7 +265,7 @@
   width: 15px;
   height: 15px;
   flex-shrink: 0;
-  color: #25D366;
+  /* color: #25D366; */
 }
 
 /* Availability Chips */
