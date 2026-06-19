@@ -7,7 +7,6 @@ import '/src/style.css';
 
 // === SERVICES ===
 import { initI18n, prefetchLocales } from '/src/services/js/i18n.js';
-import { initTheme } from '/src/services/js/theme.js';
 import '/src/services/js/reveal.js';           // scroll-reveal animations
 
 // === COMPONENTS ===
@@ -33,8 +32,7 @@ const getAlternateLocale = () =>
 // ===============================================
 
 try {
-  // Run i18n and theme in parallel — they don't depend on each other
-  await Promise.all([initI18n(), initTheme()]);
+  await initI18n();
 
   // Prefetch the other locale in the background (non-blocking)
   requestIdleCallback(() => prefetchLocales(getAlternateLocale()));

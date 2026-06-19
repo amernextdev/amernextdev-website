@@ -31,8 +31,6 @@
 		"header.cta.label": "نص زر الدعوة لاتخاذ إجراء في رأس الصفحة — سطح المكتب فقط",
 		"mobile.cta.label": "نص زر الدعوة لاتخاذ إجراء داخل القائمة الجوّالة",
 
-		"mobile-nav.controls.theme-toggle.label": "عنوان بطاقة تبديل السمة في القائمة الجوّالة",
-		"mobile-nav.controls.theme-toggle.sub":   "النص الفرعي الذي يعرض وضع السمة الحالي (داكن / فاتح) — يُحدَّث ديناميكياً بواسطة JS",
 		"mobile-nav.controls.lang-toggle.label":  "عنوان بطاقة تبديل اللغة في القائمة الجوّالة",
 
 		"hero.eyebrow":     "النص الصغير فوق العنوان الرئيسي في قسم Hero — المسمى الوظيفي",
@@ -149,7 +147,6 @@
 	"i18n-aria": {
 		"header.logo.aria-label":                  "وصف رابط الشعار في رأس الصفحة لقارئات الشاشة — يصف الوجهة وهوية الموقع",
 		"header.nav.aria-label":                   "وصف عنصر nav الرئيسي — يميّزه عن nav القائمة الجوّالة",
-		"header.controls.theme-toggle.aria-label": "وصف زر تبديل السمة في رأس الصفحة — يحتوي أيقونة فقط بلا نص مرئي",
 		"header.controls.lang-toggle.aria-label":  "وصف زر تبديل اللغة في رأس الصفحة — يحتوي نصاً مختصراً (AR/EN) غير كافٍ وحده",
 		"header.burger.aria-label":                "وصف زر فتح القائمة الجوّالة — أيقونة همبرغر بلا نص مرئي",
 
@@ -157,7 +154,6 @@
 		"mobile-nav.logo.aria-label":                  "وصف رابط الشعار داخل القائمة الجوّالة",
 		"mobile-nav.close-button.aria-label":          "وصف زر إغلاق القائمة الجوّالة — أيقونة X بلا نص مرئي",
 		"mobile-nav.nav.aria-label":                   "وصف عنصر nav داخل القائمة الجوّالة",
-		"mobile-nav.controls.theme-toggle.aria-label": "وصف بطاقة تبديل السمة في القائمة الجوّالة",
 		"mobile-nav.controls.lang-toggle.aria-label":  "وصف بطاقة تبديل اللغة في القائمة الجوّالة",
 		"mobile-nav.social.whatsapp.aria-label":       "وصف رابط واتساب في القائمة الجوّالة — أيقونة فقط",
 		"mobile-nav.social.github.aria-label":         "وصف رابط GitHub في القائمة الجوّالة — أيقونة فقط",

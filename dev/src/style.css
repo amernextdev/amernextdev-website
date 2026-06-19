@@ -441,12 +441,6 @@ body {
 .toast--warning .toast__progress::after { background-color: var(--color-warning); }
 .toast--info    .toast__progress::after { background-color: var(--color-info); }
 
-/* Light Mode */
-[data-theme="light"] .toast-notification {
-  background-color: var(--color-surface);
-  border-color: var(--color-border-strong);
-}
-
 /* Responsive — Mobile */
 @media (max-width: 640px) {
   .toast-notification {

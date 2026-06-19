@@ -2,15 +2,13 @@
  * @file header.js
  * @description Header & mobile navigation logic.
  *              Handles: sidebar open/close, scroll-spy active links,
- *              language toggle (via i18n.js), and theme toggle (via theme.js).
+ *              and language toggle (via i18n.js).
  *
  * Dependencies (external modules — no direct logic duplicated here):
  *   - toggleLanguage, getCurrentLanguage  from i18n.js
- *   - toggleTheme, getCurrentTheme, isDarkMode  from theme.js
  */
 
 import { toggleLanguage, getCurrentLanguage } from '/src/services/js/i18n.js';
-import { toggleTheme, isDarkMode } from '/src/services/js/theme.js';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 1. DOM References
@@ -19,18 +17,12 @@ import { toggleTheme, isDarkMode } from '/src/services/js/theme.js';
 // Header
 const siteHeader       = document.getElementById('site-header');
 const burgerBtn        = document.getElementById('burger-btn');
-const themeToggleBtn   = document.getElementById('theme-toggle');
-const themeIconSpan    = document.getElementById('theme-icon');
 const langToggleBtn    = document.getElementById('lang-toggle');
 const headerLangLabel  = langToggleBtn?.querySelector('.site-header__lang-label');
 
 // Mobile nav (sidebar / drawer)
 const mobileNav        = document.getElementById('mobile-nav');
 const mobileNavClose   = document.getElementById('mobile-nav-close');
-const mobileThemeBtn   = document.getElementById('mobile-theme-toggle');
-const mobileThemeIcon  = document.getElementById('mobile-theme-icon');
-const mobileThemeSub   = document.getElementById('mobile-theme-sub');
-const mobileThemeSwitch = document.getElementById('mobile-theme-switch');
 const mobileLangBtn    = document.querySelector('.site-header__lang-toggle--mobile'); // زر اللغة في شريط الهيدر (موبايل)
 const mobileLangCard   = document.getElementById('mobile-lang-toggle');               // بطاقة اللغة داخل القائمة الجانبية
 const mobileLangBadgeAr = document.getElementById('mobile-lang-badge-ar');
@@ -138,40 +130,6 @@ function onScroll() {
   });
 }
 
-// ── Theme ─────────────────────────────────────────────────────────────────────
-
-/** تحديث أيقونة الهيدر والحالة البصرية لبطاقة الثيم في الموبايل */
-function syncThemeUI() {
-  const dark = isDarkMode();
-  const lang = getCurrentLanguage();
-
-  // الأيقونة تعكس الوضع الحالي — قمر في الداكن، شمس في الفاتح (متسق في الهيدر والموبايل)
-  const moonSVG = `<svg class="icon icon--moon"><use href="/sprites/solid.svg#moon"></use></svg>`;
-  const sunSVG  = `<svg class="icon icon--sun"><use href="/sprites/solid.svg#sun"></use></svg>`;
-  const currentIcon = dark ? moonSVG : sunSVG;
-
-  if (themeIconSpan)  themeIconSpan.innerHTML  = currentIcon;
-  if (mobileThemeIcon) mobileThemeIcon.innerHTML = currentIcon;
-
-  // النص الفرعي يعكس الوضع الحالي ويراعي اللغة النشطة
-  if (mobileThemeSub) {
-    const darkLabel  = lang === 'ar' ? 'الوضع الداكن'  : 'Dark mode';
-    const lightLabel = lang === 'ar' ? 'الوضع الفاتح' : 'Light mode';
-    mobileThemeSub.textContent = dark ? darkLabel : lightLabel;
-  }
-
-  // تفعيل / تعطيل الـ switch البصري
-  if (mobileThemeSwitch) {
-    mobileThemeSwitch.classList.toggle('is-on', dark);
-  }
-}
-
-/** تبديل الثيم والمزامنة الفورية للـ UI */
-function handleThemeToggle() {
-  toggleTheme();
-  syncThemeUI();
-}
-
 // ── Language ──────────────────────────────────────────────────────────────────
 
 /** تحديث نص زر اللغة في الهيدر والشارات النشطة في بطاقة الموبايل */
@@ -198,7 +156,6 @@ function syncLangUI() {
 async function handleLangToggle() {
   await toggleLanguage();
   syncLangUI();
-  syncThemeUI(); // النص الفرعي للثيم يعتمد على اللغة الحالية — يُحدَّث معها
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -252,11 +209,6 @@ if (mobileNav) {
 
 window.addEventListener('scroll', onScroll, { passive: true });
 
-// ── Theme Toggle ─────────────────────────────────────────────────────────────
-
-if (themeToggleBtn)  themeToggleBtn.addEventListener('click', handleThemeToggle);
-if (mobileThemeBtn)  mobileThemeBtn.addEventListener('click', handleThemeToggle);
-
 // ── Language Toggle ───────────────────────────────────────────────────────────
 
 if (langToggleBtn)   langToggleBtn.addEventListener('click', handleLangToggle);
@@ -268,13 +220,10 @@ if (mobileLangCard)  mobileLangCard.addEventListener('click', handleLangToggle);
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
- * تهيئة الهيدر — يُستدعى من main.js بعد initI18n() و initTheme()
+ * تهيئة الهيدر — يُستدعى من main.js بعد initI18n()
  * يضمن أن الـ UI يعكس الحالة المحفوظة منذ أول تحميل
  */
 export function initHeader() {
-  // مزامنة واجهة الثيم مع الحالة المُحمَّلة من theme.js
-  syncThemeUI();
-
   // مزامنة واجهة اللغة مع الحالة المُحمَّلة من i18n.js
   syncLangUI();
 

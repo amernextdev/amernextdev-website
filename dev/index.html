@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" dir="ltr" data-theme="dark">
+<html lang="en" dir="ltr">
 	<head>
 	<!-- ====== البيانات الأساسية للصفحة ====== -->
 	<!-- charset أولاً لضمان تفسير صحيح لكل ما يليه من بيانات وصفية -->
@@ -101,15 +101,8 @@
 					</ul>
 				</nav>
 
-				<!-- أدوات التحكم — تجميع زر السمة وزر اللغة وزر الدعوة لاتخاذ إجراء -->
+				<!-- أدوات التحكم — تجميع زر اللغة وزر الدعوة لاتخاذ إجراء -->
 				<div class="site-header__controls">
-
-					<!-- زر تبديل السمة (فاتح/داكن) — يحتوي على أيقونة فقط لذا aria-label إلزامي -->
-					<button class="site-header__theme-toggle" id="theme-toggle" aria-label="تبديل سمة العرض" data-i18n-aria="header.controls.theme-toggle.aria-label">
-						<span id="theme-icon" aria-hidden="true">
-							<svg class="icon icon--sun"><use href="/sprites/solid.svg#sun"></use></svg>
-						</span>
-					</button>
 
 					<!-- زر تبديل اللغة — يحتوي على نص مختصر (AR/EN) لذا aria-label يوضح الغرض كاملاً -->
 					<button class="site-header__lang-toggle lang-toggle" id="lang-toggle" aria-label="تبديل لغة الموقع" data-i18n-aria="header.controls.lang-toggle.aria-label">
@@ -187,24 +180,8 @@
 					<svg class="icon icon--arrow-right" aria-hidden="true"><use href="/sprites/solid.svg#arrow-right"></use></svg>
 				</a>
 
-				<!-- أدوات التحكم داخل القائمة الجوّالة (السمة واللغة) -->
+				<!-- أدوات التحكم داخل القائمة الجوّالة (اللغة) -->
 				<div class="mobile-nav__controls">
-
-					<!-- بطاقة تبديل السمة — تعرض الحالة الحالية كنص مساعد -->
-					<button class="mobile-nav__ctrl-card" id="mobile-theme-toggle" aria-label="تبديل سمة العرض" data-i18n-aria="mobile-nav.controls.theme-toggle.aria-label">
-						<div class="mobile-nav__ctrl-card-left">
-							<span class="mobile-nav__ctrl-icon" aria-hidden="true" id="mobile-theme-icon">
-								<svg class="icon icon--moon"><use href="/sprites/solid.svg#moon"></use></svg>
-							</span>
-							<div class="mobile-nav__ctrl-text">
-								<span class="mobile-nav__ctrl-title" data-i18n-text="mobile-nav.controls.theme-toggle.label">Theme</span>
-								<!-- النص الفرعي يُحدَّث بواسطة JS ليعكس الوضع الحالي (داكن/فاتح) -->
-								<span class="mobile-nav__ctrl-sub" id="mobile-theme-sub" data-i18n-text="mobile-nav.controls.theme-toggle.sub">Dark mode</span>
-							</div>
-						</div>
-						<!-- مفتاح التبديل مخفي عن قارئات الشاشة لأن الزر الأب هو المتحكم الفعلي -->
-						<span class="mobile-nav__switch" id="mobile-theme-switch" aria-hidden="true"></span>
-					</button>
 
 					<!-- بطاقة تبديل اللغة — تعرض الشارات (AR/EN) للإشارة إلى اللغة النشطة -->
 					<button class="mobile-nav__ctrl-card lang-toggle" id="mobile-lang-toggle" aria-label="تبديل لغة الموقع" data-i18n-aria="mobile-nav.controls.lang-toggle.aria-label">
