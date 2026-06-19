@@ -289,6 +289,15 @@ body {
   flex-shrink:    0;
 }
 
+/* .icon--flip-rtl — mirrors directional icons (arrows) in RTL layouts */
+.icon--flip-rtl {
+  transition: transform var(--transition-base);
+}
+
+[dir="rtl"] .icon--flip-rtl {
+  transform: scaleX(-1);
+}
+
 /* .nav__link base — shared between site-header nav and mobile-nav */
 .nav__link {
   position:        relative;

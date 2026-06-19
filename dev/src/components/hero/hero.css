@@ -51,14 +51,24 @@
   gap: var(--space-5);   /* rhythm */
 }
 
-/* Eyebrow label */
+/* Eyebrow label - UNIFIED BADGE STYLE */
 .hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
-  letter-spacing: var(--ls-widest);
+  letter-spacing: var(--ls-wider);
   text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-1);
+  
+  color: var(--color-accent);
+  background-color: var(--color-amber-surface);
+  border: 1px solid var(--color-amber-border);
+  border-radius: var(--radius-full);
+  
+  padding: var(--space-1) var(--space-3);
+  margin-bottom: var(--space-4); /* مسافة أسفل الشارة لتفصلها عن العنوان */
 }
 
 /* Main headline */
@@ -522,4 +532,56 @@
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+
+/* ================================================
+   UNIFICATION FIX: Uniform Eyebrow Badge on ALL devices
+   ================================================ */
+
+/* إصلاح أي تداخل في الموبايل وضمان تطبيق نفس الستايل */
+@media (max-width: 560px) {
+  .hero__eyebrow {
+    display: inline-flex !important;
+    align-items: center !important;
+    width: fit-content !important;
+    font-size: var(--fs-xs) !important;
+    font-weight: var(--fw-semibold) !important;
+    letter-spacing: var(--ls-wider) !important;
+    text-transform: uppercase !important;
+    color: var(--color-accent) !important;
+    background-color: var(--color-amber-surface) !important;
+    border: 1px solid var(--color-amber-border) !important;
+    border-radius: var(--radius-full) !important;
+    padding: var(--space-1) var(--space-3) !important;
+    margin-bottom: var(--space-4) !important; /* حافظ على مسافة ثابتة */
+    margin-top: 0 !important; /* إلغاء أي هوامش علوية */
+  }
+}
+
+@media (max-width: 380px) {
+  .hero__eyebrow {
+    margin-bottom: var(--space-3) !important; /* تقليل المسافة قليلاً للشاشات الصغيرة جداً */
+  }
+}
+
+
+/* ================================================
+   BUTTON GHOST - نفس التصميم على جميع الشاشات
+   ================================================ */
+
+/* تصميم موحد للجميع (ديسكتوب + موبايل) */
+.btn-ghost {
+  padding: var(--space-3) var(--space-4) !important;
+  font-size: var(--fs-sm) !important;
+  border-radius: var(--radius-md) !important;
+  background: transparent !important;
+  border: 1px solid var(--color-border-strong) !important;
+  color: var(--color-text-heading) !important;
+  transition: var(--transition-base) !important;
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-accent) !important;
+  color: var(--color-accent) !important;
 }
