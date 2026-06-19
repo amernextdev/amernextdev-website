@@ -114,6 +114,7 @@
 		"about.bio.paragraph3":      "الفقرة التعريفية الثالثة — التعلم المستمر ومواكبة تطور الويب",
 		"about.skills.heading":        "عنوان قسم المهارات التقنية",
 		"about.skills.group.frontend": "تسمية مجموعة مهارات الواجهة الأمامية",
+		"about.skills.group.technologies": "تسمية مجموعة التقنيات والأدوات (Git, Docker, إلخ)",
 		"about.skills.group.tools":    "تسمية مجموعة أدوات التطوير",
 
 		"contact.eyebrow":             "التسمية الصغيرة أعلى عنوان قسم التواصل",

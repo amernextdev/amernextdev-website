@@ -19,9 +19,30 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 50% 50% at 50% 0%,   var(--color-amber-glow-sm) 0%, transparent 65%),
-    radial-gradient(ellipse 30% 40% at 10% 90%,  var(--color-info-surface)  0%, transparent 60%);
+    /* Amber — يبدأ من وسط القسم للأسفل، شفاف تماماً في الأعلى */
+    radial-gradient(ellipse 70% 55% at 50% 65%,  rgba(245,158,11,0.10) 0%, transparent 65%),
+    /* Info  — يسار أسفل */
+    radial-gradient(ellipse 36% 40% at 6%  92%, rgba(59,130,246,0.05)  0%, transparent 58%),
+    /* Success pulse — يمين أسفل */
+    radial-gradient(ellipse 26% 32% at 94% 88%, rgba(34,197,94,0.03)   0%, transparent 56%);
+  /* mask يجعل الـ glow يتلاشى في الأعلى ويظهر تدريجياً */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 100%);
+  mask-image:         linear-gradient(to bottom, transparent 0%, black 30%, black 100%);
   pointer-events: none;
+  z-index: 0;
+}
+
+/* Fade divider → Footer (bg-secondary) */
+#contact::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent 0%, var(--color-bg-secondary) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .contact-section__inner {
@@ -30,7 +51,7 @@
   margin-inline: auto;
   padding-inline: var(--space-8);
   position: relative;
-  z-index: var(--z-raised);
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -366,6 +387,18 @@
 @media (max-width: 640px) {
   #contact {
     padding-block: var(--space-16);
+  }
+
+  #contact::before {
+    background:
+      radial-gradient(ellipse 100% 50% at 50% 70%,  rgba(245,158,11,0.09) 0%, transparent 62%),
+      radial-gradient(ellipse  62% 32% at 4%  90%, rgba(59,130,246,0.05)  0%, transparent 55%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 100%);
+    mask-image:         linear-gradient(to bottom, transparent 0%, black 25%, black 100%);
+  }
+
+  #contact::after {
+    height: 60px;
   }
 
   .contact-section__inner {
