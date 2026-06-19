@@ -173,6 +173,61 @@
   display: flex;
 }
 
+/* Switch-out animation — old panel fades/softens before the new
+   one appears. Short and gentle so it never feels like a delay. */
+.service-detail-panel--switch-out {
+  animation: service-panel-switch-out 150ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+@keyframes service-panel-switch-out {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.985) translateY(4px);
+  }
+}
+
+/* Switch-in animation — independent of reveal.js / data-reveal system.
+   Re-triggered via JS (class removed + reflow + re-added) on EVERY
+   switch, not just the first time, so the panel always animates in.
+   Softer scale+fade (expo-out easing) reads smoother than a hard slide. */
+.service-detail-panel--switch-in {
+  animation: service-panel-switch-in 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes service-panel-switch-in {
+  from {
+    opacity: 0;
+    transform: scale(0.985) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.service-detail-panel--switch-in,
+.service-detail-panel--switch-out {
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-detail-panel--switch-in {
+    animation: service-panel-fade-in 250ms ease both;
+  }
+  .service-detail-panel--switch-out {
+    animation: none;
+  }
+}
+
+@keyframes service-panel-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 .service-detail-panel__top {
   display: flex;
   flex-direction: column;
@@ -302,55 +357,6 @@
 }
 
 /* Mobile Tabs Layout */
-.services-section__tabs-nav-wrapper {
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-
-.services-section__tabs-nav-wrapper::-webkit-scrollbar {
-  display: none;
-}
-
-.services-section__tabs-nav {
-  display: flex;
-  gap: var(--space-2);
-  padding-block-end: var(--space-1);
-  min-width: max-content;
-}
-
-.tab-button {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-primary);
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-medium);
-  letter-spacing: var(--ls-wide);
-  white-space: nowrap;
-  padding: var(--space-2) var(--space-5);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-full);
-  color: var(--color-text-muted);
-  cursor: pointer;
-  transition:
-    background-color var(--transition-base),
-    border-color     var(--transition-base),
-    color            var(--transition-base);
-}
-
-.tab-button:hover {
-  color: var(--color-text-body);
-  border-color: var(--color-border-strong);
-}
-
-.tab-button--active {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-text-inverse);
-  font-weight: var(--fw-semibold);
-}
-
 .tab-dots {
   display: flex;
   justify-content: center;
@@ -391,6 +397,59 @@
 
 .tab-panel--active {
   display: flex;
+}
+
+/* Switch-out — old tab panel softens out before the new appears */
+.tab-panel--switch-out {
+  animation: tab-panel-switch-out 140ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+@keyframes tab-panel-switch-out {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.985) translateY(4px);
+  }
+}
+
+/* Switch-in animation — independent of reveal.js / data-reveal system.
+   Re-triggered via JS on every tab switch (not just first time).
+   Expo-out easing + soft scale reads smoother than a hard slide-up. */
+.tab-panel--switch-in {
+  animation: tab-panel-switch-in 440ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes tab-panel-switch-in {
+  from {
+    opacity: 0;
+    transform: scale(0.985) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.tab-panel--switch-in,
+.tab-panel--switch-out {
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-panel--switch-in {
+    animation: tab-panel-fade-in 220ms ease both;
+  }
+  .tab-panel--switch-out {
+    animation: none;
+  }
+}
+
+@keyframes tab-panel-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .tab-panel__icon {
@@ -590,3 +649,53 @@
     font-size: var(--fs-3xl);
   }
 }
+
+
+/* ── Mobile Tabs Nav (scrollable wrapper) ── */
+.services-section__tabs-nav-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  margin-bottom: 32px;
+  /* subtle fade on edges */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 90%, transparent 100%);
+}
+.services-section__tabs-nav-wrapper::-webkit-scrollbar { display: none; }
+
+.services-section__tabs-nav {
+  display: flex;
+  gap: 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 4px;
+  width: max-content;
+  min-width: 100%;
+}
+
+.tab-button {
+  padding: 10px 18px;
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  cursor: pointer;
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.tab-button--active {
+  background: var(--color-amber-surface);
+  border-color: var(--color-amber-border);
+  color: var(--color-accent);
+  font-weight: var(--fw-semibold);
+}
+.tab-button:hover:not(.tab-button--active) { color: var(--color-text-body); }

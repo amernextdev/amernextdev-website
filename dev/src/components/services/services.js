@@ -12,7 +12,10 @@
   ───────────────────────────────────────────────── */
   const CONFIG = {
     panel: {
-      leaveDuration: 150,   /* ms — old panel fade out */
+      leaveDuration: 150,   /* ms — old desktop panel softens out */
+    },
+    tab: {
+      leaveDuration: 140,   /* ms — old mobile tab panel softens out */
     },
   };
 
@@ -44,22 +47,35 @@
       const prevBtn   = buttons[activeIndex];
       const nextBtn   = buttons[index];
 
-      /* Deactivate old button */
+      /* Button state updates instantly — feels responsive even
+         while the panel itself is still transitioning. */
       prevBtn.classList.remove('service-list-item--active');
       prevBtn.setAttribute('aria-pressed', 'false');
-
-      /* Hide old panel */
-      prevPanel.classList.remove('service-detail-panel--active');
-
-      /* Show new panel */
-      nextPanel.classList.add('service-detail-panel--active');
-
-      /* Activate new button */
       nextBtn.classList.add('service-list-item--active');
       nextBtn.setAttribute('aria-pressed', 'true');
 
-      activeIndex = index;
-      switching   = false;
+      /* 1. Soften the old panel out first (short, gentle). */
+      prevPanel.classList.remove('service-detail-panel--switch-in');
+      prevPanel.classList.add('service-detail-panel--switch-out');
+
+      /* 2. Once the exit finishes, swap visibility and play the
+            entrance animation. Sequencing the two (rather than
+            firing both at once) is what makes the switch read as
+            one smooth motion instead of an abrupt cut. */
+      setTimeout(() => {
+        prevPanel.classList.remove(
+          'service-detail-panel--active',
+          'service-detail-panel--switch-out'
+        );
+
+        nextPanel.classList.add('service-detail-panel--active');
+        nextPanel.classList.remove('service-detail-panel--switch-in');
+        void nextPanel.offsetWidth; /* force reflow to restart animation */
+        nextPanel.classList.add('service-detail-panel--switch-in');
+
+        activeIndex = index;
+        switching   = false;
+      }, CONFIG.panel.leaveDuration);
     }
 
     buttons.forEach((btn) => {
@@ -88,25 +104,43 @@
     if (!tabBtns.length || !tabPanels.length) return;
 
     let activeTab = 0;
+    let tabSwitching = false;
 
     function activateTab(index) {
-      if (index === activeTab) return;
+      if (index === activeTab || tabSwitching) return;
+      tabSwitching = true;
 
-      /* Buttons */
-      tabBtns[activeTab].classList.remove('tab-button--active');
+      const prevIndex = activeTab;
+
+      /* Buttons + dots update instantly for responsive feedback */
+      tabBtns[prevIndex].classList.remove('tab-button--active');
       tabBtns[index].classList.add('tab-button--active');
 
-      /* Dots */
       if (dots.length) {
-        dots[activeTab].classList.remove('tab-dot--active');
+        dots[prevIndex].classList.remove('tab-dot--active');
         dots[index].classList.add('tab-dot--active');
       }
 
-      /* Panels */
-      tabPanels[activeTab].classList.remove('tab-panel--active');
-      tabPanels[index].classList.add('tab-panel--active');
+      /* 1. Soften the old panel out */
+      const prevPanel = tabPanels[prevIndex];
+      const nextPanel = tabPanels[index];
 
-      activeTab = index;
+      prevPanel.classList.remove('tab-panel--switch-in');
+      prevPanel.classList.add('tab-panel--switch-out');
+
+      /* 2. Swap visibility + play entrance only once the exit
+            finishes, so the switch reads as one smooth motion. */
+      setTimeout(() => {
+        prevPanel.classList.remove('tab-panel--active', 'tab-panel--switch-out');
+
+        nextPanel.classList.add('tab-panel--active');
+        nextPanel.classList.remove('tab-panel--switch-in');
+        void nextPanel.offsetWidth; /* force reflow */
+        nextPanel.classList.add('tab-panel--switch-in');
+
+        activeTab     = index;
+        tabSwitching   = false;
+      }, CONFIG.tab.leaveDuration);
 
       /* Scroll active tab into view */
       tabBtns[index].scrollIntoView({
