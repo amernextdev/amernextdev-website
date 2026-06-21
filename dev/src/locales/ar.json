@@ -108,8 +108,7 @@
 		"contact.form.message-label": "وصف مختصر للمشروع",
 		"contact.form.submit-button": "أرسل الرسالة",
 		"contact.divider": "أو تواصل مباشرةً",
-		"contact.direct.email-button": "راسلني بالإيميل",
-		"contact.direct.whatsapp-button": "تواصل عبر واتساب",
+
 		"footer.meta.email-prefix": "البريد الإلكتروني:",
 		"footer.meta.phone-prefix": "واتساب:",
 		"footer.meta.copyright": "© 2026 عامر عبدالفتاح. جميع الحقوق محفوظة."
@@ -124,6 +123,8 @@
 		"services.tab5.heading": "صيانة <span>موقعك</span> وتطويره",
 		"contact.section-title": "عندك مشروع؟ <span class=\"outline\">نتكلّم.</span>",
 		"contact.chip.response-time": "بردّ خلال ساعات",
+        "contact.direct.email-button": "راسلني بالإيميل<svg class=\"icon icon--envelope\" aria-hidden=\"true\"><use href=\"/sprites/solid.svg#envelope\"></use></svg> ",
+		"contact.direct.whatsapp-button": "تواصل عبر واتساب<svg class=\"icon icon--whatsapp\" aria-hidden=\"true\"><use href=\"/sprites/brands.svg#whatsapp\"></use></svg> ",
 		"footer.identity": "<p>عامر عبدالفتاح</p>\n<p>مطوّر واجهات أمامية</p>",
 		"skills.advanced.1": "<span class=\"skill-tag__dot\"></span>هندسة الواجهات",
 		"skills.advanced.2": "<span class=\"skill-tag__dot\"></span>الوصول والظهور",

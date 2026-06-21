@@ -182,59 +182,55 @@ body {
   gap: 0;
 }
 
+/* ── Label / Eyebrow ── */
+/* pill-shaped badge with a left accent line and subtle amber glow */
 .section-header__label {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-2);
+  width: fit-content;
+
   font-family: var(--font-primary);
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
   color: var(--color-accent);
-  margin-block-end: var(--space-4);
+
+  /* pill container */
+  background-color: var(--color-amber-surface);
+  border: 1px solid var(--color-amber-border);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-4) var(--space-1) var(--space-3);
+
+  /* left accent line — a short amber bar before the text */
+  position: relative;
+  margin-block-end: var(--space-5);
 }
 
-/* Decorative dash — uncomment to activate */
-/* .section-header__label::before {
-  content: '';
-  display: inline-block;
-  width: 28px;
-  height: 2px;
-  background-color: var(--color-accent);
-  flex-shrink: 0;
-} */
 
+
+/* ── Title ── */
 .section-header__title {
   font-family: var(--font-primary);
   font-size: var(--fs-4xl);
   font-weight: var(--fw-bold);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-tight);
-  color: var(--color-text-heading);
-  margin: 0;
+  color: var(--color-text-heading) !important;
+  margin: 0 !important;
+
+  /* subtle text-shadow for depth */
+  text-shadow: 0 2px 24px rgba(245, 158, 11, 0.07) !important;
 }
 
+/* ── Outline variant — ghost/stroke text ── */
 .section-header__title .outline {
-  -webkit-text-stroke: 1.5px var(--color-text-heading);
-  color: transparent;
+  color: var(--color-accent) !important;
 }
 
-.section-header__title span {
-  color: var(--color-accent);
-}
 
-.section-header__description {
-  font-family: var(--font-primary);
-  font-size: var(--fs-base);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-relaxed);
-  color: var(--color-text-muted);
-  margin-block-start: var(--space-4);
-  max-width: 52ch;
-}
-
-/* Responsive section header title */
+/* ── Responsive ── */
 @media (max-width: 1024px) {
   .section-header__title {
     font-size: var(--fs-3xl);
@@ -245,7 +241,24 @@ body {
   .section-header__title {
     font-size: var(--fs-2xl);
   }
+} 
+
+
+.contact-section__inner .section-header {
+  width: 100%;
+  max-width: 600px;
+  
+  /* 1. تصحيح الهوامش الجانبية ليتوسط العنصر */
+  margin-inline: auto !important; 
+  
+  /* 2. محاذاة عناصر الفليكس إلى المنتصف */
+  align-items: center !important;
+  justify-content: center !important;
+
+  /* 3. الإضافة السحرية: محاذاة السطور والنصوص نفسها للمنتصف */
+  text-align: center !important;
 }
+
 
 
 /* ─── 6. Shared Animations & Keyframes ──────────────────────── */

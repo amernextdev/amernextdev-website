@@ -108,8 +108,7 @@
 		"contact.form.message-label": "Brief Project Description",
 		"contact.form.submit-button": "Send Message",
 		"contact.divider": "Or reach out directly",
-		"contact.direct.email-button": "Email Me",
-		"contact.direct.whatsapp-button": "Message on WhatsApp",
+
 		"footer.meta.email-prefix": "Email:",
 		"footer.meta.phone-prefix": "WhatsApp:",
 		"footer.meta.copyright": "© 2026 Amer Abdelfattah. All rights reserved."
@@ -124,6 +123,8 @@
 		"services.tab5.heading": "Site <span>Maintenance</span> & Growth",
 		"contact.section-title": "Got a project? <span class=\"outline\">Let's talk.</span>",
 		"contact.chip.response-time": "Reply within hours",
+        "contact.direct.email-button": "Email Me<svg class=\"icon icon--envelope\" aria-hidden=\"true\"><use href=\"/sprites/solid.svg#envelope\"></use></svg> ",
+		"contact.direct.whatsapp-button": "Message on WhatsApp<svg class=\"icon icon--whatsapp\" aria-hidden=\"true\"><use href=\"/sprites/brands.svg#whatsapp\"></use></svg> ",
 		"footer.identity": "<p>Amer Abdelfattah</p>\n<p>Front End Developer</p>",
 		"skills.advanced.1": "<span class=\"skill-tag__dot\"></span>Interface Architecture",
 		"skills.advanced.2": "<span class=\"skill-tag__dot\"></span>Accessibility & Visibility",
