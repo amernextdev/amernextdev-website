@@ -181,10 +181,13 @@
 .project-card__footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: var(--space-4) var(--space-6);
   border-block-start: 1px solid var(--color-border-subtle);
 }
+
+/* لو رجعت زر case study تاني وعايز الزرين يتوزعوا على الطرفين بدل المنتصف،
+   بدّل justify-content فوق دي لـ: space-between */
 
 .project-card__link {
   display: inline-flex;
