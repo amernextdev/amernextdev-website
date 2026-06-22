@@ -122,7 +122,6 @@
 		"services.tab4.heading": "Precise <span>UI</span> Implementation",
 		"services.tab5.heading": "Site <span>Maintenance</span> & Growth",
 		"contact.section-title": "Got a project? <span class=\"outline\">Let's talk.</span>",
-		"contact.chip.response-time": "Reply within hours",
         "contact.direct.email-button": "Email Me<svg class=\"icon icon--envelope\" aria-hidden=\"true\"><use href=\"/sprites/solid.svg#envelope\"></use></svg> ",
 		"contact.direct.whatsapp-button": "Message on WhatsApp<svg class=\"icon icon--whatsapp\" aria-hidden=\"true\"><use href=\"/sprites/brands.svg#whatsapp\"></use></svg> ",
 		"footer.identity": "<p>Amer Abdelfattah</p>\n<p>Front End Developer</p>",

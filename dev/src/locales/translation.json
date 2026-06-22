@@ -124,8 +124,6 @@
 		"contact.form.message-label":  "تسمية حقل الرسالة في نموذج التواصل",
 		"contact.form.submit-button":  "نص زر إرسال نموذج التواصل",
 		"contact.divider":             "نص الفاصل بين النموذج وأزرار التواصل المباشر",
-		"contact.direct.email-button":    "نص زر التواصل المباشر عبر البريد الإلكتروني",
-		"contact.direct.whatsapp-button": "نص زر التواصل المباشر عبر واتساب",
 
 		"footer.meta.email-prefix": "البادئة 'Email:' قبل عنوان البريد الإلكتروني في التذييل",
 		"footer.meta.phone-prefix": "البادئة 'Phone:' قبل رقم الهاتف في التذييل",
@@ -141,8 +139,13 @@
 		"services.tab4.heading":  "عنوان لوحة التبويب الرابعة (جوّال) — يحتوي <span> لتلوين الكلمة الثانية",
 		"services.tab5.heading":  "عنوان لوحة التبويب الخامسة (جوّال) — يحتوي <span> لتلوين الكلمة الثانية",
 		"contact.section-title":  "عنوان قسم التواصل — يحتوي <span class=\"outline\"> لتطبيق تأثير الخط المفرغ على كلمة معينة",
-		"contact.chip.response-time": "شارة وقت الرد — تحتوي أيقونة SVG مدمجة مع النص لذا تستلزم innerHTML",
-		"footer.identity":        "هوية المطور في التذييل — تحتوي عناصر <p> و<br> لعرض الاسم والمسمى الوظيفي في سطرين"
+		"contact.direct.email-button":    "نص زر التواصل المباشر عبر البريد الإلكتروني — يحتوي أيقونة SVG مدمجة مع النص لذا تستلزم innerHTML",
+		"contact.direct.whatsapp-button": "نص زر التواصل المباشر عبر واتساب — يحتوي أيقونة SVG مدمجة مع النص لذا تستلزم innerHTML",
+		"footer.identity":        "هوية المطور في التذييل — تحتوي عناصر <p> و<br> لعرض الاسم والمسمى الوظيفي في سطرين",
+		"skills.advanced.1":      "وسم مهارة متقدمة رقم 1 (هندسة الواجهات) — يحتوي نقطة <span class=\"skill-tag__dot\"> مدمجة مع النص لذا تستلزم innerHTML",
+		"skills.advanced.2":      "وسم مهارة متقدمة رقم 2 (الوصول والظهور) — يحتوي نقطة <span class=\"skill-tag__dot\"> مدمجة مع النص لذا تستلزم innerHTML",
+		"skills.advanced.3":      "وسم مهارة متقدمة رقم 3 (الأداء) — يحتوي نقطة <span class=\"skill-tag__dot\"> مدمجة مع النص لذا تستلزم innerHTML",
+		"skills.advanced.4":      "وسم مهارة متقدمة رقم 4 (التصميم المرن) — يحتوي نقطة <span class=\"skill-tag__dot\"> مدمجة مع النص لذا تستلزم innerHTML"
 	},
 
 	"i18n-aria": {
