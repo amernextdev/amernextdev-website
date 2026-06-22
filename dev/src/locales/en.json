@@ -124,7 +124,7 @@
 		"contact.section-title": "Got a project? <span class=\"outline\">Let's talk.</span>",
         "contact.direct.email-button": "Email Me<svg class=\"icon icon--envelope\" aria-hidden=\"true\"><use href=\"/sprites/solid.svg#envelope\"></use></svg> ",
 		"contact.direct.whatsapp-button": "Message on WhatsApp<svg class=\"icon icon--whatsapp\" aria-hidden=\"true\"><use href=\"/sprites/brands.svg#whatsapp\"></use></svg> ",
-		"footer.identity": "<p>Amer Abdelfattah</p>\n<p>Front End Developer</p>",
+		"footer.identity": "<p>Amer Abdelfattah</p>\n<p>Frontend Developer ⦁ Amer Next Dev</p>",
 		"skills.advanced.1": "<span class=\"skill-tag__dot\"></span>Interface Architecture",
 		"skills.advanced.2": "<span class=\"skill-tag__dot\"></span>Accessibility & Visibility",
 		"skills.advanced.3": "<span class=\"skill-tag__dot\"></span>Performance",

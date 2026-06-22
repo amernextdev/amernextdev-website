@@ -124,7 +124,7 @@
 		"contact.section-title": "عندك مشروع؟ <span class=\"outline\">نتكلّم.</span>",
         "contact.direct.email-button": "راسلني بالإيميل<svg class=\"icon icon--envelope\" aria-hidden=\"true\"><use href=\"/sprites/solid.svg#envelope\"></use></svg> ",
 		"contact.direct.whatsapp-button": "تواصل عبر واتساب<svg class=\"icon icon--whatsapp\" aria-hidden=\"true\"><use href=\"/sprites/brands.svg#whatsapp\"></use></svg> ",
-		"footer.identity": "<p>عامر عبدالفتاح</p>\n<p>مطوّر واجهات أمامية</p>",
+		"footer.identity": "<p>عامر عبدالفتاح</p>\n<p>مطوّر واجهات أمامية ⦁ Amer Next Dev</p>",
 		"skills.advanced.1": "<span class=\"skill-tag__dot\"></span>هندسة الواجهات",
 		"skills.advanced.2": "<span class=\"skill-tag__dot\"></span>الوصول والظهور",
 		"skills.advanced.3": "<span class=\"skill-tag__dot\"></span>الأداء",

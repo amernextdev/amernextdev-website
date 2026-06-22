@@ -44,7 +44,6 @@
 .site-footer__logo-link {
   flex-shrink: 0;
   display: block;
-  border-radius: var(--radius-md);
   transition: opacity var(--transition-base), transform var(--transition-base);
 }
 
@@ -55,9 +54,8 @@
 
 .site-footer__logo-link img {
   display: block;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-sm);
+  width: 60px;
+  height: 60px;
 }
 
 .site-footer__logo-wrapper [data-i18n-html] p,
