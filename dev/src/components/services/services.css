@@ -165,7 +165,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-2xl);
   padding: var(--space-8);
-  max-height: calc(100vh - var(--nav-height) - var(--space-16));
+max-height: calc(100vh - var(--nav-height) - var(--space-8));
   overflow-y: auto;
 }
 
