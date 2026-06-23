@@ -31,9 +31,14 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  /* ملحوظة مهمة: transition هنا لازم تشمل opacity + transform بتوع reveal.css،
+     لأن transition هي shorthand بتُمحى بالكامل (مش بتتجمع) لو [data-reveal]
+     في reveal.css عمل transition تاني على نفس العنصر بنفس الـ specificity.
+     لو غيّرت مدة/easing الـ reveal في reveal.css لازم تحدّث القيمة هنا كمان. */
   transition: transform var(--transition-base),
               box-shadow var(--transition-base),
-              border-color var(--transition-base);
+              border-color var(--transition-base),
+              opacity var(--reveal-duration, 0.65s) var(--reveal-ease, cubic-bezier(0.22, 1, 0.36, 1)) var(--reveal-delay, 0s);
 }
 
 .project-card:hover {

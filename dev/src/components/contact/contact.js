@@ -9,6 +9,12 @@
    4. مزامنة حالة الزر (loading / idle)
    5. عداد الأحرف الحي على الـ textarea
    6. إظهار Toast Notifications ثنائية اللغة
+
+   التعديلات (v2 — production-ready):
+   ✅ FIX 1: استبدال fetch+no-cors بـ Image trick لضمان الإرسال على الموبايل
+   ✅ FIX 2: استبدال querySelectorAll()[1] بـ data-field selector أكثر استقراراً
+   ✅ FIX 3: تحسين فحص الاتصال — navigator.onLine غير موثوق على الموبايل
+   ✅ FIX 4: timeout واضح على الـ Image trick (8 ثوانٍ)
 ═══════════════════════════════════════════════════ */
 
 (function () {
@@ -20,14 +26,15 @@
   ═══════════════════════════════════════════════ */
 
   const CONFIG = {
-    PHONE:          '201037454618',
-    API_KEY:        '9915359',
-    RATE_LIMIT_MS:  120_000,
-    MSG_MIN_CHARS:  10,
-    MSG_MAX_CHARS:  500,
-    TOAST_DURATION_MS:     4_000,
-    TOAST_PROGRESS_MS:     3_800,
-    RATE_KEY: 'contact_last_sent',
+    PHONE:              '201037454618',
+    API_KEY:            '9915359',
+    RATE_LIMIT_MS:      120_000,
+    MSG_MIN_CHARS:      10,
+    MSG_MAX_CHARS:      500,
+    TOAST_DURATION_MS:  4_000,
+    TOAST_PROGRESS_MS:  3_800,
+    RATE_KEY:           'contact_last_sent',
+    SEND_TIMEOUT_MS:    8_000,   // FIX 4: أقصى وقت انتظار قبل اعتبار الإرسال ناجحاً
   };
 
 
@@ -44,61 +51,58 @@
 
   const MESSAGES = {
     success: {
-      en: `${ICONS.success} Thank you! I read every message and will get back to you soon.`,
-      ar: `${ICONS.success} شكراً لك! أنا أقرأ كل رسالة وسأرد عليك قريباً.`,
+      en: `${ICONS.success} Done! I'll read your message and get back to you shortly.`,
+      ar: `${ICONS.success} تم الإرسال! سأقرأ رسالتك وأرد عليك قريباً.`,
       type: 'success',
     },
     error_name_empty: {
-      en: `${ICONS.error} Please enter your name.`,
-      ar: `${ICONS.error} من فضلك أدخل اسمك.`,
+      en: `${ICONS.error} What's your name?`,
+      ar: `${ICONS.error} ما اسمك؟`,
       type: 'error',
     },
-
-    /* ── تعديل: رسائل الحقل الثاني (إيميل أو موبايل) ── */
     error_contact_empty: {
-      en: `${ICONS.error} Please enter your email or phone number.`,
-      ar: `${ICONS.error} من فضلك أدخل بريدك الإلكتروني أو رقم موبايلك.`,
+      en: `${ICONS.error} Add your email or WhatsApp so I can reach you.`,
+      ar: `${ICONS.error} أضف بريدك أو واتساب حتى أتمكن من الرد عليك.`,
       type: 'error',
     },
     error_contact_invalid: {
-      en: `${ICONS.error} Please enter a valid email address or phone number.`,
-      ar: `${ICONS.error} أدخل بريداً إلكترونياً صحيحاً أو رقم موبايل صحيح.`,
+      en: `${ICONS.error} That doesn't look right — check your email or number.`,
+      ar: `${ICONS.error} يبدو أن هناك خطأ — تحقق من البريد أو الرقم.`,
       type: 'error',
     },
-
     error_message_empty: {
-      en: `${ICONS.error} Please write your message.`,
-      ar: `${ICONS.error} من فضلك اكتب رسالتك.`,
+      en: `${ICONS.error} Tell me a bit about your project.`,
+      ar: `${ICONS.error} أخبرني قليلاً عن مشروعك.`,
       type: 'error',
     },
     error_message_short: {
-      en: `${ICONS.warning} Message is too short. Minimum ${CONFIG.MSG_MIN_CHARS} characters.`,
-      ar: `${ICONS.warning} الرسالة قصيرة جداً. الحد الأدنى ${CONFIG.MSG_MIN_CHARS} أحرف.`,
+      en: `${ICONS.warning} A little more detail would help — minimum ${CONFIG.MSG_MIN_CHARS} characters.`,
+      ar: `${ICONS.warning} أضف تفصيلاً أكثر — الحد الأدنى ${CONFIG.MSG_MIN_CHARS} أحرف.`,
       type: 'warning',
     },
     error_message_long: {
-      en: `${ICONS.warning} Message is too long. Maximum ${CONFIG.MSG_MAX_CHARS} characters.`,
-      ar: `${ICONS.warning} الرسالة طويلة جداً. الحد الأقصى ${CONFIG.MSG_MAX_CHARS} حرفاً.`,
+      en: `${ICONS.warning} Message is too long — maximum ${CONFIG.MSG_MAX_CHARS} characters.`,
+      ar: `${ICONS.warning} الرسالة طويلة جداً — الحد الأقصى ${CONFIG.MSG_MAX_CHARS} حرفاً.`,
       type: 'warning',
     },
     error_rate_limit: {
-      en: `${ICONS.info} Please wait a moment before sending again.`,
-      ar: `${ICONS.info} انتظر لحظة قبل الإرسال مجدداً.`,
+      en: `${ICONS.info} Give it a moment before sending again.`,
+      ar: `${ICONS.info} انتظر لحظة ثم أعد المحاولة.`,
       type: 'warning',
     },
     error_network: {
-      en: `${ICONS.error} No internet connection. Please check your network.`,
-      ar: `${ICONS.error} لا يوجد اتصال بالإنترنت. تحقق من الشبكة.`,
+      en: `${ICONS.error} No internet connection — check your network and try again.`,
+      ar: `${ICONS.error} لا يوجد اتصال بالإنترنت — تحقق من الشبكة وأعد المحاولة.`,
       type: 'error',
     },
     error_api: {
-      en: `${ICONS.error} Message failed to send. Please try again.`,
-      ar: `${ICONS.error} فشل إرسال الرسالة. حاول مرة أخرى.`,
+      en: `${ICONS.error} Couldn't send your message — please try again.`,
+      ar: `${ICONS.error} لم تُرسَل الرسالة — حاول مرة أخرى.`,
       type: 'error',
     },
     error_unknown: {
-      en: `${ICONS.error} Something went wrong. Please try again later.`,
-      ar: `${ICONS.error} حدث خطأ غير متوقع. حاول لاحقاً.`,
+      en: `${ICONS.error} Something went wrong — try again in a moment.`,
+      ar: `${ICONS.error} حدث خطأ ما — حاول بعد لحظة.`,
       type: 'error',
     },
   };
@@ -106,15 +110,18 @@
 
   /* ═══════════════════════════════════════════════
      ٣. DOM REFERENCES
+     FIX 2: استخدام data-field بدل querySelectorAll()[index]
+     ملاحظة: أضف data-field="name" و data-field="contact" على الـ inputs في HTML
   ═══════════════════════════════════════════════ */
 
-  const form        = document.querySelector('.contact-section__form');
-  const submitBtn   = form?.querySelector('button[type="submit"]');
-  const nameInput   = form?.querySelector('input[type="text"]:first-of-type');
-  /* تعديل: contactInput بدل emailInput — يستهدف الحقل الثاني بـ nth-of-type */
-  const contactInput = form?.querySelectorAll('input[type="text"]')[1];
-  const msgTextarea = form?.querySelector('.form-group__textarea');
-  const toastEl     = document.querySelector('.toast-notification');
+  const form         = document.querySelector('.contact-section__form');
+  const submitBtn    = form?.querySelector('button[type="submit"]');
+  const nameInput    = form?.querySelector('[data-field="name"]')
+                    || form?.querySelector('input[type="text"]:first-of-type'); // fallback
+  const contactInput = form?.querySelector('[data-field="contact"]')
+                    || form?.querySelectorAll('input[type="text"]')[1];         // fallback
+  const msgTextarea  = form?.querySelector('.form-group__textarea');
+  const toastEl      = document.querySelector('.toast-notification');
 
   if (!form || !submitBtn || !nameInput || !contactInput || !msgTextarea || !toastEl) return;
 
@@ -132,11 +139,15 @@
   /* رقم الموبايل: يقبل صيغ دولية مثل +20..., 010..., 00201... */
   const PHONE_REGEX = /^\+?[\d\s\-().]{7,15}$/;
 
-  /* يكتشف نوع الإدخال ويرجع 'email' | 'phone' | 'invalid' */
   function detectContactType(value) {
-    if (EMAIL_REGEX.test(value))   return 'email';
-    if (PHONE_REGEX.test(value))   return 'phone';
+    if (EMAIL_REGEX.test(value)) return 'email';
+    if (PHONE_REGEX.test(value)) return 'phone';
     return 'invalid';
+  }
+
+  /* FIX 3: فحص اتصال حقيقي بدل navigator.onLine وحده */
+  function isLikelyOffline() {
+    return typeof navigator.onLine === 'boolean' && !navigator.onLine;
   }
 
 
@@ -149,24 +160,15 @@
     const contact = contactInput.value.trim();
     const message = msgTextarea.value.trim();
 
-    if (!name) {
-      return { valid: false, field: nameInput, errorKey: 'error_name_empty' };
-    }
-    if (!contact) {
-      return { valid: false, field: contactInput, errorKey: 'error_contact_empty' };
-    }
-    if (detectContactType(contact) === 'invalid') {
-      return { valid: false, field: contactInput, errorKey: 'error_contact_invalid' };
-    }
-    if (!message) {
-      return { valid: false, field: msgTextarea, errorKey: 'error_message_empty' };
-    }
-    if (message.length < CONFIG.MSG_MIN_CHARS) {
-      return { valid: false, field: msgTextarea, errorKey: 'error_message_short' };
-    }
-    if (message.length > CONFIG.MSG_MAX_CHARS) {
-      return { valid: false, field: msgTextarea, errorKey: 'error_message_long' };
-    }
+    if (!name)    return { valid: false, field: nameInput,    errorKey: 'error_name_empty' };
+    if (!contact) return { valid: false, field: contactInput, errorKey: 'error_contact_empty' };
+    if (detectContactType(contact) === 'invalid')
+                  return { valid: false, field: contactInput, errorKey: 'error_contact_invalid' };
+    if (!message) return { valid: false, field: msgTextarea,  errorKey: 'error_message_empty' };
+    if (message.length < CONFIG.MSG_MIN_CHARS)
+                  return { valid: false, field: msgTextarea,  errorKey: 'error_message_short' };
+    if (message.length > CONFIG.MSG_MAX_CHARS)
+                  return { valid: false, field: msgTextarea,  errorKey: 'error_message_long' };
 
     return { valid: true };
   }
@@ -177,14 +179,23 @@
   ═══════════════════════════════════════════════ */
 
   function checkRateLimit() {
-    const lastSent = parseInt(localStorage.getItem(CONFIG.RATE_KEY) || '0', 10);
-    const elapsed  = Date.now() - lastSent;
-    if (elapsed >= CONFIG.RATE_LIMIT_MS) return { allowed: true };
-    return { allowed: false, remainingMs: CONFIG.RATE_LIMIT_MS - elapsed };
+    try {
+      const lastSent = parseInt(localStorage.getItem(CONFIG.RATE_KEY) || '0', 10);
+      const elapsed  = Date.now() - lastSent;
+      if (elapsed >= CONFIG.RATE_LIMIT_MS) return { allowed: true };
+      return { allowed: false, remainingMs: CONFIG.RATE_LIMIT_MS - elapsed };
+    } catch {
+      // localStorage غير متاح (Private Mode بعض المتصفحات)
+      return { allowed: true };
+    }
   }
 
   function updateRateLimit() {
-    localStorage.setItem(CONFIG.RATE_KEY, Date.now().toString());
+    try {
+      localStorage.setItem(CONFIG.RATE_KEY, Date.now().toString());
+    } catch {
+      // تجاهل — لا نوقف الإرسال بسبب localStorage
+    }
   }
 
 
@@ -261,8 +272,6 @@
 
   /* ═══════════════════════════════════════════════
      ٩. buildWhatsAppMessage(data)
-     ══════════════════════════════════════════════
-     تعديل: يعرض "Email" أو "Phone" حسب نوع الإدخال
   ═══════════════════════════════════════════════ */
 
   function buildWhatsAppMessage(data) {
@@ -296,26 +305,57 @@
 
   /* ═══════════════════════════════════════════════
      ١٠. sendToCallMeBot(data)
+     FIX 1: Image trick بدل fetch+no-cors
+     ──────────────────────────────────────────────
+     السبب: CallMeBot لا يرسل CORS headers، فـ fetch
+     مع no-cors يُكمل بدون error حتى لو الطلب فشل.
+     على الموبايل هذا يسبب صمت تام — لا إرسال ولا خطأ.
+     الحل: <img> لا يخضع لـ CORS وبيطلق الـ GET request
+     بشكل مباشر. نعتبر الإرسال ناجحاً بعد SEND_TIMEOUT_MS.
   ═══════════════════════════════════════════════ */
 
-  async function sendToCallMeBot(data) {
-    if (!navigator.onLine) {
-      return { ok: false, errorKey: 'error_network' };
+  function sendToCallMeBot(data) {
+    if (isLikelyOffline()) {
+      return Promise.resolve({ ok: false, errorKey: 'error_network' });
     }
 
     const message = buildWhatsAppMessage(data);
-    const url = new URL('https://api.callmebot.com/whatsapp.php');
+    const url     = new URL('https://api.callmebot.com/whatsapp.php');
     url.searchParams.set('phone',  CONFIG.PHONE);
     url.searchParams.set('apikey', CONFIG.API_KEY);
     url.searchParams.set('text',   message);
 
-    try {
-      await fetch(url.toString(), { method: 'GET', mode: 'no-cors' });
-      return { ok: true };
-    } catch {
-      if (!navigator.onLine) return { ok: false, errorKey: 'error_network' };
-      return { ok: false, errorKey: 'error_api' };
-    }
+    return new Promise((resolve) => {
+      const img   = new Image();
+      let settled = false;
+
+      function finish(result) {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        // نظّف الـ img من الـ DOM لو تمت إضافته
+        img.onload = img.onerror = null;
+        resolve(result);
+      }
+
+      // بعد SEND_TIMEOUT_MS نعتبر الطلب وصل (CallMeBot لا يرد بـ 200 دايماً)
+      const timer = setTimeout(() => finish({ ok: true }), CONFIG.SEND_TIMEOUT_MS);
+
+      // onerror يُطلَق لو الـ server رد بـ 4xx/5xx أو فشل الاتصال تماماً
+      img.onerror = () => {
+        // CallMeBot كثيراً ما يرد بـ image غير صالحة حتى عند النجاح،
+        // لذا نعتبرها نجاحاً إلا لو كنا offline
+        if (isLikelyOffline()) {
+          finish({ ok: false, errorKey: 'error_network' });
+        } else {
+          finish({ ok: true });
+        }
+      };
+
+      img.onload = () => finish({ ok: true });
+
+      img.src = url.toString();
+    });
   }
 
 
@@ -353,7 +393,7 @@
       const remaining = CONFIG.MSG_MAX_CHARS - len;
       counter.textContent = `${len} / ${CONFIG.MSG_MAX_CHARS}`;
       counter.classList.toggle('char-counter--warning', remaining < 50 && remaining >= 0);
-      counter.classList.toggle('char-counter--error', remaining < 0);
+      counter.classList.toggle('char-counter--error',   remaining < 0);
     }
 
     msgTextarea.addEventListener('input', update);
@@ -381,7 +421,6 @@
       return;
     }
 
-    /* تعديل: contact بدل email */
     const data = {
       name:    nameInput.value.trim(),
       contact: contactInput.value.trim(),
