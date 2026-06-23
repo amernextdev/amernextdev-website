@@ -152,6 +152,9 @@
 		"footer.social.facebook.aria-label": "My Facebook page"
 	},
 	"i18n-alt": {
+		"project.smart_eng.alt": "Smart-ENG website preview",
+		"project.cap_ahmed_ehab.alt": "Cap Ahmed Ehab page preview",
+		"project.flashe.alt": "Flashe page preview",
 		"logo.alt": "Amer Abdelfattah logo"
 	}
 }

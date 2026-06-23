@@ -62,6 +62,11 @@ function openSidebar() {
   burgerBtn.setAttribute('aria-expanded', 'true');
   document.body.style.overflow = 'hidden';
   mobileNav.classList.add('is-open');
+
+  // نقل الـ focus لزر الإغلاق بعد ما يُزال aria-hidden — يمنع الـ warning
+  requestAnimationFrame(() => {
+    mobileNavClose?.focus();
+  });
 }
 
 /** إغلاق القائمة الجانبية واستعادة تمرير الصفحة */
@@ -69,10 +74,18 @@ function closeSidebar() {
   if (!isOpen || !mobileNav) return;
   isOpen = false;
 
-  mobileNav.setAttribute('aria-hidden', 'true');
-  burgerBtn.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
   mobileNav.classList.remove('is-open');
+  document.body.style.overflow = '';
+  burgerBtn.setAttribute('aria-expanded', 'false');
+
+  // نرجّع الـ focus للهامبرغر أولاً قبل ما نخفي القائمة
+  // حتى لا يُحجب focus على عنصر داخل aria-hidden
+  burgerBtn?.focus();
+
+  // نأخّر aria-hidden حتى بعد انتهاء الـ transition (400ms)
+  setTimeout(() => {
+    mobileNav.setAttribute('aria-hidden', 'true');
+  }, 400);
 }
 
 // ── Scroll Spy ───────────────────────────────────────────────────────────────

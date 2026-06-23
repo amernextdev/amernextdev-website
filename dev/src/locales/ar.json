@@ -152,6 +152,9 @@
 		"footer.social.facebook.aria-label": "صفحتي على Facebook"
 	},
 	"i18n-alt": {
+		"project.smart_eng.alt": "معاينة موقع Smart-ENG",
+		"project.cap_ahmed_ehab.alt": "معاينة صفحة كابتن أحمد إيهاب",
+		"project.flashe.alt": "معاينة صفحة Flashe",
 		"logo.alt": "شعار عامر عبدالفتاح"
 	}
 }

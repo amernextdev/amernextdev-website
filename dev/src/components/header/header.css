@@ -366,7 +366,7 @@
   display:        flex;
   flex-direction: column;
   height:         100%;
-  padding-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
 }
 
 
@@ -378,7 +378,7 @@
   display:         flex;
   align-items:     center;
   justify-content: space-between;
-  padding:         var(--space-6);
+  padding:         var(--space-4) var(--space-5);
   border-bottom:   1px solid var(--color-border-subtle);
   flex-shrink:     0;
 }
@@ -464,14 +464,14 @@
   display:         flex;
   flex-direction:  column;
   justify-content: flex-start;
-  padding-block:   var(--space-8) var(--space-4);
-  padding-inline:  var(--space-4);
+  padding-block:   var(--space-5) var(--space-3);
+  padding-inline:  var(--space-5);
 }
 
 .mobile-nav__list {
   display:        flex;
   flex-direction: column;
-  gap:            var(--space-2);
+  gap:            var(--space-1);
   list-style:     none;
   margin:         0;
   padding:        0;
@@ -483,8 +483,8 @@
   align-items:     center;
   justify-content: space-between;
   padding-block:   var(--space-3);
-  padding-inline:  var(--space-4);
-  font-size:       var(--fs-md);
+  padding-inline:  var(--space-4) var(--space-3);
+  font-size:       var(--fs-base);
   font-weight:     var(--fw-medium);
   color:           var(--color-text-body);
   border-radius:   var(--radius-lg);
@@ -567,9 +567,9 @@
   align-items:     center;
   justify-content: center;
   gap:             var(--space-2);
-  margin:          var(--space-3) var(--space-6) var(--space-5);
-  padding-block:   var(--space-4);
-  padding-inline:  var(--space-6);
+  margin:          var(--space-2) var(--space-5) var(--space-4);
+  padding-block:   var(--space-3);
+  padding-inline:  var(--space-5);
   background:      var(--color-accent);
   color:           var(--color-text-inverse);
   border-radius:   var(--radius-full);
@@ -590,8 +590,8 @@
 .mobile-nav__cta-link::before {
   content:    '';
   position:   absolute;
-  inset-block-start: calc(-1 * var(--space-3));
-  inset-inline: var(--space-6);
+  inset-block-start: calc(-1 * var(--space-2));
+  inset-inline: var(--space-5);
   height:     1px;
   background: linear-gradient(90deg, transparent, var(--color-border-subtle), transparent);
 }
@@ -633,8 +633,8 @@
 .mobile-nav__controls {
   display:        flex;
   flex-direction: column;
-  gap:            var(--space-3);
-  padding:        var(--space-5) var(--space-6);
+  gap:            var(--space-2);
+  padding:        var(--space-4) var(--space-5);
   border-top:     1px solid var(--color-border-subtle);
   flex-shrink:    0;
 }
@@ -775,7 +775,7 @@
 ═══════════════════════════════════════════════════════════════════════════ */
 
 .mobile-nav__social {
-  padding:     var(--space-5) var(--space-6) var(--space-2);
+  padding:     var(--space-3) var(--space-5) var(--space-3);
   border-top:  1px solid var(--color-border-subtle);
   margin-top:  auto;
   flex-shrink: 0;
@@ -1017,11 +1017,15 @@
   .mobile-nav__header,
   .mobile-nav__controls,
   .mobile-nav__social {
-    padding-inline: var(--space-4);
+    padding-inline: var(--space-3);
+  }
+
+  .mobile-nav__nav {
+    padding-inline: var(--space-3);
   }
 
   .mobile-nav__cta-link {
-    margin-inline: var(--space-4);
+    margin-inline: var(--space-3);
   }
 }
 
