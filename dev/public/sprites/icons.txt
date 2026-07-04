@@ -19,6 +19,6 @@ xmark
 
 brands.svg
 ----------
-facebook
+linkedin
 github
 whatsapp
