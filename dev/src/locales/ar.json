@@ -142,14 +142,14 @@
 		"mobile-nav.controls.lang-toggle.aria-label": "تبديل لغة الموقع",
 		"mobile-nav.social.whatsapp.aria-label": "تواصل عبر واتساب",
 		"mobile-nav.social.github.aria-label": "ملفي على GitHub",
-		"mobile-nav.social.facebook.aria-label": "صفحتي على Facebook",
+		"mobile-nav.social.linkedin.aria-label": "صفحتي على Linkedin",
 		"contact.form.name-input.aria-label": "أدخل اسمك",
 		"contact.form.contact-input.aria-label": "أدخل بريدك الإلكتروني أو رقم واتساب",
 		"contact.form.message-textarea.aria-label": "اكتب وصفاً مختصراً لمشروعك",
 		"footer.logo.aria-label": "عامر عبدالفتاح — الرجوع للصفحة الرئيسية",
 		"footer.social.whatsapp.aria-label": "تواصل عبر واتساب",
 		"footer.social.github.aria-label": "ملفي على GitHub",
-		"footer.social.facebook.aria-label": "صفحتي على Facebook"
+		"footer.social.linkedin.aria-label": "صفحتي على Linkedin"
 	},
 	"i18n-alt": {
 		"project.smart_eng.alt": "معاينة موقع Smart-ENG",

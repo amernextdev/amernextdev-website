@@ -142,14 +142,14 @@
 		"mobile-nav.controls.lang-toggle.aria-label": "Toggle site language",
 		"mobile-nav.social.whatsapp.aria-label": "Contact via WhatsApp",
 		"mobile-nav.social.github.aria-label": "My GitHub profile",
-		"mobile-nav.social.facebook.aria-label": "My Facebook page",
+		"mobile-nav.social.linkedin.aria-label": "My Linkedin profile",
 		"contact.form.name-input.aria-label": "Enter your name",
 		"contact.form.contact-input.aria-label": "Enter your email or WhatsApp number",
 		"contact.form.message-textarea.aria-label": "Write a brief description of your project",
 		"footer.logo.aria-label": "Amer Abdelfattah — Back to homepage",
 		"footer.social.whatsapp.aria-label": "Contact via WhatsApp",
 		"footer.social.github.aria-label": "My GitHub profile",
-		"footer.social.facebook.aria-label": "My Facebook page"
+		"footer.social.linkedin.aria-label": "My Linkedin profile"
 	},
 	"i18n-alt": {
 		"project.smart_eng.alt": "Smart-ENG website preview",
