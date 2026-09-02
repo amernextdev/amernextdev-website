@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="format-detection" content="telephone=no">
+<title>اتفاق نطاق العمل</title>
+<style>
+  :root{
+    --bg: #f6f5f3;
+    --surface: #ffffff;
+    --ink: #1c1c1c;
+    --ink-soft: #55534d;
+    --line: #e4e1da;
+    --accent: #2b2a28;
+    --accent-soft: #8a8778;
+    --warn-bg: #fbf6ea;
+    --warn-border: #e8d9a8;
+    --check: #1f7a4d;
+    --whatsapp: #25d366;
+    --whatsapp-dark: #1fb855;
+    --radius: 14px;
+    --focus: #2b6cb0;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{ margin: 0; padding: 0; min-height: 100%; }
+
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Tahoma", "Segoe UI", "Cairo", system-ui, sans-serif;
+    line-height: 1.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+  }
+
+  .card{
+    width: 100%;
+    max-width: 680px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 40px 34px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+
+  .badge{
+    display: inline-block;
+    font-size: 13px;
+    color: var(--accent-soft);
+    border: 1px solid var(--line);
+    padding: 5px 14px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  h1{
+    font-size: 25px;
+    margin: 0 0 8px;
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .greeting{
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+  }
+
+  h2{
+    font-size: 16px;
+    margin: 0 0 14px;
+    color: var(--ink);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  section{ margin-bottom: 26px; }
+
+  ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li{
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 7px 0;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+
+  li .icon{
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+  }
+
+  .check-icon{ color: var(--check); }
+  .warn-icon{ color: #a3760a; }
+
+  .policy-box{
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+
+  .policy-box p{
+    margin: 0;
+    font-size: 14.5px;
+    color: #5c4a1e;
+  }
+
+  .field{
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    background: #f9f8f6;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-top: 6px;
+  }
+
+  .field b{ color: var(--ink); }
+
+  .divider{
+    height: 1px;
+    background: var(--line);
+    border: none;
+    margin: 30px 0;
+  }
+
+  .agree-note{
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+
+  .actions{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn{
+    flex: 1 1 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn:active{ transform: scale(0.98); }
+
+  .btn-whatsapp{
+    background: var(--whatsapp);
+    color: #ffffff;
+  }
+  .btn-whatsapp:hover{ background: var(--whatsapp-dark); }
+
+  .btn-secondary{
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line);
+  }
+  .btn-secondary:hover{ background: #f0efec; }
+
+  .btn:focus-visible{
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .btn{ transition: none; }
+  }
+
+  @media (max-width: 480px){
+    .card{ padding: 30px 20px; }
+    h1{ font-size: 21px; }
+    .actions{ flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">اتفاق نطاق العمل</span>
+
+    <h1>اتفاق نطاق العمل</h1>
+    <p class="greeting">عزيزي العميل، قبل ما نبدأ، حابب أوضح تفاصيل الخدمة وحدودها عشان نكون على نفس الصفحة تمامًا. القراءة هتاخد منك دقيقتين بس.</p>
+
+    <section>
+      <h2><span class="check-icon">✔</span> اللي هقدمه</h2>
+      <ul>
+        <li><span class="icon check-icon">✔</span> تصميم صفحة هبوط احترافية مخصصة ببياناتك وباقاتك بالكامل</li>
+        <li><span class="icon check-icon">✔</span> تسليم خلال المدة المتفق عليها</li>
+        <li><span class="icon check-icon">✔</span> عدد محدد من التعديلات المجانية بعد التسليم (حسب الباقة المختارة)</li>
+        <li><span class="icon check-icon">✔</span> استضافة على رابط فرعي مجاني، أو ربط دومين خاص بيك (تكلفة الدومين نفسه عليك)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="warn-icon">⚠</span> حدود الخدمة (سياسة المحتوى)</h2>
+      <div class="policy-box">
+        <p>
+          كجزء من سياسة عملي الثابتة مع كل العملاء، لا أقوم بتصميم أو استخدام أي صور أو محتوى مرئي يُظهر أجسادًا بشكل غير محتشم (سواء رجالية أو نسائية)، بما يشمل صور "قبل/بعد" الكاشفة أو محتوى دعائي بهذا الطابع. أستخدم بدلاً من ذلك صورًا توضيحية محتشمة، رسومات، أو عرضًا رقميًا للنتائج (أرقام ومؤشرات تقدم) بدل الاعتماد على هذا النوع من الصور.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>تفاصيل الاتفاق</h2>
+      <div class="field">المدة المتفقة: <b>[يُحدَّد لكل عميل]</b></div>
+      <div class="field" style="margin-top:10px;">السعر والباقة: <b>[تُحدَّد حسب الباقة المختارة]</b></div>
+      <div class="field" style="margin-top:10px;">شروط الدفع: <b>[تُحدَّد قبل بدء التنفيذ]</b></div>
+    </section>
+
+    <hr class="divider">
+
+    <p class="agree-note">لو موافق على كل النقاط دي، دوس الزر تحت وابعتلي "اتفقنا" ونبدأ فورًا. لو عندك أي سؤال أو تعديل، تواصل معايا الأول.</p>
+
+    <div class="actions">
+      <a class="btn btn-whatsapp" href="https://wa.me/201000000000?text=اتفقنا%20على%20شروط%20العمل%2C%20نبدأ" target="_blank" rel="noopener noreferrer">
+        ✅ اتفقنا، نبدأ
+      </a>
+      <a class="btn btn-secondary" href="https://wa.me/201000000000?text=عندي%20سؤال%20قبل%20ما%20نبدأ" target="_blank" rel="noopener noreferrer">
+        عندي سؤال
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
