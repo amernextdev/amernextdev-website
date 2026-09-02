@@ -1,0 +1,230 @@
+/* ================================================================
+   ABOUT / SKILLS SECTION
+   FIX ② — background: --color-bg-secondary for alternating rhythm
+   ================================================================ */
+
+.about-section {
+  background-color: var(--color-bg-secondary);
+  padding-block: var(--space-24);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 90% 20%, var(--color-amber-glow-sm) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 45% at 5%  85%, var(--color-info-surface)  0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* FIX ⑤ — About inner gap standardized to --space-16 (was --space-12) */
+.about-section__inner {
+  max-width: var(--container-xl);
+  margin-inline: auto;
+  padding-inline: var(--space-8);
+  position: relative;
+  z-index: var(--z-raised);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.about-section__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+/* Typewriter Block */
+.about-section__typewriter-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 72ch;
+}
+
+.typewriter-line {
+  margin: 0;
+  padding-inline-start: var(--space-4);
+  border-inline-start: 2px solid var(--color-border-strong);
+  transition: border-color var(--transition-base);
+}
+
+.typewriter-line:hover {
+  border-inline-start-color: var(--color-accent);
+}
+
+.typewriter-line__text {
+  font-family: var(--font-primary);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-body);
+  display: block;
+}
+
+/* Skills Panel */
+.about-section__skills {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.about-section__skills-title {
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.about-section__skills-title::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background-color: var(--color-border-subtle);
+  margin-block-start: var(--space-4);
+}
+
+.skills-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.skills-group__label {
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+.skills-group__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Skill Tag */
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  line-height: var(--lh-normal);
+  cursor: default;
+  transition:
+    color            var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color     var(--transition-fast),
+    transform        var(--transition-fast);
+  opacity: 1;
+  transform: none;
+}
+
+.skill-tag:hover {
+  color: var(--color-text-heading);
+  background-color: var(--color-surface-3);
+  border-color: var(--color-border-strong);
+  transform: translateY(-2px);
+}
+
+.skill-tag__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-text-muted);
+  flex-shrink: 0;
+  transition: background-color var(--transition-fast);
+}
+
+.skill-tag:hover .skill-tag__dot {
+  background-color: var(--color-accent);
+}
+
+/* Light mode */
+[data-theme="light"] .about-section {
+  background-color: var(--color-bg-secondary);
+}
+
+[data-theme="light"] .about-section__skills {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+[data-theme="light"] .skill-tag {
+  background-color: var(--color-surface-2);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+
+[data-theme="light"] .skill-tag:hover {
+  background-color: var(--color-surface-3);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-body);
+}
+
+[data-theme="light"] .typewriter-line {
+  border-inline-start-color: var(--color-border-strong);
+}
+
+[data-theme="light"] .typewriter-line:hover {
+  border-inline-start-color: var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .about-section__inner {
+    gap: var(--space-10);
+  }
+
+  .typewriter-line__text {
+    font-size: var(--fs-base);
+  }
+}
+
+@media (max-width: 640px) {
+  .about-section {
+    padding-block: var(--space-16);
+  }
+
+  .about-section__inner {
+    padding-inline: var(--space-4);
+    gap: var(--space-8);
+  }
+
+  .about-section__skills {
+    padding: var(--space-5);
+    gap: var(--space-5);
+  }
+
+  .about-section__typewriter-block {
+    gap: var(--space-5);
+  }
+
+  .typewriter-line__text {
+    font-size: var(--fs-sm);
+  }
+}

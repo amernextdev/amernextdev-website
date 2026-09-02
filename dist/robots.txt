@@ -1,0 +1,55 @@
+# ============================================================
+# robots.txt — amernextdev.pages.dev
+# Last updated: 2026
+# ============================================================
+
+# === Allow all well-behaved crawlers ===
+User-agent: *
+Allow: /
+
+# Block access to assets that have no SEO value
+Disallow: /assets/
+Disallow: /sprites/
+
+# === Sitemap location ===
+Sitemap: https://amernextdev.pages.dev/sitemap.xml
+
+# === Crawl rate hint (advisory — not enforced by all bots) ===
+Crawl-delay: 10
+
+# ============================================================
+# Google-specific directives
+# ============================================================
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 5
+
+User-agent: Googlebot-Image
+Allow: /og-image.jpg
+Allow: /profile.jpg
+Disallow: /assets/
+
+# ============================================================
+# Bing / Microsoft
+# ============================================================
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 5
+
+# ============================================================
+# Block known bad / aggressive bots
+# ============================================================
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /

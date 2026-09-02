@@ -1,0 +1,125 @@
+# ================================================================
+# _headers — Cloudflare Pages
+# Security, performance, and caching rules for amernextdev.pages.dev
+# ================================================================
+
+
+# ----------------------------------------------------------------
+# HTML pages — short cache, strict security
+# ----------------------------------------------------------------
+/
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.web3forms.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com;
+  Cache-Control: public, max-age=0, must-revalidate
+
+/404.html
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Cache-Control: public, max-age=0, must-revalidate
+
+
+# ----------------------------------------------------------------
+# JS & CSS assets — long-term immutable cache (content-hashed filenames)
+# ----------------------------------------------------------------
+/assets/*.js
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+/assets/*.css
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+
+# ----------------------------------------------------------------
+# Fonts — long-term cache
+# ----------------------------------------------------------------
+/assets/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+/assets/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+
+# ----------------------------------------------------------------
+# Images — long cache, allow cross-origin for OG previews
+# ----------------------------------------------------------------
+/assets/*.avif
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+/assets/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+/assets/*.png
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+/assets/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+/assets/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+
+# ----------------------------------------------------------------
+# Root-level static assets (favicons, PWA icons, OG image)
+# ----------------------------------------------------------------
+/favicon.svg
+  Cache-Control: public, max-age=86400
+
+/favicon-32.png
+  Cache-Control: public, max-age=86400
+
+/favicon-16.png
+  Cache-Control: public, max-age=86400
+
+/apple-touch-icon.png
+  Cache-Control: public, max-age=86400
+
+/android-chrome-192x192.png
+  Cache-Control: public, max-age=86400
+
+/android-chrome-512x512.png
+  Cache-Control: public, max-age=86400
+
+/og-image.jpg
+  Cache-Control: public, max-age=86400
+
+/profile.jpg
+  Cache-Control: public, max-age=86400
+
+
+# ----------------------------------------------------------------
+# SVG sprites — moderate cache (may update with new icons)
+# ----------------------------------------------------------------
+/sprites/*.svg
+  Cache-Control: public, max-age=604800
+  Access-Control-Allow-Origin: *
+  X-Content-Type-Options: nosniff
+
+
+# ----------------------------------------------------------------
+# Manifest & SEO files — short cache, always revalidate
+# ----------------------------------------------------------------
+/site.webmanifest
+  Cache-Control: public, max-age=86400
+  Content-Type: application/manifest+json
+
+/robots.txt
+  Cache-Control: public, max-age=86400
+
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+
+/browserconfig.xml
+  Cache-Control: public, max-age=86400

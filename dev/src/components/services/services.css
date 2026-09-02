@@ -1,0 +1,701 @@
+/* ================================================================
+   SERVICES SECTION
+   FIX ② — background: --color-bg for alternating rhythm
+   ================================================================ */
+
+.services-section {
+  background-color: var(--color-bg);
+  padding-block: var(--space-24);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 55% at 80% 70%, var(--color-amber-glow-sm) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 45% at 10% 20%, var(--color-info-surface)  0%, transparent 60%);
+  pointer-events: none;
+}
+
+.services-section__inner {
+  max-width: var(--container-xl);
+  margin-inline: auto;
+  padding-inline: var(--space-8);
+  position: relative;
+  z-index: var(--z-raised);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+/* Desktop Layout */
+.services-section__desktop-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.services-section__detail-panels {
+  margin-top: calc(var(--space-16) * -1);
+}
+
+.services-section__mobile-layout {
+  display: none;
+}
+
+/* Services List */
+.services-section__list-panel {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-8));
+  align-self: start;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  width: 100%;
+  padding: var(--space-5) var(--space-4);
+  background-color: transparent;
+  border: none;
+  border-block-end: 1px solid var(--color-border-subtle);
+  border-inline-start: 3px solid transparent;
+  cursor: pointer;
+  text-align: start;
+  transition:
+    background-color   var(--transition-base),
+    border-color       var(--transition-base),
+    color              var(--transition-base);
+}
+
+.service-list-item:first-child {
+  border-block-start: 1px solid var(--color-border-subtle);
+}
+
+.service-list-item:hover {
+  background-color: var(--color-amber-surface);
+  border-inline-start-color: var(--color-border-strong);
+}
+
+.service-list-item--active {
+  background-color: var(--color-amber-surface);
+  border-inline-start-color: var(--color-accent);
+}
+
+.service-list-item__number {
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  color: var(--color-text-muted);
+  min-width: 2ch;
+  flex-shrink: 0;
+  transition: color var(--transition-base);
+}
+
+.service-list-item--active .service-list-item__number,
+.service-list-item:hover .service-list-item__number {
+  color: var(--color-accent);
+}
+
+.service-list-item__name {
+  font-family: var(--font-primary);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-muted);
+  flex: 1;
+  transition: color var(--transition-base);
+}
+
+.service-list-item--active .service-list-item__name {
+  color: var(--color-text-heading);
+  font-weight: var(--fw-semibold);
+}
+
+.service-list-item:hover .service-list-item__name {
+  color: var(--color-text-body);
+}
+
+.service-list-item__arrow {
+  width: 12px;
+  height: 12px;
+  color: var(--color-text-muted);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity   var(--transition-base),
+    transform var(--transition-base),
+    color     var(--transition-base);
+  flex-shrink: 0;
+}
+
+[dir="rtl"] .service-list-item__arrow {
+  transform: translateX(6px) scaleX(-1);
+}
+
+.service-list-item--active .service-list-item__arrow,
+.service-list-item:hover   .service-list-item__arrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--color-accent);
+}
+
+[dir="rtl"] .service-list-item--active .service-list-item__arrow,
+[dir="rtl"] .service-list-item:hover   .service-list-item__arrow {
+  transform: translateX(0) scaleX(-1);
+}
+
+/* Service Detail Panel */
+.service-detail-panel {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-5);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+max-height: calc(100vh - var(--nav-height) - var(--space-8));
+  overflow-y: auto;
+}
+
+.service-detail-panel--active {
+  display: flex;
+}
+
+/* Switch-out animation — old panel fades/softens before the new
+   one appears. Short and gentle so it never feels like a delay. */
+.service-detail-panel--switch-out {
+  animation: service-panel-switch-out 150ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+@keyframes service-panel-switch-out {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.985) translateY(4px);
+  }
+}
+
+/* Switch-in animation — independent of reveal.js / data-reveal system.
+   Re-triggered via JS (class removed + reflow + re-added) on EVERY
+   switch, not just the first time, so the panel always animates in.
+   Softer scale+fade (expo-out easing) reads smoother than a hard slide. */
+.service-detail-panel--switch-in {
+  animation: service-panel-switch-in 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes service-panel-switch-in {
+  from {
+    opacity: 0;
+    transform: scale(0.985) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.service-detail-panel--switch-in,
+.service-detail-panel--switch-out {
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-detail-panel--switch-in {
+    animation: service-panel-fade-in 250ms ease both;
+  }
+  .service-detail-panel--switch-out {
+    animation: none;
+  }
+}
+
+@keyframes service-panel-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.service-detail-panel__top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.service-detail-panel__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-body);
+  flex-shrink: 0;
+}
+
+.service-detail-panel__icon .icon {
+  width: 22px;
+  height: 22px;
+}
+
+.service-detail-panel__name {
+  font-family: var(--font-primary);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--color-text-heading);
+}
+
+.service-detail-panel__description {
+  font-family: var(--font-primary);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-muted);
+  max-width: 56ch;
+  margin: 0;
+}
+
+.service-detail-panel__includes-title {
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+  margin-block-end: var(--space-3);
+}
+
+.service-detail-panel__includes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+}
+
+.service-detail-panel__includes-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  color: var(--color-text-body);
+}
+
+.service-detail-panel__includes-list li::before {
+  content: '';
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-amber-surface-2);
+  border: 1px solid var(--color-amber-border);
+  border-radius: var(--radius-sm);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23F59E0B' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.service-detail-panel__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.service-detail-panel__tag {
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-accent);
+  background-color: transparent;
+  border: 1px solid var(--color-amber-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-3);
+  line-height: var(--lh-normal);
+  transition:
+    background-color var(--transition-fast),
+    border-color     var(--transition-fast);
+}
+
+.service-detail-panel__tag:hover {
+  background-color: var(--color-amber-surface);
+}
+
+.service-detail-panel > .btn-primary {
+  width: 100%;
+  justify-content: center;
+  padding-block: var(--space-4);
+  font-size: var(--fs-base);
+  border-radius: var(--radius-lg);
+  letter-spacing: var(--ls-normal);
+}
+
+/* Mobile Tabs Layout */
+.tab-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  padding-block: var(--space-3);
+}
+
+.tab-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-border-strong);
+  transition:
+    background-color var(--transition-base),
+    transform        var(--transition-base),
+    width            var(--transition-base);
+}
+
+.tab-dot--active {
+  background-color: var(--color-accent);
+  width: 18px;
+}
+
+.tab-panels {
+  position: relative;
+}
+
+.tab-panel {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-5);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  animation: panel-in 350ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.tab-panel--active {
+  display: flex;
+}
+
+/* Switch-out — old tab panel softens out before the new appears */
+.tab-panel--switch-out {
+  animation: tab-panel-switch-out 140ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+@keyframes tab-panel-switch-out {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.985) translateY(4px);
+  }
+}
+
+/* Switch-in animation — independent of reveal.js / data-reveal system.
+   Re-triggered via JS on every tab switch (not just first time).
+   Expo-out easing + soft scale reads smoother than a hard slide-up. */
+.tab-panel--switch-in {
+  animation: tab-panel-switch-in 440ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes tab-panel-switch-in {
+  from {
+    opacity: 0;
+    transform: scale(0.985) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.tab-panel--switch-in,
+.tab-panel--switch-out {
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-panel--switch-in {
+    animation: tab-panel-fade-in 220ms ease both;
+  }
+  .tab-panel--switch-out {
+    animation: none;
+  }
+}
+
+@keyframes tab-panel-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.tab-panel__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-body);
+}
+
+.tab-panel__icon .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.tab-panel__name {
+  font-family: var(--font-primary);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--color-text-heading);
+  margin: 0;
+}
+
+.tab-panel__name span {
+  color: var(--color-accent);
+}
+
+.tab-panel__description {
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.tab-panel__includes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.tab-panel__includes-title {
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.tab-panel__includes-list {
+  list-style: none;
+  padding: var(--space-4) var(--space-5);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.tab-panel__includes-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+  color: var(--color-text-body);
+}
+
+.tab-panel__includes-list li::before {
+  content: '';
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-amber-surface-2);
+  border: 1px solid var(--color-amber-border);
+  border-radius: var(--radius-sm);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23F59E0B' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.tab-panel > .btn-primary {
+  width: 100%;
+  justify-content: center;
+  padding-block: var(--space-4);
+  border-radius: var(--radius-lg);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--ls-normal);
+}
+
+
+
+/* Light mode */
+[data-theme="light"] .service-list-item:hover {
+  background-color: var(--color-amber-surface);
+}
+
+[data-theme="light"] .service-list-item--active {
+  background-color: var(--color-amber-surface);
+  border-inline-start-color: var(--color-accent);
+}
+
+[data-theme="light"] .service-detail-panel {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+[data-theme="light"] .service-detail-panel__includes-list {
+  background-color: var(--color-surface-2);
+  border-color: var(--color-border);
+}
+
+[data-theme="light"] .service-detail-panel__tag {
+  color: var(--color-accent);
+  border-color: var(--color-amber-border);
+}
+
+[data-theme="light"] .tab-button {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+
+[data-theme="light"] .tab-button--active {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-text-inverse);
+}
+
+[data-theme="light"] .tab-panel {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+[data-theme="light"] .tab-panel__includes-list {
+  background-color: var(--color-surface-2);
+  border-color: var(--color-border);
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .services-section__desktop-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5);
+  }
+
+  .service-detail-panel {
+    padding: var(--space-8);
+  }
+
+  .service-detail-panel__name {
+    font-size: var(--fs-2xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .services-section__desktop-layout {
+    display: none;
+  }
+
+  .services-section__mobile-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 640px) {
+  .services-section {
+    padding-block: var(--space-16);
+  }
+
+  .services-section__inner {
+    padding-inline: var(--space-4);
+    gap: var(--space-10);
+  }
+
+  .tab-panel {
+    padding: var(--space-5);
+    gap: var(--space-4);
+  }
+
+  .section-header__title {
+    font-size: var(--fs-3xl);
+  }
+}
+
+
+/* ── Mobile Tabs Nav (scrollable wrapper) ── */
+.services-section__tabs-nav-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  margin-bottom: 32px;
+  /* subtle fade on edges */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 90%, transparent 100%);
+}
+.services-section__tabs-nav-wrapper::-webkit-scrollbar { display: none; }
+
+.services-section__tabs-nav {
+  display: flex;
+  gap: 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 4px;
+  width: max-content;
+  min-width: 100%;
+}
+
+.tab-button {
+  padding: 10px 18px;
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  cursor: pointer;
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.tab-button--active {
+  background: var(--color-amber-surface);
+  border-color: var(--color-amber-border);
+  color: var(--color-accent);
+  font-weight: var(--fw-semibold);
+}
+.tab-button:hover:not(.tab-button--active) { color: var(--color-text-body); }

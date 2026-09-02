@@ -1,0 +1,587 @@
+/* Refactored: hardcoded values replaced with CSS variables from variables.css */
+/* Values marked with "no matching variable" have no equivalent in variables.css */
+
+/* ================================================
+   HERO SECTION
+   ================================================ */
+.hero {
+  min-height: 100vh; /* no matching variable */
+  background-color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  padding: var(--space-16) clamp(1.5rem, 6vw, 5rem); /* no matching variable for clamp */
+  font-family: var(--font-primary);
+  color: var(--color-text-heading);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background texture */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 50%, var(--color-amber-glow-sm) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, var(--color-info-surface) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ================================================
+   HERO INNER — Two-column layout
+   ================================================ */
+.hero__inner {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem); /* no matching variable */
+  position: relative;
+  z-index: var(--z-raised);
+}
+
+/* ================================================
+   HERO CONTENT — Text content (was .hero-left)
+   ================================================ */
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);   /* rhythm */
+}
+
+/* Eyebrow label - UNIFIED BADGE STYLE */
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  
+  color: var(--color-accent);
+  background-color: var(--color-amber-surface);
+  border: 1px solid var(--color-amber-border);
+  border-radius: var(--radius-full);
+  
+  padding: var(--space-1) var(--space-3);
+  margin-bottom: var(--space-4); /* مسافة أسفل الشارة لتفصلها عن العنوان */
+}
+
+/* Main headline */
+.hero__headline {
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  font-weight: var(--fw-extrabold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  color: var(--color-text-heading);
+}
+
+/* Italic accent word → orange */
+.hero__headline em {
+  font-style: normal;
+  color: var(--color-accent);
+}
+
+/* Description paragraph */
+.hero__description {
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-muted);
+  max-width: 40ch;
+}
+
+/* ================================================
+   CTA GROUP — Buttons
+   ================================================ */
+.hero__cta-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-top: var(--space-3);
+}
+
+/* ================================================
+   HERO TERMINAL — Code panel (right column)
+   ================================================ */
+.hero-terminal {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border); /* no matching variable for 1px */
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  width: 100%;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04), /* no matching variable */
+    var(--shadow-xl),
+    var(--shadow-lg);
+  font-family: var(--font-secondary);
+  font-size: clamp(0.8rem, 1vw, 0.875rem);
+}
+
+/* Terminal header bar */
+.hero-terminal__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-surface-2);
+  border-bottom: 1px solid var(--color-border); /* no matching variable for 1px */
+}
+
+/* Traffic-light dots */
+.hero-terminal__dot {
+  width: var(--space-3);
+  height: var(--space-3);
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+.hero-terminal__dot:nth-child(1) { background-color: var(--color-error); }
+.hero-terminal__dot:nth-child(2) { background-color: var(--color-warning); }
+.hero-terminal__dot:nth-child(3) { background-color: var(--color-success); }
+
+/* Filename title — pushed to right */
+.hero-terminal__title {
+  margin-left: auto;
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+  opacity: 0.7; /* no matching variable */
+}
+
+/* Terminal body */
+.hero-terminal__body {
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  line-height: var(--lh-snug);
+}
+
+/* Each line */
+.hero-terminal__line {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: nowrap;
+  white-space: normal;
+  min-height: 1.4em; /* no matching variable */
+  gap: 0.3em; /* no matching variable */
+}
+
+/* كل span محتواه لا يتكسر */
+.hero-terminal__line > * {
+  white-space: nowrap; /* no matching variable */
+}
+
+/* ================================================
+   TERMINAL SYNTAX COLORS
+   ================================================ */
+.term-kw   { color: var(--color-accent);        font-weight: var(--fw-semibold); }
+.term-str  { color: var(--color-amber-300); }
+.term-bool { color: var(--color-success);        font-weight: var(--fw-semibold); }
+.term-acc  { color: var(--color-info); }
+.term-muted{ color: var(--color-text-muted); }
+.term-var  { color: var(--color-success);        font-weight: var(--fw-semibold); }
+
+/* Blinking cursor block */
+.term-cursor {
+  display: inline-block;
+  width: 0.55em; /* no matching variable */
+  height: 0.85em; /* no matching variable */
+  background-color: var(--color-accent);
+  vertical-align: middle;
+  border-radius: 1px; /* no matching variable */
+  animation: blink 1.1s step-end infinite; /* no matching variable */
+  margin-left: 1px; /* no matching variable */
+}
+
+/* ================================================
+   RESPONSIVE — TABLET (900px فأقل)
+   ================================================ */
+@media (max-width: 900px) {
+
+  .hero-terminal {
+    display: none;
+  }
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__content {
+    gap: var(--space-4);
+  }
+
+  .hero__headline {
+    font-size: clamp(1.875rem, 5.5vw, 2.75rem);
+  }
+}
+
+/* ================================================
+   RESPONSIVE — MOBILE (560px فأقل)
+   ================================================ */
+@media (max-width: 560px) {
+
+  .hero {
+    height: 100svh;
+    min-height: unset;
+    padding-top: var(--nav-height);
+    padding-bottom: var(--space-8);
+    padding-inline: var(--space-5);
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  .hero::before {
+    background:
+      radial-gradient(ellipse 100% 45% at 50% 100%, var(--color-amber-glow-sm) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 95% 5%, var(--color-info-surface) 0%, transparent 60%);
+  }
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+    padding-block: var(--space-6);
+  }
+
+  .hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-wider);
+    text-transform: uppercase;
+    color: var(--color-accent);
+    padding: var(--space-1) var(--space-3);
+    background-color: var(--color-amber-surface);
+    border: 1px solid var(--color-amber-border);
+    border-radius: var(--radius-full);
+    width: fit-content;
+    margin-bottom: var(--space-4);
+  }
+
+  .hero__headline {
+    font-size: clamp(1.875rem, 9vw, 2.5rem);
+    line-height: var(--lh-snug);
+    letter-spacing: var(--ls-tighter);
+    color: var(--color-text-heading);
+  }
+
+  .hero__headline em {
+    display: inline;
+    font-size: inherit;
+    line-height: inherit;
+    color: var(--color-accent);
+  }
+
+  .hero__description {
+    font-size: var(--fs-sm);
+    max-width: 100%;
+    line-height: var(--lh-relaxed);
+    color: var(--color-text-muted);
+    margin-top: var(--space-4);
+  }
+
+  .hero__cta-group {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+    margin-top: auto;
+    padding-top: var(--space-6);
+    width: 100%;
+  }
+
+  .btn-primary {
+    width: 100%;
+    justify-content: center;
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-bold);
+    border-radius: var(--radius-md);
+    letter-spacing: var(--ls-wide);
+  }
+
+  .btn-ghost {
+    width: fit-content;
+    align-self: center;
+    padding: var(--space-2) 0;
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    border-bottom: 1px solid var(--color-border-strong);
+    letter-spacing: var(--ls-wide);
+  }
+
+  .btn-ghost:hover {
+    color: var(--color-text-heading);
+    border-bottom-color: var(--color-accent);
+  }
+}
+
+/* ================================================
+   RESPONSIVE — SMALL MOBILE (380px فأقل)
+   ================================================ */
+@media (max-width: 380px) {
+
+  .hero {
+    padding-inline: var(--space-4);
+    padding-bottom: var(--space-5);
+  }
+
+  .hero__content {
+    padding-block: var(--space-3);
+  }
+
+  .hero__eyebrow {
+    margin-bottom: var(--space-4);
+  }
+
+  .hero__headline {
+    font-size: clamp(1.75rem, 9vw, 2.1rem);
+  }
+
+  .hero__cta-group {
+    gap: var(--space-2);
+  }
+
+  .btn-primary {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--fs-sm);
+  }
+}
+
+/* ================================================
+   OVERRIDE – إصلاح الفراغات الكبيرة على الهواتف
+   ================================================ */
+@media (max-width: 560px) {
+
+  /* إلغاء التمدد الكامل للعمود الأيسر */
+  .hero__content {
+    height: auto !important;
+    justify-content: flex-start !important;
+    padding-block: var(--space-4) !important;
+  }
+
+  /* إزالة الإجبار على الذهاب إلى أسفل الشاشة */
+  .hero__cta-group {
+    margin-top: var(--space-6) !important;
+    padding-top: 0 !important;
+    margin-bottom: var(--space-4) !important;
+  }
+
+  /* تعديل القسم الرئيسي ليكون مناسباً للمحتوى */
+  .hero {
+    min-height: auto !important;
+    height: auto !important;
+    padding-bottom: var(--space-6) !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero__cta-group {
+    margin-top: var(--space-6) !important;
+  }
+  .hero__content {
+    justify-content: center !important;
+    gap: var(--space-4) !important;
+  }
+}
+
+/* ================================================
+   إصلاح نهائي: القسم يملأ الشاشة مع مسافات مثالية
+   ================================================ */
+@media (max-width: 560px) {
+  /* 1. جعل القسم يملأ الشاشة بالكامل */
+  .hero {
+    min-height: 100svh !important;
+    height: 100svh !important;
+  }
+
+  /* 2. توسيط المحتوى عمودياً داخل القسم */
+  .hero__content {
+    justify-content: center !important;
+    gap: var(--space-4) !important;
+  }
+
+  /* 3. تعديل الأزرار لتكون أقرب للنص (بدون دفعها للأسفل) */
+  .hero__cta-group {
+    margin-top: var(--space-5) !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero__cta-group {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: var(--space-3) !important;
+    width: 100% !important;
+    margin-top: var(--space-5) !important;
+  }
+  
+  .hero__cta-group .btn-primary {
+    width: 100% !important; 
+    justify-content: center !important;
+  }
+  
+  .hero__cta-group .btn-ghost {
+    width: 100% !important;
+    justify-content: center !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-md) !important;
+    padding: var(--space-3) var(--space-4) !important;
+    background: transparent !important;
+    color: var(--color-text-heading) !important;
+  }
+}
+
+/* ================================================
+   تحسينات نهائية للأحجام والمسافات - دقة عالية
+   ================================================ */
+@media (max-width: 560px) {
+  /* 1. ضبط القسم ليملأ الشاشة مع توسيط مثالي */
+  .hero {
+    min-height: 100svh !important;
+    height: 100svh !important;
+    padding: var(--nav-height) var(--space-5) var(--space-8) !important;
+  }
+
+  /* 2. ضبط المحتوى ليكون في المنتصف عمودياً */
+  .hero__content {
+    justify-content: center !important;
+    gap: var(--space-4) !important;
+  }
+
+  /* 3. تحسين شارة العنوان (Eyebrow) */
+  .hero__eyebrow {
+    font-size: var(--fs-xs) !important;
+    padding: var(--space-1) var(--space-3) !important;
+    border-radius: var(--radius-full) !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* 4. ضبط حجم العنوان ليتناسب مع الشاشة الصغيرة */
+  .hero__headline {
+    font-size: clamp(3rem, 13vw, 4rem) !important;
+    line-height: var(--lh-tight) !important;
+    letter-spacing: var(--ls-tight) !important;
+  }
+
+  /* 5. ضبط الوصف (Description) */
+  .hero__description {
+    font-size: var(--fs-base) !important;
+    line-height: var(--lh-relaxed) !important;
+    max-width: 100% !important;
+    color: var(--color-text-muted) !important;
+  }
+
+  /* 6. ضبط مجموعة الأزرار */
+  .hero__cta-group {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: var(--space-3) !important;
+    width: 100% !important;
+    margin-top: 30px !important;
+  }
+
+  /* 7. تصميم الزر الأساسي */
+  .hero__cta-group .btn-primary {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: var(--space-3) var(--space-4) !important;
+    font-size: var(--fs-sm) !important;
+    border-radius: var(--radius-md) !important;
+    background-color: var(--color-accent) !important;
+    color: var(--color-text-inverse) !important;
+  }
+
+  /* 8. تصميم الزر الثانوي */
+  .hero__cta-group .btn-ghost {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: var(--space-3) var(--space-4) !important;
+    font-size: var(--fs-sm) !important;
+    border-radius: var(--radius-md) !important;
+    background: transparent !important;
+    border: 1px solid var(--color-border-strong) !important;
+    color: var(--color-text-heading) !important;
+    transition: var(--transition-base) !important;
+  }
+
+  .hero__cta-group .btn-ghost:hover {
+    border-color: var(--color-accent) !important;
+    color: var(--color-accent) !important;
+  }
+}
+
+/* Animation for blinking cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+/* ================================================
+   UNIFICATION FIX: Uniform Eyebrow Badge on ALL devices
+   ================================================ */
+
+/* إصلاح أي تداخل في الموبايل وضمان تطبيق نفس الستايل */
+@media (max-width: 560px) {
+  .hero__eyebrow {
+    display: inline-flex !important;
+    align-items: center !important;
+    width: fit-content !important;
+    font-size: var(--fs-xs) !important;
+    font-weight: var(--fw-semibold) !important;
+    letter-spacing: var(--ls-wider) !important;
+    text-transform: uppercase !important;
+    color: var(--color-accent) !important;
+    background-color: var(--color-amber-surface) !important;
+    border: 1px solid var(--color-amber-border) !important;
+    border-radius: var(--radius-full) !important;
+    padding: var(--space-1) var(--space-3) !important;
+    margin-bottom: var(--space-4) !important; /* حافظ على مسافة ثابتة */
+    margin-top: 0 !important; /* إلغاء أي هوامش علوية */
+  }
+}
+
+@media (max-width: 380px) {
+  .hero__eyebrow {
+    margin-bottom: var(--space-3) !important; /* تقليل المسافة قليلاً للشاشات الصغيرة جداً */
+  }
+}
+
+
+/* ================================================
+   BUTTON GHOST - نفس التصميم على جميع الشاشات
+   ================================================ */
+
+/* تصميم موحد للجميع (ديسكتوب + موبايل) */
+.btn-ghost {
+  padding: var(--space-3) var(--space-4) !important;
+  font-size: var(--fs-sm) !important;
+  border-radius: var(--radius-md) !important;
+  background: transparent !important;
+  border: 1px solid var(--color-border-strong) !important;
+  color: var(--color-text-heading) !important;
+  transition: var(--transition-base) !important;
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-accent) !important;
+  color: var(--color-accent) !important;
+}

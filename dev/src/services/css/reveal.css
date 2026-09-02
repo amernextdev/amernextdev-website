@@ -1,0 +1,119 @@
+/* ============================================================
+   reveal.css — Scroll-triggered entrance animations
+   Strategy:
+   • Elements start hidden via [data-reveal] attribute
+   • JS adds [data-reveal="visible"] via IntersectionObserver
+   • Each variant has its own entrance character:
+       fade-up    → section headers, text blocks
+       fade-in    → backgrounds, overlays, wide elements
+       slide-left → cards from left column / LTR content
+       slide-right→ cards from right column / RTL-aware
+       stagger    → grid children, tag lists (parent triggers, children delay)
+       scale-up   → icons, badges, small UI elements
+   ============================================================ */
+
+
+/* ─── Base hidden state ─────────────────────────────────────── */
+/* Applied via [data-reveal] before JS runs */
+
+[data-reveal] {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition:
+    opacity  var(--reveal-duration, 0.65s) var(--reveal-ease, cubic-bezier(0.22, 1, 0.36, 1)) var(--reveal-delay, 0s),
+    transform var(--reveal-duration, 0.65s) var(--reveal-ease, cubic-bezier(0.22, 1, 0.36, 1)) var(--reveal-delay, 0s);
+}
+
+/* ─── Variant: fade-up (default) ───────────────────────────── */
+[data-reveal="fade-up"],
+[data-reveal="fade-up visible"] {
+  transform: translateY(28px);
+}
+
+/* ─── Variant: fade-in ─────────────────────────────────────── */
+[data-reveal="fade-in"],
+[data-reveal="fade-in visible"] {
+  transform: none;
+}
+
+/* ─── Variant: slide-left ──────────────────────────────────── */
+[data-reveal="slide-left"],
+[data-reveal="slide-left visible"] {
+  transform: translateX(-32px);
+}
+
+/* ─── Variant: slide-right ─────────────────────────────────── */
+[data-reveal="slide-right"],
+[data-reveal="slide-right visible"] {
+  transform: translateX(32px);
+}
+
+/* ─── Variant: scale-up ────────────────────────────────────── */
+[data-reveal="scale-up"],
+[data-reveal="scale-up visible"] {
+  transform: scale(0.88) translateY(12px);
+}
+
+/* ─── Visible state (JS adds this) ─────────────────────────── */
+[data-reveal~="visible"] {
+  opacity: 1;
+  transform: none !important;
+}
+
+
+/* ─── Stagger children ──────────────────────────────────────── */
+/*
+   Parent gets [data-stagger], children get [data-reveal]
+   JS sets --reveal-delay on each child sequentially
+   Works for any grid/flex parent
+*/
+
+[data-stagger] > [data-reveal] {
+  /* delay is injected inline by JS: style="--reveal-delay: Xs" */
+}
+
+
+/* ─── Delay helpers (fallback / CSS-only option) ────────────── */
+[data-delay="1"] { --reveal-delay: 0.08s; }
+[data-delay="2"] { --reveal-delay: 0.16s; }
+[data-delay="3"] { --reveal-delay: 0.24s; }
+[data-delay="4"] { --reveal-delay: 0.32s; }
+[data-delay="5"] { --reveal-delay: 0.40s; }
+[data-delay="6"] { --reveal-delay: 0.48s; }
+
+
+/* ─── Duration helpers ──────────────────────────────────────── */
+[data-duration="fast"]   { --reveal-duration: 0.45s; }
+[data-duration="normal"] { --reveal-duration: 0.65s; }
+[data-duration="slow"]   { --reveal-duration: 0.90s; }
+
+
+/* ─── RTL-aware slide directions ───────────────────────────── */
+/*
+   When dir=rtl, slide-left/right are flipped automatically
+   so motion always feels "from outside → center"
+*/
+[dir="rtl"] [data-reveal="slide-left"],
+[dir="rtl"] [data-reveal="slide-left visible"] {
+  transform: translateX(32px);
+}
+
+[dir="rtl"] [data-reveal="slide-right"],
+[dir="rtl"] [data-reveal="slide-right visible"] {
+  transform: translateX(-32px);
+}
+
+/* RTL visible reset — same rule applies */
+[dir="rtl"] [data-reveal~="visible"] {
+  transform: none !important;
+}
+
+
+/* ─── Reduced motion ────────────────────────────────────────── */
+/* Respect system preference — no movement, only fade */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    transform: none !important;
+    transition: opacity 0.3s ease var(--reveal-delay, 0s) !important;
+  }
+}

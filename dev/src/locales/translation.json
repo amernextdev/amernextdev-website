@@ -1,0 +1,179 @@
+{
+	"_meta": {
+	    "language": "[LANGUAGE]",
+        "direction": "[DIR]",
+		"key_types": {
+			"text": "النصوص العادية — تُطبَّق بـ innerText",
+			"html": "النصوص التي تحتوي عناصر HTML — تُطبَّق بـ innerHTML",
+			"aria": "مساعدات قارئات الشاشة — تُطبَّق بتغيير قيمة سمة aria-label",
+			"alt":  "النص البديل للصور — يُطبَّق بتغيير قيمة سمة alt",
+			"head": "عناصر الـ head (title, meta) — تُطبَّق بتحديد العنصر مباشرة وتغيير محتواه أو سماته"
+		}
+	},
+
+	"i18n-head": {
+		"page.title":          "عنوان الصفحة الذي يظهر في تبويب المتصفح ونتائج محركات البحث",
+		"meta.description":    "وصف مختصر للموقع يظهر في نتائج محركات البحث وعند مشاركة الرابط على وسائل التواصل الاجتماعي",
+		"og.title":            "العنوان الذي يظهر عند مشاركة الموقع على منصات التواصل الاجتماعي (Open Graph)",
+		"og.description":      "الوصف الذي يظهر عند مشاركة الموقع على منصات التواصل الاجتماعي (Open Graph)",
+		"twitter.title":       "العنوان الذي يظهر عند مشاركة الموقع على تويتر / إكس (Twitter Card)",
+		"twitter.description": "الوصف الذي يظهر عند مشاركة الموقع على تويتر / إكس (Twitter Card)"
+	},
+
+	"i18n-text": {
+
+		"nav.link.home":     "رابط التنقل — الصفحة الرئيسية / قسم Hero",
+		"nav.link.work":     "رابط التنقل — قسم الأعمال",
+		"nav.link.services": "رابط التنقل — قسم الخدمات",
+		"nav.link.about":    "رابط التنقل — قسم نبذة شخصية",
+		"nav.link.contact":  "رابط التنقل — قسم التواصل",
+
+		"header.cta.label": "نص زر الدعوة لاتخاذ إجراء في رأس الصفحة — سطح المكتب فقط",
+		"mobile.cta.label": "نص زر الدعوة لاتخاذ إجراء داخل القائمة الجوّالة",
+
+		"mobile-nav.controls.lang-toggle.label":  "عنوان بطاقة تبديل اللغة في القائمة الجوّالة",
+
+		"hero.eyebrow":     "النص الصغير فوق العنوان الرئيسي في قسم Hero — المسمى الوظيفي",
+		"hero.description": "الفقرة الوصفية أسفل العنوان الرئيسي في قسم Hero",
+		"hero.cta.work":    "نص زر 'مشاهدة الأعمال' في قسم Hero",
+		"hero.cta.contact": "نص زر 'بدء مشروع' في قسم Hero",
+
+		"work.section-label":        "التسمية الصغيرة أعلى عنوان قسم الأعمال",
+		"work.section-title.line1":  "السطر الأول من عنوان قسم الأعمال",
+		"work.section-title.line2":  "السطر الثاني من عنوان قسم الأعمال — مُنسَّق بتأثير outline",
+		"work.card.live-badge":      "شارة 'مباشر' الموجودة على صورة كل بطاقة مشروع",
+		"work.card1.title":          "عنوان بطاقة المشروع الأول",
+		"work.card1.description":    "وصف المشروع الأول — جملة واحدة تصف ما يفعله ولمن",
+		"work.card2.title":          "عنوان بطاقة المشروع الثاني",
+		"work.card2.description":    "وصف المشروع الثاني — جملة واحدة تصف ما يفعله ولمن",
+		"work.card3.title":          "عنوان بطاقة المشروع الثالث",
+		"work.card3.description":    "وصف المشروع الثالث — جملة واحدة تصف ما يفعله ولمن",
+		"work.card.link.live-site":  "نص رابط 'الموقع الحي' في تذييل كل بطاقة مشروع",
+		"work.card.link.case-study": "نص رابط 'دراسة الحالة' في تذييل كل بطاقة مشروع",
+		"work.footer.view-all-projects": "نص زر 'عرض كل المشاريع' في أسفل قسم الأعمال",
+
+		"services.section-eyebrow":  "التسمية الصغيرة أعلى عنوان قسم الخدمات",
+		"services.includes-heading": "عنوان قائمة 'ما يتضمنه' في كل لوحة خدمة — مفتاح مشترك بين جميع الخدمات",
+
+		"services.item1.name":        "اسم الخدمة الأولى — موقع تجاري",
+		"services.item1.description": "الجملة الوصفية للخدمة الأولى",
+		"services.item1.include1":    "بند التضمين 1 — الخدمة الأولى",
+		"services.item1.include2":    "بند التضمين 2 — الخدمة الأولى",
+		"services.item1.include3":    "بند التضمين 3 — الخدمة الأولى",
+		"services.item1.include4":    "بند التضمين 4 — الخدمة الأولى",
+		"services.item1.include5":    "بند التضمين 5 — الخدمة الأولى",
+		"services.item1.cta":         "نص زر 'بدء مشروع' في لوحة الخدمة الأولى",
+
+		"services.item2.name":        "اسم الخدمة الثانية — صفحة هبوط",
+		"services.item2.description": "الجملة الوصفية للخدمة الثانية",
+		"services.item2.include1":    "بند التضمين 1 — الخدمة الثانية",
+		"services.item2.include2":    "بند التضمين 2 — الخدمة الثانية",
+		"services.item2.include3":    "بند التضمين 3 — الخدمة الثانية",
+		"services.item2.include4":    "بند التضمين 4 — الخدمة الثانية",
+		"services.item2.include5":    "بند التضمين 5 — الخدمة الثانية",
+		"services.item2.cta":         "نص زر 'بدء مشروع' في لوحة الخدمة الثانية",
+
+		"services.item3.name":        "اسم الخدمة الثالثة — تطبيق ويب",
+		"services.item3.description": "الجملة الوصفية للخدمة الثالثة",
+		"services.item3.include1":    "بند التضمين 1 — الخدمة الثالثة",
+		"services.item3.include2":    "بند التضمين 2 — الخدمة الثالثة",
+		"services.item3.include3":    "بند التضمين 3 — الخدمة الثالثة",
+		"services.item3.include4":    "بند التضمين 4 — الخدمة الثالثة",
+		"services.item3.include5":    "بند التضمين 5 — الخدمة الثالثة",
+		"services.item3.cta":         "نص زر 'بدء مشروع' في لوحة الخدمة الثالثة",
+
+		"services.item4.name":        "اسم الخدمة الرابعة — واجهة مستخدم",
+		"services.item4.description": "الجملة الوصفية للخدمة الرابعة",
+		"services.item4.include1":    "بند التضمين 1 — الخدمة الرابعة",
+		"services.item4.include2":    "بند التضمين 2 — الخدمة الرابعة",
+		"services.item4.include3":    "بند التضمين 3 — الخدمة الرابعة",
+		"services.item4.include4":    "بند التضمين 4 — الخدمة الرابعة",
+		"services.item4.include5":    "بند التضمين 5 — الخدمة الرابعة",
+		"services.item4.cta":         "نص زر 'بدء مشروع' في لوحة الخدمة الرابعة",
+
+		"services.item5.name":        "اسم الخدمة الخامسة — صيانة المواقع",
+		"services.item5.description": "الجملة الوصفية للخدمة الخامسة",
+		"services.item5.include1":    "بند التضمين 1 — الخدمة الخامسة",
+		"services.item5.include2":    "بند التضمين 2 — الخدمة الخامسة",
+		"services.item5.include3":    "بند التضمين 3 — الخدمة الخامسة",
+		"services.item5.include4":    "بند التضمين 4 — الخدمة الخامسة",
+		"services.item5.include5":    "بند التضمين 5 — الخدمة الخامسة",
+		"services.item5.cta":         "نص زر 'بدء مشروع' في لوحة الخدمة الخامسة",
+
+		"services.tab1.short-name": "الاسم المختصر للخدمة الأولى في شريط تبويبات الجوّال",
+		"services.tab2.short-name": "الاسم المختصر للخدمة الثانية في شريط تبويبات الجوّال",
+		"services.tab3.short-name": "الاسم المختصر للخدمة الثالثة في شريط تبويبات الجوّال",
+		"services.tab4.short-name": "الاسم المختصر للخدمة الرابعة في شريط تبويبات الجوّال",
+		"services.tab5.short-name": "الاسم المختصر للخدمة الخامسة في شريط تبويبات الجوّال",
+
+		"about.section-label":       "التسمية الصغيرة أعلى عنوان قسم نبذة شخصية",
+		"about.section-title.line1": "السطر الأول من عنوان قسم نبذة شخصية",
+		"about.section-title.line2": "السطر الثاني من عنوان قسم نبذة شخصية — مُنسَّق بتأثير outline",
+		"about.bio.paragraph1":      "الفقرة التعريفية الأولى — من هو عامر وأسلوب عمله",
+		"about.bio.paragraph2":      "الفقرة التعريفية الثانية — اهتماماته المهنية وقيمه",
+		"about.bio.paragraph3":      "الفقرة التعريفية الثالثة — التعلم المستمر ومواكبة تطور الويب",
+		"about.skills.heading":        "عنوان قسم المهارات التقنية",
+		"about.skills.group.frontend": "تسمية مجموعة مهارات الواجهة الأمامية",
+		"about.skills.group.technologies": "تسمية مجموعة التقنيات والأدوات (Git, Docker, إلخ)",
+		"about.skills.group.tools":    "تسمية مجموعة أدوات التطوير",
+
+		"contact.eyebrow":             "التسمية الصغيرة أعلى عنوان قسم التواصل",
+		"contact.section-description": "الجملة الوصفية أسفل عنوان قسم التواصل",
+		"contact.form.name-label":     "تسمية حقل الاسم في نموذج التواصل",
+		"contact.form.contact-label":  "تسمية حقل البريد الإلكتروني أو الهاتف في نموذج التواصل",
+		"contact.form.message-label":  "تسمية حقل الرسالة في نموذج التواصل",
+		"contact.form.submit-button":  "نص زر إرسال نموذج التواصل",
+		"contact.divider":             "نص الفاصل بين النموذج وأزرار التواصل المباشر",
+
+		"footer.meta.email-prefix": "البادئة 'Email:' قبل عنوان البريد الإلكتروني في التذييل",
+		"footer.meta.phone-prefix": "البادئة 'Phone:' قبل رقم الهاتف في التذييل",
+		"footer.meta.copyright":    "نص حقوق النشر في أسفل التذييل"
+	},
+
+	"i18n-html": {
+		"hero.headline":          "العنوان الرئيسي لقسم Hero — يحتوي <br> و<em> لتنسيق الكلمة المحورية بمظهر مائل",
+		"services.section-title": "عنوان قسم الخدمات — يحتوي <span class=\"outline\"> لتطبيق تأثير الخط المفرغ على كلمة معينة",
+		"services.tab1.heading":  "عنوان لوحة التبويب الأولى (جوّال) — يحتوي <span> لتلوين الكلمة الثانية",
+		"services.tab2.heading":  "عنوان لوحة التبويب الثانية (جوّال) — يحتوي <span> لتلوين الكلمة الثانية",
+		"services.tab3.heading":  "عنوان لوحة التبويب الثالثة (جوّال) — يحتوي <span> لتلوين الكلمة الثانية",
+		"services.tab4.heading":  "عنوان لوحة التبويب الرابعة (جوّال) — يحتوي <span> لتلوين الكلمة الثانية",
+		"services.tab5.heading":  "عنوان لوحة التبويب الخامسة (جوّال) — يحتوي <span> لتلوين الكلمة الثانية",
+		"contact.section-title":  "عنوان قسم التواصل — يحتوي <span class=\"outline\"> لتطبيق تأثير الخط المفرغ على كلمة معينة",
+		"contact.direct.email-button":    "نص زر التواصل المباشر عبر البريد الإلكتروني — يحتوي أيقونة SVG مدمجة مع النص لذا تستلزم innerHTML",
+		"contact.direct.whatsapp-button": "نص زر التواصل المباشر عبر واتساب — يحتوي أيقونة SVG مدمجة مع النص لذا تستلزم innerHTML",
+		"footer.identity":        "هوية المطور في التذييل — تحتوي عناصر <p> و<br> لعرض الاسم والمسمى الوظيفي في سطرين",
+		"skills.advanced.1":      "وسم مهارة متقدمة رقم 1 (هندسة الواجهات) — يحتوي نقطة <span class=\"skill-tag__dot\"> مدمجة مع النص لذا تستلزم innerHTML",
+		"skills.advanced.2":      "وسم مهارة متقدمة رقم 2 (الوصول والظهور) — يحتوي نقطة <span class=\"skill-tag__dot\"> مدمجة مع النص لذا تستلزم innerHTML",
+		"skills.advanced.3":      "وسم مهارة متقدمة رقم 3 (الأداء) — يحتوي نقطة <span class=\"skill-tag__dot\"> مدمجة مع النص لذا تستلزم innerHTML",
+		"skills.advanced.4":      "وسم مهارة متقدمة رقم 4 (التصميم المرن) — يحتوي نقطة <span class=\"skill-tag__dot\"> مدمجة مع النص لذا تستلزم innerHTML"
+	},
+
+	"i18n-aria": {
+		"header.logo.aria-label":                  "وصف رابط الشعار في رأس الصفحة لقارئات الشاشة — يصف الوجهة وهوية الموقع",
+		"header.nav.aria-label":                   "وصف عنصر nav الرئيسي — يميّزه عن nav القائمة الجوّالة",
+		"header.controls.lang-toggle.aria-label":  "وصف زر تبديل اللغة في رأس الصفحة — يحتوي نصاً مختصراً (AR/EN) غير كافٍ وحده",
+		"header.burger.aria-label":                "وصف زر فتح القائمة الجوّالة — أيقونة همبرغر بلا نص مرئي",
+
+		"mobile-nav.aria-label":                       "وصف عنصر aside القائمة الجوّالة ككل",
+		"mobile-nav.logo.aria-label":                  "وصف رابط الشعار داخل القائمة الجوّالة",
+		"mobile-nav.close-button.aria-label":          "وصف زر إغلاق القائمة الجوّالة — أيقونة X بلا نص مرئي",
+		"mobile-nav.nav.aria-label":                   "وصف عنصر nav داخل القائمة الجوّالة",
+		"mobile-nav.controls.lang-toggle.aria-label":  "وصف بطاقة تبديل اللغة في القائمة الجوّالة",
+		"mobile-nav.social.whatsapp.aria-label":       "وصف رابط واتساب في القائمة الجوّالة — أيقونة فقط",
+		"mobile-nav.social.github.aria-label":         "وصف رابط GitHub في القائمة الجوّالة — أيقونة فقط",
+		"mobile-nav.social.facebook.aria-label":       "وصف رابط Facebook في القائمة الجوّالة — أيقونة فقط",
+
+		"contact.form.name-input.aria-label":       "وصف حقل إدخال الاسم في نموذج التواصل لقارئات الشاشة",
+		"contact.form.contact-input.aria-label":    "وصف حقل إدخال البريد الإلكتروني أو الهاتف في نموذج التواصل",
+		"contact.form.message-textarea.aria-label": "وصف منطقة إدخال الرسالة في نموذج التواصل",
+
+		"footer.logo.aria-label":            "وصف رابط الشعار في تذييل الصفحة",
+		"footer.social.whatsapp.aria-label": "وصف رابط واتساب في التذييل — أيقونة فقط",
+		"footer.social.github.aria-label":   "وصف رابط GitHub في التذييل — أيقونة فقط",
+		"footer.social.facebook.aria-label": "وصف رابط Facebook في التذييل — أيقونة فقط"
+	},
+
+	"i18n-alt": {
+		"logo.alt": "النص البديل لصور الشعار في الصفحة — مفتاح مشترك يُستخدم في رأس الصفحة والقائمة الجوّالة والتذييل"
+	}
+}

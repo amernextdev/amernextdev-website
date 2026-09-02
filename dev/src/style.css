@@ -1,0 +1,498 @@
+/* ============================================================
+   MAIN.CSS — Global Styles
+   Single source for: Reset, Base, Shared Components, Utilities
+   Generated from: main.css (full merged file)
+   ============================================================
+   
+   INDEX
+   ─────
+   1. Imports
+   2. Reset & Base Styles
+   3. Global Layout
+   4. Shared Buttons (.btn-primary, .btn-ghost, .btn-outline, .btn--loading)
+   5. Shared Section Header (.section-header, .section-header__*)
+   6. Shared Animations & Keyframes
+   7. Shared Utilities (.icon, .nav__link base)
+   8. Global UI Components (Toast, Form Error, Char Counter)
+   9. Global Media Queries (Reduced Motion)
+   ============================================================ */
+
+
+/* ─── 1. Imports ────────────────────────────────────────────── */
+
+/* === SERVICES === */
+@import '/src/services/css/fonts.css';
+@import '/src/services/css/variables.css';
+@import '/src/services/css/reveal.css';
+
+
+/* === STYLES === */
+@import '/src/components/header/header.css';
+@import '/src/components/hero/hero.css';
+@import '/src/components/work/work.css';
+@import '/src/components/services/services.css';
+@import '/src/components/about/about.css';
+@import '/src/components/contact/contact.css';
+@import '/src/components/footer/footer.css';
+
+/* ─── 2. Reset & Base Styles ────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-bg);
+  color: var(--color-text-body);
+  line-height: var(--lh-normal);
+  direction: var(--dir, ltr);
+  text-align: var(--text-align, left);
+}
+
+
+/* ─── 3. Global Layout ──────────────────────────────────────── */
+
+#main-content {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ─── 4. Shared Buttons ─────────────────────────────────────── */
+
+/* ── btn-primary ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background-color: var(--color-accent);
+  color: var(--color-text-inverse);
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  border: 2px solid var(--color-accent);
+  transition: var(--transition-base);
+  letter-spacing: var(--ls-wide);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-active);
+  border-color: var(--color-accent-active);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ── btn-ghost ── */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  padding: var(--space-3) var(--space-1);
+  text-decoration: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  transition: var(--transition-base);
+  letter-spacing: var(--ls-wide);
+}
+
+.btn-ghost:hover {
+  color: var(--color-text-heading);
+  border-bottom-color: var(--color-text-muted);
+}
+
+/* ── btn-outline ── */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-text-body);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  padding: var(--space-3) var(--space-6);
+  text-decoration: none;
+  transition: color var(--transition-base),
+              border-color var(--transition-base),
+              box-shadow var(--transition-base);
+}
+
+.btn-outline:hover {
+  color: var(--color-accent);
+  border-color: var(--color-amber-border);
+  box-shadow: var(--shadow-amber-sm);
+}
+
+.btn-outline .icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* ── btn--loading ── */
+.btn--loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.btn__spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-top-color: var(--color-text-inverse);
+  border-radius: var(--radius-full);
+  animation: btn-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+
+/* ─── 5. Shared Section Header ──────────────────────────────── */
+/* Column layout — used across all sections uniformly */
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Label / Eyebrow ── */
+/* pill-shaped badge with a left accent line and subtle amber glow */
+.section-header__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: fit-content;
+
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--color-accent);
+
+  /* pill container */
+  background-color: var(--color-amber-surface);
+  border: 1px solid var(--color-amber-border);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-4) var(--space-1) var(--space-3);
+
+  /* left accent line — a short amber bar before the text */
+  position: relative;
+  margin-block-end: var(--space-5);
+}
+
+
+
+/* ── Title ── */
+.section-header__title {
+  font-family: var(--font-primary);
+  font-size: var(--fs-4xl);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  color: var(--color-text-heading) !important;
+  margin: 0 !important;
+
+  /* subtle text-shadow for depth */
+  text-shadow: 0 2px 24px rgba(245, 158, 11, 0.07) !important;
+}
+
+/* ── Outline variant — ghost/stroke text ── */
+.section-header__title .outline {
+  color: var(--color-accent) !important;
+}
+
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .section-header__title {
+    font-size: var(--fs-3xl);
+  }
+}
+
+@media (max-width: 640px) {
+  .section-header__title {
+    font-size: var(--fs-2xl);
+  }
+} 
+
+
+.contact-section__inner .section-header {
+  width: 100%;
+  max-width: 600px;
+  
+  /* 1. تصحيح الهوامش الجانبية ليتوسط العنصر */
+  margin-inline: auto !important; 
+  
+  /* 2. محاذاة عناصر الفليكس إلى المنتصف */
+  align-items: center !important;
+  justify-content: center !important;
+
+  /* 3. الإضافة السحرية: محاذاة السطور والنصوص نفسها للمنتصف */
+  text-align: center !important;
+}
+
+
+
+/* ─── 6. Shared Animations & Keyframes ──────────────────────── */
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1;   transform: scale(1);    }
+  50%       { opacity: 0.5; transform: scale(0.75); }
+}
+
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shake {
+  10%, 90%      { transform: translateX(-2px); }
+  20%, 80%      { transform: translateX(3px);  }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60%      { transform: translateX(4px);  }
+}
+
+
+/* ─── 7. Shared Utilities ───────────────────────────────────── */
+
+/* .icon — used across ALL sections */
+.icon {
+  display:        inline-block;
+  width:          1em;
+  height:         1em;
+  fill:           currentColor;
+  vertical-align: middle;
+  flex-shrink:    0;
+}
+
+/* .icon--flip-rtl — mirrors directional icons (arrows) in RTL layouts */
+.icon--flip-rtl {
+  transition: transform var(--transition-base);
+}
+
+[dir="rtl"] .icon--flip-rtl {
+  transform: scaleX(-1);
+}
+
+/* .nav__link base — shared between site-header nav and mobile-nav */
+.nav__link {
+  position:        relative;
+  display:         inline-flex;
+  align-items:     center;
+  gap:             var(--space-2);
+  padding-block:   var(--space-2);
+  padding-inline:  var(--space-3);
+  font-family:     var(--font-primary);
+  font-size:       var(--fs-sm);
+  font-weight:     var(--fw-medium);
+  color:           var(--color-text-body);
+  text-decoration: none;
+  letter-spacing:  var(--ls-wide);
+  border-radius:   var(--radius-sm);
+  transition:      color var(--transition-base), background var(--transition-base);
+}
+
+
+/* ─── 8. Global UI Components ───────────────────────────────── */
+
+/* ════════════════════
+   CHAR COUNTER
+════════════════════ */
+
+.char-counter {
+  display: block;
+  text-align: end;
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-muted);
+  margin-block-start: var(--space-1);
+  transition: color var(--transition-base);
+}
+
+.char-counter--warning {
+  color: var(--color-warning);
+}
+
+.char-counter--error {
+  color: var(--color-error);
+  font-weight: var(--fw-semibold);
+}
+
+
+/* ════════════════════
+   FORM ERROR STATE
+════════════════════ */
+
+.form-group__input--error,
+.form-group__textarea.form-group__input--error {
+  border-color: var(--color-error-border) !important;
+  box-shadow: 0 0 0 3px var(--color-error-surface) !important;
+  animation: shake 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+
+/* ════════════════════
+   TOAST NOTIFICATION
+════════════════════ */
+
+.toast-notification {
+  position: fixed;
+  bottom: var(--space-8);
+  inset-inline-end: var(--space-8);
+  z-index: var(--z-toast);
+  min-width: 280px;
+  max-width: 380px;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  transform: translateY(16px) scale(0.97);
+  pointer-events: none;
+  transition:
+    opacity   300ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.toast--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.toast--hiding {
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+}
+
+.toast__body {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  font-family: var(--font-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-snug);
+  color: var(--color-text-heading);
+}
+
+.toast__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.toast__progress {
+  height: 3px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.toast__progress::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 100%;
+  transition-property: width;
+  transition-timing-function: linear;
+  /* transition-duration يتضبط من JS */
+}
+
+.toast__progress--running::after {
+  width: 0%;
+}
+
+/* Toast type colors */
+.toast--success  { border-color: var(--color-success-border); }
+.toast--error    { border-color: var(--color-error-border); }
+.toast--warning  { border-color: var(--color-warning-border); }
+.toast--info     { border-color: var(--color-info-border); }
+
+.toast--success .toast__body          { color: var(--color-success); }
+.toast--error   .toast__body          { color: var(--color-error); }
+.toast--warning .toast__body          { color: var(--color-warning); }
+.toast--info    .toast__body          { color: var(--color-info); }
+
+.toast--success .toast__progress::after { background-color: var(--color-success); }
+.toast--error   .toast__progress::after { background-color: var(--color-error); }
+.toast--warning .toast__progress::after { background-color: var(--color-warning); }
+.toast--info    .toast__progress::after { background-color: var(--color-info); }
+
+/* Responsive — Mobile */
+@media (max-width: 640px) {
+  .toast-notification {
+    inset-inline-end: 50%;
+    transform: translateX(50%) translateY(16px) scale(0.97);
+    bottom: var(--space-6);
+    min-width: 0;
+    width: calc(100vw - var(--space-8));
+    max-width: none;
+  }
+
+  .toast--visible {
+    transform: translateX(50%) translateY(0) scale(1);
+  }
+
+  .toast--hiding {
+    transform: translateX(50%) translateY(8px) scale(0.98);
+  }
+}
+
+
+/* ─── 9. Global Media Queries ───────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:        0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration:       0.01ms !important;
+    scroll-behavior:           auto !important;
+  }
+}
