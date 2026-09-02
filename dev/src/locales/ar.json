@@ -39,8 +39,8 @@
 		"work.lumora_aesthetic.description": "صفحة هبوط لعيادة أسنان تجميلية — بتساعد عيادة خاصة في القاهرة الجديدة تكسب ثقة المرضى وتحولهم لحجوزات استشارة من خلال عرض احترافي للخدمات وتواصل فوري عبر واتساب.",
 		"work.cap_ahmed_ehab.title": "منصة أحمد إيهاب للتدريب الرياضي",
 		"work.cap_ahmed_ehab.description": "منصة تدريب رياضي ثنائية اللغة تساعد المدربين على جذب العملاء من خلال قصص التحول الواقعية، وبناء الثقة، وتبسيط عملية التواصل والحجز.",
-		"work.flashe.title": "Flashe",
-		"work.flashe.description": "منصة لبيع المحتوى التعليمي للأطفال، تتيح للأهالي استكشاف المنتجات وإتمام الطلب بسهولة عبر تجربة استخدام مبسطة وسريعة.",
+		"work.cap_omar_raafat.title": "Raafat Coaching",
+		"work.cap_omar_raafat.description": "منصة تسويقية لمدرب لياقة بدنية أونلاين، كل قسم فيها (الأسعار، الآراء، الأسئلة الشائعة) بيتغذى من بيانات منفصلة بدل التكرار اليدوي. فيها شات بوت تفاعلي بنيته بالكامل من الصفر من غير أي API خارجي، بيرد على أسئلة العملاء المتوقعة فورًا.",
 		"work.card.link.live-site": "الموقع الحي",
 		"work.card.link.case-study": "تفاصيل المشروع",
 		"work.footer.view-all-projects": "All Projects",
@@ -154,7 +154,7 @@
 	"i18n-alt": {
 		"project.smart_eng.alt": "معاينة موقع Smart-ENG",
 		"project.cap_ahmed_ehab.alt": "معاينة صفحة كابتن أحمد إيهاب",
-		"project.flashe.alt": "معاينة صفحة Flashe",
+		"project.cap_omar_raafat.alt": "معاينة صفحة cap_omar_raafat",
 		"logo.alt": "شعار عامر عبدالفتاح"
 	}
 }

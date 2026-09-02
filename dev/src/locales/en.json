@@ -39,8 +39,8 @@
 		"work.lumora_aesthetic.description": "A cosmetic & implant dentistry landing page — helping a private New Cairo clinic build patient trust and drive consultation bookings through elegant service presentation and instant WhatsApp contact.",
 		"work.cap_ahmed_ehab.title": "Ahmed Ehab Coaching",
 		"work.cap_ahmed_ehab.description": "A bilingual coaching platform — helping fitness professionals attract clients through transformation stories, social proof, and streamlined lead generation.",
-		"work.flashe.title": "Flashe",
-		"work.flashe.description": "An educational e-commerce platform — helping parents discover and order curated learning content for children through a simple and accessible experience.",
+		"work.cap_omar_raafat.title": "Raafat Coaching",
+		"work.cap_omar_raafat.description": "A marketing landing page for an online fitness coach, fully data-driven — pricing, testimonials, and FAQs are all rendered from separate data files instead of hardcoded HTML. Features a custom-built interactive chatbot with zero external API costs, answering common client questions instantly.",
 		"work.card.link.live-site": "Live Site",
 		"work.card.link.case-study": "Case Study",
 		"work.footer.view-all-projects": "All Projects",
@@ -154,7 +154,7 @@
 	"i18n-alt": {
 		"project.smart_eng.alt": "Smart-ENG website preview",
 		"project.cap_ahmed_ehab.alt": "Cap Ahmed Ehab page preview",
-		"project.flashe.alt": "Flashe page preview",
+		"project.cap_omar_raafat.alt": "cap_omar_raafat page preview",
 		"logo.alt": "Amer Abdelfattah logo"
 	}
 }
